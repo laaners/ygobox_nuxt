@@ -39,9 +39,5 @@ body {
 	background-color: var(--color-light);
 	min-height: 75vh;
 }
-.container {
-	max-width: var(--max-width);
-	margin: auto;
-	padding: 0 var(--space-1);
-}
+
 </style>

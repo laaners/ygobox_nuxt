@@ -1,13 +1,21 @@
 <template>
-	<div class="image-loader" :style="getBorder()">
-		<p v-if="header">{{ header }}</p>
+	<div class="image-loader">
+		<!--
 		<img
 			class="small-image"
+			loading="lazy"
 			:src="src"
 			:alt="alt"
 			@click="toggleFullImage()"
 		/>
-		<p v-if="footer">{{ footer }}</p>
+		-->
+		<card-rarity
+			class="small-image"
+			:src="src"
+			:rarity="rarity"
+			:card="card"
+			@click.native="toggleFullImage()"
+		/>
 		<transition name="fade">
 			<div v-show="fullImage" class="modal">
 				<button
@@ -20,7 +28,11 @@
 				<h2 ref="name"></h2>
 				<div class="modal-view">
 					<div class="full-image">
-						<img :src="card.card_images[0].image_url" :alt="alt" />
+						<img
+							loading="lazy"
+							:src="card.card_images[0].image_url"
+							:alt="card.name"
+						/>
 					</div>
 					<div class="effects">
 						<p>
@@ -36,37 +48,23 @@
 </template>
 
 <script>
+import CardRarity from "./CardRarity.vue"
 import XIcon from "./icons/XIcon.vue"
 export default {
 	name: "CardModal",
-	components: { XIcon },
+	components: { XIcon, CardRarity },
 	props: {
 		src: {
 			type: String,
 			required: true,
 		},
-		alt: {
+		rarity: {
 			type: String,
 			required: true,
 		},
 		card: {
 			type: Object,
 			required: true,
-		},
-		// eslint-disable-next-line vue/require-default-prop
-		header: {
-			type: String,
-			required: false,
-		},
-		// eslint-disable-next-line vue/require-default-prop
-		footer: {
-			type: String,
-			required: false,
-		},
-		// eslint-disable-next-line vue/require-default-prop
-		border: {
-			type: String,
-			required: false,
 		},
 	},
 	data: () => ({
@@ -88,12 +86,6 @@ export default {
 					this.card.name + " | " + chCard.name + " | " + itCard.name
 			}
 		},
-		getBorder() {
-			if (this.border)
-				return {
-					border: this.border,
-				}
-		},
 	},
 }
 </script>
@@ -108,9 +100,15 @@ export default {
 }
 
 .small-image {
+	
 	cursor: pointer;
 	width: 100%;
 	padding: 0vw;
+	transition: all 0.2s ease;
+}
+
+.small-image:hover {
+	width: 95%;
 }
 
 .modal {

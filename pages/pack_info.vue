@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="flex-col">
 		<div class="flex-col">
 			<div class="flex-row">
 				<input id="pack" type="text" maxlength="125" size="25" />
@@ -12,39 +12,36 @@
 				/>
 			</div>
 			<br />
-			<img id="pack-img" src="" />
+			<img id="pack-img" loading="lazy" />
 		</div>
 		<h2 ref="packInfo"></h2>
 		<grid-view
 			v-if="appendCards.length > 0"
 			:columns="6"
-			:row-gap="0.1"
+			:row-gap="0.5"
 			:col-gap="1"
+			style="width: 90%"
 		>
-			<card-modal
+			<container-pack-info
 				v-for="card of appendCards"
 				:key="card.id"
 				:src="card.card_images[0].image_url"
-				:alt="card.name"
 				:card="card"
-				:header="`${card.rarity.set_rarity} (${card.rarity.percentage}%)`"
-				:footer="card.name"
-				:border="'2px black solid'"
-			>
-			</card-modal>
+				:rarity="card.rarity.set_rarity"
+				:percentage="card.rarity.percentage"
+			/>
 		</grid-view>
 	</div>
 </template>
 
 <script>
-import CardModal from "../components/CardModal.vue"
 import GridView from "../components/GridView.vue"
+import ContainerPackInfo from "../components/ContainerPackInfo.vue"
 import Utils from "~/mixins/utils"
 export default {
 	name: "PackInfoPage",
-	components: { CardModal, GridView },
+	components: { ContainerPackInfo, GridView },
 	mixins: [Utils],
-	layout: "default",
 	/*
 	async asyncData({ $getAllCards }) {
 		const allcards = await $getAllCards()
@@ -84,13 +81,19 @@ export default {
 			this.$el.querySelector("#pack-img").src = pack_img
 			this.$refs.packInfo.innerHTML =
 				cards.length +
-				" carte diverse nel pacchetto\nSe apri il pacchetto avrai "+draftN+" carte a caso tra queste:"
+				" carte diverse nel pacchetto\nSe apri il pacchetto avrai " +
+				draftN +
+				" carte a caso tra queste:"
 		},
 	},
 }
 </script>
 
 <style scoped>
+#pack-img {
+	height: 50vh;
+}
+
 .flex-row {
 	display: flex;
 	justify-content: center;
