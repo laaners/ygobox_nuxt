@@ -12,24 +12,39 @@
 				/>
 			</div>
 			<br />
-			<img id="pack-img" src="" style="width: 15vw" />
+			<img id="pack-img" src="" />
 		</div>
-		<div v-for="card of appendCards" :key="card.id">
-			{{ card.name }}
-		</div>
-
-		<div id="cards-pack" class="flex-col"></div>
-		<div class="cards-pack flex-row text-center"></div>
-
-		<div id="modalAnchor"></div>
+		<h2 ref="packInfo"></h2>
+		<grid-view
+			v-if="appendCards.length > 0"
+			:columns="6"
+			:row-gap="0.1"
+			:col-gap="1"
+		>
+			<card-modal
+				v-for="card of appendCards"
+				:key="card.id"
+				:src="card.card_images[0].image_url"
+				:alt="card.name"
+				:card="card"
+				:header="`${card.rarity.set_rarity} (${card.rarity.percentage}%)`"
+				:footer="card.name"
+				:border="'2px black solid'"
+			>
+			</card-modal>
+		</grid-view>
 	</div>
 </template>
 
 <script>
+import CardModal from "../components/CardModal.vue"
+import GridView from "../components/GridView.vue"
 import Utils from "~/mixins/utils"
 export default {
 	name: "PackInfoPage",
+	components: { CardModal, GridView },
 	mixins: [Utils],
+	layout: "default",
 	/*
 	async asyncData({ $getAllCards }) {
 		const allcards = await $getAllCards()
@@ -37,9 +52,7 @@ export default {
 	},
     */
 	data: () => ({
-		allcards: [],
 		appendCards: [],
-		time: undefined,
 	}),
 	/*
 	async fetch() {
@@ -55,9 +68,23 @@ export default {
 	methods: {
 		async listCardsPack() {
 			const set_name = this.$el.querySelector("#pack").value
-			this.appendCards = await this.$axios.$get(
+			const { pack_img, cards } = await this.$axios.$get(
 				`api/set?set_name=${set_name}`
 			)
+			if (cards.length === 0) {
+				alert(pack_img)
+				return
+			}
+			this.appendCards = cards
+
+			const draftN =
+				Math.ceil(cards.length * 1.5) > 120
+					? 120
+					: Math.ceil(cards.length * 1.5)
+			this.$el.querySelector("#pack-img").src = pack_img
+			this.$refs.packInfo.innerHTML =
+				cards.length +
+				" carte diverse nel pacchetto\nSe apri il pacchetto avrai "+draftN+" carte a caso tra queste:"
 		},
 	},
 }
@@ -77,125 +104,8 @@ export default {
 	align-items: center;
 }
 
-.banned,
-.cards-pack {
-	flex-wrap: wrap;
-	align-content: center; /*where to start wrapping,
-     center, flex-start, flex-end
-     also space-between etc...*/
-
+h2 {
 	text-align: center;
-}
-
-.banned div,
-.cards-pack div {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-}
-
-.banned p {
-	font-size: 1vw;
-	overflow-wrap: break-word;
-	inline-size: 19vw;
-}
-
-.banned img {
-	width: 19vw;
-	padding: 0;
-	cursor: pointer;
-}
-
-.cards-pack p {
-	font-size: 0.7vw;
-	overflow-wrap: break-word;
-	inline-size: 15vw;
-}
-
-.cards-pack img {
-	width: 15vw;
-	padding: 0;
-	cursor: pointer;
-}
-
-#your-deck {
-	width: 60%;
-}
-
-#search-card {
-	height: 30vh;
-	overflow-y: scroll;
-}
-
-#search-result {
-	height: 80vh;
-	overflow-y: scroll;
-
-	justify-content: flex-start;
-	align-items: flex-start;
-
-	flex-wrap: wrap;
-	align-content: flex-start; /*where to start wrapping,
-     center, flex-start, flex-end
-     also space-between etc...*/
-}
-
-#search-result img {
-	width: 5.5vw;
-	padding: 0vw;
-	cursor: pointer;
-	transition: all 0.4s ease-in-out;
-
-	margin-bottom: 2vh;
-}
-
-#search-result .flex-col p {
-	font-size: 1vw;
-	overflow-wrap: break-word;
-	inline-size: 11vw;
-}
-
-#main_deck,
-#extra_deck {
-	max-width: 100%;
-	flex-wrap: wrap;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-#main_deck img,
-#extra_deck img {
-	width: 5.5vw;
-	padding: 0vw;
-	cursor: pointer;
-	transition: all 0.4s ease-in-out;
-}
-
-.cards-pack {
-	background-color: gray;
-	color: white;
-}
-
-html {
-	/*serve per avere effetto quando si clicca un riferimento a una zona interna della pagina*/
-	scroll-behavior: smooth;
-}
-
-.fa-star {
-	cursor: pointer;
-	font-size: 30px;
-	color: black;
-}
-
-.checked {
-	color: orange;
-}
-
-button,
-input[type="button"],
-input[type="file"] {
-	cursor: pointer;
+	white-space: pre-line;
 }
 </style>
