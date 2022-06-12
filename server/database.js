@@ -51,14 +51,15 @@ function allCardsSegment(startdate, enddate) {
 				method: "GET",
 			},
 			function (error, resp, body) {
-				if (error || resp.statusCode != 200) {
+				if (error || resp.statusCode !== 200) {
+					// eslint-disable-next-line prefer-promise-reject-errors
 					reject([])
 				} else {
 					console.log(`Got all cards between ${startdate}-${enddate}`)
 					const ris = JSON.parse(body).data
 					for (let i = 0; i < ris.length; i++) {
-						delete ris[i]["card_prices"]
-						delete ris[i]["archetype"]
+						delete ris[i].card_prices
+						delete ris[i].archetype
 					}
 					resolve(ris)
 				}
@@ -115,6 +116,18 @@ export async function initData() {
 		allcards4.slice(0, Math.floor(allcards4.length / 2)),
 		allcards4.slice(Math.floor(allcards4.length / 2)),
 	]
+	const allcardsToT = [
+		...new Set([
+			...allcards[0],
+			...allcards[1],
+			...allcards[2],
+			...allcards[3],
+			...allcards[4],
+			...allcards[5],
+			...allcards[6],
+			...allcards[7],
+		]),
+	]
 
 	return {
 		allsets,
@@ -122,5 +135,6 @@ export async function initData() {
 		cardsCH,
 		cardsIT,
 		allcards,
+		allcardsToT
 	}
 }

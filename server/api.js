@@ -5,7 +5,7 @@ app.use(express.json())
 
 export default app
 ;(async () => {
-	const { allsets, bannedCards, cardsCH, cardsIT, allcards } =
+	const { allsets, bannedCards, cardsCH, cardsIT, allcards, allcardsToT } =
 		await initData()
 
 	console.log("Got all the data now!")
@@ -22,7 +22,7 @@ export default app
 		return res.json(allsets)
 	})
 
-	app.get("/cheff", function (req, res) {
+	app.get("/cheff", (req, res) => {
 		if (req.query !== undefined && req.query.id !== undefined) {
 			let card = cardsCH.find((x) => x.id === +req.query.id)
 			let i = -1
@@ -36,7 +36,7 @@ export default app
 		} else return res.send("Erroneous parameters")
 	})
 
-	app.get("/iteff", function (req, res) {
+	app.get("/iteff", (req, res) => {
 		if (req.query !== undefined && req.query.id !== undefined) {
 			let card = cardsIT.find((x) => x.id === +req.query.id)
 			let i = -1
@@ -50,7 +50,24 @@ export default app
 		} else return res.send("Erroneous parameters")
 	})
 
-	app.get("/banned_cards", function (req, res) {
+	app.get("/banned_cards", (req, res) => {
 		return res.json(bannedCards)
+	})
+
+	app.get("/set", (req, res) => {
+		if (req.query !== undefined && req.query.set_name !== undefined) {
+			const set_name = req.query.set_name
+			return res.json(
+				allcardsToT.filter((_) => {
+					if (_.card_sets === undefined) return false
+					if (_.card_sets.length !== 0) {
+						return _.card_sets
+							.filter((set) => set.set_name !== undefined)
+							.map((set) => set.set_name.toLowerCase())
+							.includes(set_name.toLowerCase())
+					} else return false
+				})
+			)
+		} else return res.send("Erroneous parameters")
 	})
 })()
