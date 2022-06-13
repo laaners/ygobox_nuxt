@@ -1,25 +1,35 @@
 <template>
 	<div class="flex-col">
 		<div class="flex-col">
-			<div class="flex-row">
 				<input id="pack" type="text" maxlength="125" size="25" />
-				<input
-					type="button"
-					class="custom"
-					value="APRI PACCHETTO"
-					@click="listCardsPack()"
+				<button-secondary
+					:title="'APRI PACCHETTO'"
+					@click.native="listCardsPack()"
 				/>
-			</div>
 		</div>
 		<div v-show="appendCards.length > 0" class="flex-col">
 			<img id="pack-img" loading="lazy" />
-			<h2 ref="packInfo"></h2>
-			<div class="flex-row">
-				<button @click="sort('default')">Ordine di default</button>
-				<button @click="sort('rarity')">
-					Ordina per rarit&agrave;
-				</button>
-			</div>
+			<h3 ref="packInfo"></h3>
+			<h4>ORDINA PER:</h4>
+			<grid-view
+				:columns="3"
+				:row-gap="0"
+				:col-gap="2"
+				style="width: 80%"
+			>
+				<button-secondary
+					:title="'DEFAULT'"
+					@click.native="sort('default')"
+				/>
+				<button-secondary
+					:title="'RARITÀ'"
+					@click.native="sort('rarity')"
+				/>
+				<button-secondary
+					:title="'CATEGORIA'"
+					@click.native="sort('category')"
+				/>
+			</grid-view>
 			<grid-view
 				:columns="6"
 				:row-gap="0.5"
@@ -42,10 +52,11 @@
 <script>
 import GridView from "../components/GridView.vue"
 import ContainerPackInfo from "../components/ContainerPackInfo.vue"
+import ButtonSecondary from "../components/ButtonSecondary.vue"
 import Utils from "~/mixins/utils"
 export default {
 	name: "PackInfoPage",
-	components: { ContainerPackInfo, GridView },
+	components: { ContainerPackInfo, GridView, ButtonSecondary },
 	mixins: [Utils],
 	/*
 	async asyncData({ $getAllCards }) {
@@ -98,6 +109,10 @@ export default {
 					)
 					break
 				}
+				case "category": {
+					this.appendCards = this.categorySort(this.appendCards)
+					break
+				}
 				default:
 					this.appendCards.sort((a, b) => {
 						const setCodeA = a.rarity.set_code
@@ -113,6 +128,10 @@ export default {
 </script>
 
 <style scoped>
+#pack {
+	font-size: var(--font-size-body);
+}
+
 .flex-row > * {
 	margin-right: var(--space-0);
 	margin-left: var(--space-0);
@@ -127,7 +146,7 @@ export default {
 	height: 50vh;
 }
 
-h2 {
+h3 {
 	text-align: center;
 	white-space: pre-line;
 }

@@ -27,31 +27,30 @@
 		>
 			<input type="button" class="upload" value="CARICA LE TUE CARTE!" />
 		</div>
-		<div
-			style="display: flex; justify-content: center; align-items: center"
-		>
-			<input
-				id="banned_category"
-				type="button"
-				class="banned"
-				value="CARTE BANDITE ORDINE PER CATEGORIA"
-				disabled
-			/>
-			&ensp;
-			<input
-				id="banned_temporal"
-				type="button"
-				class="banned"
-				value="CARTE BANDITE ORDINE CRONOLOGICO"
-				disabled
-			/>
+		<div class="flex-col" style="width: 60%">
+			<h4>ORDINE:</h4>
+			<grid-view
+				:columns="2"
+				:row-gap="0"
+				:col-gap="2"
+				style="width: 100%"
+			>
+				<button-secondary
+					:title="'CRONOLOGICO'"
+					@click.native="sort('chronological')"
+				/>
+				<button-secondary
+					:title="'PER CATEGORIA'"
+					@click.native="sort('category')"
+				/>
+			</grid-view>
 		</div>
 		<a href="/pack_info">guarda cosa contiene un pacchetto</a>
-		<grid-view style="width: 90%" :columns="10" :row-gap="0" :col-gap="0">
+		<grid-view style="width: 90%" :columns="15" :row-gap="0" :col-gap="0">
 			<card-modal
 				v-for="card of bannedCards"
 				:key="card.id"
-				:src="card.card_images[0].image_url"
+				:src="getPicSmallUrl(card.id)"
 				:card-id="card.id"
 				:rarity="'Common'"
 			/>
@@ -70,22 +69,46 @@ export default {
 	components: { GridView, CardModal },
 	mixins: [Utils],
 	async asyncData({ $axios }) {
-		const bannedCards = await $axios.$get("/api/banned_cards")
+		const rawBannedCards = await $axios.$get("/api/banned_cards")
+		const promises = []
+		rawBannedCards.forEach((card) => {
+			promises.push($axios.$get(`/api/card/${card.id}`))
+		})
+		const bannedCards = await Promise.all(promises)
 		return {
 			bannedCards,
+			defaultOrder: bannedCards,
 		}
 	},
 	data: () => ({
-		allcards: [],
+		defaultOrder: [],
 		bannedCards: [],
 	}),
+	/*
 	async mounted() {
 		this.allcards = await this.getAllCards()
+	},
+	*/
+	methods: {
+		sort(option) {
+			switch (option) {
+				case "category": {
+					this.bannedCards = this.categorySort(this.defaultOrder)
+					break
+				}
+				default:
+					this.bannedCards = this.defaultOrder
+			}
+		},
 	},
 }
 </script>
 
 <style scoped>
+.flex-col > *{
+	margin-top: var(--space-0);
+	margin-bottom: var(--space-0);
+}
 #initial-page {
 	display: flex;
 	flex-direction: column;

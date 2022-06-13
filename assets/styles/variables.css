@@ -9,8 +9,6 @@
 
 	--max-width: 920px;
 
-	--border-radius: 16px;
-
 	/* Make 3 columns */
 	--grid-template-columns: 1fr;
 
@@ -36,14 +34,19 @@
 	--space-2: 2rem;
 	--space-3: 3rem;
 
+	--font-size-h1: 2vmax;
+	--font-size-h2: 1.75vmax;
+	--font-size-h3: 1.5vmax;
+	--font-size-h4: 1.25vmax;
 	--font-size-body: 1vmax;
-	--font-size-heading: 2vmax;
-	
+
 	--font-size-header-links: 2rem;
 	--font-size-header-title: 1.7rem;
 	--font-size-header-menu: 1.2rem;
 	--font-size-button: 1.1rem;
 	--font-size-season-button: 1.3rem;
 	--font-size-category: 1.3rem;
+
+	--border-radius: 8px;
 
 }

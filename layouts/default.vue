@@ -31,6 +31,26 @@ body {
 	*/
 }
 
+p, span {
+	font-size: var(--font-size-body);
+}
+
+h1 {
+	font-size: var(--font-size-h1);
+}
+
+h2 {
+	font-size: var(--font-size-h2);
+}
+
+h3 {
+	font-size: var(--font-size-h3);
+}
+
+h4 {
+	font-size: var(--font-size-h4);
+}
+
 .flex-row {
 	display: flex;
 	justify-content: center;

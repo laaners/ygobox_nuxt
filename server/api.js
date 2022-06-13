@@ -55,11 +55,7 @@ export default app
 	})
 
 	app.get("/banned_cards", (req, res) => {
-		return res.json(
-			allcardsToT.filter((_) =>
-				bannedCards.map((b) => b.id).includes(_.id)
-			)
-		)
+		return res.json(bannedCards)
 	})
 
 	app.get("/set/:id", (req, res) => {

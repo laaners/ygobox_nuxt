@@ -25,7 +25,7 @@
 				>
 					<x-icon />
 				</button>
-				<h2 ref="name"></h2>
+				<h1 ref="name"></h1>
 				<div class="modal-view">
 					<div class="full-image">
 						<img
@@ -144,7 +144,7 @@ export default {
 	border: none;
 	cursor: pointer;
 	color: var(--color-light-transparent);
-	font-size: 3.5rem;
+	font-size: 3.5vw;
 }
 
 .modal-close:hover {
@@ -174,10 +174,10 @@ export default {
 	width: 100%;
 }
 
-h2 {
-	font-size: var(--font-size-heading);
+h1 {
 	margin-bottom: 0;
 	margin-top: var(--space-0);
+	text-align: center;
 }
 
 .effects {
@@ -189,7 +189,5 @@ h2 {
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
-
-	font-size: var(--font-size-body);
 }
 </style>
