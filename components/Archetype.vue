@@ -46,7 +46,7 @@
       </div>
     </div>
     <div class="archetype-footer">
-      <a :href="`${encodeURI('/details/'+encodeURIComponent(name))}`" target="_blank" rel="noopener noreferrer">
+      <a :href="`${encodeURI('/archetypes/'+encodeURIComponent(name))}`" target="_blank" rel="noopener noreferrer">
         DETAILS
       </a>
       <!--

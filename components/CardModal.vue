@@ -30,7 +30,7 @@
 					<div class="full-image">
 						<img
 							loading="lazy"
-							:src="`https://storage.googleapis.com/ygoprodeck.com/pics/${cardId}.jpg`"
+							:src="getPicUrl(cardId)"
 							:alt="cardId"
 						/>
 					</div>
@@ -48,9 +48,11 @@
 <script>
 import CardRarity from "./CardRarity.vue"
 import XIcon from "./icons/XIcon.vue"
+import Utils from "~/mixins/utils"
 export default {
 	name: "CardModal",
 	components: { XIcon, CardRarity },
+	mixins: [Utils],
 	props: {
 		src: {
 			type: String,

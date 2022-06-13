@@ -14,7 +14,7 @@
 <template>
 	<div>
 		<page-header />
-		<nuxt />
+		<nuxt class="main" />
 	</div>
 </template>
 
@@ -29,12 +29,18 @@ export default {
 <style>
 body {
 	font-family: var(--font-family-body);
+	background: var(--color-light);
 	margin: 0;
+
 	/*
 	font-size: var(--font-size-body);
 	 background-color: var(--color-dark);
 	margin: 0;
 	*/
+}
+
+.main {
+	padding-top: var(--font-size-h1);
 }
 
 p,

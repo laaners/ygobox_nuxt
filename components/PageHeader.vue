@@ -68,6 +68,8 @@ export default {
 
 <style>
 .page-header {
+	position: fixed;
+	width: 100%;
 	background-color: var(--color-darker);
 	z-index: 1000;
 }

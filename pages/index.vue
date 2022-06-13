@@ -49,11 +49,20 @@
 			<card-modal
 				v-for="card of bannedCards"
 				:key="card.id"
-				:src="getPicSmallUrl(card.id)"
+				:src="getPicUrl(card.id)"
 				:card-id="card.id"
 				:rarity="'Common'"
 			/>
 		</grid-view>
+		<h-scroll-view style="width: 90%;">
+			<card-modal
+				v-for="card of bannedCards"
+				:key="card.id"
+				:src="getPicUrl(card.id)"
+				:card-id="card.id"
+				:rarity="'Common'"
+			/>
+		</h-scroll-view>
 	</div>
 </template>
 
@@ -104,7 +113,7 @@ export default {
 </script>
 
 <style scoped>
-.flex-col > *{
+.flex-col > * {
 	margin-top: var(--space-0);
 	margin-bottom: var(--space-0);
 }

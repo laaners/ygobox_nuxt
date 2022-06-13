@@ -160,6 +160,9 @@ export default {
 		getPicSmallUrl(id) {
 			return `https://storage.googleapis.com/ygoprodeck.com/pics_small/${id}.jpg`
 		},
+		getPicArtUrl(id) {
+			return `https://storage.googleapis.com/ygoprodeck.com/pics_artgame/${id}.jpg`
+		},
 		async getAllCards() {
 			const [seg1, seg2, seg3, seg4, seg5, seg6, seg7, seg8] =
 				await Promise.all([

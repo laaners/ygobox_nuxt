@@ -1,5 +1,4 @@
 import archetypesPics from "./data/archetypes.json"
-import archetypesBlacklist from "./data/blacklist.json"
 import { exceptionArc } from "./exceptionArc"
 
 function groupBy(obj, key, listName) {
@@ -170,19 +169,4 @@ export function retrieveArchetypes(allcards, allsets) {
 	grouped.sort((a, b) => (a.date > b.date ? -1 : 1))
 
 	return grouped
-		.filter((_) => !archetypesBlacklist.includes(_.archetype))
-		.map((_) => {
-			const obj = {
-				archetype: _.archetype,
-				members: _.members.length,
-				true_name: _.true_name,
-				date: _.date,
-				imgs: _.imgs,
-				attributes: _.attributes,
-				types: _.types,
-				crest: _?.crest,
-				focus: _.focus,
-			}
-			return obj
-		})
 }

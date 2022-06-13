@@ -106,9 +106,7 @@ export default {
     }
 
     const { id } = route.params;
-    const members = await $axios.get('/api/archetypes/'+id.replace(/\//g, '%2F'));
-    listOrder(1)
-    /*
+    const data = await $axios.$get('/api/archetypes/'+id.replace(/\//g, '%2F'));
     const members = [];
     for(let i = 1; i <=78; i++) {                    
       // ordino anche per livelli o link rate
@@ -122,8 +120,6 @@ export default {
         .sort((a,b) => a.name.localeCompare(b.name))
         .sort((a,b)=>a.atk-b.atk));
     }
-    */
-    console.log(members)
     return {
       artwork: false,
       arc: id,

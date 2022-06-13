@@ -1,2 +1,5 @@
 ###
 GET http://localhost:3000/api/set?set_name=duelist alliance
+
+###
+GET http://localhost:3000/archetypes/Melffy

@@ -1,11 +1,25 @@
 <template>
 	<div class="flex-col">
+		<h-scroll-view style="width: 90%">
+			<container-pack-scroll
+				v-for="set of allsets"
+				:key="set.set_code"
+				:clicked-set.sync="clickedSet"
+				:set="set"
+			/>
+		</h-scroll-view>
 		<div class="flex-col">
-				<input id="pack" type="text" maxlength="125" size="25" />
-				<button-secondary
-					:title="'APRI PACCHETTO'"
-					@click.native="listCardsPack()"
-				/>
+			<input
+				id="pack"
+				type="text"
+				maxlength="125"
+				size="40"
+				:value="clickedSet"
+			/>
+			<button-secondary
+				:title="'APRI PACCHETTO'"
+				@click.native="listCardsPack()"
+			/>
 		</div>
 		<div v-show="appendCards.length > 0" class="flex-col">
 			<img id="pack-img" loading="lazy" />
@@ -31,7 +45,7 @@
 				/>
 			</grid-view>
 			<grid-view
-				:columns="6"
+				:columns="appendCards.length < 6 ? 4 : 6"
 				:row-gap="0.5"
 				:col-gap="1"
 				style="width: 90%"
@@ -39,7 +53,7 @@
 				<container-pack-info
 					v-for="card of appendCards"
 					:key="card.id"
-					:src="card.card_images[0].image_url"
+					:src="getPicUrl(card.id)"
 					:card="card"
 					:rarity="card.rarity.set_rarity"
 					:percentage="card.rarity.percentage"
@@ -51,21 +65,48 @@
 
 <script>
 import GridView from "../components/GridView.vue"
-import ContainerPackInfo from "../components/ContainerPackInfo.vue"
+import ContainerPackScroll from "../components/ContainerPackScroll.vue"
 import ButtonSecondary from "../components/ButtonSecondary.vue"
 import Utils from "~/mixins/utils"
 export default {
 	name: "PackInfoPage",
-	components: { ContainerPackInfo, GridView, ButtonSecondary },
+	components: {
+		GridView,
+		ButtonSecondary,
+		ContainerPackScroll,
+	},
 	mixins: [Utils],
-	/*
-	async asyncData({ $getAllCards }) {
+	async asyncData({ $axios, query }) {
+		/*
 		const allcards = await $getAllCards()
 		return { allcards }
+		*/
+		console.log(query)
+		const allsets = await $axios.$get("/api/allsets")
+		/*
+		const ris = [allsets[0]]
+		allsets.forEach((set) => {
+			if(!ris.map(_=>_.set_code).includes(set.set_code))
+				ris.push(set)
+		})
+		return {
+			allsets: ris.sort((a, b) => (a.tcg_date > b.tcg_date ? 1 : -1)),
+		}
+		*/
+		return {
+			allsets: allsets
+				.filter(
+					(_) =>
+						_.tcg_date !== undefined &&
+						!_.set_name.toLowerCase().includes("sneak peek")
+				)
+				.sort((a, b) => (a.tcg_date > b.tcg_date ? 1 : -1)),
+		}
 	},
-    */
 	data: () => ({
 		appendCards: [],
+		allsets: [],
+		clickedSet: "Scrivi qua o clicca su un pacchetto!",
 	}),
 	/*
 	async fetch() {
@@ -81,7 +122,7 @@ export default {
 	methods: {
 		async listCardsPack() {
 			const set_name = this.$el.querySelector("#pack").value
-			if(!set_name) {
+			if (!set_name) {
 				alert("Empty set name")
 				return
 			}
@@ -147,7 +188,7 @@ export default {
 }
 
 #pack-img {
-	height: 50vh;
+	width: var(--pack-width);
 }
 
 h3 {

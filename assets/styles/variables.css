@@ -24,7 +24,7 @@
 	--color-accent: #f25b1f;
 	--color-accent-dark: #b13d0f;
 	--color-light-transparent: rgba(255, 255, 255, 0.33);
-	--color-light: #f3f3ce;
+	--color-light: white;
 	--color-neutral: #716f60;
 	--color-dark: #403b2a;
 	--color-darker: #222222;
@@ -48,5 +48,7 @@
 	--font-size-category: 1.3rem;
 
 	--border-radius: 8px;
+
+	--pack-width: 15vw;
 
 }

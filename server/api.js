@@ -1,6 +1,7 @@
 import express from "express"
 import { initData } from "./database"
 import { retrieveArchetypes } from "./archetypes"
+import archetypesBlacklist from "./data/blacklist.json"
 const app = express()
 app.use(express.json())
 
@@ -24,10 +25,27 @@ export default app
 	})
 
 	app.get("/archetypes", (req, res) => {
-		return res.json(archetypes)
+		return res.json(
+			archetypes
+				.filter((_) => !archetypesBlacklist.includes(_.archetype))
+				.map((_) => {
+					const obj = {
+						archetype: _.archetype,
+						members: _.members.length,
+						true_name: _.true_name,
+						date: _.date,
+						imgs: _.imgs,
+						attributes: _.attributes,
+						types: _.types,
+						crest: _?.crest,
+						focus: _.focus,
+					}
+					return obj
+				})
+		)
 	})
 
-	app.get("/archetypes/:id", async (req, res) => {
+	app.get("/archetypes/:id", (req, res) => {
 		return res.json(archetypes.filter((_) => _.archetype === req.params.id))
 	})
 
