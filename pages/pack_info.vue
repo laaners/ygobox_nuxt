@@ -3,7 +3,6 @@
 		<div class="flex-col">
 			<div class="flex-row">
 				<input id="pack" type="text" maxlength="125" size="25" />
-				&ensp;
 				<input
 					type="button"
 					class="custom"
@@ -11,26 +10,32 @@
 					@click="listCardsPack()"
 				/>
 			</div>
-			<br />
-			<img id="pack-img" loading="lazy" />
 		</div>
-		<h2 ref="packInfo"></h2>
-		<grid-view
-			v-if="appendCards.length > 0"
-			:columns="6"
-			:row-gap="0.5"
-			:col-gap="1"
-			style="width: 90%"
-		>
-			<container-pack-info
-				v-for="card of appendCards"
-				:key="card.id"
-				:src="card.card_images[0].image_url"
-				:card="card"
-				:rarity="card.rarity.set_rarity"
-				:percentage="card.rarity.percentage"
-			/>
-		</grid-view>
+		<div v-show="appendCards.length > 0" class="flex-col">
+			<img id="pack-img" loading="lazy" />
+			<h2 ref="packInfo"></h2>
+			<div class="flex-row">
+				<button @click="sort('default')">Ordine di default</button>
+				<button @click="sort('rarity')">
+					Ordina per rarit&agrave;
+				</button>
+			</div>
+			<grid-view
+				:columns="6"
+				:row-gap="0.5"
+				:col-gap="1"
+				style="width: 90%"
+			>
+				<container-pack-info
+					v-for="card of appendCards"
+					:key="card.id"
+					:src="card.card_images[0].image_url"
+					:card="card"
+					:rarity="card.rarity.set_rarity"
+					:percentage="card.rarity.percentage"
+				/>
+			</grid-view>
+		</div>
 	</div>
 </template>
 
@@ -66,7 +71,7 @@ export default {
 		async listCardsPack() {
 			const set_name = this.$el.querySelector("#pack").value
 			const { pack_img, cards } = await this.$axios.$get(
-				`api/set?set_name=${set_name}`
+				`api/set/${set_name}`
 			)
 			if (cards.length === 0) {
 				alert(pack_img)
@@ -85,26 +90,41 @@ export default {
 				draftN +
 				" carte a caso tra queste:"
 		},
+		sort(option) {
+			switch (option) {
+				case "rarity": {
+					this.appendCards.sort(
+						(a, b) => a.rarity.percentage - b.rarity.percentage
+					)
+					break
+				}
+				default:
+					this.appendCards.sort((a, b) => {
+						const setCodeA = a.rarity.set_code
+						const setCodeB = b.rarity.set_code
+						if (setCodeA < setCodeB) return -1
+						if (setCodeA > setCodeB) return 1
+						return 0
+					})
+			}
+		},
 	},
 }
 </script>
 
 <style scoped>
+.flex-row > * {
+	margin-right: var(--space-0);
+	margin-left: var(--space-0);
+}
+
+.flex-col > * {
+	margin-top: var(--space-0);
+	margin-bottom: var(--space-0);
+}
+
 #pack-img {
 	height: 50vh;
-}
-
-.flex-row {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.flex-col {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
 }
 
 h2 {

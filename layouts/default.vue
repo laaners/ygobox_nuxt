@@ -31,13 +31,17 @@ body {
 	*/
 }
 
-.wrapper {
+.flex-row {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.flex-col {
 	display: flex;
 	flex-direction: column;
-}
-.content {
-	background-color: var(--color-light);
-	min-height: 75vh;
+	justify-content: center;
+	align-items: center;
 }
 
 </style>

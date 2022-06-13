@@ -13,7 +13,7 @@
 			class="small-image"
 			:src="src"
 			:rarity="rarity"
-			:card="card"
+			:card-id="cardId"
 			@click.native="toggleFullImage()"
 		/>
 		<transition name="fade">
@@ -30,16 +30,14 @@
 					<div class="full-image">
 						<img
 							loading="lazy"
-							:src="card.card_images[0].image_url"
-							:alt="card.name"
+							:src="`https://storage.googleapis.com/ygoprodeck.com/pics/${cardId}.jpg`"
+							:alt="cardId"
 						/>
 					</div>
 					<div class="effects">
-						<p>
-							{{ card.desc }}
-						</p>
-						<p ref="cheff"></p>
-						<p ref="iteff"></p>
+						<p>{{ eneff }}</p>
+						<p>{{ cheff }}</p>
+						<p>{{ iteff }}</p>
 					</div>
 				</div>
 			</div>
@@ -62,28 +60,35 @@ export default {
 			type: String,
 			required: true,
 		},
-		card: {
-			type: Object,
+		cardId: {
+			type: Number,
 			required: true,
 		},
 	},
 	data: () => ({
 		fullImage: false,
+		eneff: "",
+		cheff: "",
+		iteff: "",
 	}),
 	methods: {
 		async toggleFullImage() {
 			this.fullImage = !this.fullImage
 			if (this.fullImage) {
+				const enCard = await this.$axios.$get(
+					`api/card/${this.cardId}`
+				)
 				const chCard = await this.$axios.$get(
-					`api/cheff?id=${this.card.id}`
+					`api/cheff/${this.cardId}`
 				)
 				const itCard = await this.$axios.$get(
-					`api/iteff?id=${this.card.id}`
+					`api/iteff/${this.cardId}`
 				)
-				this.$refs.cheff.innerHTML = chCard.desc
-				this.$refs.iteff.innerHTML = itCard.desc
+				this.cheff = chCard.desc
+				this.iteff = itCard.desc
+				this.eneff = enCard.desc
 				this.$refs.name.innerHTML =
-					this.card.name + " | " + chCard.name + " | " + itCard.name
+					enCard.name + " | " + chCard.name + " | " + itCard.name
 			}
 		},
 	},
@@ -100,7 +105,6 @@ export default {
 }
 
 .small-image {
-	
 	cursor: pointer;
 	width: 100%;
 	padding: 0vw;
@@ -168,6 +172,12 @@ export default {
 
 .full-image img {
 	width: 100%;
+}
+
+h2 {
+	font-size: var(--font-size-heading);
+	margin-bottom: 0;
+	margin-top: var(--space-0);
 }
 
 .effects {

@@ -22,91 +22,97 @@ export default app
 		return res.json(allsets)
 	})
 
-	app.get("/cheff", (req, res) => {
-		if (req.query !== undefined && req.query.id !== undefined) {
-			let card = cardsCH.find((x) => x.id === +req.query.id)
-			let i = -1
-			while (card === undefined && i < 2) {
-				card = cardsCH.find((x) => x.id === +req.query.id + i)
-				i += 2
-			}
-			if (card === undefined || card.desc === "[INVALID_DATA]")
-				return res.send("Undefined type of card or [INVALID_DATA]")
-			return res.json({ name: card.name, desc: card.desc })
-		} else return res.send("Erroneous parameters")
+	app.get("/card/:id", (req, res) => {
+		const id = +req.params.id
+		const card = allcardsToT.find((_) => _.id === id)
+		return res.json(card)
 	})
 
-	app.get("/iteff", (req, res) => {
-		if (req.query !== undefined && req.query.id !== undefined) {
-			let card = cardsIT.find((x) => x.id === +req.query.id)
-			let i = -1
-			while (card === undefined && i < 2) {
-				card = cardsIT.find((x) => x.id === +req.query.id + i)
-				i += 2
-			}
-			if (card === undefined || card.desc === "[INVALID_DATA]")
-				return res.send("Undefined type of card or [INVALID_DATA]")
-			return res.json({ name: card.name, desc: card.desc })
-		} else return res.send("Erroneous parameters")
+	app.get("/cheff/:id", (req, res) => {
+		const id = +req.params.id
+		let card = cardsCH.find((_) => _.id === id)
+		let i = -1
+		while (card === undefined && i < 2) {
+			card = cardsCH.find((_) => _.id === id + i)
+			i += 2
+		}
+		if (card === undefined || card.desc === "[INVALID_DATA]")
+			return res.send("Undefined type of card or [INVALID_DATA]")
+		return res.json({ name: card.name, desc: card.desc })
+	})
+
+	app.get("/iteff/:id", (req, res) => {
+		const id = +req.params.id
+		let card = cardsIT.find((_) => _.id === id)
+		let i = -1
+		while (card === undefined && i < 2) {
+			card = cardsIT.find((_) => _.id === id + i)
+			i += 2
+		}
+		if (card === undefined || card.desc === "[INVALID_DATA]")
+			return res.send("Undefined type of card or [INVALID_DATA]")
+		return res.json({ name: card.name, desc: card.desc })
 	})
 
 	app.get("/banned_cards", (req, res) => {
-		return res.json(bannedCards)
+		return res.json(
+			allcardsToT.filter((_) =>
+				bannedCards.map((b) => b.id).includes(_.id)
+			)
+		)
 	})
 
-	app.get("/set", (req, res) => {
-		if (req.query !== undefined && req.query.set_name !== undefined) {
-			const set_name = req.query.set_name.toLowerCase()
-			const cards = allcardsToT.filter((_) => {
-				if (_.card_sets === undefined) return false
-				if (_.card_sets.length !== 0) {
-					return _.card_sets
-						.filter((set) => set.set_name !== undefined)
-						.map((set) => set.set_name.toLowerCase())
-						.includes(set_name.toLowerCase())
-				} else return false
-			})
-			if (cards.length === 0)
-				return res.json({
-					pack_img: "Pack not found, name error",
-					cards: [],
-					draftN: 0,
-				})
-			const draftN =
-				Math.ceil(cards.length * 1.5) > 120
-					? 120
-					: Math.ceil(cards.length * 1.5)
-			const differentRarities = rarityAssignAndOccurrence(
-				cards,
-				set_name,
-				draftN
-			)
-			computePrecedence(differentRarities, draftN)
-
-			const tmpArr = listCardsPrecedence(cards, differentRarities)
-			const totNumber = tmpArr.length
-			cards.forEach((elem) => {
-				const tmp = differentRarities.find(
-					(_) => _.set_rarity_code === elem.rarity.set_rarity_code
-				)
-				elem.rarity.percentage = (
-					(1 - ((totNumber - +tmp.times) / totNumber) ** draftN) *
-					100
-				).toFixed(2)
-			})
-			cards.sort((a, b) => {
-				const setCodeA = a.rarity.set_code
-				const setCodeB = b.rarity.set_code
-				if (setCodeA < setCodeB) return -1
-				if (setCodeA > setCodeB) return 1
-				return 0
-			})
+	app.get("/set/:id", (req, res) => {
+		const set_name = req.params.id.toLowerCase()
+		const cards = allcardsToT.filter((_) => {
+			if (_.card_sets === undefined) return false
+			if (_.card_sets.length !== 0) {
+				return _.card_sets
+					.filter((set) => set.set_name !== undefined)
+					.map((set) => set.set_name.toLowerCase())
+					.includes(set_name.toLowerCase())
+			} else return false
+		})
+		if (cards.length === 0)
 			return res.json({
-				pack_img: packImage(set_name),
-				cards,
-				draftN,
+				pack_img: "Pack not found, name error",
+				cards: [],
+				draftN: 0,
 			})
-		} else return res.send("Erroneous parameters")
+		const draftN =
+			Math.ceil(cards.length * 1.5) > 120
+				? 120
+				: Math.ceil(cards.length * 1.5)
+		const differentRarities = rarityAssignAndOccurrence(
+			cards,
+			set_name,
+			draftN
+		)
+		computePrecedence(differentRarities, draftN)
+
+		const tmpArr = listCardsPrecedence(cards, differentRarities)
+		const totNumber = tmpArr.length
+		cards.forEach((elem) => {
+			const tmp = differentRarities.find(
+				(_) => _.set_rarity_code === elem.rarity.set_rarity_code
+			)
+			elem.rarity.percentage = (
+				(1 - ((totNumber - +tmp.times) / totNumber) ** draftN) *
+				100
+			).toFixed(2)
+		})
+		cards.sort((a, b) => {
+			const setCodeA = a.rarity.set_code
+			const setCodeB = b.rarity.set_code
+			if (setCodeA < setCodeB) return -1
+			if (setCodeA > setCodeB) return 1
+			return 0
+		})
+		return res.json({
+			pack_img: packImage(set_name),
+			cards,
+			draftN,
+		})
 	})
 
 	function packImage(set_name) {

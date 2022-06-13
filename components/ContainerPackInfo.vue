@@ -1,6 +1,6 @@
 <template>
 	<div class="container" :style="getBorder()">
-		<card-modal :src="src" :card="card" :rarity="rarity" />
+		<card-modal :src="src" :card-id="card.id" :rarity="rarity" />
 		<span>{{ card.name }}</span>
 		<span><b>{{ rarity+' ('+percentage+'%)' }}</b></span>
 	</div>
