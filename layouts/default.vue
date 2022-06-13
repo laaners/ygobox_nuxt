@@ -30,6 +30,7 @@ export default {
 body {
 	font-family: var(--font-family-body);
 	background: var(--color-light);
+	color: var(--color-darker);
 	margin: 0;
 
 	/*

@@ -22,7 +22,7 @@ export default {
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: 'https://ms.yugipedia.com/6/64/Favicon.ico' }]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css

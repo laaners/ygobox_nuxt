@@ -48,11 +48,10 @@ export default {
 	data: () => ({
 		isMenuActive: false,
 		navItems: [
+			{ uri: "/banned_cards", name: "Carte Bandite" },
 			{ uri: "/pack_info", name: "Info Pacchetto" },
+			{ uri: "/card_info", name: "Cerca Carta" },
 			{ uri: "/archetypes", name: "Archetipi" },
-			{ uri: "/services", name: "Service Types" },
-			{ uri: "/about", name: "About Us" },
-			{ uri: "/contacts", name: "Contact Us" },
 		],
 	}),
 	head: () => ({

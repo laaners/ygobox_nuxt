@@ -8,8 +8,9 @@
 		/>
 		<span>{{ set.set_name }}</span>
 		<span
-			><b>{{ set.tcg_date }}</b></span
+			><b> {{ set.tcg_date }}</b></span
 		>
+		<h4>{{ rarityPercentage }}</h4>
 	</div>
 </template>
 
@@ -21,6 +22,11 @@ export default {
 			type: Object,
 			required: true,
 		},
+		// eslint-disable-next-line vue/require-default-prop
+		rarityPercentage: {
+			type: String,
+			required: false,
+		},
 	},
 	data: () => ({
 		notError: true,
@@ -30,8 +36,7 @@ export default {
 			return `sets/${this.set.set_code}.jpg`
 		},
 		handleRedirect() {
-			console.log("csadsad")
-			this.$emit('update:clickedSet', this.set.set_name)
+			this.$emit("update:clickedSet", this.set.set_name)
 		},
 	},
 }
@@ -44,10 +49,16 @@ export default {
 }
 
 img {
-	width: var(--pack-width);
+	width: 100%;
 }
 
 span {
 	text-align: center;
+}
+
+h4 {
+	margin: 0;
+	font-weight: bolder;
+	color: yellow;
 }
 </style>

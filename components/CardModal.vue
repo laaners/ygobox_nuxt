@@ -1,14 +1,5 @@
 <template>
-	<div class="image-loader">
-		<!--
-		<img
-			class="small-image"
-			loading="lazy"
-			:src="src"
-			:alt="alt"
-			@click="toggleFullImage()"
-		/>
-		-->
+	<div class="image-loader flex-col">
 		<card-rarity
 			class="small-image"
 			:src="src"
@@ -17,7 +8,7 @@
 			@click.native="toggleFullImage()"
 		/>
 		<transition name="fade">
-			<div v-show="fullImage" class="modal">
+			<div v-show="fullImage" class="modal flex-col">
 				<button
 					class="modal-close"
 					aria-label="close-modal"
@@ -26,18 +17,56 @@
 					<x-icon />
 				</button>
 				<h1 ref="name"></h1>
-				<div class="modal-view">
-					<div class="full-image">
+				<div class="modal-view flex-row">
+					<div
+						class="full-image flex-col"
+						style="justify-content: flex-start"
+					>
 						<img
 							loading="lazy"
 							:src="getPicUrl(cardId)"
 							:alt="cardId"
 						/>
+						<grid-view
+							:columns="2"
+							:col-gap="5"
+							:row-gap="0"
+							style="width: 70%"
+						>
+							<button-secondary
+								:title="'CARD ART'"
+								@click.native="
+									$el.querySelector('.full-image img').src =
+										getPicUrl(cardId)
+								"
+							/>
+							<button-secondary
+								:title="'FULL ART'"
+								@click.native="
+									$el.querySelector('.full-image img').src =
+										getPicArtUrl(cardId)
+								"
+							/>
+						</grid-view>
 					</div>
 					<div class="effects">
 						<p>{{ eneff }}</p>
+						<hr />
 						<p>{{ cheff }}</p>
+						<hr />
 						<p>{{ iteff }}</p>
+						<hr />
+						<h3 style="text-align: center">
+							Lo puoi trovare nei seguenti pacchetti:
+						</h3>
+						<grid-view :columns="4" :row-gap="0" :col-gap="0">
+							<container-pack-scroll
+								v-for="set of cardSets"
+								:key="set.set_code"
+								:set="set"
+								:rarity-percentage="set.rarity_percentage"
+							/>
+						</grid-view>
 					</div>
 				</div>
 			</div>
@@ -48,10 +77,12 @@
 <script>
 import CardRarity from "./CardRarity.vue"
 import XIcon from "./icons/XIcon.vue"
+import GridView from "./GridView.vue"
+import ButtonSecondary from "./ButtonSecondary.vue"
 import Utils from "~/mixins/utils"
 export default {
 	name: "CardModal",
-	components: { XIcon, CardRarity },
+	components: { XIcon, CardRarity, GridView, ButtonSecondary },
 	mixins: [Utils],
 	props: {
 		src: {
@@ -72,20 +103,55 @@ export default {
 		eneff: "",
 		cheff: "",
 		iteff: "",
+		cardSets: [],
 	}),
 	methods: {
 		async toggleFullImage() {
 			this.fullImage = !this.fullImage
 			if (this.fullImage) {
-				const enCard = await this.$axios.$get(
-					`api/card/${this.cardId}`
-				)
+				const enCard = await this.$axios.$get(`api/card/${this.cardId}`)
 				const chCard = await this.$axios.$get(
 					`api/cheff/${this.cardId}`
 				)
 				const itCard = await this.$axios.$get(
 					`api/iteff/${this.cardId}`
 				)
+				const allsets = await this.$axios.$get("/api/allsets")
+				this.cardSets = [enCard.card_sets[0]]
+				enCard.card_sets.forEach((_) => {
+					if (
+						!this.cardSets
+							.map((x) => x.set_code.split("-")[0])
+							.includes(_.set_code.split("-")[0])
+					)
+						this.cardSets.push(_)
+				})
+				this.cardSets.forEach(
+					(_) => (_.set_code = _.set_code.split("-")[0])
+				)
+				this.cardSets = allsets
+					.filter((_) =>
+						this.cardSets
+							.map((x) => x.set_name)
+							.includes(_.set_name)
+					)
+					.sort((a, b) => (a.tcg_date > b.tcg_date ? 1 : -1))
+				const promises = []
+				this.cardSets.forEach((set) => {
+					promises.push(this.$axios.$get(`/api/set/${set.set_name}`))
+				})
+				const raritySets = await Promise.all(promises)
+				this.cardSets.forEach((_) => {
+					_.rarity_percentage =
+						raritySets
+							.find(
+								(rs) =>
+									rs.cards[0].rarity.set_name === _.set_name
+							)
+							.cards.find((c) => c.id === this.cardId).rarity
+							.percentage + "%"
+				})
+
 				this.cheff = chCard.desc
 				this.iteff = itCard.desc
 				this.eneff = enCard.desc
@@ -100,10 +166,6 @@ export default {
 <style scoped>
 .image-loader {
 	width: 100%;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
 }
 
 .small-image {
@@ -119,10 +181,6 @@ export default {
 
 .modal {
 	background: var(--color-darker);
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
 
 	color: var(--color-light);
 
@@ -154,11 +212,8 @@ export default {
 }
 
 .modal-view {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	/*margin: auto;*/
 
-	margin: auto;
 	position: relative;
 	height: 90vmin;
 }
@@ -169,27 +224,33 @@ export default {
 
 .full-image {
 	width: 28vw;
-	height: 95%;
+	height: 90%;
 }
 
 .full-image img {
-	width: 100%;
+	width: 90%;
 }
 
 h1 {
 	margin-bottom: 0;
 	margin-top: var(--space-0);
 	text-align: center;
+	width: 95%;
 }
 
 .effects {
-	width: 30%;
-	height: 95%;
+	width: 45vw;
+	height: 90%;
 	overflow-y: auto;
+	overflow-x: hidden;
 
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
+}
+
+.effects > * {
+	width: 95%;
 }
 </style>

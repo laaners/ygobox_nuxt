@@ -77,22 +77,7 @@ export default {
 	},
 	mixins: [Utils],
 	async asyncData({ $axios, query }) {
-		/*
-		const allcards = await $getAllCards()
-		return { allcards }
-		*/
-		console.log(query)
 		const allsets = await $axios.$get("/api/allsets")
-		/*
-		const ris = [allsets[0]]
-		allsets.forEach((set) => {
-			if(!ris.map(_=>_.set_code).includes(set.set_code))
-				ris.push(set)
-		})
-		return {
-			allsets: ris.sort((a, b) => (a.tcg_date > b.tcg_date ? 1 : -1)),
-		}
-		*/
 		return {
 			allsets: allsets
 				.filter(
@@ -122,6 +107,7 @@ export default {
 	methods: {
 		async listCardsPack() {
 			const set_name = this.$el.querySelector("#pack").value
+			this.clickedSet = set_name
 			if (!set_name) {
 				alert("Empty set name")
 				return

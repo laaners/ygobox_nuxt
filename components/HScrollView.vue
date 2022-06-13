@@ -51,6 +51,12 @@ import ArrowRight from "./icons/ArrowRight.vue"
 export default {
 	name: "HScrollView",
 	components: { ArrowLeft, ArrowRight },
+	props: {
+		invert: {
+			type: Boolean,
+			required: false,
+		},
+	},
 	data: () => ({
 		// Use local state to dynamically toggle element visibility
 		// instead of using selectors and CSS. Set defaults here.
@@ -92,7 +98,8 @@ export default {
 			this.isNextVisible =
 				container.scrollWidth -
 					container.scrollLeft -
-					container.offsetWidth > 1
+					container.offsetWidth >
+				1
 		},
 	},
 }
@@ -128,12 +135,12 @@ export default {
 	touch-action: manipulation;
 
 	z-index: 1;
-    transition: all 0.2s ease;
+	transition: all 0.2s ease;
 }
 
 .prev:hover,
 .next:hover {
-    background-color: var(--color-dark);
+	background-color: var(--color-dark);
 }
 
 .prev svg,

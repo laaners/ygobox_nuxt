@@ -48,7 +48,7 @@ export default {
 				this.getRarityCode(this.rarity) === undefined ||
 				this.getRarityCode(this.rarity) === null
 			)
-				return
+				return this.rarity_size + ""
 			return this.rarity_size + " " + this.getRarityCode(this.rarity)
 		},
 	},
