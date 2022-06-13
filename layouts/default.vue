@@ -12,11 +12,16 @@
 </template>
 -->
 <template>
-	<nuxt />
+	<div>
+		<page-header />
+		<nuxt />
+	</div>
 </template>
 
 <script>
+import PageHeader from "../components/PageHeader.vue"
 export default {
+	components: { PageHeader },
 	layout: "default",
 }
 </script>
@@ -24,6 +29,7 @@ export default {
 <style>
 body {
 	font-family: var(--font-family-body);
+	margin: 0;
 	/*
 	font-size: var(--font-size-body);
 	 background-color: var(--color-dark);
@@ -31,7 +37,8 @@ body {
 	*/
 }
 
-p, span {
+p,
+span {
 	font-size: var(--font-size-body);
 }
 
@@ -63,5 +70,4 @@ h4 {
 	justify-content: center;
 	align-items: center;
 }
-
 </style>

@@ -59,7 +59,7 @@ function allCardsSegment(startdate, enddate) {
 					const ris = JSON.parse(body).data
 					for (let i = 0; i < ris.length; i++) {
 						delete ris[i].card_prices
-						delete ris[i].archetype
+						//	delete ris[i].archetype
 					}
 					resolve(ris)
 				}

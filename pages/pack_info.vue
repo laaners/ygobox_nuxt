@@ -81,6 +81,10 @@ export default {
 	methods: {
 		async listCardsPack() {
 			const set_name = this.$el.querySelector("#pack").value
+			if(!set_name) {
+				alert("Empty set name")
+				return
+			}
 			const { pack_img, cards } = await this.$axios.$get(
 				`api/set/${set_name}`
 			)

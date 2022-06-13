@@ -1,5 +1,6 @@
 import express from "express"
 import { initData } from "./database"
+import { retrieveArchetypes } from "./archetypes"
 const app = express()
 app.use(express.json())
 
@@ -7,7 +8,7 @@ export default app
 ;(async () => {
 	const { allsets, bannedCards, cardsCH, cardsIT, allcards, allcardsToT } =
 		await initData()
-
+	const archetypes = retrieveArchetypes(allcardsToT, allsets)
 	console.log("Got all the data now!")
 
 	app.get("/", (req, res) => {
@@ -20,6 +21,14 @@ export default app
 
 	app.get("/allsets", (req, res) => {
 		return res.json(allsets)
+	})
+
+	app.get("/archetypes", (req, res) => {
+		return res.json(archetypes)
+	})
+
+	app.get("/archetypes/:id", async (req, res) => {
+		return res.json(archetypes.filter((_) => _.archetype === req.params.id))
 	})
 
 	app.get("/card/:id", (req, res) => {

@@ -45,7 +45,6 @@
 				/>
 			</grid-view>
 		</div>
-		<a href="/pack_info">guarda cosa contiene un pacchetto</a>
 		<grid-view style="width: 90%" :columns="15" :row-gap="0" :col-gap="0">
 			<card-modal
 				v-for="card of bannedCards"
