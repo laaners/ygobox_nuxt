@@ -129,37 +129,20 @@ export default {
 <style scoped>
 .archetype {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: var(--color-light);
 }
 
 .archetype {
   flex-direction: column;
   border: 2%;
-  border-style: double;
-  border-color: lightblue;
   border-radius: 1vh;
-  background-color: lightblue;
-  margin: 0.5%;
+  background-color: var(--color-darker);
 }
 
 .archetype-header, .archetype-footer {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-}
-
-.archetype-footer {
-  font-size: 60%;
-}
-
-.archetype-footer button {
-  font-size: 90% !important;
-}
-
-.archetype-header h4 {
-  font-size: 80%;
-
-  width: 50%;
-  margin: 1%;
 }
 
 .archetype-header div {

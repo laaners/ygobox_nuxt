@@ -1,5 +1,5 @@
 <template>
-	<div class="container">
+	<div class="container flex-row">
 		<img loading="lazy" :src="src" />
 		<div :class="getClass()"></div>
 	</div>
@@ -58,9 +58,6 @@ export default {
 <style scoped>
 .container {
 	position: relative;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 }
 
 img {

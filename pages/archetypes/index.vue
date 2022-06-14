@@ -8,7 +8,7 @@
 		<button @click="focusOn('Xyz')">Xyz</button>
 		<button @click="focusOn('Link')">Link</button>
 		<button @click="focusOn('Pendulum')">Pendulum</button>
-		<grid-view :columns="2" :col-gap="0" :row-gap="0">
+		<grid-view :columns="4" :col-gap="0.5" :row-gap="0.04">
 			<archetype
 				v-for="(archetype, index) of archetypeList"
 				:key="`archetype-index-${index}`"

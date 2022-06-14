@@ -20,6 +20,7 @@
 						class="nav-link"
 					>
 						<nuxt-link
+							class="nuxt-link"
 							:to="item.uri"
 							@click.native="isMenuActive = false"
 							>{{ item.name }}</nuxt-link
@@ -36,7 +37,9 @@
 			>
 				<MenuIcon v-show="!isMenuActive" />
 				<XIcon v-show="isMenuActive" />
-				<span>{{ isMenuActive ? "Close" : "Menu" }}</span>
+				<h1 style="color: var(--color-light); margin: var(--space-1)">
+					{{ isMenuActive ? "Close" : "Menu" }}
+				</h1>
 			</button>
 		</nav>
 	</header>
@@ -52,6 +55,7 @@ export default {
 			{ uri: "/pack_info", name: "Info Pacchetto" },
 			{ uri: "/card_info", name: "Cerca Carta" },
 			{ uri: "/archetypes", name: "Archetipi" },
+			{ uri: "/archetypes", name: "Trivia" },
 		],
 	}),
 	head: () => ({
@@ -83,7 +87,7 @@ export default {
 .header-title {
 	align-self: center;
 	grid-area: title;
-    margin-left: var(--space-0);
+	margin-left: var(--space-0);
 }
 .header-title h1 {
 	font-size: var(--font-size-header-title);
@@ -157,6 +161,13 @@ export default {
 .header-collapse-active .header-grid {
 	border-bottom: 0;
 }
+
+.nuxt-link {
+	margin-left: var(--space-1);
+	margin-right: var(--space-1);
+	font-size: var(--font-size-h3);
+}
+
 @media screen and (min-width: 840px) {
 	.header-grid {
 		flex-flow: row;
@@ -191,6 +202,11 @@ export default {
 	}
 	.nav-link .nuxt-link-active {
 		text-decoration: none;
+	}
+
+	.nuxt-link {
+		margin-left: 0;
+		margin-right: 0;
 	}
 }
 </style>

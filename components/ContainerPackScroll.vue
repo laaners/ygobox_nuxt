@@ -1,5 +1,5 @@
 <template>
-	<div v-if="notError" class="flex-col container">
+	<div v-show="notError" class="flex-col container">
 		<img
 			loading="lazy"
 			:src="packImage()"
@@ -11,6 +11,9 @@
 			><b> {{ set.tcg_date }}</b></span
 		>
 		<h4>{{ rarityPercentage }}</h4>
+		<span v-if="copied" class="pop-up"
+			>Ho copiato il nome del pacchetto!</span
+		>
 	</div>
 </template>
 
@@ -30,12 +33,16 @@ export default {
 	},
 	data: () => ({
 		notError: true,
+		copied: false,
 	}),
 	methods: {
 		packImage() {
-			return `sets/${this.set.set_code}.jpg`
+			return `/sets/${this.set.set_code}.jpg`
 		},
-		handleRedirect() {
+		async handleRedirect() {
+			await this.$copyText(this.set.set_name)
+			this.copied = true
+			setTimeout(() => (this.copied = false), 2000)
 			this.$emit("update:clickedSet", this.set.set_name)
 		},
 	},
@@ -60,5 +67,17 @@ h4 {
 	margin: 0;
 	font-weight: bolder;
 	color: yellow;
+}
+
+.pop-up {
+	position: absolute;
+	background: var(--color-light);
+	color: var(--color-darker);
+	border-radius: var(--border-radius);
+	padding: var(--space-0);
+
+	font-weight: bolder;
+	animation: fade-in-animation 2s ease-in forwards;
+	animation-direction: reverse;
 }
 </style>

@@ -89,6 +89,34 @@ function getBannedCards() {
 }
 */
 
+// eslint-disable-next-line no-unused-vars
+function ocgAllCards() {
+	console.log(`Retrieving all OCG cards`)
+	return new Promise((resolve, reject) => {
+		//  "https://db.ygoprodeck.com/api/v7/cardinfo.php?&startdate=01/01/1100&enddate=01/01/2011
+		request(
+			{
+				url: `https://db.ygoprodeck.com/api/v7/cardinfo.php`,
+				method: "GET",
+			},
+			function (error, resp, body) {
+				if (error || resp.statusCode !== 200) {
+					// eslint-disable-next-line prefer-promise-reject-errors
+					reject([])
+				} else {
+					console.log(`Got all OCG cards`)
+					const ris = JSON.parse(body).data
+					for (let i = 0; i < ris.length; i++) {
+						delete ris[i].card_prices
+						//	delete ris[i].archetype
+					}
+					resolve(ris)
+				}
+			}
+		)
+	})
+}
+
 export async function initData() {
 	const taskAllSets = getAllSets()
 	//  const taskBannedCards = getBannedCards();
@@ -128,6 +156,12 @@ export async function initData() {
 			...allcards[7],
 		]),
 	]
+	//	const allcardsToT = await ocgAllCards()
+
+	allcardsToT.forEach((card) => {
+		const bannedCard = bannedCards.find((_) => _.id === card.id)
+		if (bannedCard !== undefined) bannedCard.info = card
+	})
 
 	return {
 		allsets,
@@ -135,6 +169,6 @@ export async function initData() {
 		cardsCH,
 		cardsIT,
 		allcards,
-		allcardsToT
+		allcardsToT,
 	}
 }

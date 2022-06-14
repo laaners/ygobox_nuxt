@@ -1,8 +1,11 @@
+/* eslint-disable no-eval */
 import express from "express"
+import bodyParser from "body-parser"
 import { initData } from "./database"
 import { retrieveArchetypes } from "./archetypes"
 import archetypesBlacklist from "./data/blacklist.json"
 const app = express()
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.json())
 
 export default app
@@ -51,7 +54,58 @@ export default app
 
 	app.get("/card/:id", (req, res) => {
 		const id = +req.params.id
-		const card = allcardsToT.find((_) => _.id === id)
+		let card = allcardsToT.find((_) => _.id === id)
+		let i = -1
+		while (card === undefined && i < 2) {
+			card = allcardsToT.find((_) => _.id === id + i)
+			i += 2
+		}
+		if (card === undefined || card.desc === "[INVALID_DATA]")
+			return res.send("Undefined type of card or [INVALID_DATA]")
+
+		/*	For each set find tcg_date and assign percentage */
+		if (card.card_sets !== undefined) {
+			allsets.forEach((set) => {
+				const setElem = card.card_sets.find(
+					(_) => _.set_name === set.set_name
+				)
+				if (setElem !== undefined) setElem.tcg_date = set.tcg_date
+			})
+		}
+		card.card_sets?.forEach((set) => {
+			const set_name = set.set_name.toLowerCase()
+			const cards = allcardsToT.filter((_) => {
+				if (_.card_sets === undefined) return false
+				if (_.card_sets.length !== 0) {
+					return _.card_sets
+						.filter((set) => set.set_name !== undefined)
+						.map((set) => set.set_name.toLowerCase())
+						.includes(set_name.toLowerCase())
+				} else return false
+			})
+			const draftN =
+				Math.ceil(cards.length * 1.5) > 120
+					? 120
+					: Math.ceil(cards.length * 1.5)
+			const differentRarities = rarityAssignAndOccurrence(
+				cards,
+				set_name,
+				draftN
+			)
+			computePrecedence(differentRarities, draftN)
+
+			const tmpArr = listCardsPrecedence(cards, differentRarities)
+			const totNumber = tmpArr.length
+			const tmp = differentRarities.find(
+				(_) => _.set_rarity_code === set.set_rarity_code
+			)
+			if (tmp === undefined) set.percentage = 0
+			else
+				set.percentage = (
+					(1 - ((totNumber - +tmp.times) / totNumber) ** draftN) *
+					100
+				).toFixed(2)
+		})
 		return res.json(card)
 	})
 
@@ -139,7 +193,7 @@ export default app
 	})
 
 	function packImage(set_name) {
-		return `sets/${
+		return `/sets/${
 			allsets.find(
 				(_) => _.set_name.toLowerCase() === set_name.toLowerCase()
 			).set_code
@@ -202,4 +256,118 @@ export default app
 		})
 		return tmpArr
 	}
+
+	app.post("/search_cards", (req, res) => {
+		console.log(req.body)
+		const {
+			pack,
+			type1,
+			type2,
+			raceSpellTrap,
+			pendulumScale,
+			raceMonster,
+			attribute,
+			levelRankRating,
+			atk,
+			def,
+			cardName,
+			cardEffect,
+			linkmarkers,
+		} = req.body
+		let filtered = [...allcardsToT]
+		if (pack !== "")
+			filtered = filtered.filter((_) =>
+				_.card_sets.map((set) => set.set_name).includes(pack)
+			)
+
+		if (pendulumScale !== "_")
+			filtered = filtered
+				.filter((_) => _.scale !== undefined)
+				.filter((_) => eval(`_.scale ${pendulumScale}`))
+
+		/*	LINK MARKERS!!!!!!!!!!!!!!!!!! */
+		if (linkmarkers.length !== 0)
+			filtered = filtered
+				.filter((_) => _.linkmarkers !== undefined)
+				.filter(
+					(_) =>
+						JSON.stringify(
+							_.linkmarkers.sort((a, b) => (a > b ? -1 : 1))
+						) ===
+						JSON.stringify(
+							linkmarkers.sort((a, b) => (a > b ? -1 : 1))
+						)
+				)
+
+		filtered = filtered.filter(
+			(_) =>
+				_.type.includes(type1) &&
+				_.type.includes(type2) &&
+				_.race.toLowerCase().includes(raceMonster.toLowerCase()) &&
+				_.race.toLowerCase().includes(raceSpellTrap.toLowerCase())
+		)
+		if (raceMonster === "Beast")
+			filtered = filtered.filter(
+				(_) =>
+					!_.race.toLowerCase().includes("winged beast") &&
+					!_.race.toLowerCase().includes("divine-beast") &&
+					!_.race.toLowerCase().includes("beast-warrior")
+			)
+		if (attribute !== "")
+			filtered = filtered
+				.filter((_) => _.attribute !== undefined)
+				.filter((_) => _.attribute === attribute)
+
+		if (levelRankRating !== "_")
+			filtered = filtered
+				.filter((_) => _.level !== undefined || _.linkval !== undefined)
+				.filter((card) => {
+					if (card.level !== undefined) {
+						// eslint-disable-next-line no-unused-vars
+						const _ = card.level
+						return eval(levelRankRating)
+					} else if (card.linkval !== undefined) {
+						// eslint-disable-next-line no-unused-vars
+						const _ = card.linkval
+						return eval(levelRankRating)
+					}
+					return false
+				})
+
+		if (atk !== "> -1") {
+			filtered = filtered
+				.filter((_) => _.atk !== undefined)
+				.filter((_) => eval(`_.atk  ${atk}`))
+		}
+		if (def !== "> -1") {
+			filtered = filtered
+				.filter((_) => _.atk !== undefined)
+				.filter((_) => eval(`_.def ${def}`))
+		}
+		if (cardName !== "") {
+			const regex = new RegExp(cardName.toLowerCase(), "g")
+			filtered = filtered.filter(
+				(_) =>
+					_.name.toLowerCase().search(regex) >= 0 ||
+					_.desc
+						.toLowerCase()
+						.includes(
+							`this card is always treated as a "${cardName.toLowerCase()}"`
+						) ||
+					_.desc
+						.toLowerCase()
+						.includes(
+							`this card is always treated as an "${cardName.toLowerCase()}"`
+						)
+			)
+		}
+		//        if(card_effect != "") filtered = filtered.filter(_=>_.desc.toLowerCase().includes(card_effect.toLowerCase()));
+		if (cardEffect !== "") {
+			const regex = new RegExp(cardEffect.toLowerCase(), "g")
+			filtered = filtered.filter(
+				(_) => _.desc.toLowerCase().search(regex) >= 0
+			)
+		}
+		return res.json(filtered)
+	})
 })()

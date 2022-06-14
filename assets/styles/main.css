@@ -1,3 +1,64 @@
 /* CSS entry point */
 @import "./variables.css";
 @import "./animations.css";
+
+p,
+span,
+input,
+select {
+	font-size: var(--font-size-body);
+}
+
+h1 {
+	font-size: var(--font-size-h1);
+}
+
+h2 {
+	font-size: var(--font-size-h2);
+}
+
+h3 {
+	font-size: var(--font-size-h3);
+}
+
+h4 {
+	font-size: var(--font-size-h4);
+}
+
+.flex-row {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.flex-col {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+/* width */
+::-webkit-scrollbar {
+	width: var(--font-size-body);
+	height: var(--font-size-body);
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: var(--color-neutral);
+	border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: var(--color-dark);
+	width: 5%;
+	border-radius: 10px;
+	border: 1px solid var(--color-light);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: var(--color-darker);
+}

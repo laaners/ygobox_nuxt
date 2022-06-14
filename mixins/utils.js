@@ -130,26 +130,20 @@ export default {
 				res = res.concat(
 					cards
 						.filter((x) => x.type === this.listOrder(i))
-						.sort((a, b) => {
-							if (a.name < b.name) return -1
-							if (a.name > b.name) return 1
-							return 0
-						})
-						.sort((a, b) => a.atk - b.atk)
+						.sort((a, b) => (a.name < b.name ? -1 : 1))
+						.sort((a, b) => (a.race < b.race ? -1 : 1))
 						.sort((a, b) => a.level - b.level)
 						.sort((a, b) => a.linkval - b.linkval)
 				)
 				res = res.concat(
 					cards
-						.filter((x) => x.type + " " + x.race === this.listOrder(i))
+						.filter(
+							(x) => x.type + " " + x.race === this.listOrder(i)
+						)
+						.sort((a, b) => (a.name < b.name ? -1 : 1))
+						.sort((a, b) => (a.race < b.race ? -1 : 1))
 						.sort((a, b) => a.level - b.level)
 						.sort((a, b) => a.linkval - b.linkval)
-						.sort((a, b) => {
-							if (a.name < b.name) return -1
-							if (a.name > b.name) return 1
-							return 0
-						})
-						.sort((a, b) => a.atk - b.atk)
 				)
 			}
 			return res

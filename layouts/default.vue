@@ -41,40 +41,14 @@ body {
 }
 
 .main {
-	padding-top: var(--font-size-h1);
+	padding-top: 6vmax;
+	padding-bottom: 6vmax;
 }
 
-p,
-span {
-	font-size: var(--font-size-body);
-}
-
-h1 {
-	font-size: var(--font-size-h1);
-}
-
-h2 {
-	font-size: var(--font-size-h2);
-}
-
-h3 {
-	font-size: var(--font-size-h3);
-}
-
-h4 {
-	font-size: var(--font-size-h4);
-}
-
-.flex-row {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.flex-col {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+@media screen and (min-width: 840px) {
+	.main {
+		padding-top: 3vmax;
+		padding-bottom: 3vmax;
+	}
 }
 </style>

@@ -49,12 +49,17 @@
 							/>
 						</grid-view>
 					</div>
-					<div class="effects">
-						<p>{{ eneff }}</p>
+					<div
+						v-show="loading"
+						class="loader"
+						style="align-self: flex-start; margin-top: 10vw"
+					></div>
+					<div v-show="!loading" class="effects">
+						<p>{{ formatEneff(eneff) }}</p>
 						<hr />
-						<p>{{ cheff }}</p>
+						<p>{{ formatCheff(cheff) }}</p>
 						<hr />
-						<p>{{ iteff }}</p>
+						<p>{{ formatIteff(iteff) }}</p>
 						<hr />
 						<h3 style="text-align: center">
 							Lo puoi trovare nei seguenti pacchetti:
@@ -64,7 +69,7 @@
 								v-for="set of cardSets"
 								:key="set.set_code"
 								:set="set"
-								:rarity-percentage="set.rarity_percentage"
+								:rarity-percentage="set.percentage + '%'"
 							/>
 						</grid-view>
 					</div>
@@ -100,6 +105,7 @@ export default {
 	},
 	data: () => ({
 		fullImage: false,
+		loading: false,
 		eneff: "",
 		cheff: "",
 		iteff: "",
@@ -108,15 +114,32 @@ export default {
 	methods: {
 		async toggleFullImage() {
 			this.fullImage = !this.fullImage
+			console.log(this.fullImage)
+
 			if (this.fullImage) {
-				const enCard = await this.$axios.$get(`api/card/${this.cardId}`)
-				const chCard = await this.$axios.$get(
-					`api/cheff/${this.cardId}`
-				)
-				const itCard = await this.$axios.$get(
-					`api/iteff/${this.cardId}`
-				)
-				const allsets = await this.$axios.$get("/api/allsets")
+				this.loading = true
+				const promises = [
+					this.$axios.$get(`api/card/${this.cardId}`),
+					this.$axios.$get(`api/cheff/${this.cardId}`),
+					this.$axios.$get(`api/iteff/${this.cardId}`),
+				]
+				const [enCard, chCard, itCard] = await Promise.all(promises)
+				this.cheff = chCard.desc
+				this.iteff = itCard.desc
+				this.eneff = enCard.desc
+				this.$refs.name.innerHTML =
+					enCard.name +
+					" | " +
+					(chCard.name ? chCard.name : "Not found") +
+					" | " +
+					(itCard.name ? itCard.name : "Not found")
+
+				if (enCard.card_sets === undefined) {
+					this.cardSets = []
+					this.loading = false
+					return
+				}
+
 				this.cardSets = [enCard.card_sets[0]]
 				enCard.card_sets.forEach((_) => {
 					if (
@@ -129,35 +152,30 @@ export default {
 				this.cardSets.forEach(
 					(_) => (_.set_code = _.set_code.split("-")[0])
 				)
-				this.cardSets = allsets
-					.filter((_) =>
-						this.cardSets
-							.map((x) => x.set_name)
-							.includes(_.set_name)
-					)
-					.sort((a, b) => (a.tcg_date > b.tcg_date ? 1 : -1))
-				const promises = []
-				this.cardSets.forEach((set) => {
-					promises.push(this.$axios.$get(`/api/set/${set.set_name}`))
-				})
-				const raritySets = await Promise.all(promises)
-				this.cardSets.forEach((_) => {
-					_.rarity_percentage =
-						raritySets
-							.find(
-								(rs) =>
-									rs.cards[0].rarity.set_name === _.set_name
-							)
-							.cards.find((c) => c.id === this.cardId).rarity
-							.percentage + "%"
-				})
-
-				this.cheff = chCard.desc
-				this.iteff = itCard.desc
-				this.eneff = enCard.desc
-				this.$refs.name.innerHTML =
-					enCard.name + " | " + chCard.name + " | " + itCard.name
+				this.cardSets.sort((a, b) => (a.tcg_date > b.tcg_date ? 1 : -1))
+				this.loading = false
 			}
+		},
+		formatIteff(desc) {
+			if (desc === undefined) return ""
+			return desc
+		},
+		formatCheff(desc) {
+			if (desc === undefined) return ""
+			const tmp = desc
+				.replaceAll("●", "\n●")
+				.replaceAll("①：", "\n①：")
+				.replaceAll("②：", "\n②：")
+				.replaceAll("③：", "\n③：")
+				.replaceAll("④：", "\n④：")
+				.replaceAll("⑤：", "\n⑤：")
+				.replaceAll("⑥：", "\n⑥：")
+			if (tmp[0] === "\n") return tmp.substring(1)
+			return tmp
+		},
+		formatEneff(desc) {
+			if (desc === undefined) return ""
+			return desc
 		},
 	},
 }
@@ -252,5 +270,9 @@ h1 {
 
 .effects > * {
 	width: 95%;
+}
+
+.effects p {
+	white-space: pre-line;
 }
 </style>

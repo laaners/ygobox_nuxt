@@ -18,7 +18,7 @@
 				/>
 				<button-secondary
 					:title="'PER PERSONA'"
-					@click.native="showPerBanner = true"
+					@click.native="sort('banner')"
 				/>
 			</grid-view>
 		</div>
@@ -106,23 +106,6 @@
 					:rarity="'Common'"
 				/>
 			</grid-view>
-			<h4>Altro</h4>
-			<grid-view
-				style="width: 90%"
-				:columns="15"
-				:row-gap="0"
-				:col-gap="0"
-			>
-				<card-modal
-					v-for="card of bannedCards.filter(
-						(_) => !['Ale', 'Leo', 'Sandro', 'Siwei'].includes(_.banner)
-					)"
-					:key="card.id"
-					:src="getPicUrl(card.id)"
-					:card-id="card.id"
-					:rarity="'Common'"
-				/>
-			</grid-view>
 		</div>
 	</div>
 </template>
@@ -136,11 +119,14 @@ export default {
 	components: { GridView, CardModal },
 	mixins: [Utils],
 	async asyncData({ $axios }) {
+		/*
 		const rawBannedCards = await $axios.$get("/api/banned_cards")
 		const promises = []
-		rawBannedCards.forEach((card) => {
-			promises.push($axios.$get(`/api/card/${card.id}`))
-		})
+		rawBannedCards
+			.filter((_) => _.banner !== undefined)
+			.forEach((card) => {
+				promises.push($axios.$get(`/api/card/${card.id}`))
+			})
 		const bannedCards = await Promise.all(promises)
 		bannedCards.forEach((_) => {
 			_.banner = rawBannedCards.find((x) => x.id === _.id).banner
@@ -148,6 +134,12 @@ export default {
 		return {
 			bannedCards,
 			defaultOrder: bannedCards,
+		}
+		*/
+		const bannedCards = await $axios.$get("/api/banned_cards")
+		return {
+			bannedCards: bannedCards.filter((_) => _.banner !== undefined),
+			defaultOrder: bannedCards.filter((_) => _.banner !== undefined),
 		}
 	},
 	data: () => ({
@@ -157,11 +149,15 @@ export default {
 	}),
 	methods: {
 		sort(option) {
-			console.log(this.defaultOrder)
 			this.showPerBanner = false
 			switch (option) {
 				case "category": {
-					this.bannedCards = this.categorySort(this.defaultOrder)
+					this.bannedCards = this.categorySort(this.bannedCards.map(_=>_.info))
+					break
+				}
+				case "banner":{
+					this.showPerBanner = true
+					this.bannedCards = this.defaultOrder
 					break
 				}
 				default:

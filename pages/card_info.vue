@@ -1,111 +1,109 @@
 <template>
-	<div id="initial-page" class="text-center">
-		<br /><br />
-		<div
-			style="
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				margin-bottom: 1em;
-			"
-		>
-			<input
-				id="main_file"
-				type="file"
-				class="text-center"
-				value="CARICA LE TUE CARTE!"
-				disabled
-			/>
-		</div>
-		<div
-			style="
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				margin-bottom: 1em;
-			"
-		>
-			<input type="button" class="upload" value="CARICA LE TUE CARTE!" />
-		</div>
-		<div class="flex-col" style="width: 60%">
-			<h4>ORDINE:</h4>
+	<div>
+		<search-form :searched-cards.sync="searchedCards" />
+		<div v-if="searchedCards.length > 0" class="flex-col">
+			<h3>{{ searchedCards.length }} risultati trovati</h3>
 			<grid-view
-				:columns="2"
+				:columns="10"
+				:col-gap="0"
 				:row-gap="0"
-				:col-gap="2"
-				style="width: 100%"
+				style="width: 95%"
+			>
+				<card-modal
+					v-for="card of searchedCards.slice(
+						index * cardsPerPage,
+						(index + 1) * cardsPerPage
+					)"
+					:key="card.id"
+					:card-id="card.id"
+					:rarity="'Common'"
+					:src="getPicUrl(card.id)"
+				/>
+			</grid-view>
+			<p>
+				<input
+					ref="enterInput"
+					type="text"
+					size="1"
+					:value="index + 1"
+					@keypress="enterIndex"
+				/>
+				/
+				{{ Math.ceil(searchedCards.length / cardsPerPage) }}
+			</p>
+			<grid-view
+				:columns="thereIsNext && thereIsPrev ? 2 : 1"
+				:col-gap="3"
+				:row-gap="0"
+				style="width: 10%"
 			>
 				<button-secondary
-					:title="'CRONOLOGICO'"
-					@click.native="sort('chronological')"
+					v-if="thereIsPrev"
+					:title="'<'"
+					@click.native="index -= 1"
 				/>
 				<button-secondary
-					:title="'PER CATEGORIA'"
-					@click.native="sort('category')"
+					v-if="thereIsNext"
+					:title="'>'"
+					@click.native="index += 1"
 				/>
 			</grid-view>
 		</div>
-		<grid-view style="width: 90%" :columns="15" :row-gap="0" :col-gap="0">
-			<card-modal
-				v-for="card of bannedCards"
-				:key="card.id"
-				:src="getPicUrl(card.id)"
-				:card-id="card.id"
-				:rarity="'Common'"
-			/>
-		</grid-view>
-		<h-scroll-view style="width: 90%;">
-			<card-modal
-				v-for="card of bannedCards"
-				:key="card.id"
-				:src="getPicUrl(card.id)"
-				:card-id="card.id"
-				:rarity="'Common'"
-			/>
-		</h-scroll-view>
 	</div>
 </template>
 
 <script>
-import CardModal from "../components/CardModal.vue"
+import SearchForm from "../components/SearchForm.vue"
 import GridView from "../components/GridView.vue"
-
+import CardModal from "../components/CardModal.vue"
+import ButtonSecondary from "../components/ButtonSecondary.vue"
 import Utils from "~/mixins/utils"
 
 export default {
 	name: "CardInfoPage",
-	components: { GridView, CardModal },
+	components: { SearchForm, CardModal, GridView, ButtonSecondary },
 	mixins: [Utils],
-	async asyncData({ $axios }) {
-		const rawBannedCards = await $axios.$get("/api/banned_cards")
-		const promises = []
-		rawBannedCards.forEach((card) => {
-			promises.push($axios.$get(`/api/card/${card.id}`))
-		})
-		const bannedCards = await Promise.all(promises)
-		return {
-			bannedCards,
-			defaultOrder: bannedCards,
-		}
-	},
 	data: () => ({
-		defaultOrder: [],
-		bannedCards: [],
+		searchedCards: [],
+		index: -1,
+		cardsPerPage: 2 * 10,
+		thereIsNext: false,
+		thereIsPrev: false,
 	}),
-	/*
-	async mounted() {
-		this.allcards = await this.getAllCards()
+	watch: {
+		searchedCards(newSearchedCard, oldSearchedCard) {
+			this.index = 0
+			this.thereIsNext =
+				this.index + 1 <
+				Math.ceil(newSearchedCard.length / this.cardsPerPage)
+			this.thereIsPrev = this.index > 0
+		},
+		index(newIndex, oldIndex) {
+			this.thereIsNext =
+				newIndex + 1 <
+				Math.ceil(this.searchedCards.length / this.cardsPerPage)
+			this.thereIsPrev = newIndex > 0
+		},
 	},
-	*/
 	methods: {
-		sort(option) {
-			switch (option) {
-				case "category": {
-					this.bannedCards = this.categorySort(this.defaultOrder)
-					break
+		enterIndex(e) {
+			if (e.which === 13) {
+				const value = this.$refs.enterInput.value
+				if (isNaN(value)) {
+					alert("Inserisci un numero!")
+					return
 				}
-				default:
-					this.bannedCards = this.defaultOrder
+				if (
+					value < 1 ||
+					value >
+						Math.ceil(
+							this.searchedCards.length / this.cardsPerPage
+						)
+				) {
+					alert("Inserisci un numero valido!")
+					return
+				}
+				this.index = +value - 1
 			}
 		},
 	},
@@ -114,13 +112,6 @@ export default {
 
 <style scoped>
 .flex-col > * {
-	margin-top: var(--space-0);
-	margin-bottom: var(--space-0);
-}
-#initial-page {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+	margin: var(--space-0);
 }
 </style>
