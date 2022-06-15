@@ -18,42 +18,42 @@
 				<option label="Trappola">Trap</option>
 			</select>
 		</div>
-		<grid-view
-			:columns="2"
-			:row-gap="0"
-			:col-gap="5"
-			style="width: 20%; text-align: center"
-		>
-			<p>Mostro:</p>
-			<p>o Magia/Trappola:</p>
-			<select v-model="form.type2" name="type-2">
-				<option label="Qualunque" selected="selected"></option>
-				<option label="Normale">Normal</option>
-				<option label="Effetto">Effect</option>
-				<option label="Scoperta">Flip</option>
-				<option label="Union">Union</option>
-				<option label="Gemelli">Gemini</option>
-				<option label="Tuner">Tuner</option>
-				<option label="Spirito">Spirit</option>
-				<option label="Rituale">Ritual</option>
-				<option label="Fusione">Fusion</option>
-				<option label="Synchro">Synchro</option>
-				<option label="Synchro Tuner">Synchro Tuner</option>
-				<option label="Xyz">XYZ</option>
-				<option label="Pendulum">Pendulum</option>
-				<option label="Link">Link</option>
-			</select>
-			<select v-model="form.raceSpellTrap" name="race-spell-trap">
-				<option label="Qualunque" selected="selected"></option>
-				<option label="Normale">Normal</option>
-				<option label="Rapida">Quick-Play</option>
-				<option label="Continua">Continuous</option>
-				<option label="Equipaggiamento">Equip</option>
-				<option label="Rituale">Ritual</option>
-				<option label="Terreno">Field</option>
-				<option label="Contro-Trappola">Counter</option>
-			</select>
-		</grid-view>
+		<div class="flex-row">
+			<div class="flex-col">
+				<p>Mostro:</p>
+				<select v-model="form.type2" name="type-2">
+					<option label="Qualunque" selected="selected"></option>
+					<option label="Normale">Normal</option>
+					<option label="Effetto">Effect</option>
+					<option label="Scoperta">Flip</option>
+					<option label="Union">Union</option>
+					<option label="Gemelli">Gemini</option>
+					<option label="Tuner">Tuner</option>
+					<option label="Spirito">Spirit</option>
+					<option label="Rituale">Ritual</option>
+					<option label="Fusione">Fusion</option>
+					<option label="Synchro">Synchro</option>
+					<option label="Synchro Tuner">Synchro Tuner</option>
+					<option label="Xyz">XYZ</option>
+					<option label="Pendulum">Pendulum</option>
+					<option label="Link">Link</option>
+				</select>
+			</div>
+			&ensp;
+			<div class="flex-col">
+				<p>Magia/Trappola:</p>
+				<select v-model="form.raceSpellTrap" name="race-spell-trap">
+					<option label="Qualunque" selected="selected"></option>
+					<option label="Normale">Normal</option>
+					<option label="Rapida">Quick-Play</option>
+					<option label="Continua">Continuous</option>
+					<option label="Equipaggiamento">Equip</option>
+					<option label="Rituale">Ritual</option>
+					<option label="Terreno">Field</option>
+					<option label="Contro-Trappola">Counter</option>
+				</select>
+			</div>
+		</div>
 		<div v-if="form.type2 === 'Pendulum' || !hidingMode" class="flex-col">
 			<div class="flex-row">
 				<p><b>Pendulum Scale:&ensp;</b></p>
@@ -68,7 +68,11 @@
 			<p>(Mettere gli operatori, per esempio ==13, &lt;=8, &gt;3)</p>
 		</div>
 
-		<div class="flex-col" style="width: 100%">
+		<div
+			v-if="form.type2 === 'Link' || !hidingMode"
+			class="flex-col"
+			style="width: 100%"
+		>
 			<p><b>Se Link, il mostro ha ESATTAMENTE queste frecce:</b></p>
 			<grid-view
 				:columns="3"
@@ -129,50 +133,57 @@
 				/>
 			</grid-view>
 		</div>
+		<div class="flex-row">
+			<div class="flex-col">
+				<p>Tipo:</p>
+				<select v-model="form.raceMonster" name="race-monster">
+					<option label="Qualunque" selected="selected"></option>
+					<option label="Aqua">Aqua</option>
+					<option label="Bestia">Beast</option>
+					<option label="Bestia Alata">Winged Beast</option>
+					<option label="Cyberso">Cyberse</option>
+					<option label="Demone">Fiend</option>
+					<option label="Dinosauro">Dinosaur</option>
+					<option label="Drago">Dragon</option>
+					<option label="Fata">Fairy</option>
+					<option label="Guerriero">Warrior</option>
+					<option label="Guerriero-Bestia">Beast-Warrior</option>
+					<option label="Incantatore">Spellcaster</option>
+					<option label="Insetto">Insect</option>
+					<option label="Macchina">Machine</option>
+					<option label="Pesce">Fish</option>
+					<option label="Pianta">Plant</option>
+					<option label="Psichico">Psychic</option>
+					<option label="Pyro">Pyro</option>
+					<option label="Rettile">Reptile</option>
+					<option label="Roccia">Rock</option>
+					<option label="Serpente Marino">Sea Serpent</option>
+					<option label="Tuono">Thunder</option>
+					<option label="Wyrm">Wyrm</option>
+					<option label="Zombie">Zombie</option>
+				</select>
+			</div>
+			&ensp;
+			<div class="flex-col">
+				<p>e/o Attributo:</p>
+				<select v-model="form.attribute" name="attribute">
+					<option label="Qualunque" selected="selected"></option>
+					<option label="TERRA">EARTH</option>
+					<option label="ACQUA">WATER</option>
+					<option label="VENTO">WIND</option>
+					<option label="OSCURITÀ">DARK</option>
+					<option label="LUCE">LIGHT</option>
+					<option label="FUOCO">FIRE</option>
+					<option label="DIVINO">DIVINE</option>
+				</select>
+			</div>
+		</div>
 		<grid-view
 			:columns="2"
 			:row-gap="0"
 			:col-gap="5"
 			style="width: 20%; text-align: center"
 		>
-			<p>Tipo:</p>
-			<p>e/o Attributo:</p>
-			<select v-model="form.raceMonster" name="race-monster">
-				<option label="Qualunque" selected="selected"></option>
-				<option label="Aqua">Aqua</option>
-				<option label="Bestia">Beast</option>
-				<option label="Bestia Alata">Winged Beast</option>
-				<option label="Cyberso">Cyberse</option>
-				<option label="Demone">Fiend</option>
-				<option label="Dinosauro">Dinosaur</option>
-				<option label="Drago">Dragon</option>
-				<option label="Fata">Fairy</option>
-				<option label="Guerriero">Warrior</option>
-				<option label="Guerriero-Bestia">Beast-Warrior</option>
-				<option label="Incantatore">Spellcaster</option>
-				<option label="Insetto">Insect</option>
-				<option label="Macchina">Machine</option>
-				<option label="Pesce">Fish</option>
-				<option label="Pianta">Plant</option>
-				<option label="Psichico">Psychic</option>
-				<option label="Pyro">Pyro</option>
-				<option label="Rettile">Reptile</option>
-				<option label="Roccia">Rock</option>
-				<option label="Serpente Marino">Sea Serpent</option>
-				<option label="Tuono">Thunder</option>
-				<option label="Wyrm">Wyrm</option>
-				<option label="Zombie">Zombie</option>
-			</select>
-			<select v-model="form.attribute" name="attribute">
-				<option label="Qualunque" selected="selected"></option>
-				<option label="TERRA">EARTH</option>
-				<option label="ACQUA">WATER</option>
-				<option label="VENTO">WIND</option>
-				<option label="OSCURITÀ">DARK</option>
-				<option label="LUCE">LIGHT</option>
-				<option label="FUOCO">FIRE</option>
-				<option label="DIVINO">DIVINE</option>
-			</select>
 		</grid-view>
 		<div class="flex-row">
 			<p>Livello/Rango/Classificazione Link:&ensp;</p>

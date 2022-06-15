@@ -35,22 +35,28 @@
 				:aria-expanded="String(isMenuActive)"
 				@click="isMenuActive = !isMenuActive"
 			>
-				<MenuIcon v-show="!isMenuActive" />
-				<XIcon v-show="isMenuActive" />
+				<menu-icon v-show="!isMenuActive" />
+				<x-icon v-show="isMenuActive" />
+				<!--
 				<h1 style="color: var(--color-light); margin: var(--space-1)">
 					{{ isMenuActive ? "Close" : "Menu" }}
 				</h1>
+				-->
 			</button>
 		</nav>
 	</header>
 </template>
 
 <script>
+import MenuIcon from "./icons/MenuIcon.vue"
+import XIcon from "./icons/XIcon.vue"
 export default {
 	name: "PageHeader",
+	components: { XIcon, MenuIcon },
 	data: () => ({
 		isMenuActive: false,
 		navItems: [
+			{ uri: "/deck_editor", name: "Il tuo Deck" },
 			{ uri: "/banned_cards", name: "Carte Bandite" },
 			{ uri: "/pack_info", name: "Info Pacchetto" },
 			{ uri: "/card_info", name: "Cerca Carta" },
@@ -111,7 +117,7 @@ export default {
 	background: none;
 	border: none;
 	padding: 0;
-	height: 2.5em;
+	height: var(--font-size-h1);
 	color: var(--color-dark);
 	font-family: var(--font-family-body);
 	font-size: var(--font-size-header-menu);
@@ -122,6 +128,11 @@ export default {
 .nav-menu svg,
 .nav-menu span {
 	align-self: center;
+}
+
+.nav-menu > * {
+	color: var(--color-light);
+	margin-right: var(--space-1);
 }
 
 .nav-list {
@@ -165,7 +176,7 @@ export default {
 .nuxt-link {
 	margin-left: var(--space-1);
 	margin-right: var(--space-1);
-	font-size: var(--font-size-h3);
+	font-size: var(--font-size-h4);
 }
 
 @media screen and (min-width: 840px) {

@@ -43,9 +43,9 @@ export default {
 	async asyncData({ $axios }) {
 		const { data } = await $axios.get("/api/archetypes")
 		return {
-			allArchetypes: data,
+			allArchetypes: data.slice(20,40),
 			counter: 0,
-			archetypeList: data,
+			archetypeList: data.slice(20,40),
 		}
 	},
 	methods: {

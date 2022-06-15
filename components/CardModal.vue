@@ -8,13 +8,19 @@
 			@click.native="toggleFullImage()"
 		/>
 		<transition name="fade">
-			<div v-show="fullImage" class="modal flex-col">
+			<div
+				v-show="fullImage"
+				class="modal flex-col"
+				oncontextmenu="return false;"
+				@mousedown="rightClickClose"
+			>
 				<button
 					class="modal-close"
 					aria-label="close-modal"
 					@click="toggleFullImage()"
 				>
 					<x-icon />
+					<p>O TASTO DESTRO<br/> PER CHIUDERE!</p>
 				</button>
 				<h1 ref="name"></h1>
 				<div class="modal-view flex-row">
@@ -112,10 +118,14 @@ export default {
 		cardSets: [],
 	}),
 	methods: {
+		rightClickClose(e) {
+			e.preventDefault()
+			if (e?.which === 3) {
+				this.fullImage = false
+			}
+		},
 		async toggleFullImage() {
 			this.fullImage = !this.fullImage
-			console.log(this.fullImage)
-
 			if (this.fullImage) {
 				this.loading = true
 				const promises = [
@@ -225,6 +235,10 @@ export default {
 	font-size: 3.5vw;
 }
 
+.modal-close p {
+	margin: 0;
+}
+
 .modal-close:hover {
 	color: var(--color-light);
 }
@@ -253,7 +267,7 @@ h1 {
 	margin-bottom: 0;
 	margin-top: var(--space-0);
 	text-align: center;
-	width: 95%;
+	width: 85%;
 }
 
 .effects {

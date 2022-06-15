@@ -1,5 +1,14 @@
 <template>
 	<div class="flex-col">
+		<div
+			v-if="allsets.length === 0"
+			class="loader"
+			style="
+				margin-left: auto;
+				margin-right: auto;
+				margin-bottom: var(--space-1);
+			"
+		></div>
 		<h-scroll-view style="width: 90%">
 			<container-pack-scroll
 				v-for="set of allsets.filter((_) => _.tcg_date > dateFilter)"
@@ -41,6 +50,7 @@
 				type="text"
 				maxlength="125"
 				size="40"
+				placeholder="Scrivi qua o clicca su un pacchetto!"
 				:value="clickedSet"
 			/>
 			<button-secondary
@@ -103,7 +113,8 @@ export default {
 		ContainerPackScroll,
 	},
 	mixins: [Utils],
-	async asyncData({ $axios, query }) {
+	/*
+	async asyncData({ $axios }) {
 		const allsets = await $axios.$get("/api/allsets")
 		return {
 			allsets: allsets
@@ -115,11 +126,12 @@ export default {
 				.sort((a, b) => (a.tcg_date > b.tcg_date ? 1 : -1)),
 		}
 	},
+	*/
 	data: () => ({
 		appendCards: [],
 		allsets: [],
 		dateFilter: "1900",
-		clickedSet: "Scrivi qua o clicca su un pacchetto!",
+		clickedSet: "",
 	}),
 	/*
 	async fetch() {
@@ -127,11 +139,16 @@ export default {
 	},
     fetchOnServer: true,
     */
-	/*
 	async mounted() {
-		this.allcards = await this.getAllCards()
+		const allsets = await this.$axios.$get("/api/allsets")
+		this.allsets = allsets
+			.filter(
+				(_) =>
+					_.tcg_date !== undefined &&
+					!_.set_name.toLowerCase().includes("sneak peek")
+			)
+			.sort((a, b) => (a.tcg_date > b.tcg_date ? 1 : -1))
 	},
-	*/
 	methods: {
 		async listCardsPack() {
 			const set_name = this.$el.querySelector("#pack").value

@@ -37,7 +37,11 @@
 				:title="'SALVA IL DECK'"
 				@click.native="saveDeck()"
 			/>
+			<!--
 			<button-secondary :title="'RESETTA IL DECK'" />
+			-->
+			<trash-icon />
+			<x-icon />
 			<button-secondary
 				:title="'CARICA UN DECK'"
 				@click.native="$refs.upload.click()"
@@ -52,15 +56,44 @@
 		<!--
 		<div v-if="savedCards.length > 0" class="flex-row after-page">
 		-->
-		<div class="flex-row after-page">
+		<div class="flex-row after-page" oncontextmenu="return false;">
 			<div class="flex-col deck-container">
-				<grid-view :columns="10" :row-gap="0" :col-gap="0">
+				<h3>MAIN DECK ({{ getMainDeck().length }})</h3>
+				<grid-view
+					:columns="
+						getMainDeck().length > 5
+							? 10
+							: getMainDeck().length * 2
+					"
+					:row-gap="0"
+					:col-gap="0"
+				>
 					<card-modal
-						v-for="(card, index) of deck"
+						v-for="(card, index) of getMainDeck()"
 						:key="card.id + index"
 						:src="getPicSmallUrl(card.id)"
 						:card-id="card.id"
 						:rarity="'Common'"
+						@mousedown.native="removeFromDeck"
+					/>
+				</grid-view>
+				<h3>EXTRA DECK ({{ getExtraDeck().length }})</h3>
+				<grid-view
+					:columns="
+						getExtraDeck().length > 5
+							? 10
+							: getExtraDeck().length * 2
+					"
+					:row-gap="0"
+					:col-gap="0"
+				>
+					<card-modal
+						v-for="(card, index) of getExtraDeck()"
+						:key="card.id + index"
+						:src="getPicSmallUrl(card.id)"
+						:card-id="card.id"
+						:rarity="'Common'"
+						@mousedown.native="removeFromDeck"
 					/>
 				</grid-view>
 			</div>
@@ -71,7 +104,10 @@
 						<p>Solo carte preferite:&ensp;</p>
 						<input type="checkbox" />
 					</div>
-					<search-form :hiding-mode="true" />
+					<search-form
+						:hiding-mode="true"
+						:searched-cards.sync="searchedCards"
+					/>
 				</div>
 				<div>
 					<button-secondary
@@ -88,9 +124,24 @@
 						"
 					/>
 				</div>
+				<grid-view
+					v-if="searchedCards.length > 0"
+					class="search-results"
+					:columns="3"
+					:col-gap="0"
+					:row-gap="0"
+				>
+					<card-modal
+						v-for="(card, index) of searchedCards.slice(0, 20)"
+						:key="card.id + index"
+						:card-id="card.id"
+						:rarity="'Common'"
+						:src="getPicSmallUrl(card.id)"
+					/>
+				</grid-view>
 			</div>
 		</div>
-		<div class="flex-co">
+		<div class="flex-col">
 			<p>a</p>
 			<p>a</p>
 			<p>a</p>
@@ -142,21 +193,22 @@ import CardModal from "../components/CardModal.vue"
 import GridView from "../components/GridView.vue"
 import SearchForm from "../components/SearchForm.vue"
 import ButtonSecondary from "../components/ButtonSecondary.vue"
+import XIcon from '../components/icons/XIcon.vue'
 import Utils from "~/mixins/utils"
 export default {
 	name: "IndexPage",
-	components: { GridView, CardModal, SearchForm, ButtonSecondary },
+	components: { GridView, CardModal, SearchForm, ButtonSecondary, XIcon },
 	mixins: [Utils],
-	async asyncData({ $axios }) {
-		const bannedCards = await $axios.$get("/api/banned_cards")
-		return {
-			bannedCards,
-		}
+	/*
+	async asyncData({ $getAllCards }) {
+		const allcards = await $getAllCards()
+		return { allcards }
 	},
+	*/
 	data: () => ({
 		allcards: [],
-		bannedCards: [],
 		savedCards: [],
+		searchedCards: [],
 		deck: [],
 	}),
 	watch: {
@@ -168,6 +220,29 @@ export default {
 		this.allcards = await this.getAllCards()
 	},
 	methods: {
+		removeFromDeck(e) {
+			e.preventDefault()
+			if (e?.which === 3) {
+				try {
+					const cardId = +e.target.src
+						.split("/")
+						.at(-1)
+						.replace(".jpg", "")
+					const toRemove = this.savedCards.find(
+						(_) => _.id === cardId
+					)
+					if (toRemove !== undefined) {
+						toRemove.checked =
+							toRemove.checked > 0
+								? toRemove.checked - 1
+								: toRemove.checked
+						this.reloadDeck(this.savedCards)
+					}
+				} catch (error) {
+					console.log(error)
+				}
+			}
+		},
 		async handleFile(e) {
 			console.log(e.target.files)
 			const file = e.target.files[0]
@@ -207,6 +282,26 @@ export default {
 			console.log(ris)
 			this.deck = this.categorySort(ris)
 		},
+		getMainDeck() {
+			return this.deck.filter((card) => {
+				const isExtra =
+					card.type.includes("XYZ") ||
+					card.type.includes("Synchro") ||
+					card.type.includes("Fusion") ||
+					card.type.includes("Link")
+				return !isExtra
+			})
+		},
+		getExtraDeck() {
+			return this.deck.filter((card) => {
+				const isExtra =
+					card.type.includes("XYZ") ||
+					card.type.includes("Synchro") ||
+					card.type.includes("Fusion") ||
+					card.type.includes("Link")
+				return isExtra
+			})
+		},
 		saveDeck() {
 			console.log(this.savedCards[0])
 			console.log("Ok")
@@ -224,8 +319,12 @@ export default {
 }
 
 .deck-container {
-	width: 60%;
+	width: 50%;
 	margin-right: var(--space-1);
+}
+
+.deck-container > * {
+	margin-bottom: var(--space-0);
 }
 
 .form-container {
@@ -241,11 +340,19 @@ export default {
 	overflow-y: auto;
 	overflow-x: hidden;
 	justify-content: flex-start;
-	height: 20vw;
+	height: 20vh;
 }
 
 .search-form >>> button {
 	display: none;
+}
+
+.search-results {
+	margin-top: var(--space-1);
+	width: 100%;
+	overflow-y: auto;
+	overflow-x: hidden;
+	height: 66vh;
 }
 
 .form-container >>> .link-markers-grid {

@@ -160,30 +160,14 @@ export default {
 		async getAllCards() {
 			const [seg1, seg2, seg3, seg4, seg5, seg6, seg7, seg8] =
 				await Promise.all([
-					fetch("https://ygobox.herokuapp.com/allcards?n=0").then(
-						(response) => response.json()
-					),
-					fetch("https://ygobox.herokuapp.com/allcards?n=1").then(
-						(response) => response.json()
-					),
-					fetch("https://ygobox.herokuapp.com/allcards?n=2").then(
-						(response) => response.json()
-					),
-					fetch("https://ygobox.herokuapp.com/allcards?n=3").then(
-						(response) => response.json()
-					),
-					fetch("https://ygobox.herokuapp.com/allcards?n=4").then(
-						(response) => response.json()
-					),
-					fetch("https://ygobox.herokuapp.com/allcards?n=5").then(
-						(response) => response.json()
-					),
-					fetch("https://ygobox.herokuapp.com/allcards?n=6").then(
-						(response) => response.json()
-					),
-					fetch("https://ygobox.herokuapp.com/allcards?n=7").then(
-						(response) => response.json()
-					),
+					this.$axios.$get("api/allcards?n=0"),
+					this.$axios.$get("api/allcards?n=1"),
+					this.$axios.$get("api/allcards?n=2"),
+					this.$axios.$get("api/allcards?n=3"),
+					this.$axios.$get("api/allcards?n=4"),
+					this.$axios.$get("api/allcards?n=5"),
+					this.$axios.$get("api/allcards?n=6"),
+					this.$axios.$get("api/allcards?n=7"),
 				])
 			const allcards = [
 				...new Set([

@@ -38,6 +38,23 @@ h4 {
 	align-items: center;
 }
 
+/* INPUTS */
+select,
+input {
+	border-radius: var(--border-radius);
+	background-color: var(--color-neutral);
+}
+
+input[type="file"] {
+    position: absolute;
+    top: 0;
+    margin: 0;
+    cursor: pointer;
+    filter: alpha(opacity=0);
+	opacity: 0;
+}
+
+/* SCROLLBAR */
 /* width */
 ::-webkit-scrollbar {
 	width: var(--font-size-body);
