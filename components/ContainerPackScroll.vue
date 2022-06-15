@@ -71,13 +71,14 @@ h4 {
 
 .pop-up {
 	position: absolute;
-	background: var(--color-light);
-	color: var(--color-darker);
+	background: var(--color-darker);
+	color: var(--color-light);
+	
 	border-radius: var(--border-radius);
 	padding: var(--space-0);
 
 	font-weight: bolder;
-	animation: fade-in-animation 2s ease-in forwards;
+	animation: fade-in-animation 2s linear forwards;
 	animation-direction: reverse;
 }
 </style>

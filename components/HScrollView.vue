@@ -7,16 +7,7 @@
 				aria-hidden="true"
 			></div>
 		</transition>
-		<transition name="fade">
-			<div
-				v-if="isPrevVisible"
-				class="prev"
-				aria-hidden="true"
-				@click="clickToScroll('prev')"
-			>
-				<ArrowLeft />
-			</div>
-		</transition>
+
 		<div
 			ref="container"
 			class="scroll-snap-container"
@@ -32,25 +23,13 @@
 				aria-hidden="true"
 			></div>
 		</transition>
-		<transition name="fade">
-			<div
-				v-if="isNextVisible"
-				class="next"
-				aria-hidden="true"
-				@click="clickToScroll('next')"
-			>
-				<ArrowRight />
-			</div>
-		</transition>
+
 	</div>
 </template>
 
 <script>
-import ArrowLeft from "./icons/ArrowLeft.vue"
-import ArrowRight from "./icons/ArrowRight.vue"
 export default {
 	name: "HScrollView",
-	components: { ArrowLeft, ArrowRight },
 	props: {
 		invert: {
 			type: Boolean,
@@ -72,20 +51,6 @@ export default {
 		window.removeEventListener("resize", this.handleScroll, false)
 	},
 	methods: {
-		clickToScroll(to) {
-			// Use refs instead of using querySelector.
-			// A ref gets binded to the HTML element after the
-			// component is mounted.
-			// https://vuejs.org/guide/essentials/template-refs.html
-			const container = this.$refs.container
-			// When used in a v-for, (multiple identical refs) it returns an array
-			const elem = this.$el.querySelector(".scroll-snap-container > *")
-			if (to === "prev") {
-				container.scrollLeft -= elem.offsetWidth
-			} else {
-				container.scrollLeft += elem.offsetWidth
-			}
-		},
 		// Determines visibility of button arrows <- / ->
 		handleScroll() {
 			const container = this.$refs.container
@@ -115,47 +80,7 @@ export default {
 	/* Local variables  */
 	--scroll-button-size: 3rem;
 }
-/* Prev/Next Buttons */
-.prev,
-.next {
-	display: flex;
-	position: absolute;
-	cursor: pointer;
-	align-self: center;
-	justify-content: center;
-	color: var(--color-light);
-	height: var(--scroll-button-size);
-	width: var(--scroll-button-size);
-	background-color: var(--color-darker);
-	border-radius: 50%;
-	border: none;
-	padding: 0.5em;
-	transition: all 0.1s ease;
-	/* Prevent double-tap to zoom on touchscreens */
-	touch-action: manipulation;
 
-	z-index: 1;
-	transition: all 0.2s ease;
-}
-
-.prev:hover,
-.next:hover {
-	background-color: var(--color-dark);
-}
-
-.prev svg,
-.next svg {
-	color: var(--color-light);
-	height: calc(var(--scroll-button-size) * 0.5);
-	width: calc(var(--scroll-button-size) * 0.5);
-	align-self: center;
-}
-.prev {
-	left: calc(-1 * var(--space-0));
-}
-.next {
-	right: calc(-1 * var(--space-0));
-}
 /*Container and scrollbar styles */
 .scroll-snap-container {
 	display: flex;
@@ -185,7 +110,8 @@ export default {
 .opacity-bar-right,
 .opacity-bar-left {
 	position: absolute;
-	width: 2em;
+	width: 4vw;
+	/* width: 2em; */
 	height: 100%;
 
 	z-index: 1;

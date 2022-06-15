@@ -2,13 +2,40 @@
 	<div class="flex-col">
 		<h-scroll-view style="width: 90%">
 			<container-pack-scroll
-				v-for="set of allsets"
+				v-for="set of allsets.filter((_) => _.tcg_date > dateFilter)"
 				:key="set.set_code"
 				:clicked-set.sync="clickedSet"
 				:set="set"
 			/>
 		</h-scroll-view>
 		<div class="flex-col">
+			<div class="flex-row">
+				<p>Mostra solo i pacchetti a partire dal:</p>
+				<select v-model="dateFilter" name="setsFilter">
+					<option label="Tutti" selected="selected">1900</option>
+					<option label="2001">2001</option>
+					<option label="2002">2002</option>
+					<option label="2003">2003</option>
+					<option label="2004">2004</option>
+					<option label="2005">2005</option>
+					<option label="2006">2006</option>
+					<option label="2007">2007</option>
+					<option label="2008">2008</option>
+					<option label="2009">2009</option>
+					<option label="2010">2010</option>
+					<option label="2011">2011</option>
+					<option label="2012">2012</option>
+					<option label="2013">2013</option>
+					<option label="2014">2014</option>
+					<option label="2015">2015</option>
+					<option label="2016">2016</option>
+					<option label="2017">2017</option>
+					<option label="2018">2018</option>
+					<option label="2019">2019</option>
+					<option label="2021">2021</option>
+					<option label="2022">2022</option>
+				</select>
+			</div>
 			<input
 				id="pack"
 				type="text"
@@ -91,6 +118,7 @@ export default {
 	data: () => ({
 		appendCards: [],
 		allsets: [],
+		dateFilter: "1900",
 		clickedSet: "Scrivi qua o clicca su un pacchetto!",
 	}),
 	/*

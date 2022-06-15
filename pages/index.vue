@@ -1,6 +1,8 @@
 <template>
 	<div id="initial-page" class="text-center">
-		<br /><br />
+		<div class="form-container">
+			<search-form :hiding-mode="true" style="width: 100%" />
+		</div>
 		<div
 			style="
 				display: flex;
@@ -54,42 +56,26 @@
 				:rarity="'Common'"
 			/>
 		</grid-view>
-		<h-scroll-view style="width: 90%;">
-			<card-modal
-				v-for="card of bannedCards"
-				:key="card.id"
-				:src="getPicUrl(card.id)"
-				:card-id="card.id"
-				:rarity="'Common'"
-			/>
-		</h-scroll-view>
 	</div>
 </template>
 
 <script>
 import CardModal from "../components/CardModal.vue"
 import GridView from "../components/GridView.vue"
+import SearchForm from "../components/SearchForm.vue"
 
 import Utils from "~/mixins/utils"
-
 export default {
 	name: "IndexPage",
-	components: { GridView, CardModal },
+	components: { GridView, CardModal, SearchForm },
 	mixins: [Utils],
 	async asyncData({ $axios }) {
-		const rawBannedCards = await $axios.$get("/api/banned_cards")
-		const promises = []
-		rawBannedCards.forEach((card) => {
-			promises.push($axios.$get(`/api/card/${card.id}`))
-		})
-		const bannedCards = await Promise.all(promises)
+		const bannedCards = await $axios.$get("/api/banned_cards")
 		return {
 			bannedCards,
-			defaultOrder: bannedCards,
 		}
 	},
 	data: () => ({
-		defaultOrder: [],
 		bannedCards: [],
 	}),
 	/*
@@ -122,5 +108,16 @@ export default {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+}
+
+.form-container {
+	height: 40vh;
+	width: 50%;
+	color: var(--color-darker) !important;
+	overflow-y: auto;
+}
+
+.form-container >>> .link-markers-grid {
+	width: 16% !important;
 }
 </style>

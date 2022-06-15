@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<search-form :searched-cards.sync="searchedCards" />
+		<search-form :hiding-mode="false" :searched-cards.sync="searchedCards" />
 		<div v-if="searchedCards.length > 0" class="flex-col">
 			<h3>{{ searchedCards.length }} risultati trovati</h3>
 			<grid-view

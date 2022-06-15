@@ -54,7 +54,7 @@
 				<option label="Contro-Trappola">Counter</option>
 			</select>
 		</grid-view>
-		<div class="flex-col">
+		<div v-if="form.type2 === 'Pendulum' || !hidingMode" class="flex-col">
 			<div class="flex-row">
 				<p><b>Pendulum Scale:&ensp;</b></p>
 				<input
@@ -266,6 +266,12 @@ export default {
 	name: "SearchForm",
 	components: { GridView },
 	mixins: [Utils],
+	props: {
+		hidingMode: {
+			type: Boolean,
+			required: true,
+		},
+	},
 	data: () => ({
 		form: {
 			pack: "",
@@ -312,7 +318,7 @@ export default {
 				linkmarkers: [],
 			}
 			const markers = this.$el.querySelectorAll("img")
-			Array.from(markers).forEach(_=> {
+			Array.from(markers).forEach((_) => {
 				_.src = _.src.replace("true", "false")
 			})
 			this.$emit("update:searchedCards", [])
