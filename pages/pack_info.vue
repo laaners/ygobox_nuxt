@@ -11,8 +11,10 @@
 		></div>
 		<h-scroll-view style="width: 90%">
 			<container-pack-scroll
-				v-for="set of allsets.filter((_) => _.tcg_date > dateFilter)"
-				:key="set.set_code"
+				v-for="(set, i) of allsets.filter(
+					(_) => _.tcg_date > dateFilter
+				)"
+				:key="set.set_code + i"
 				:clicked-set.sync="clickedSet"
 				:set="set"
 			/>

@@ -12,6 +12,7 @@
 			ref="container"
 			class="scroll-snap-container"
 			@scroll="handleScroll()"
+			@mousewheel="wheelScroll"
 		>
 			<slot />
 		</div>
@@ -51,6 +52,12 @@ export default {
 		window.removeEventListener("resize", this.handleScroll, false)
 	},
 	methods: {
+		wheelScroll(e) {
+			e.preventDefault()
+			const container = this.$refs.container
+			//	console.log(this.$el.querySelector(".scroll-snap-container > *").offsetWidth)
+			container.scrollLeft += 208 * Math.sign(e.deltaY)
+		},
 		// Determines visibility of button arrows <- / ->
 		handleScroll() {
 			const container = this.$refs.container
@@ -94,7 +101,7 @@ export default {
 .scroll-snap-container > * {
 	scroll-snap-align: center;
 	scroll-margin-left: 0;
-	min-width: 16em;
+	min-width: 13em;
 	margin-right: 1em;
 }
 .scroll-snap-container > *:last-child {

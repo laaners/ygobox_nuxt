@@ -276,9 +276,13 @@ export default app
 		} = req.body
 		let filtered = [...allcardsToT]
 		if (pack !== "")
-			filtered = filtered.filter((_) =>
-				_.card_sets.map((set) => set.set_name).includes(pack)
-			)
+			filtered = filtered
+				.filter((_) => _.card_sets !== undefined)
+				.filter((_) =>
+					_.card_sets
+						.map((set) => set.set_name.toLowerCase())
+						.includes(pack.toLowerCase())
+				)
 
 		if (pendulumScale !== "_")
 			filtered = filtered

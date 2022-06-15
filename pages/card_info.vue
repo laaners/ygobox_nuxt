@@ -10,7 +10,7 @@
 				style="width: 95%"
 			>
 				<card-modal
-					v-for="card of searchedCards.slice(
+					v-for="card of categorySort(searchedCards).slice(
 						index * cardsPerPage,
 						(index + 1) * cardsPerPage
 					)"

@@ -20,7 +20,7 @@
 					@click="toggleFullImage()"
 				>
 					<x-icon />
-					<p>O TASTO DESTRO<br/> PER CHIUDERE!</p>
+					<p>O TASTO DESTRO<br/>PER CHIUDERE!</p>
 				</button>
 				<h1 ref="name"></h1>
 				<div class="modal-view flex-row">

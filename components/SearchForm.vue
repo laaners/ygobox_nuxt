@@ -206,29 +206,29 @@
 				<option label="12">_==12</option>
 			</select>
 		</div>
-		<grid-view
-			:columns="2"
-			:row-gap="0"
-			:col-gap="5"
-			style="width: 20%; text-align: center"
-		>
-			<p>ATK</p>
-			<p>DEF</p>
-			<input
-				v-model="form.atk"
-				type="text"
-				name="ATK"
-				size="5"
-				value="> -1"
-			/>
-			<input
-				v-model="form.def"
-				type="text"
-				name="DEF"
-				size="5"
-				value="> -1"
-			/>
-		</grid-view>
+		<div class="flex-row">
+			<div class="flex-col">
+				<p>ATK</p>
+				<input
+					v-model="form.atk"
+					type="text"
+					name="ATK"
+					size="5"
+					value="> -1"
+				/>
+			</div>
+			&ensp;
+			<div class="flex-col">
+				<p>DEF</p>
+				<input
+					v-model="form.def"
+					type="text"
+					name="DEF"
+					size="5"
+					value="> -1"
+				/>
+			</div>
+		</div>
 		<p>(Mettere gli operatori, per esempio ==1900, &lt;=500, &gt;2000)</p>
 		<div></div>
 		<div class="flex-row">
@@ -304,17 +304,21 @@ export default {
 	methods: {
 		async onSubmit() {
 			this.loading = true
+			if (this.form.pack !== "") {
+				this.form.pack = this.form.pack.replace(
+					this.form.pack.split(" ")[0] + " ",
+					""
+				)
+			}
 			const results = await this.$axios.$post(
 				"api/search_cards",
 				this.form
 			)
-			console.log(results)
-			this.$emit("update:searchedCards", this.categorySort(results))
+			this.$emit("update:searchedCards", results)
 			this.loading = false
 		},
 		resetForm() {
 			this.form = {
-				pack: "",
 				type1: "",
 				type2: "",
 				raceSpellTrap: "",
@@ -362,6 +366,7 @@ p {
 
 .loader {
 	position: absolute;
+	z-index: 2;
 }
 
 .link-markers-grid {

@@ -173,4 +173,9 @@ export default {
 	margin-top: var(--space-0);
 	margin-bottom: var(--space-0);
 }
+
+.banner > * {
+	margin: 0;
+}
+
 </style>

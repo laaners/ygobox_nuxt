@@ -1,5 +1,31 @@
 export default {
 	methods: {
+		groupBy(obj, key, listName) {
+			const ris = []
+			if (obj[0][key] === undefined) return ris
+			obj.forEach((elem) => {
+				const risElem = ris.find((_) => _[key] === elem[key])
+				if (risElem === undefined) {
+					const toPush = {}
+					toPush[key] = elem[key]
+					toPush[listName] = [elem]
+					ris.push(toPush)
+				} else risElem[listName].push(elem)
+			})
+			return ris
+		},
+		hashGroupBy(obj, key) {
+			const ris = {}
+			if (obj[0][key] === undefined) return ris
+			obj.forEach((elem) => {
+				const risElem = ris[elem[key]]
+				if (risElem === undefined) {
+					const toPush = [elem]
+					ris[elem[key]] = toPush
+				} else risElem.push(elem)
+			})
+			return ris
+		},
 		getRarityCode(rarity) {
 			const rarities = [
 				{ code: "(SR)", rarity: "Super Rare" },
@@ -59,73 +85,74 @@ export default {
 			if (n === 13) return "Pendulum Tuner Effect Monster"
 			if (n === 14) return "Ritual Monster"
 			if (n === 15) return "Ritual Effect Monster"
-			if (n === 16) return "Fusion Monster"
-			if (n === 17) return "Pendulum Effect Fusion Monster"
-			if (n === 18) return "Synchro Monster"
-			if (n === 19) return "Synchro Tuner Monster"
-			if (n === 20) return "Synchro Pendulum Effect Monster"
-			if (n === 21) return "XYZ Monster"
-			if (n === 22) return "XYZ Pendulum Effect Monster"
-			if (n === 23) return "Link Monster"
-			if (n === 24) return "Spell Card Normal"
-			if (n === 25) return "Spell Card Ritual"
-			if (n === 26) return "Spell Card Quick-Play"
-			if (n === 27) return "Spell Card Continuous"
-			if (n === 28) return "Spell Card Equip"
-			if (n === 29) return "Spell Card Field"
-			if (n === 30) return "Trap Card Normal"
-			if (n === 31) return "Trap Card Continuous"
-			if (n === 32) return "Trap Card Counter"
-			if (n === 33) return "Skill Card Andrew"
-			if (n === 34) return "Skill Card Arkana"
-			if (n === 35) return "Skill Card Bonz"
-			if (n === 36) return "Skill Card Christine"
-			if (n === 37) return "Skill Card David"
-			if (n === 38) return "Skill Card Emma"
-			if (n === 39) return "Skill Card Espa Roba"
-			if (n === 40) return "Skill Card Ishizu"
-			if (n === 41) return "Skill Card Ishizu Ishtar"
-			if (n === 42) return "Skill Card Joey"
-			if (n === 43) return "Skill Card Joey Wheeler"
-			if (n === 44) return "Skill Card Kaiba"
-			if (n === 45) return "Skill Card Keith"
-			if (n === 46) return "Skill Card Lumis Umbra"
-			if (n === 47) return "Skill Card Mai"
-			if (n === 48) return "Skill Card Mai Valentine"
-			if (n === 49) return "Skill Card Mako"
-			if (n === 50) return "Skill Card Odion"
-			if (n === 51) return "Skill Card Pegasus"
-			if (n === 52) return "Skill Card Rex"
-			if (n === 53) return "Skill Card Seto Kaiba"
-			if (n === 54) return "Skill Card Tea Gardner"
-			if (n === 55) return "Skill Card Weevil"
-			if (n === 56) return "Skill Card Yami Bakura"
-			if (n === 57) return "Skill Card Yami Marik"
-			if (n === 58) return "Skill Card Yami Yugi"
-			if (n === 59) return "Skill Card Yugi"
-			if (n === 60) return "Token Aqua"
-			if (n === 61) return "Token Beast"
-			if (n === 62) return "Token Cyberse"
-			if (n === 63) return "Token Dinosaur"
-			if (n === 64) return "Token Dragon"
-			if (n === 65) return "Token Fairy"
-			if (n === 66) return "Token Fiend"
-			if (n === 67) return "Token Fish"
-			if (n === 68) return "Token Insect"
-			if (n === 69) return "Token Machine"
-			if (n === 70) return "Token Plant"
-			if (n === 71) return "Token Pyro"
-			if (n === 72) return "Token Reptile"
-			if (n === 73) return "Token Rock"
-			if (n === 74) return "Token Thunder"
-			if (n === 75) return "Token Warrior"
-			if (n === 76) return "Token Winged Beast"
-			if (n === 77) return "Token Wyrm"
-			if (n === 78) return "Token Zombie"
+			if (n === 16) return "Pendulum Effect Ritual Monster"
+			if (n === 17) return "Fusion Monster"
+			if (n === 18) return "Pendulum Effect Fusion Monster"
+			if (n === 19) return "Synchro Monster"
+			if (n === 20) return "Synchro Tuner Monster"
+			if (n === 21) return "Synchro Pendulum Effect Monster"
+			if (n === 22) return "XYZ Monster"
+			if (n === 23) return "XYZ Pendulum Effect Monster"
+			if (n === 24) return "Link Monster"
+			if (n === 25) return "Spell Card Normal"
+			if (n === 26) return "Spell Card Ritual"
+			if (n === 27) return "Spell Card Quick-Play"
+			if (n === 28) return "Spell Card Continuous"
+			if (n === 29) return "Spell Card Equip"
+			if (n === 30) return "Spell Card Field"
+			if (n === 31) return "Trap Card Normal"
+			if (n === 35) return "Trap Card Continuous"
+			if (n === 33) return "Trap Card Counter"
+			if (n === 34) return "Skill Card Andrew"
+			if (n === 35) return "Skill Card Arkana"
+			if (n === 36) return "Skill Card Bonz"
+			if (n === 37) return "Skill Card Christine"
+			if (n === 38) return "Skill Card David"
+			if (n === 39) return "Skill Card Emma"
+			if (n === 40) return "Skill Card Espa Roba"
+			if (n === 41) return "Skill Card Ishizu"
+			if (n === 42) return "Skill Card Ishizu Ishtar"
+			if (n === 43) return "Skill Card Joey"
+			if (n === 44) return "Skill Card Joey Wheeler"
+			if (n === 45) return "Skill Card Kaiba"
+			if (n === 46) return "Skill Card Keith"
+			if (n === 47) return "Skill Card Lumis Umbra"
+			if (n === 48) return "Skill Card Mai"
+			if (n === 49) return "Skill Card Mai Valentine"
+			if (n === 50) return "Skill Card Mako"
+			if (n === 51) return "Skill Card Odion"
+			if (n === 52) return "Skill Card Pegasus"
+			if (n === 53) return "Skill Card Rex"
+			if (n === 54) return "Skill Card Seto Kaiba"
+			if (n === 55) return "Skill Card Tea Gardner"
+			if (n === 56) return "Skill Card Weevil"
+			if (n === 57) return "Skill Card Yami Bakura"
+			if (n === 58) return "Skill Card Yami Marik"
+			if (n === 59) return "Skill Card Yami Yugi"
+			if (n === 60) return "Skill Card Yugi"
+			if (n === 61) return "Token Aqua"
+			if (n === 62) return "Token Beast"
+			if (n === 63) return "Token Cyberse"
+			if (n === 64) return "Token Dinosaur"
+			if (n === 65) return "Token Dragon"
+			if (n === 66) return "Token Fairy"
+			if (n === 67) return "Token Fiend"
+			if (n === 68) return "Token Fish"
+			if (n === 69) return "Token Insect"
+			if (n === 70) return "Token Machine"
+			if (n === 71) return "Token Plant"
+			if (n === 72) return "Token Pyro"
+			if (n === 73) return "Token Reptile"
+			if (n === 74) return "Token Rock"
+			if (n === 75) return "Token Thunder"
+			if (n === 76) return "Token Warrior"
+			if (n === 77) return "Token Winged Beast"
+			if (n === 78) return "Token Wyrm"
+			if (n === 79) return "Token Zombie"
 		},
 		categorySort(cards) {
 			let res = []
-			for (let i = 1; i <= 78; i++) {
+			for (let i = 1; i <= 79; i++) {
 				//	ordino anche per livelli o link rate
 				res = res.concat(
 					cards
@@ -146,6 +173,9 @@ export default {
 						.sort((a, b) => a.linkval - b.linkval)
 				)
 			}
+			console.log(
+				cards.filter((_) => !res.includes(_)).map((_) => _.type)
+			)
 			return res
 		},
 		getPicUrl(id) {

@@ -176,7 +176,7 @@ export default {
 .nuxt-link {
 	margin-left: var(--space-1);
 	margin-right: var(--space-1);
-	font-size: var(--font-size-h4);
+	font-size: var(--font-size-h3);
 }
 
 @media screen and (min-width: 840px) {
@@ -218,6 +218,7 @@ export default {
 	.nuxt-link {
 		margin-left: 0;
 		margin-right: 0;
+		font-size: var(--font-size-h4);
 	}
 }
 </style>

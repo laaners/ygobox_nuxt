@@ -47,8 +47,8 @@ body {
 
 @media screen and (min-width: 840px) {
 	.main {
-		padding-top: 3vmax;
-		padding-bottom: 3vmax;
+		padding-top: 4vmax;
+		padding-bottom: 4vmax;
 	}
 }
 </style>
