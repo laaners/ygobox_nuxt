@@ -41,14 +41,14 @@ body {
 }
 
 .main {
-	padding-top: 6vmax;
-	padding-bottom: 6vmax;
+	padding-top: var(--header-padding);
+	padding-bottom: var(--header-padding);
 }
 
 @media screen and (min-width: 840px) {
 	.main {
-		padding-top: 4vmax;
-		padding-bottom: 4vmax;
+		padding-top: var(--header-padding);
+		padding-bottom: var(--header-padding);
 	}
 }
 </style>

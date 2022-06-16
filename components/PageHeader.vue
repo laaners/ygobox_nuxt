@@ -79,12 +79,14 @@ export default {
 .page-header {
 	position: fixed;
 	width: 100%;
+	height: var(--header-padding);
 	background-color: var(--color-darker);
 	z-index: 1000;
 }
 
 .header-grid {
 	display: grid;
+	height: 100%;
 	grid-template-columns: 1fr auto;
 	grid-template-areas:
 		"title menu"

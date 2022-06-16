@@ -1,139 +1,11 @@
 <template>
-	<div id="flex-col" class="text-center">
-		<div
-			v-if="allcards.length === 0"
-			class="loader"
-			style="
-				margin-left: auto;
-				margin-right: auto;
-				margin-bottom: var(--space-1);
-			"
-		></div>
-		<div
-			v-if="savedCards.length === 0 && allcards.length > 0"
-			class="flex-col"
-			style="margin-bottom: 1em; position: relative; overflow: hidden"
-		>
-			<button-secondary
-				:title="'CARICA LE TUE CARTE'"
-				@click.native="$refs.upload.click()"
-			/>
-			<input
-				ref="upload"
-				type="file"
-				class="text-center"
-				value="CARICA LE TUE CARTE!"
-				@change="handleFile"
-			/>
-		</div>
-		<grid-view
-			v-if="savedCards.length > 0"
-			:columns="3"
-			:row-gap="0"
-			:col-gap="1"
-			style="width: 80%; margin-left: auto; margin-right: auto"
-		>
-			<button-secondary
-				:title="'SALVA IL DECK'"
-				@click.native="saveDeck()"
-			/>
-			<button-secondary :title="'RESETTA IL DECK'" />
-			<button-secondary
-				:title="'CARICA UN DECK'"
-				@click.native="$refs.upload.click()"
-			/>
-			<input
-				ref="upload"
-				type="file"
-				class="text-center"
-				@change="handleFile"
-			/>
-		</grid-view>
-		<!--
-		<div v-if="savedCards.length > 0" class="flex-row after-page">
-		-->
-		<div class="flex-row after-page">
-			<div class="flex-col deck-container">
-				<grid-view :columns="10" :row-gap="0" :col-gap="0">
-					<card-modal
-						v-for="(card, index) of deck"
-						:key="card.id + index"
-						:src="getPicSmallUrl(card.id)"
-						:card-id="card.id"
-						:rarity="'Common'"
-					/>
-				</grid-view>
-			</div>
-			<div class="form-container flex-col">
-				<h3>CERCA</h3>
-				<div class="flex-col search-form">
-					<div class="flex-row">
-						<p>Solo carte preferite:&ensp;</p>
-						<input type="checkbox" />
-					</div>
-					<search-form :hiding-mode="true" />
-				</div>
-				<div>
-					<button-secondary
-						:title="'CERCA'"
-						@click.native="
-							$el.querySelector(`button[type='submit']`).click()
-						"
-					/>
-					<button-secondary
-						type="reset"
-						:title="'RESET'"
-						@click.native="
-							$el.querySelector(`button[type='reset']`).click()
-						"
-					/>
-				</div>
-			</div>
-		</div>
-		<div class="flex-co">
-			<p>a</p>
-			<p>a</p>
-			<p>a</p>
-			<p>a</p>
-			<p>a</p>
-			<p>a</p>
-			<p>a</p>
-			<p>a</p>
-			<p>a</p>
-			<p>a</p>
-			<p>a</p>
-			<p>a</p>
-			<p>a</p>
-			<p>a</p>
-			<p>a</p>
-			<p>a</p>
-			<p>a</p>
-			<p>a</p>
-			<p>a</p>
-			<p>a</p>
-			<p>a</p>
-			<p>a</p>
-			<p>a</p>
-			<p>a</p>
-			<p>a</p>
-			<p>a</p>
-			<p>a</p>
-			<p>a</p>
-			<p>a</p>
-			<p>a</p>
-			<p>a</p>
-			<p>a</p>
-			<p>a</p>
-			<p>a</p>
-			<p>a</p>
-			<p>a</p>
-			<p>a</p>
-			<p>a</p>
-			<p>a</p>
-			<p>a</p>
-			<p>a</p>
-			<p>a</p>
-		</div>
+	<div class="flex-col">
+		<multi-page-icon class="icon" />
+		<scroll-page-icon class="icon" />
+		<card-modal />
+		<grid-view />
+		<search-form />
+		<button-secondary />
 	</div>
 </template>
 
@@ -142,10 +14,19 @@ import CardModal from "../components/CardModal.vue"
 import GridView from "../components/GridView.vue"
 import SearchForm from "../components/SearchForm.vue"
 import ButtonSecondary from "../components/ButtonSecondary.vue"
+import MultiPageIcon from "../components/icons/MultiPageIcon.vue"
+import ScrollPageIcon from "../components/icons/ScrollPageIcon.vue"
 import Utils from "~/mixins/utils"
 export default {
 	name: "IndexPage",
-	components: { GridView, CardModal, SearchForm, ButtonSecondary },
+	components: {
+		GridView,
+		CardModal,
+		SearchForm,
+		ButtonSecondary,
+		MultiPageIcon,
+		ScrollPageIcon,
+	},
 	mixins: [Utils],
 	async asyncData({ $axios }) {
 		const bannedCards = await $axios.$get("/api/banned_cards")
@@ -159,96 +40,20 @@ export default {
 		savedCards: [],
 		deck: [],
 	}),
-	watch: {
-		savedCards(newSavedCards, oldSavedCards) {
-			this.reloadDeck(newSavedCards)
-		},
-	},
+	/*
 	async mounted() {
 		this.allcards = await this.getAllCards()
 	},
-	methods: {
-		async handleFile(e) {
-			console.log(e.target.files)
-			const file = e.target.files[0]
-			this.savedCards = await new Promise((resolve, reject) => {
-				const reader = new FileReader()
-				reader.onload = (e) => {
-					const file = e.target.result
-					try {
-						resolve(JSON.parse(file))
-					} catch (error) {
-						alert("Errore, seleziona un file valido!\n" + error)
-						resolve([])
-					}
-				}
-				reader.onerror = (e) => alert(e.target.error.name)
-				try {
-					reader.readAsText(file)
-				} catch (error) {
-					console.log(error)
-					resolve([])
-				}
-			})
-			console.log(this.savedCards)
-			this.savedCards.sort((a, b) => a.id - b.id)
-			console.log(
-				`HAI ${this.savedCards.length} CARTE DIVERSE NELLA TUA COLLEZIONE!`
-			)
-		},
-		reloadDeck(newSavedCards) {
-			const ris = []
-			const checked = newSavedCards.filter((_) => _.checked > 0)
-			this.deck = checked
-			checked.forEach((card) => {
-				for (let i = 0; i < card.checked; i++)
-					ris.push(this.allcards.find((_) => _.id === card.id))
-			})
-			console.log(ris)
-			this.deck = this.categorySort(ris)
-		},
-		saveDeck() {
-			console.log(this.savedCards[0])
-			console.log("Ok")
-			this.savedCards[0].checked += 1
-			this.reloadDeck(this.savedCards)
-		},
-	},
+	*/
 }
 </script>
 
 <style scoped>
-.after-page {
-	align-items: flex-start;
+.flex-col > * {
 	margin: var(--space-1);
 }
-
-.deck-container {
-	width: 60%;
-	margin-right: var(--space-1);
-}
-
-.form-container {
-	width: 40%;
-}
-
-.form-container > * {
-	margin: 0;
-}
-
-.search-form {
-	width: 100%;
-	overflow-y: auto;
-	overflow-x: hidden;
-	justify-content: flex-start;
-	height: 20vw;
-}
-
-.search-form >>> button {
-	display: none;
-}
-
-.form-container >>> .link-markers-grid {
-	width: 20% !important;
+.icon {
+	width: 5vw;
+	height: 5vw;
 }
 </style>

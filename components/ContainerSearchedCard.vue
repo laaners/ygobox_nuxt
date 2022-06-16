@@ -11,8 +11,7 @@
 				<b>{{ card.name }}</b>
 			</p>
 			<span class="star flex-row">
-				{{ card.attribute === undefined ? "" : card.attribute + "/" }}
-				{{ card.race }}&ensp;
+				{{ (card.attribute === undefined ? "" : card.attribute + "/")+card.race }}&ensp;
 				<img v-if="card.level" src="/level.svg" />
 				{{ card.level === undefined ? " " : card.level }}
 			</span>
@@ -39,14 +38,6 @@
 					@click.native="checkedChange(1)"
 				/>
 			</grid-view>
-			<span class="flex-row" style="margin-bottom: 1vh">
-				<span
-					class="fa fa-star"
-					favourite="${favourite}"
-					style="font-size: 2vw; color: ${color};"
-					card_id="${toecho.id}"
-				></span>
-			</span>
 		</div>
 		<star-icon
 			class="favourite"
@@ -101,7 +92,7 @@ export default {
 		checkedChange(n) {
 			if (this.checked + n > this.copies)
 				return alert(
-					"Non hai più di " + this.copies + " di questa carta!"
+					"Non hai più di " + this.copies + " copie di questa carta!"
 				)
 			if (this.checked + n < 0)
 				return alert("Non hai puoi togliere ancora di meno!")
@@ -144,7 +135,9 @@ export default {
 }
 
 .info {
-	width: 70%;
+	width: 68%;
+	padding-left: var(--space-0);
+	padding-right: var(--space-0);
 }
 
 .info > * {
