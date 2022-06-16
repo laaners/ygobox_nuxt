@@ -20,7 +20,7 @@
 					@click="toggleFullImage()"
 				>
 					<x-icon />
-					<p>O TASTO DESTRO<br/>PER CHIUDERE!</p>
+					<p>O TASTO DESTRO<br />PER CHIUDERE!</p>
 				</button>
 				<h1 ref="name"></h1>
 				<div class="modal-view flex-row">
@@ -28,11 +28,13 @@
 						class="full-image flex-col"
 						style="justify-content: flex-start"
 					>
-						<img
-							loading="lazy"
-							:src="getPicUrl(cardId)"
-							:alt="cardId"
-						/>
+						<a :href="getPicUrl(cardId)" target="_blank">
+							<img
+								loading="lazy"
+								:src="getPicUrl(cardId)"
+								:alt="cardId"
+							/>
+						</a>
 						<grid-view
 							:columns="2"
 							:col-gap="5"
@@ -44,12 +46,16 @@
 								@click.native="
 									$el.querySelector('.full-image img').src =
 										getPicUrl(cardId)
+									$el.querySelector('.full-image a').href =
+										getPicUrl(cardId)
 								"
 							/>
 							<button-secondary
 								:title="'FULL ART'"
 								@click.native="
 									$el.querySelector('.full-image img').src =
+										getPicArtUrl(cardId)
+									$el.querySelector('.full-image a').href =
 										getPicArtUrl(cardId)
 								"
 							/>
