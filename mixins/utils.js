@@ -187,6 +187,18 @@ export default {
 		getPicArtUrl(id) {
 			return `https://storage.googleapis.com/ygoprodeck.com/pics_artgame/${id}.jpg`
 		},
+		download(filename, text) {
+			const element = document.createElement('a');
+			element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+			element.setAttribute('download', filename);
+		
+			element.style.display = 'none';
+			document.body.appendChild(element);
+		
+			element.click();
+		
+			document.body.removeChild(element);
+		},
 		async getAllCards() {
 			const [seg1, seg2, seg3, seg4, seg5, seg6, seg7, seg8] =
 				await Promise.all([

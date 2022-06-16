@@ -46,6 +46,9 @@
 		/>
 		-->
 		<div v-if="savedCards.length > 0" class="flex-col">
+			<h1>
+				HAI {{ savedCards.length }} CARTE DIVERSE NELLA TUA COLLEZIONE!
+			</h1>
 			<grid-view
 				:columns="3"
 				:row-gap="0"
@@ -195,6 +198,9 @@
 								:saved-info="card.saved_info"
 								:src="getPicSmallUrl(card.id)"
 								:form-checked-change.sync="formCheckedChange"
+								:form-favourite-change.sync="
+									formFavouriteChange
+								"
 							/>
 						</grid-view>
 						<p>
@@ -296,7 +302,12 @@ export default {
 		return { allcards }
 	},
 	*/
+	async asyncData({ $axios }) {
+		const bannedCards = await $axios.$get("/api/banned_cards")
+		return { bannedCards }
+	},
 	data: () => ({
+		bannedCards: [],
 		allcards: [],
 		savedCards: [],
 		savedCardsHash: {},
@@ -309,6 +320,7 @@ export default {
 		thereIsNext: false,
 		thereIsPrev: false,
 		formCheckedChange: {},
+		formFavouriteChange: {},
 	}),
 	watch: {
 		savedCards(newSavedCards, oldSavedCards) {
@@ -365,6 +377,11 @@ export default {
 				(_) => _.id === newCheckedChange.cardId
 			).checked = newCheckedChange.checked
 			this.reloadDeck(this.savedCards)
+		},
+		formFavouriteChange(newFavouriteChange, oldFavouriteChange) {
+			this.savedCards.find(
+				(_) => _.id === newFavouriteChange.cardId
+			).favourite = newFavouriteChange.favourite
 		},
 	},
 	async mounted() {
@@ -496,14 +513,48 @@ export default {
 		},
 		/* BUTTONS FOR YDK AND EXPORTING */
 		saveDeck() {
-			console.log(this.savedCards[0])
-			console.log("Ok")
-			this.savedCards[0].checked += 1
+			const mainDeck = this.getMainDeck()
+			if (mainDeck.length < 20 || mainDeck.length > 30)
+				return alert("Scegli tra 20 e 30 carte!")
+			const extraDeck = this.getExtraDeck()
+			if (extraDeck.length >= 16)
+				return alert("Troppe carte in extra deck!")
+
+			const copies = this.hashGroupBy(mainDeck.concat(extraDeck), "name")
+			console.log(copies)
+			for (const name in copies) {
+				if (copies[name].length > 3)
+					return alert(`"${name}" presente in 4+ copie!`)
+			}
+			for (const banned of this.bannedCards) {
+				if (copies[banned.name] !== undefined)
+					return alert(`"${banned.name}" è bandito!`)
+			}
+
+			let text = "#main\n"
+			mainDeck.forEach((_) => {
+				text += _.id + "\n"
+			})
+			text += "300104005" //	Switcheroo
+			//	text += "\n511002116"; //Orichalcum
+
+			text += "\n#extra\n"
+
+			extraDeck.forEach((_) => {
+				text += _.id + "\n"
+			})
+
+			this.download("0Deck.ydk", text)
+			this.download("00SavedCards.json", JSON.stringify(this.savedCards))
+			// $(".cards-pack").html("");
+			//	document.getElementById("pack-img").src = "";
+			//	$("#search-result").html("");
 			this.reloadDeck(this.savedCards)
 		},
 		/* FORM */
 		bindSelectedSet(e) {
-			this.$el.querySelector(".search-form-component").__vue__.form.pack = e.target.value
+			this.$el.querySelector(".search-form-component").__vue__.form.pack =
+				e.target.value
 		},
 		getSelectedPack() {
 			console.log(this.$refs.selectPack?.value)
@@ -545,7 +596,7 @@ export default {
 <style scoped>
 .after-page {
 	align-items: flex-start;
-	margin: var(--space-1);
+	margin: var(--space-0);
 }
 
 .deck-container {

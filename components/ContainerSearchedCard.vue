@@ -7,12 +7,13 @@
 			:rarity="'Common'"
 		/>
 		<div class="flex-col info">
-			<p style="text-align: center; font-size: 0.9vmax !important"
-				><b>{{ card.name }}</b></p>
+			<p style="text-align: center; font-size: 0.9vmax !important">
+				<b>{{ card.name }}</b>
+			</p>
 			<span class="star flex-row">
-				{{ card.attribute === undefined ? "" : card.attribute+"/"}}
+				{{ card.attribute === undefined ? "" : card.attribute + "/" }}
 				{{ card.race }}&ensp;
-				<img v-if="card.level" src="/level.svg"/>
+				<img v-if="card.level" src="/level.svg" />
 				{{ card.level === undefined ? " " : card.level }}
 			</span>
 			<span>{{ card.type }}</span>
@@ -46,11 +47,12 @@
 					card_id="${toecho.id}"
 				></span>
 			</span>
-			<span>{{ card.name }}</span>
-			<span
-				><b>PREFERITO {{ favourite }}</b></span
-			>
 		</div>
+		<star-icon
+			class="favourite"
+			:style="getFavouriteStyle()"
+			@click.native="favouriteChange()"
+		/>
 	</div>
 </template>
 
@@ -58,9 +60,10 @@
 import CardModal from "./CardModal.vue"
 import GridView from "./GridView.vue"
 import ButtonSecondary from "./ButtonSecondary.vue"
+import StarIcon from "./icons/StarIcon.vue"
 export default {
 	name: "ContainerSearchedCard",
-	components: { CardModal, GridView, ButtonSecondary },
+	components: { CardModal, GridView, ButtonSecondary, StarIcon },
 	props: {
 		src: {
 			type: String,
@@ -79,7 +82,7 @@ export default {
 		return {
 			checked: this.savedInfo.checked,
 			copies: this.savedInfo.copies,
-			favourite: this.savedInfo.favourite
+			favourite: this.savedInfo.favourite,
 		}
 	},
 	methods: {
@@ -96,17 +99,41 @@ export default {
 			return stats
 		},
 		checkedChange(n) {
-			if(this.checked+n > this.copies) return alert("Non hai più di "+this.copies+" di questa carta!")
-			if(this.checked+n < 0) return alert("Non hai puoi togliere ancora di meno!")
-			this.checked+=n;
-			this.$emit("update:formCheckedChange", {cardId: this.card.id, checked: this.checked})
-		}
+			if (this.checked + n > this.copies)
+				return alert(
+					"Non hai più di " + this.copies + " di questa carta!"
+				)
+			if (this.checked + n < 0)
+				return alert("Non hai puoi togliere ancora di meno!")
+			this.checked += n
+			this.$emit("update:formCheckedChange", {
+				cardId: this.card.id,
+				checked: this.checked,
+			})
+		},
+		getFavouriteStyle() {
+			if (this.favourite)
+				return {
+					fill: "orange",
+				}
+			return {
+				fill: "var(--color-darker)",
+			}
+		},
+		favouriteChange() {
+			this.favourite = !this.favourite
+			this.$emit("update:formFavouriteChange", {
+				cardId: this.card.id,
+				favourite: this.favourite,
+			})
+		},
 	},
 }
 </script>
 
 <style scoped>
 .container {
+	position: relative;
 	width: 100%;
 	padding: var(--space-0);
 	border-top: 0.2vh dashed black;
@@ -129,7 +156,17 @@ span {
 }
 
 .star img {
-  width: 8%;
-  margin: 0;
+	width: 8%;
+	margin: 0;
+}
+
+.favourite {
+	width: var(--font-size-h2);
+	height: var(--font-size-h2);
+	cursor: pointer;
+	position: absolute;
+
+	top: 0;
+	right: var(--space-1);
 }
 </style>

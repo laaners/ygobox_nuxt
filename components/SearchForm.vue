@@ -304,7 +304,7 @@ export default {
 	methods: {
 		async onSubmit() {
 			this.loading = true
-			if (this.form.pack !== "") {
+			if (this.form.pack !== "" && this.form.pack !== undefined) {
 				this.form.pack = this.form.pack.replace(
 					this.form.pack.split(" ")[0] + " ",
 					""
@@ -319,6 +319,7 @@ export default {
 		},
 		resetForm() {
 			this.form = {
+				pack: "",
 				type1: "",
 				type2: "",
 				raceSpellTrap: "",
@@ -377,5 +378,6 @@ p {
 .link-markers-grid > img {
 	margin-left: auto;
 	margin-right: auto;
+	cursor: pointer;
 }
 </style>
