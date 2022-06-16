@@ -76,7 +76,7 @@ export default {
 	},
 
 	axios: {
-		baseURL: "http://localhost:3000",
+		baseURL: `${process.env.HEROKU_HOSTNAME ?? "http://localhost:3000"}`,
 	},
 
 	render: {
