@@ -204,10 +204,21 @@
 								:columns="1"
 								:col-gap="0"
 								:row-gap="20"
-								style="
-									position: absolute;
-									right: -11%;
-									top: 15%;
+								:style="
+									searchedAppendCards.slice(
+										index * cardsPerPage,
+										(index + 1) * cardsPerPage
+									).length > 1
+										? {
+												position: 'absolute',
+												right: '-11%',
+												top: '15%',
+										  }
+										: {
+												position: 'absolute',
+												right: '-25%',
+												top: '15%',
+										  }
 								"
 							>
 								<multi-page-icon
@@ -752,15 +763,22 @@ export default {
 					const file = e.target.result
 					try {
 						let newDeck = file.toString().split("\r\n")
-						if(newDeck.length < 2) newDeck = file.toString().split("\n")
-						newDeck = newDeck.filter(_=>_.length > 0 && !isNaN(_)).map(_=>{return { "id": +_}})
+						if (newDeck.length < 2)
+							newDeck = file.toString().split("\n")
+						newDeck = newDeck
+							.filter((_) => _.length > 0 && !isNaN(_))
+							.map((_) => {
+								return { id: +_ }
+							})
 						newDeck = this.hashGroupBy(newDeck, "id")
 						console.log(newDeck)
 						this.savedCards.forEach((card) => {
-							if(newDeck[card.id] === undefined)
-								card.checked = 0
+							if (newDeck[card.id] === undefined) card.checked = 0
 							else
-								card.checked = newDeck[card.id].length
+								card.checked =
+									newDeck[card.id].length > card.copies
+										? card.copies
+										: newDeck[card.id].length
 							this.updateSearchedCard(card.id, card.checked)
 						})
 						this.reloadDeck(this.savedCards)
