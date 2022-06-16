@@ -86,7 +86,6 @@ export default {
 
 .header-grid {
 	display: grid;
-	height: 100%;
 	grid-template-columns: 1fr auto;
 	grid-template-areas:
 		"title menu"
@@ -184,6 +183,7 @@ export default {
 @media screen and (min-width: 840px) {
 	.header-grid {
 		flex-flow: row;
+		height: 100%;
 		grid-template-columns: 1fr auto;
 		grid-template-areas: "title nav";
 	}

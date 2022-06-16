@@ -144,7 +144,11 @@
 					>
 						<div class="flex-row">
 							<span>Solo carte preferite:&ensp;</span>
-							<input ref="favourite" type="checkbox" />
+							<input
+								ref="favourite"
+								type="checkbox"
+								@change="bindFavouriteCards"
+							/>
 						</div>
 						<div class="flex-row">
 							<p>Solo dal pacchetto:&ensp;</p>
@@ -275,7 +279,7 @@
 										index * cardsPerPage,
 										(index + 1) * cardsPerPage
 									)"
-									:key="card.id + i"
+									:key="card.id + i*2+1"
 									:card="card"
 									:saved-info="card.saved_info"
 									:src="getPicSmallUrl(card.id)"
@@ -343,7 +347,7 @@
 							>
 								<container-searched-card
 									v-for="(card, i) of searchedAppendCards"
-									:key="card.id + i"
+									:key="card.id + i*2"
 									:card="card"
 									:saved-info="card.saved_info"
 									:src="getPicSmallUrl(card.id)"
@@ -466,7 +470,6 @@ export default {
 				return
 			}
 			const hash = this.hashGroupBy(this.savedCards, "id")
-			console.log(this.$refs.selectPack.value)
 			/*
 			{
 				21312: [{
@@ -477,9 +480,7 @@ export default {
 				}
 			}
 			*/
-			const filteredSavedCards = this.$refs.favourite.checked
-				? this.savedCards.filter((_) => _.favourite).map((_) => _.id)
-				: this.savedCards.map((_) => _.id)
+			const filteredSavedCards = this.savedCards.map((_) => _.id)
 			this.searchedAppendCards = this.categorySort(
 				newSearchedCard.filter((_) => {
 					return filteredSavedCards.includes(_.id)
@@ -557,14 +558,10 @@ export default {
 					resolve([])
 				}
 			})
-			console.log(this.savedCards)
 			this.savedCards.forEach((_) => {
 				_.id = +_.id
 			})
 			this.savedCards.sort((a, b) => a.id - b.id)
-			console.log(
-				`HAI ${this.savedCards.length} CARTE DIVERSE NELLA TUA COLLEZIONE!`
-			)
 		},
 		/* DECK CONTAINER */
 		removeFromDeck(e) {
@@ -691,7 +688,6 @@ export default {
 				return alert("Troppe carte in extra deck!")
 
 			const copies = this.hashGroupBy(mainDeck.concat(extraDeck), "name")
-			console.log(copies)
 			for (const name in copies) {
 				if (copies[name].length > 3)
 					return alert(`"${name}" presente in 4+ copie!`)
@@ -757,7 +753,7 @@ export default {
 					return false;
 				}
 			*/
-			const deck = await new Promise((resolve, reject) => {
+			await new Promise((resolve, reject) => {
 				const reader = new FileReader()
 				reader.onload = (e) => {
 					const file = e.target.result
@@ -771,7 +767,6 @@ export default {
 								return { id: +_ }
 							})
 						newDeck = this.hashGroupBy(newDeck, "id")
-						console.log(newDeck)
 						this.savedCards.forEach((card) => {
 							if (newDeck[card.id] === undefined) card.checked = 0
 							else
@@ -795,9 +790,17 @@ export default {
 					resolve([])
 				}
 			})
-			console.log(deck)
 		},
 		/* FORM */
+		bindFavouriteCards(e) {
+			if (e.target.checked) {
+				this.$el.querySelector(
+					".search-form-component"
+				).__vue__.form.favouriteCards = this.savedCards
+					.filter((_) => _.favourite)
+					.map((_) =>_.id)
+			}
+		},
 		bindSelectedSet(e) {
 			this.$el.querySelector(".search-form-component").__vue__.form.pack =
 				e.target.value

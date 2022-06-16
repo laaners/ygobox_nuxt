@@ -298,11 +298,13 @@ export default {
 			cardName: "",
 			cardEffect: "",
 			linkmarkers: [],
+			favouriteCards: [],
 		},
 		loading: false,
 	}),
 	methods: {
 		async onSubmit() {
+			console.log(this.form)
 			this.loading = true
 			if (this.form.pack !== "" && this.form.pack !== undefined) {
 				this.form.pack = this.form.pack.replace(
@@ -332,6 +334,7 @@ export default {
 				cardName: "",
 				cardEffect: "",
 				linkmarkers: [],
+				favouriteCards: [],
 			}
 			const markers = this.$el.querySelectorAll("img")
 			Array.from(markers).forEach((_) => {

@@ -273,8 +273,12 @@ export default app
 			cardName,
 			cardEffect,
 			linkmarkers,
+			favouriteCards
 		} = req.body
 		let filtered = [...allcardsToT]
+		if(favouriteCards.length !== 0) {
+			filtered = filtered.filter(_=>favouriteCards.includes(_.id))
+		}
 		if (pack !== "")
 			filtered = filtered
 				.filter((_) => _.card_sets !== undefined)
