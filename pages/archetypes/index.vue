@@ -42,6 +42,18 @@ export default {
 			archetypeList: data.filter(_=>_.crest !== undefined),
 		}
 	},
+	head() {
+		return {
+			title: "Archetypes",
+			meta: [
+				{
+					hid: "Archetypes",
+					name: "Archetypes",
+					content: `Archetypes`,
+				},
+			],
+		}
+	},
 	methods: {
 		next() {
 			this.counter += 20

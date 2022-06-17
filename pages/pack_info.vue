@@ -135,6 +135,18 @@ export default {
 		dateFilter: "1900",
 		clickedSet: "",
 	}),
+	head() {
+		return {
+			title: "Pack Info",
+			meta: [
+				{
+					hid: "Pack Info",
+					name: "Pack Info",
+					content: `Pack Info`,
+				},
+			],
+		}
+	},
 	/*
 	async fetch() {
 		this.allcards = await this.getAllCards()

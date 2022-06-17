@@ -40,6 +40,18 @@ export default {
 		savedCards: [],
 		deck: [],
 	}),
+	head() {
+		return {
+			title: "Home Page",
+			meta: [
+				{
+					hid: "Home Page",
+					name: "Home Page",
+					content: `Home Page`,
+				},
+			],
+		}
+	},
 	/*
 	async mounted() {
 		this.allcards = await this.getAllCards()

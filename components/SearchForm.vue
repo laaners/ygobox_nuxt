@@ -71,7 +71,7 @@
 		<div
 			v-if="form.type2 === 'Link' || !hidingMode"
 			class="flex-col"
-			style="width: 100%"
+			style="width: 100%;"
 		>
 			<p><b>Se Link, il mostro ha ESATTAMENTE queste frecce:</b></p>
 			<grid-view

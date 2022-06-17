@@ -516,6 +516,18 @@ export default {
 		packAppendCards: [],
 		packLoading: false,
 	}),
+	head() {
+		return {
+			title: "Deck Editor",
+			meta: [
+				{
+					hid: "Deck Editor",
+					name: "Deck Editor",
+					content: `Deck Editor`,
+				},
+			],
+		}
+	},
 	watch: {
 		savedCards(newSavedCards, oldSavedCards) {
 			this.reloadDeck(newSavedCards)
@@ -611,6 +623,7 @@ export default {
 		window.removeEventListener("scroll", this.fixDeckContainer, false)
 		window.removeEventListener("resize", this.fixDeckContainer, false)
 	},
+	
 	methods: {
 		/* BEFORE PAGE */
 		async handleFile(e) {

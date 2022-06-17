@@ -127,7 +127,7 @@ export default {
 	position: relative;
 	width: 100%;
 	padding: var(--space-0);
-	border-top: 0.2vh dashed black;
+	border-top: 0.2vh dashed var(--color-darker);
 }
 
 .card {

@@ -14,7 +14,7 @@ export default {
 		},
 	],
 	head: {
-		title: "archetypes",
+		title: "YGOBox-Nuxt",
 		htmlAttrs: {
 			lang: "en",
 		},

@@ -142,11 +142,24 @@ export default {
 			defaultOrder: bannedCards.filter((_) => _.banner !== undefined),
 		}
 	},
+	
 	data: () => ({
 		showPerBanner: false,
 		defaultOrder: [],
 		bannedCards: [],
 	}),
+	head() {
+		return {
+			title: "Banned Cards",
+			meta: [
+				{
+					hid: "Banned Cards",
+					name: "Banned Cards",
+					content: `Banned Cards`,
+				},
+			],
+		}
+	},
 	methods: {
 		sort(option) {
 			this.showPerBanner = false

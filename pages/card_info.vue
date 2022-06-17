@@ -70,6 +70,18 @@ export default {
 		thereIsNext: false,
 		thereIsPrev: false,
 	}),
+	head() {
+		return {
+			title: "Search Cards",
+			meta: [
+				{
+					hid: "Search Cards",
+					name: "Search Cards",
+					content: `Search Cards`,
+				},
+			],
+		}
+	},
 	watch: {
 		searchedCards(newSearchedCard, oldSearchedCard) {
 			this.index = 0
