@@ -1,39 +1,49 @@
 <template>
 	<div class="flex-col">
-		<multi-page-icon class="icon" />
-		<scroll-page-icon class="icon" />
-		<card-modal />
-		<grid-view />
-		<search-form />
-		<button-secondary />
+		<grid-view
+			:columns="3"
+			col-gap="0.5"
+			:row-gap="1"
+			style="width: 60%; justify-items: center; align-items: center"
+		>
+			<h2>Il tuo Deck</h2>
+			<p>
+				Editare, salvare deck<br />
+				Cercare carte dalla collezione<br />
+				Aprire pacchetti e aggiungere alla collezione<br />
+			</p>
+			<div class="done"></div>
+
+			<h2>Carte Bandite</h2>
+			<p>Vedere carte bandite</p>
+			<div class="done"></div>
+
+			<h2>Info Pacchetto</h2>
+			<p>Vedere i pacchetti<br />Vedere le carte di un pacchetto</p>
+			<div class="done"></div>
+
+			<h2>Carca Carta</h2>
+			<p>Cercare le carte tra tutte e non solo dalla collezione</p>
+			<div class="done"></div>
+
+			<h2>Archetipi</h2>
+			<p>Vedere tutti gli archetipi e loro dettagli</p>
+			<div class="notdone"></div>
+
+			<h2>Trivia</h2>
+			<p>Da una carta, trovare tutte le carte con quello nell'immagine o viceversa</p>
+			<div class="notdone"></div>
+		</grid-view>
 	</div>
 </template>
 
 <script>
-import CardModal from "../components/CardModal.vue"
 import GridView from "../components/GridView.vue"
-import SearchForm from "../components/SearchForm.vue"
-import ButtonSecondary from "../components/ButtonSecondary.vue"
-import MultiPageIcon from "../components/icons/MultiPageIcon.vue"
-import ScrollPageIcon from "../components/icons/ScrollPageIcon.vue"
 import Utils from "~/mixins/utils"
 export default {
 	name: "IndexPage",
-	components: {
-		GridView,
-		CardModal,
-		SearchForm,
-		ButtonSecondary,
-		MultiPageIcon,
-		ScrollPageIcon,
-	},
+	components: { GridView },
 	mixins: [Utils],
-	async asyncData({ $axios }) {
-		const bannedCards = await $axios.$get("/api/banned_cards")
-		return {
-			bannedCards,
-		}
-	},
 	data: () => ({
 		allcards: [],
 		bannedCards: [],
@@ -61,11 +71,21 @@ export default {
 </script>
 
 <style scoped>
-.flex-col > * {
-	margin: var(--space-1);
+.done {
+	border-radius: 50%;
+	width: var(--font-size-body);
+	height: var(--font-size-body);
+	background: lightgreen;
 }
-.icon {
-	width: 5vw;
-	height: 5vw;
+
+.notdone {
+	border-radius: 50%;
+	width: var(--font-size-body);
+	height: var(--font-size-body);
+	background: red;
+}
+
+p {
+	text-align: center;
 }
 </style>
