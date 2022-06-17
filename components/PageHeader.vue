@@ -4,10 +4,12 @@
 		:class="{ 'header-collapse-active': isMenuActive }"
 	>
 		<nav class="container header-grid">
-			<div class="header-title">
+			<div class="header-title flex-row" style="justify-content: flex-start">
 				<nuxt-link to="/">
 					<h1>HOME</h1>
 				</nuxt-link>
+				&ensp;
+				<night-mode-icon @click.native="invertColors()" />
 			</div>
 			<div id="header-nav" class="header-nav">
 				<ul
@@ -50,9 +52,10 @@
 <script>
 import MenuIcon from "./icons/MenuIcon.vue"
 import XIcon from "./icons/XIcon.vue"
+import NightModeIcon from "./icons/NightModeIcon.vue"
 export default {
 	name: "PageHeader",
-	components: { XIcon, MenuIcon },
+	components: { XIcon, MenuIcon, NightModeIcon },
 	data: () => ({
 		isMenuActive: false,
 		navItems: [
@@ -72,6 +75,30 @@ export default {
 			},
 		],
 	}),
+	methods: {
+		invertColors() {
+			const r = document.querySelector(':root');
+			// Get the styles (properties and values) for the root
+			const rs = getComputedStyle(r);
+			// Alert the value of the --blue variable
+			/*
+				--color-light-transparent: rgba(255, 255, 255, 0.33);
+	--color-light: white;
+	--color-neutral: #f1f1f1;
+	--color-dark: #403b2a;
+	--color-darker: #222222;
+			*/
+			const lightTransparent = rs.getPropertyValue('--color-light-transparent')
+			const light = rs.getPropertyValue('--color-light')
+			const dark = rs.getPropertyValue('--color-dark')
+			const darker = rs.getPropertyValue('--color-darker')
+
+			r.style.setProperty('--color-light-transparent', dark);
+			r.style.setProperty('--color-light', darker);
+			r.style.setProperty('--color-dark', lightTransparent);
+			r.style.setProperty('--color-darker', light);
+		}
+	}
 }
 </script>
 
@@ -215,6 +242,7 @@ export default {
 	}
 	.nav-link .nuxt-link-active {
 		text-decoration: none;
+		font-weight: bolder;		
 	}
 
 	.nuxt-link {

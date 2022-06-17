@@ -132,7 +132,10 @@
 						/>
 					</grid-view>
 				</div>
-				<div class="form-container flex-col">
+				<div
+					v-if="packAppendCards.length === 0"
+					class="form-container flex-col"
+				>
 					<h3>CERCA</h3>
 					<div
 						class="flex-col search-form"
@@ -279,7 +282,7 @@
 										index * cardsPerPage,
 										(index + 1) * cardsPerPage
 									)"
-									:key="card.id + i*2+1"
+									:key="card.id + i * 2 + 1"
 									:card="card"
 									:saved-info="card.saved_info"
 									:src="getPicSmallUrl(card.id)"
@@ -347,7 +350,7 @@
 							>
 								<container-searched-card
 									v-for="(card, i) of searchedAppendCards"
-									:key="card.id + i*2"
+									:key="card.id + i * 2"
 									:card="card"
 									:saved-info="card.saved_info"
 									:src="getPicSmallUrl(card.id)"
@@ -362,50 +365,100 @@
 						</div>
 					</div>
 				</div>
+				<div
+					v-if="packAppendCards.length !== 0"
+					style="height: 100vmin"
+				></div>
 			</div>
-			<div class="flex-col">
-				<p>a</p>
-				<p>a</p>
-				<p>a</p>
-				<p>a</p>
-				<p>a</p>
-				<p>a</p>
-				<p>a</p>
-				<p>a</p>
-				<p>a</p>
-				<p>a</p>
-				<p>a</p>
-				<p>a</p>
-				<p>a</p>
-				<p>a</p>
-				<p>a</p>
-				<p>a</p>
-				<p>a</p>
-				<p>a</p>
-				<p>a</p>
-				<p>a</p>
-				<p>a</p>
-				<p>a</p>
-				<p>a</p>
-				<p>a</p>
-				<p>a</p>
-				<p>a</p>
-				<p>a</p>
-				<p>a</p>
-				<p>a</p>
-				<p>a</p>
-				<p>a</p>
-				<p>a</p>
-				<p>a</p>
-				<p>a</p>
-				<p>a</p>
-				<p>a</p>
-				<p>a</p>
-				<p>a</p>
-				<p>a</p>
-				<p>a</p>
-				<p>a</p>
-				<p>a</p>
+
+			<div class="flex-col pack-section">
+				<input
+					ref="openPack"
+					style="margin-top: var(--space-2)"
+					type="text"
+					maxlength="125"
+					size="40"
+					placeholder="Scrivi qua un pacchetto!"
+				/>
+				<button-secondary
+					:title="'APRI PACCHETTO'"
+					@click.native="drafting()"
+				/>
+				<div
+					v-if="packLoading"
+					class="loader"
+					style="
+						margin-left: auto;
+						margin-right: auto;
+						margin-bottom: var(--space-1);
+						margin-top: var(--space-1) !important;
+					"
+				></div>
+				<div
+					v-show="packAppendCards.length > 0"
+					class="flex-col visible-pack"
+				>
+					<img id="pack-img" ref="packImg" loading="lazy" />
+					<h3 ref="packInfo"></h3>
+					<h4>ORDINA PER:</h4>
+					<grid-view
+						:columns="3"
+						:row-gap="0"
+						:col-gap="2"
+						style="width: 80%"
+					>
+						<button-secondary
+							:title="'RARITÀ'"
+							@click.native="sort('rarity')"
+						/>
+						<button-secondary
+							:title="'ORDINE DEFAULT DEL PACCHETTO'"
+							@click.native="sort('default')"
+						/>
+						<button-secondary
+							:title="'CATEGORIA'"
+							@click.native="sort('category')"
+						/>
+					</grid-view>
+					<grid-view
+						class="cardsPack"
+						:columns="packAppendCards.length < 6 ? 4 : 6"
+						:row-gap="0.5"
+						:col-gap="1"
+						style="width: 90%"
+					>
+						<div
+							v-for="(card, i) of packAppendCards"
+							:key="card.id + i"
+							class="flex-col"
+						>
+							<container-pack-info
+								:src="getPicUrl(card.id)"
+								:card="card"
+								:rarity="card.rarity.set_rarity"
+								:percentage="card.rarity.percentage"
+							/>
+							<div class="flex-row pack-card-checkbox-star">
+								<input
+									type="checkbox"
+									:value="card.id"
+									@change="addToDeck"
+								/>
+								<star-icon
+									:style="getFavouriteStyle(card.id)"
+									@click.native="
+										formFavouriteChange = {
+											favourite: !savedCards.find(
+												(_) => _.id === card.id
+											).favourite,
+											cardId: card.id,
+										}
+									"
+								/>
+							</div>
+						</div>
+					</grid-view>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -418,6 +471,7 @@ import SearchForm from "../components/SearchForm.vue"
 import ButtonSecondary from "../components/ButtonSecondary.vue"
 import MultiPageIcon from "../components/icons/MultiPageIcon.vue"
 import ScrollPageIcon from "../components/icons/ScrollPageIcon.vue"
+import StarIcon from "../components/icons/StarIcon.vue"
 import Utils from "~/mixins/utils"
 export default {
 	name: "IndexPage",
@@ -428,6 +482,7 @@ export default {
 		ButtonSecondary,
 		MultiPageIcon,
 		ScrollPageIcon,
+		StarIcon,
 	},
 	mixins: [Utils],
 	/*
@@ -456,6 +511,10 @@ export default {
 		formCheckedChange: {},
 		formFavouriteChange: {},
 		multiPage: true,
+
+		recentlySaved: false,
+		packAppendCards: [],
+		packLoading: false,
 	}),
 	watch: {
 		savedCards(newSavedCards, oldSavedCards) {
@@ -522,6 +581,24 @@ export default {
 				(_) => _.id === newFavouriteChange.cardId
 			).favourite = newFavouriteChange.favourite
 		},
+		packAppendCards(newPackAppendCards, oldPackAppendCards) {
+			if (newPackAppendCards.length === 0) {
+				const setStyle = {
+					top: 0,
+					marginTop: "var(--header-padding)",
+					position: "fixed",
+					overflowY: "scroll",
+					height: "30%",
+					justifyContent: "flex-start",
+					backgroundColor: "white",
+					zIndex: 9998,
+				}
+				const deckContainer = this.$el.querySelector(".deck-container")
+				for (const prop of Object.keys(setStyle)) {
+					deckContainer.style[prop.toString()] = ""
+				}
+			}
+		},
 	},
 	async mounted() {
 		this.allcards = await this.getAllCards()
@@ -562,6 +639,8 @@ export default {
 				_.id = +_.id
 			})
 			this.savedCards.sort((a, b) => a.id - b.id)
+
+			this.recentlySaved = true
 		},
 		/* DECK CONTAINER */
 		removeFromDeck(e) {
@@ -581,13 +660,8 @@ export default {
 								? toRemove.checked - 1
 								: toRemove.checked
 						this.reloadDeck(this.savedCards)
-
-						/*
-						const x = this.searchedAppendCards.find(_=>_.id === cardId)
-						x.saved_info.checked = toRemove.checked
-						this.reloadSearchResults++;
-						*/
 						this.updateSearchedCard(cardId, toRemove.checked)
+						this.updatePackCard(cardId)
 					}
 				} catch (error) {
 					console.log(error)
@@ -596,34 +670,6 @@ export default {
 		},
 		reloadDeck(newSavedCards) {
 			this.deck = []
-			/*
-			newSavedCards.forEach((card) => {
-				if(card.checked === 0) {
-					return
-				}
-				for(let i = 0; i < card.checked; i++)
-					this.deck.push(this.allcards.find((_) => _.id === card.id))
-			})
-			*/
-			/*
-			let allCardsI = 0
-			for (
-				let newSavedCardsI = 0;
-				newSavedCardsI < newSavedCards.length;
-				newSavedCardsI++
-			) {
-				while (
-					newSavedCards[newSavedCardsI].id !==
-					this.allcards[allCardsI].id
-				) {
-					allCardsI++
-				}
-				//	same id
-				const topush = this.allcards[allCardsI]
-				for (let i = 0; i < newSavedCards[newSavedCardsI].checked; i++)
-					this.deck.push(topush)
-			}
-			*/
 			newSavedCards.forEach((card) => {
 				if (card.checked === 0) return
 				for (let i = 0; i < card.checked; i++)
@@ -654,7 +700,8 @@ export default {
 			})
 		},
 		fixDeckContainer(e) {
-			const threshold = 600
+			const threshold = this.$el.querySelector(".cardsPack")?.offsetTop
+			if (threshold === 0) return
 			const deckContainer = this.$el.querySelector(".deck-container")
 			//	document.body.querySelector(".deck-container").style
 			const setStyle = {
@@ -664,7 +711,7 @@ export default {
 				overflowY: "scroll",
 				height: "30%",
 				justifyContent: "flex-start",
-				backgroundColor: "white",
+				backgroundColor: "var(--color-light)",
 				zIndex: 9998,
 			}
 			if (window.scrollY >= threshold) {
@@ -674,6 +721,7 @@ export default {
 				}
 			} else {
 				for (const prop of Object.keys(setStyle)) {
+					if (deckContainer.style === undefined) return
 					deckContainer.style[prop.toString()] = ""
 				}
 			}
@@ -712,10 +760,9 @@ export default {
 
 			this.download("0Deck.ydk", text)
 			this.download("00SavedCards.json", JSON.stringify(this.savedCards))
-			// $(".cards-pack").html("");
-			//	document.getElementById("pack-img").src = "";
-			//	$("#search-result").html("");
 			this.reloadDeck(this.savedCards)
+			this.recentlySaved = true
+			this.packAppendCards = []
 		},
 		resetDeck() {
 			if (confirm("Sei sicuro di voler resettare il deck?")) {
@@ -746,13 +793,13 @@ export default {
 			}
 		},
 		async uploadDeck(e) {
+			if (!this.recentlySaved) {
+				alert(
+					"NON PUOI CARICARE UN DECK SE NON HAI SALVATO DI RECENTE, SALVA E RICARICA LA PAGINA"
+				)
+				return false
+			}
 			const file = e.target.files[0]
-			/*
-				if(!recentlySaved) {
-					alert("NON PUOI CARICARE UN DECK SE NON HAI SALVATO DI RECENTE, SALVA E RICARICA LA PAGINA");
-					return false;
-				}
-			*/
 			await new Promise((resolve, reject) => {
 				const reader = new FileReader()
 				reader.onload = (e) => {
@@ -798,7 +845,7 @@ export default {
 					".search-form-component"
 				).__vue__.form.favouriteCards = this.savedCards
 					.filter((_) => _.favourite)
-					.map((_) =>_.id)
+					.map((_) => _.id)
 			}
 		},
 		bindSelectedSet(e) {
@@ -843,6 +890,117 @@ export default {
 			)
 			if (toUpdate === undefined || toUpdate === null) return
 			toUpdate.componentInstance.checked = checked
+		},
+		/* PACK */
+		async drafting() {
+			if (!this.recentlySaved) {
+				alert(
+					"NON PUOI APRIRE UN ALTRO PACCHETTO SE NON HAI SALVATO DI RECENTE"
+				)
+				return false
+			}
+			this.packLoading = true
+			this.searchedCards = []
+			const set_name = this.$refs.openPack.value
+			if (!set_name) {
+				alert("Empty set name")
+				this.packLoading = false
+				return
+			}
+			const { pack_img, cards, draftN, packN, setNameCorrect } =
+				await this.$axios.$get(`api/drafting/${set_name}`)
+			if (cards.length === 0) {
+				alert(pack_img)
+				this.packLoading = false
+				return
+			}
+			this.packAppendCards = cards
+				.sort((a, b) => {
+					const setCodeA = a.rarity.set_code
+					const setCodeB = b.rarity.set_code
+					if (setCodeA < setCodeB) return -1
+					if (setCodeA > setCodeB) return 1
+					return 0
+				})
+				.sort((a, b) => a.rarity.percentage - b.rarity.percentage)
+			this.packAppendCards.forEach((card) => {
+				const elem = this.savedCards.find((_) => _.id === card.id)
+				if (elem !== undefined) {
+					elem.copies += 1
+					if (!elem.sets.includes(setNameCorrect))
+						elem.sets.push(setNameCorrect)
+				} else {
+					this.savedCards.push({
+						id: card.id,
+						copies: 1,
+						checked: 0,
+						favourite: false,
+						sets: [setNameCorrect],
+					})
+				}
+			})
+			this.$refs.packImg.src = pack_img
+			this.$refs.packInfo.innerHTML =
+				packN +
+				" carte diverse nel pacchetto\nSe apri il pacchetto avrai " +
+				draftN +
+				" carte a caso tra queste:"
+			this.packLoading = false
+			this.recentlySaved = false
+		},
+		sort(option) {
+			switch (option) {
+				case "rarity": {
+					this.packAppendCards.sort(
+						(a, b) => a.rarity.percentage - b.rarity.percentage
+					)
+					break
+				}
+				case "category": {
+					this.packAppendCards = this.categorySort(
+						this.packAppendCards
+					)
+					break
+				}
+				default:
+					this.packAppendCards.sort((a, b) => {
+						const setCodeA = a.rarity.set_code
+						const setCodeB = b.rarity.set_code
+						if (setCodeA < setCodeB) return -1
+						if (setCodeA > setCodeB) return 1
+						return 0
+					})
+			}
+		},
+		getFavouriteStyle(cardId) {
+			if (this.savedCards.find((_) => _.id === cardId).favourite)
+				return {
+					fill: "orange",
+				}
+			return {
+				fill: "var(--color-darker)",
+			}
+		},
+		addToDeck(e) {
+			const cardId = e.target.value
+
+			const elem = this.savedCards.find((_) => _.id === +cardId)
+			if (e.target.checked) elem.checked += 1
+			else elem.checked -= 1
+			this.reloadDeck(this.savedCards)
+		},
+		updatePackCard(cardId) {
+			const checkboxes = this.$el.querySelectorAll(
+				`input[value='${cardId}']`
+			)
+			if (checkboxes.length !== 0) {
+				for (const checkbox of checkboxes) {
+					if (checkbox.checked) {
+						checkbox.checked = false
+						return
+					}
+				}
+			}
 		},
 	},
 }
@@ -912,5 +1070,33 @@ export default {
 
 .form-container >>> .link-markers-grid {
 	width: 25% !important;
+}
+
+.pack-section > * {
+	margin-top: var(--space-0);
+	margin-bottom: var(--space-0);
+}
+
+#pack-img {
+	width: var(--pack-width);
+}
+
+.visible-pack > * {
+	margin-top: var(--space-0);
+	margin-bottom: var(--space-0);
+}
+
+.visible-pack h3 {
+	text-align: center;
+	white-space: pre-line;
+}
+
+.pack-card-checkbox-star > * {
+	width: var(--font-size-h2);
+	height: var(--font-size-h2);
+}
+
+.pack-card-checkbox-star >>> svg {
+	cursor: pointer;
 }
 </style>

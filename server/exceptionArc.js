@@ -285,6 +285,6 @@ export function exceptionArc(arc, allcards, grouped) {
             mergeWith('Void');
             break;
         }
-        default: return;
+        default: 
     }
 }

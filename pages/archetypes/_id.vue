@@ -103,6 +103,7 @@ export default {
 		}
 
 		const { id } = route.params
+		console.log(id)
 		const data = await $axios.$get(
 			"/api/archetypes/" + id.replace(/\//g, "%2F")
 		)

@@ -192,6 +192,69 @@ export default app
 		})
 	})
 
+	app.get("/drafting/:id", (req, res) => {
+		const set_name = req.params.id.toLowerCase()
+		const set = allsets.find(_=>_.set_name.toLowerCase() === set_name)
+		if(set === undefined)
+			return res.json({
+				pack_img: "Pack not found, name error",
+				cards: [],
+				draftN: 0,
+				packN: 0,
+				setNameCorrect: "Not found"
+			})
+		let cards = allcardsToT.filter((_) => {
+			if (_.card_sets === undefined) return false
+			if (_.card_sets.length !== 0) {
+				return _.card_sets
+					.filter((set) => set.set_name !== undefined)
+					.map((set) => set.set_name.toLowerCase())
+					.includes(set_name.toLowerCase())
+			} else return false
+		})
+		if (cards.length === 0)
+			return res.json({
+				pack_img: "Pack not found, name error",
+				cards: [],
+				draftN: 0,
+				packN: 0,
+				setNameCorrect: "Not found"
+			})
+		const packN = cards.length
+		const draftN =
+			Math.ceil(cards.length * 1.5) > 120
+				? 120
+				: Math.ceil(cards.length * 1.5)
+		const differentRarities = rarityAssignAndOccurrence(
+			cards,
+			set_name,
+			draftN
+		)
+		computePrecedence(differentRarities, draftN)
+
+		cards = listCardsPrecedence(cards, differentRarities)
+		const totNumber = cards.length
+		cards = cards.sort(() => Math.random() - 0.5).slice(0,draftN)
+		cards.forEach((elem) => {
+			const tmp = differentRarities.find(
+				(_) => _.set_rarity_code === elem.rarity.set_rarity_code
+			)
+			elem.rarity.percentage = (
+				(1 - ((totNumber - +tmp.times) / totNumber) ** draftN) *
+				100
+			).toFixed(2)
+		})
+		const setNameCorrect = set.tcg_date+" "+set.set_name
+		return res.json({
+			pack_img: `/sets/${set.set_code}.jpg`,
+			cards,
+			draftN,
+			packN,
+			setNameCorrect
+		})
+	})
+
+
 	function packImage(set_name) {
 		return `/sets/${
 			allsets.find(

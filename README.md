@@ -1,4 +1,4 @@
-# ygobox_nuxt
+# ygobox-nuxt
 
 A website used for Yu-Gi-Oh! packs drafting using YGOPro APIs, see [documentation](https://db.ygoprodeck.com/api-guide/)
 

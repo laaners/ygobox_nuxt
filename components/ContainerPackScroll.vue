@@ -71,8 +71,8 @@ h4 {
 
 .pop-up {
 	position: absolute;
-	background: var(--color-darker);
-	color: var(--color-light);
+	background: #222222;
+	color: white;
 	
 	border-radius: var(--border-radius);
 	padding: var(--space-0);

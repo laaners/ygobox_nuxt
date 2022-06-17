@@ -126,14 +126,25 @@ export async function initData() {
 	const allsets = await taskAllSets
 	//  const bannedCards = await taskBannedCards;
 
+	/*
 	const taskAllCards1 = allCardsSegment("01/01/1100", "01/01/2006")
 	const taskAllCards2 = allCardsSegment("01/01/2006", "01/01/2012")
 	const taskAllCards3 = allCardsSegment("01/01/2012", "01/01/2018")
 	const taskAllCards4 = allCardsSegment("01/01/2018", "01/01/2024")
+
 	const allcards1 = await taskAllCards1
 	const allcards2 = await taskAllCards2
 	const allcards3 = await taskAllCards3
 	const allcards4 = await taskAllCards4
+	*/
+	const [allcards1, allcards2, allcards3, allcards4, allcardsToT] = await Promise.all([
+		allCardsSegment("01/01/1100", "01/01/2006"),
+		allCardsSegment("01/01/2006", "01/01/2012"),
+		allCardsSegment("01/01/2012", "01/01/2018"),
+		allCardsSegment("01/01/2018", "01/01/2024"),
+		ocgAllCards()
+	])
+
 	const allcards = [
 		allcards1.slice(0, Math.floor(allcards1.length / 2)),
 		allcards1.slice(Math.floor(allcards1.length / 2)),
@@ -144,6 +155,7 @@ export async function initData() {
 		allcards4.slice(0, Math.floor(allcards4.length / 2)),
 		allcards4.slice(Math.floor(allcards4.length / 2)),
 	]
+	/*
 	const allcardsToT = [
 		...new Set([
 			...allcards[0],
@@ -156,7 +168,7 @@ export async function initData() {
 			...allcards[7],
 		]),
 	]
-	//	const allcardsToT = await ocgAllCards()
+	*/
 
 	allcardsToT.forEach((card) => {
 		const bannedCard = bannedCards.find((_) => _.id === card.id)

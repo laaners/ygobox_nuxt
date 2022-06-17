@@ -8,18 +8,11 @@
 		<button @click="focusOn('Xyz')">Xyz</button>
 		<button @click="focusOn('Link')">Link</button>
 		<button @click="focusOn('Pendulum')">Pendulum</button>
-		<grid-view :columns="4" :col-gap="0.5" :row-gap="0.04">
+		<grid-view :columns="2" :col-gap="0.5" :row-gap="0.04">
 			<archetype
 				v-for="(archetype, index) of archetypeList"
 				:key="`archetype-index-${index}`"
-				:name="archetype.archetype"
-				:true_name="archetype.true_name"
-				:members="archetype.members"
-				:date="archetype.date"
-				:attributes="archetype.attributes"
-				:types="archetype.types"
-				:imgs="archetype.imgs"
-				:crest="archetype.crest"
+				:archetype="archetype"
 				class="flex-elem"
 			/>
 		</grid-view>
@@ -42,10 +35,11 @@ export default {
 	components: { Archetype, GridView},
 	async asyncData({ $axios }) {
 		const { data } = await $axios.get("/api/archetypes")
+		console.log(data.slice(0,3))
 		return {
 			allArchetypes: data.slice(20,40),
 			counter: 0,
-			archetypeList: data.slice(20,40),
+			archetypeList: data.filter(_=>_.crest !== undefined),
 		}
 	},
 	methods: {

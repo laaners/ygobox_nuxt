@@ -214,9 +214,8 @@ export default {
 }
 
 .modal {
-	background: var(--color-darker);
-
-	color: var(--color-light);
+	background: #222222;
+	color: white;
 
 	height: 100%;
 	width: 100%;
@@ -237,7 +236,7 @@ export default {
 	background: none;
 	border: none;
 	cursor: pointer;
-	color: var(--color-light-transparent);
+	color: rgba(255, 255, 255, 0.33);
 	font-size: 3.5vw;
 }
 
@@ -246,7 +245,7 @@ export default {
 }
 
 .modal-close:hover {
-	color: var(--color-light);
+	color: white;
 }
 
 .modal-view {
