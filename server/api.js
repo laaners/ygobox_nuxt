@@ -234,7 +234,12 @@ export default app
 
 		cards = listCardsPrecedence(cards, differentRarities)
 		const totNumber = cards.length
-		cards = cards.sort(() => Math.random() - 0.5).slice(0,draftN)
+		const filtered = [];
+		for(let i = 0; i < draftN; i++) {
+			filtered.push(cards[Math.floor(Math.random()*cards.length)]);
+		}
+		cards = filtered
+		//	cards = cards.sort(() => Math.random() - 0.5).slice(0,draftN)
 		cards.forEach((elem) => {
 			const tmp = differentRarities.find(
 				(_) => _.set_rarity_code === elem.rarity.set_rarity_code

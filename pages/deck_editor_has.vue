@@ -11,7 +11,7 @@
 			"
 		></div>
 		<div
-			v-if="savedCards.length === 0 && allcards.length > 0"
+			v-if="savedCards === undefined && allcards.length > 0"
 			class="flex-col"
 			style="
 				margin-top: var(--space-0);
@@ -50,9 +50,9 @@
 			"
 		/>
 		-->
-		<div v-if="savedCards.length > 0" class="flex-col">
+		<div v-if="savedCards" class="flex-col">
 			<h1>
-				HAI {{ savedCards.length }} CARTE DIVERSE NELLA TUA COLLEZIONE!
+				HAI {{ Object.keys(savedCards).length }} CARTE DIVERSE NELLA TUA COLLEZIONE!
 			</h1>
 
 			<div class="flex-row after-page">
@@ -448,9 +448,7 @@
 									:style="getFavouriteStyle(card.id)"
 									@click.native="
 										formFavouriteChange = {
-											favourite: !savedCards.find(
-												(_) => _.id === card.id
-											).favourite,
+											favourite: savedCards[card.id][0].favourite,
 											cardId: card.id,
 										}
 									"
@@ -499,7 +497,7 @@ export default {
 		bannedCards: [],
 		allcards: [],
 		hashAllcards: {},
-		savedCards: [],
+		savedCards: undefined,
 		deck: [],
 
 		searchedCards: [],
@@ -528,7 +526,6 @@ export default {
 				this.multiPage = true
 				return
 			}
-			const hash = this.hashGroupBy(this.savedCards, "id")
 			/*
 			{
 				21312: [{
@@ -539,14 +536,13 @@ export default {
 				}
 			}
 			*/
-			const filteredSavedCards = this.savedCards.map((_) => _.id)
 			this.searchedAppendCards = this.categorySort(
 				newSearchedCard.filter((_) => {
-					return filteredSavedCards.includes(_.id)
+					return this.savedCards[_.id] !== undefined
 				})
 			)
 			this.searchedAppendCards.forEach((_) => {
-				_.saved_info = hash[_.id][0]
+				_.saved_info = this.savedCards[_.id][0]
 			})
 
 			/*
@@ -571,15 +567,11 @@ export default {
 			this.thereIsPrev = newIndex > 0
 		},
 		formCheckedChange(newCheckedChange, oldCheckedChange) {
-			this.savedCards.find(
-				(_) => _.id === newCheckedChange.cardId
-			).checked = newCheckedChange.checked
+			this.savedCards[newCheckedChange.cardId][0].checked = newCheckedChange.checked
 			this.reloadDeck(this.savedCards)
 		},
 		formFavouriteChange(newFavouriteChange, oldFavouriteChange) {
-			this.savedCards.find(
-				(_) => _.id === newFavouriteChange.cardId
-			).favourite = newFavouriteChange.favourite
+			this.savedCards[newFavouriteChange.cardId][0].favourite = newFavouriteChange.favourite
 		},
 		packAppendCards(newPackAppendCards, oldPackAppendCards) {
 			if (newPackAppendCards.length === 0) {
@@ -635,23 +627,18 @@ export default {
 					resolve([])
 				}
 			})
-			this.savedCards.forEach((_) => {
-				_.id = +_.id
-			})
-			this.savedCards.sort((a, b) => a.id - b.id)
 			this.recentlySaved = true
 		},
 		/* DECK CONTAINER */
 		removeFromDeck(e) {
+			e.preventDefault()
 			if (e?.which === 3) {
 				try {
 					const cardId = +e.target.src
 						.split("/")
 						.at(-1)
 						.replace(".jpg", "")
-					const toRemove = this.savedCards.find(
-						(_) => _.id === cardId
-					)
+					const toRemove = this.savedCards[cardId][0]
 					if (toRemove !== undefined) {
 						toRemove.checked =
 							toRemove.checked > 0
@@ -668,11 +655,22 @@ export default {
 		},
 		reloadDeck(newSavedCards) {
 			this.deck = []
-			newSavedCards.forEach((card) => {
+			Object.values(newSavedCards).forEach((arr) => {
+				const card = arr[0]
 				if (card.checked === 0) return
 				for (let i = 0; i < card.checked; i++)
 					this.deck.push(this.hashAllcards[card.id][0])
 			})
+			/*
+			for(const key in newSavedCards) {
+				console.log(key)
+				const card = newSavedCards[key][0]
+				console.log(card)
+				if (card.checked === 0) return
+				for (let i = 0; i < card.checked; i++)
+					this.deck.push(this.hashAllcards[card.id][0])
+			}
+			*/
 
 			console.log("activated reload deck")
 			this.deck = this.categorySort(this.deck)
@@ -720,7 +718,7 @@ export default {
 				}
 			} else {
 				for (const prop of Object.keys(setStyle)) {
-					if (deckContainer === undefined || deckContainer === null || deckContainer.style === undefined) return
+					if (deckContainer.style === undefined) return
 					deckContainer.style[prop.toString()] = ""
 				}
 			}
@@ -766,26 +764,25 @@ export default {
 		resetDeck() {
 			if (confirm("Sei sicuro di voler resettare il deck?")) {
 				if (confirm("Vuoi mantenere l'extra?")) {
-					this.savedCards
-						.filter((_) => _.checked > 0)
+					Object.values(this.savedCards)
+						.filter((_) => _[0].checked > 0)
 						.forEach((savedCard) => {
-							const card = this.hashAllcards[savedCard.id][0]
+							const card = this.hashAllcards[savedCard[0].id][0]
 							const isExtra =
 								card.type.includes("XYZ") ||
 								card.type.includes("Synchro") ||
 								card.type.includes("Fusion") ||
 								card.type.includes("Link")
 							if (!isExtra) {
-								this.savedCards.find(
-									(_) => _.id === savedCard.id
-								).checked = 0
+								this.savedCards[savedCard.id][0].checked = 0
 								this.updateSearchedCard(savedCard.id, 0)
 							}
 						})
 				} else {
-					this.savedCards.forEach((_) => {
-						_.checked = 0
-						this.updateSearchedCard(_.id, 0)
+					Object.keys(this.savedCards).forEach((_) => {
+						const savedCard = this.savedCards[_][0]
+						savedCard.checked = 0
+						this.updateSearchedCard(_, 0)
 					})
 				}
 				this.reloadDeck(this.savedCards)
@@ -854,9 +851,9 @@ export default {
 		getSavedSets() {
 			return [
 				...new Set(
-					this.savedCards
-						.map((_) => _.sets)
-						.reduce((a, b) => a.concat(b))
+					Object.values(this.savedCards)
+						.map((_) => _[0].sets)
+						.reduce((a, b) => a.concat(b), [])
 				),
 			].sort((a, b) => (a > b ? -1 : 1))
 		},

@@ -125,7 +125,6 @@ export default {
 	}),
 	methods: {
 		rightClickClose(e) {
-			e.preventDefault()
 			if (e?.which === 3) {
 				this.fullImage = false
 			}

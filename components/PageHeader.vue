@@ -9,7 +9,7 @@
 					<h1>HOME</h1>
 				</nuxt-link>
 				&ensp;
-				<night-mode-icon @click.native="invertColors()" />
+				<night-mode-icon style="cursor: pointer" @click.native="invertColors()" />
 			</div>
 			<div id="header-nav" class="header-nav">
 				<ul
