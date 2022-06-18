@@ -73,7 +73,7 @@
 				<img
 					v-for="type in types"
 					:key="type"
-					:src="type+'.png'"
+					:src="type.toUpperCase()+'.png'"
 					:style="{ width: 100/types.length+'%', marginLeft: 'var(--space-0)', marginRight: 'var(--space-0)'}"
 					@click="typeFilter = type"
 				/>
