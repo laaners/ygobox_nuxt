@@ -70,7 +70,7 @@ export default {
 			{ uri: "/pack_info", name: "Info Pacchetto" },
 			{ uri: "/card_info", name: "Cerca Carta" },
 			{ uri: "/archetypes", name: "Archetipi" },
-			{ uri: "/archetypes", name: "Trivia" },
+			{ uri: "/trivia_graph", name: "Trivia" },
 		],
 	}),
 	head: () => ({

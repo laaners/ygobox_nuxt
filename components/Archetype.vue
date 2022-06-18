@@ -1,7 +1,7 @@
 <template>
 	<div class="archetype" :style="getFocusBG()">
 		<div class="archetype-header">
-			<h4>{{ archetype.archetype }}</h4>
+			<h4 style="-webkit-text-stroke: 0.5px black;">{{ archetype.archetype }}</h4>
 			<!--
       <template v-for="(type,index) of types">
         <img style="align-self: flex-start;"
@@ -135,38 +135,74 @@ export default {
 					tot += this.archetype.focus[key]
 			}
 			let percentage = 0
-			let returnStyle = `${noExtra} 0%,`
 
+			let returnStyle = ""
+			let lastStyle = noExtra
+			if(this.archetype.focus["No Extra"] !== 0) {
+				returnStyle+=`${noExtra} 0%,`
+				lastStyle = noExtra
+				percentage += Math.ceil(this.archetype.focus["No Extra"]/tot*100)
+			}
+			if(this.archetype.focus.Ritual !== 0) {
+				returnStyle+=`${lastStyle} ${percentage/2}%, ${ritual} ${percentage}%,`
+				lastStyle = ritual
+				percentage += Math.ceil(this.archetype.focus.Ritual/tot*100)
+			}
+			if(this.archetype.focus.Fusion !== 0) {
+				returnStyle+=`${lastStyle} ${percentage/2}%, ${fusion} ${percentage}%,`
+				lastStyle = fusion
+				percentage += Math.ceil(this.archetype.focus.Fusion/tot*100)
+			}
+			if(this.archetype.focus.Synchro !== 0) {
+				returnStyle+=`${lastStyle} ${percentage/2}%, ${synchro} ${percentage}%,`
+				lastStyle = synchro
+				percentage += Math.ceil(this.archetype.focus.Synchro/tot*100)
+			}
+			if(this.archetype.focus.Xyz !== 0) {
+				returnStyle+=`${lastStyle} ${percentage/2}%, ${xyz} ${percentage}%,`
+				lastStyle = xyz
+				percentage += Math.ceil(this.archetype.focus.Xyz/tot*100)
+			}
+			if(this.archetype.focus.Link !== 0) {
+				returnStyle+=`${lastStyle} ${percentage/2}%, ${link} ${percentage}%,`
+				lastStyle = link
+				percentage += Math.ceil(this.archetype.focus.Link/tot*100)
+			}
+			console.log(percentage)
+			returnStyle+=lastStyle+" 100%"
+			console.log(returnStyle)
+
+			/*
 			if(percentage+this.archetype.focus["No Extra"]/tot*100 !== percentage) {
 				returnStyle += `${ritual} ${this.archetype.focus["No Extra"]/tot*100+percentage}%,`
 				percentage += this.archetype.focus["No Extra"]/tot*100
 			}
 
 			if(percentage+this.archetype.focus.Ritual/tot*100 !== percentage) {
-			returnStyle += `${fusion} ${this.archetype.focus.Ritual/tot*100+percentage}%,`
-			percentage += this.archetype.focus.Ritual/tot*100
+				returnStyle += `${fusion} ${this.archetype.focus.Ritual/tot*100+percentage}%,`
+				percentage += this.archetype.focus.Ritual/tot*100
 			}
 
 			if(percentage+this.archetype.focus.Fusion/tot*100 !== percentage) {
-			returnStyle += `${synchro} ${this.archetype.focus.Fusion/tot*100+percentage}%,`
-			percentage += this.archetype.focus.Fusion/tot*100
+				returnStyle += `${synchro} ${this.archetype.focus.Fusion/tot*100+percentage}%,`
+				percentage += this.archetype.focus.Fusion/tot*100)
 			}
 
 			if(percentage+this.archetype.focus.Synchro/tot*100 !== percentage) {
 			returnStyle += `${xyz} ${this.archetype.focus.Synchro/tot*100+percentage}%,`
-			percentage += this.archetype.focus.Synchro/tot*100
+			percentage += Math.ceil(this.archetype.focus.Synchro/tot*100)
 			}
 
 			if(percentage+this.archetype.focus.Xyz/tot*100 !== percentage) {
 			returnStyle += `${link} ${this.archetype.focus.Xyz/tot*100+percentage}%,`
-			percentage += this.archetype.focus.Xyz/tot*100
+			percentage += Math.ceil(this.archetype.focus.Xyz/tot*100)
 			}
-			
+			*/
+
 			console.log(returnStyle)
 
 			return {
-				backgroundImage: `linear-gradient(0deg, 
-					${returnStyle.slice(0,-1)})`
+				backgroundImage: `linear-gradient(0deg, ${returnStyle})`
 				//	backgroundImage: `linear-gradient(0deg, ${noExtra} 0%, ${ritual} 10%, ${fusion} 50%, ${synchro} 75%, ${xyz} 80%, ${link} 100%)`
 				//	backgroundImage: "linear-gradient(0deg, var(--color-light), rgba(214,214,177,0)), url('https://storage.googleapis.com/ygoprodeck.com/pics/38229962.jpg')"
 			}
