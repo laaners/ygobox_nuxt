@@ -11,7 +11,10 @@
 				<b>{{ card.name }}</b>
 			</p>
 			<span class="star flex-row">
-				{{ (card.attribute === undefined ? "" : card.attribute + "/")+card.race }}&ensp;
+				{{
+					(card.attribute === undefined ? "" : card.attribute + "/") +
+					card.race
+				}}&ensp;
 				<img v-if="card.level" src="/level.svg" />
 				{{ card.level === undefined ? " " : card.level }}
 			</span>
@@ -97,10 +100,13 @@ export default {
 			if (this.checked + n < 0)
 				return alert("Non hai puoi togliere ancora di meno!")
 			this.checked += n
-			this.$emit("update:formCheckedChange", {
-				cardId: this.card.id,
-				checked: this.checked,
-			})
+
+			setTimeout(() => {
+				this.$emit("update:formCheckedChange", {
+					cardId: this.card.id,
+					checked: this.checked,
+				})
+			}, 10)
 		},
 		getFavouriteStyle() {
 			if (this.favourite)
@@ -113,10 +119,12 @@ export default {
 		},
 		favouriteChange() {
 			this.favourite = !this.favourite
-			this.$emit("update:formFavouriteChange", {
-				cardId: this.card.id,
-				favourite: this.favourite,
-			})
+			setTimeout(() => {
+				this.$emit("update:formFavouriteChange", {
+					cardId: this.card.id,
+					favourite: this.favourite,
+				})
+			}, 10)
 		},
 	},
 }

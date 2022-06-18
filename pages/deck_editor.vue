@@ -133,7 +133,6 @@
 					</grid-view>
 				</div>
 				<div
-					v-if="packAppendCards.length === 0"
 					class="form-container flex-col"
 				>
 					<h3>CERCA</h3>
@@ -141,7 +140,7 @@
 						class="flex-col search-form"
 						:style="
 							searchedAppendCards.length > 0
-								? { height: '15vh' }
+								? { height: '22vh' }
 								: {}
 						"
 					>
@@ -195,6 +194,8 @@
 								$el.querySelector(
 									`button[type='reset']`
 								).click()
+								$refs.favourite.checked = false
+								$refs.selectPack.value = ''
 							"
 						/>
 					</div>
@@ -203,7 +204,7 @@
 						class="flex-col"
 						style="position: relative"
 					>
-						<h3 @click="multiPage = !multiPage">
+						<h3 style="margin: var(--space-0);">
 							{{ searchedAppendCards.length }} risultati trovati
 						</h3>
 						<div v-if="multiPage" class="flex-col">
@@ -365,10 +366,6 @@
 						</div>
 					</div>
 				</div>
-				<div
-					v-if="packAppendCards.length !== 0"
-					style="height: 100vmin"
-				></div>
 			</div>
 
 			<div class="flex-col pack-section">
@@ -445,6 +442,8 @@
 									@change="addToDeck"
 								/>
 								<star-icon
+									:ref="card.id"
+									:value="card"
 									:style="getFavouriteStyle(card.id)"
 									@click.native="
 										formFavouriteChange = {
@@ -535,8 +534,6 @@ export default {
 		searchedCards(newSearchedCard, oldSearchedCard) {
 			if (newSearchedCard.length === 0) {
 				this.searchedAppendCards = []
-				this.$refs.favourite.checked = false
-				this.$refs.selectPack.value = ""
 				this.multiPage = true
 				return
 			}
@@ -583,15 +580,29 @@ export default {
 			this.thereIsPrev = newIndex > 0
 		},
 		formCheckedChange(newCheckedChange, oldCheckedChange) {
-			this.savedCards.find(
+			const savedCard = this.savedCards.find(
 				(_) => _.id === newCheckedChange.cardId
-			).checked = newCheckedChange.checked
+			)
+			const oldChecked = savedCard.checked
+			savedCard.checked = newCheckedChange.checked
+			this.updatePackCard(newCheckedChange.cardId, savedCard.checked > oldChecked)
 			this.reloadDeck(this.savedCards)
 		},
 		formFavouriteChange(newFavouriteChange, oldFavouriteChange) {
+			const cardId = newFavouriteChange.cardId
 			this.savedCards.find(
-				(_) => _.id === newFavouriteChange.cardId
+				(_) => _.id === cardId
 			).favourite = newFavouriteChange.favourite
+
+			//	Update form favourite if checked from pack cards
+			const searchResults = this.$el.querySelector(".search-results")
+			if (!(searchResults === undefined || searchResults === null)) {
+				const toUpdate = searchResults.__vue__.$slots.default.find(
+					(slot) => slot.componentOptions.propsData.card.id === cardId
+				)
+				if (!(toUpdate === undefined || toUpdate === null) && toUpdate.componentInstance.favourite !== newFavouriteChange.favourite)
+					toUpdate.componentInstance.favourite = newFavouriteChange.favourite
+			}
 		},
 		packAppendCards(newPackAppendCards, oldPackAppendCards) {
 			if (newPackAppendCards.length === 0) {
@@ -622,8 +633,7 @@ export default {
 	beforeUnmount() {
 		window.removeEventListener("scroll", this.fixDeckContainer, false)
 		window.removeEventListener("resize", this.fixDeckContainer, false)
-	},
-	
+	},	
 	methods: {
 		/* BEFORE PAGE */
 		async handleFile(e) {
@@ -671,7 +681,7 @@ export default {
 								: toRemove.checked
 						this.reloadDeck(this.savedCards)
 						this.updateSearchedCard(cardId, toRemove.checked)
-						this.updatePackCard(cardId)
+						this.updatePackCard(cardId, false)
 					}
 				} catch (error) {
 					console.log(error)
@@ -860,8 +870,8 @@ export default {
 			}
 		},
 		bindSelectedSet(e) {
-			this.$el.querySelector(".search-form-component").__vue__.form.pack =
-				e.target.value
+			const pack = e.target.value.replace(e.target.value.split(" ")[0] + " ","")
+			this.$el.querySelector(".search-form-component").__vue__.form.pack = pack				
 		},
 		getSavedSets() {
 			return [
@@ -993,22 +1003,35 @@ export default {
 			}
 		},
 		addToDeck(e) {
-			const cardId = e.target.value
-
-			const elem = this.savedCards.find((_) => _.id === +cardId)
-			if (e.target.checked) elem.checked += 1
-			else elem.checked -= 1
-			this.reloadDeck(this.savedCards)
+			setTimeout(() => {
+				const cardId = e.target.value
+				const elem = this.savedCards.find((_) => _.id === +cardId)
+				if (e.target.checked) elem.checked += 1
+				else elem.checked -= 1
+				this.updateSearchedCard(+cardId, elem.checked)
+				this.reloadDeck(this.savedCards)
+			}, 10)
 		},
-		updatePackCard(cardId) {
+		updatePackCard(cardId, value) {
 			const checkboxes = this.$el.querySelectorAll(
 				`input[value='${cardId}']`
 			)
+			console.log(value)
 			if (checkboxes.length !== 0) {
-				for (const checkbox of checkboxes) {
-					if (checkbox.checked) {
-						checkbox.checked = false
-						return
+				if(value) {
+					for (const checkbox of checkboxes) {
+						if (!checkbox.checked) {
+							checkbox.checked = true
+							return
+						}
+					}
+				}
+				else {
+					for (const checkbox of checkboxes) {
+						if (checkbox.checked) {
+							checkbox.checked = false
+							return
+						}
 					}
 				}
 			}
@@ -1058,18 +1081,6 @@ export default {
 
 .search-form div {
 	margin: 0;
-}
-
-.search-form:hover {
-	height: 100% !important;
-}
-
-.search-form:hover >>> button {
-	display: initial;
-}
-
-.search-form:hover + .redundant-form-buttons {
-	display: none;
 }
 
 .search-results {

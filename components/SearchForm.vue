@@ -306,12 +306,6 @@ export default {
 		async onSubmit() {
 			console.log(this.form)
 			this.loading = true
-			if (this.form.pack !== "" && this.form.pack !== undefined) {
-				this.form.pack = this.form.pack.replace(
-					this.form.pack.split(" ")[0] + " ",
-					""
-				)
-			}
 			const results = await this.$axios.$post(
 				"api/search_cards",
 				this.form
