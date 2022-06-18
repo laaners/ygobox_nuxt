@@ -1,77 +1,6 @@
 <template>
 	<div class="archetype" :style="getFocusBG()">
-		<div class="archetype-header">
-			<h4 style="-webkit-text-stroke: 0.5px black;">{{ archetype.archetype }}</h4>
-			<!--
-      <template v-for="(type,index) of types">
-        <img style="align-self: flex-start;"
-          v-if="type"
-          :key="`archetype-type-${index}`"
-          :src="`${type.toUpperCase()}.png`"
-          class="type"
-        />
-      </template>
-      -->
-			<div>
-				<img
-					v-for="type of archetype.types"
-					:key="`${archetype.archetype}-type-${type}`"
-					:src="`${type.toUpperCase()}.png`"
-					class="type"
-					@error="notDisplay"
-				/>
-			</div>
-			<div>
-				<img
-					v-for="(attribute, index) of archetype.attributes"
-					:key="`${archetype.archetype}-attribute-${index}`"
-					:src="`${attribute}.png`"
-					class="attribute"
-				/>
-			</div>
-		</div>
-		<div class="archetype-body">
-			<div class="left">
-				<img
-					:src="isNaN(archetype.imgs.Poster) ? archetype.imgs.Poster : getPicArtUrl(archetype.imgs.Poster)"
-					alt=""
-					loading="lazy"
-				/>
-				<img
-					v-if="archetype.crest"
-					:src="archetype.crest"
-					class="crest"
-				/>
-				<p v-if="archetype.crest">CREST</p>
-			</div>
-			<div class="right">
-				<img
-					v-if="archetype.imgs.Effect"
-					:src="getPicUrl(archetype.imgs.Effect)"
-				/>
-				<img
-					v-if="archetype.imgs.Ritual"
-					:src="getPicUrl(archetype.imgs.Ritual)"
-				/>
-				<img
-					v-if="archetype.imgs.Fusion"
-					:src="getPicUrl(archetype.imgs.Fusion)"
-				/>
-				<img
-					v-if="archetype.imgs.Synchro"
-					:src="getPicUrl(archetype.imgs.Synchro)"
-				/>
-				<img
-					v-if="archetype.imgs.Xyz"
-					:src="getPicUrl(archetype.imgs.Xyz)"
-				/>
-				<img
-					v-if="archetype.imgs.Link"
-					:src="getPicUrl(archetype.imgs.Link)"
-				/>
-			</div>
-		</div>
-		<div class="archetype-footer">
+		<div class="flex-col">
 			<a
 				:href="`${encodeURI(
 					'/archetypes/' + encodeURIComponent(archetype.archetype)
@@ -79,14 +8,66 @@
 				target="_blank"
 				rel="noopener noreferrer"
 			>
-				DETAILS
+				<h3 class="name">
+					{{ archetype.archetype }} {{ `(${archetype.members})` }}
+				</h3>
 			</a>
-			<!--
-      <button @click="goToDetails()">
-        DETAILS
-      </button>
-      -->
-			<p>&ensp;[{{ archetype.members }}] {{ archetype.date }}</p>
+			<grid-view
+				:columns="6"
+				:col-gap="2"
+				:row-gap="0"
+				style="width: 100%; margin-bottom: var(--space-0)"
+			>
+				<img
+					v-for="(attribute, index) of archetype.attributes"
+					:key="`${archetype.archetype}-attribute-${index}`"
+					:src="`${attribute}.png`"
+					class="attribute"
+				/>
+			</grid-view>
+			<img
+				:src="
+					isNaN(archetype.imgs.Poster)
+						? archetype.imgs.Poster
+						: getPicArtUrl(archetype.imgs.Poster)
+				"
+				alt=""
+				class="poster"
+				loading="lazy"
+			/>
+			<div v-if="archetype.crest" class="crest">
+				<img :src="archetype.crest" />
+			</div>
+			<grid-view
+				:columns="6"
+				:col-gap="2"
+				:row-gap="0"
+				style="width: 100%; margin-top: var(--space-0);"
+			>
+				<img
+					v-for="type of archetype.types"
+					:key="`${archetype.archetype}-type-${type}`"
+					:src="`${type.toUpperCase()}.png`"
+					class="type"
+					@error="notDisplay"
+				/>
+			</grid-view>
+			<p class="date-pack">
+				{{ archetype.date.split(" ")[0] }}<br/>
+				{{ archetype.date.split(" | ")[0].replace(archetype.date.split(" ")[0],"") }}
+			</p>
+			<grid-view v-if="archetype.focus.Pendulum > 0" :columns="2" :col-gap="40" :row-gap="0" class="scales">
+				<img
+					src="/leftscale.png"
+					alt=""
+					class="left-scale"
+				/>
+				<img
+					src="/rightscale.png"
+					alt=""
+					class="right-scale"
+				/>
+			</grid-view>
 		</div>
 	</div>
 	<!-- 
@@ -99,9 +80,11 @@
 </template>
 
 <script>
+import GridView from "./GridView.vue"
 import Utils from "~/mixins/utils"
 export default {
 	name: "ArchetypeComponent",
+	components: { GridView },
 	mixins: [Utils],
 	props: {
 		archetype: {
@@ -111,8 +94,6 @@ export default {
 	},
 	methods: {
 		getFocusBG() {
-			console.log(this.archetype.archetype)
-			console.log(this.archetype.focus)
 			/*
 			Fusion: 0
 			Link: 0
@@ -121,88 +102,74 @@ export default {
 			Ritual: 0
 			Synchro: 0
 			Xyz: 1 */
-/* linear-gradient(0deg,var(--color-light),rgba(214,214,177,0)),url('https://storage.googleapis.com/ygoprodeck.com/pics/38229962.jpg'); */
 			const ritual = "#819ecc"
 			const fusion = "#843194"
 			const synchro = "#f4f4f4"
 			const xyz = "#141414"
-			const link = "#235392"
+			const link = "rgb(0,0,0,0)"
 			const noExtra = "#b25124"
 
 			let tot = 0
-			for(const key in this.archetype.focus) {
-				if(key !== "Pendulum")
-					tot += this.archetype.focus[key]
+			for (const key in this.archetype.focus) {
+				if (key !== "Pendulum") tot += this.archetype.focus[key]
 			}
 			let percentage = 0
-
 			let returnStyle = ""
 			let lastStyle = noExtra
-			if(this.archetype.focus["No Extra"] !== 0) {
-				returnStyle+=`${noExtra} 0%,`
+			if (this.archetype.focus["No Extra"] !== 0) {
+				returnStyle += `${noExtra} 0%,`
 				lastStyle = noExtra
-				percentage += Math.ceil(this.archetype.focus["No Extra"]/tot*100)
+				percentage += Math.ceil(
+					(this.archetype.focus["No Extra"] / tot) * 100
+				)
 			}
-			if(this.archetype.focus.Ritual !== 0) {
-				returnStyle+=`${lastStyle} ${percentage/2}%, ${ritual} ${percentage}%,`
+			if (this.archetype.focus.Ritual !== 0) {
+				returnStyle += `${lastStyle} ${
+					percentage / 1.05
+				}%, ${ritual} ${percentage}%,`
 				lastStyle = ritual
-				percentage += Math.ceil(this.archetype.focus.Ritual/tot*100)
+				percentage += Math.ceil(
+					(this.archetype.focus.Ritual / tot) * 100
+				)
 			}
-			if(this.archetype.focus.Fusion !== 0) {
-				returnStyle+=`${lastStyle} ${percentage/2}%, ${fusion} ${percentage}%,`
+			if (this.archetype.focus.Fusion !== 0) {
+				returnStyle += `${lastStyle} ${
+					percentage / 1.05
+				}%, ${fusion} ${percentage}%,`
 				lastStyle = fusion
-				percentage += Math.ceil(this.archetype.focus.Fusion/tot*100)
+				percentage += Math.ceil(
+					(this.archetype.focus.Fusion / tot) * 100
+				)
 			}
-			if(this.archetype.focus.Synchro !== 0) {
-				returnStyle+=`${lastStyle} ${percentage/2}%, ${synchro} ${percentage}%,`
+			if (this.archetype.focus.Synchro !== 0) {
+				returnStyle += `${lastStyle} ${
+					percentage / 1.05
+				}%, ${synchro} ${percentage}%,`
 				lastStyle = synchro
-				percentage += Math.ceil(this.archetype.focus.Synchro/tot*100)
+				percentage += Math.ceil(
+					(this.archetype.focus.Synchro / tot) * 100
+				)
 			}
-			if(this.archetype.focus.Xyz !== 0) {
-				returnStyle+=`${lastStyle} ${percentage/2}%, ${xyz} ${percentage}%,`
+			if (this.archetype.focus.Xyz !== 0) {
+				returnStyle += `${lastStyle} ${
+					percentage / 1.05
+				}%, ${xyz} ${percentage}%,`
 				lastStyle = xyz
-				percentage += Math.ceil(this.archetype.focus.Xyz/tot*100)
+				percentage += Math.ceil((this.archetype.focus.Xyz / tot) * 100)
 			}
-			if(this.archetype.focus.Link !== 0) {
-				returnStyle+=`${lastStyle} ${percentage/2}%, ${link} ${percentage}%,`
+			if (this.archetype.focus.Link !== 0) {
+				returnStyle += `${lastStyle} ${
+					percentage / 1.05
+				}%, ${link} ${percentage}%,`
 				lastStyle = link
-				percentage += Math.ceil(this.archetype.focus.Link/tot*100)
+				percentage += Math.ceil((this.archetype.focus.Link / tot) * 100)
 			}
-			console.log(percentage)
-			returnStyle+=lastStyle+" 100%"
-			console.log(returnStyle)
-
-			/*
-			if(percentage+this.archetype.focus["No Extra"]/tot*100 !== percentage) {
-				returnStyle += `${ritual} ${this.archetype.focus["No Extra"]/tot*100+percentage}%,`
-				percentage += this.archetype.focus["No Extra"]/tot*100
-			}
-
-			if(percentage+this.archetype.focus.Ritual/tot*100 !== percentage) {
-				returnStyle += `${fusion} ${this.archetype.focus.Ritual/tot*100+percentage}%,`
-				percentage += this.archetype.focus.Ritual/tot*100
-			}
-
-			if(percentage+this.archetype.focus.Fusion/tot*100 !== percentage) {
-				returnStyle += `${synchro} ${this.archetype.focus.Fusion/tot*100+percentage}%,`
-				percentage += this.archetype.focus.Fusion/tot*100)
-			}
-
-			if(percentage+this.archetype.focus.Synchro/tot*100 !== percentage) {
-			returnStyle += `${xyz} ${this.archetype.focus.Synchro/tot*100+percentage}%,`
-			percentage += Math.ceil(this.archetype.focus.Synchro/tot*100)
-			}
-
-			if(percentage+this.archetype.focus.Xyz/tot*100 !== percentage) {
-			returnStyle += `${link} ${this.archetype.focus.Xyz/tot*100+percentage}%,`
-			percentage += Math.ceil(this.archetype.focus.Xyz/tot*100)
-			}
-			*/
-
-			console.log(returnStyle)
+			returnStyle += lastStyle + " 100%"
 
 			return {
-				backgroundImage: `linear-gradient(0deg, ${returnStyle})`
+				backgroundImage: `linear-gradient(0deg, ${returnStyle}), url('/linkbg.png')`,
+				backgroundSize: "cover",
+				backgroundPosition: "center center",
 				//	backgroundImage: `linear-gradient(0deg, ${noExtra} 0%, ${ritual} 10%, ${fusion} 50%, ${synchro} 75%, ${xyz} 80%, ${link} 100%)`
 				//	backgroundImage: "linear-gradient(0deg, var(--color-light), rgba(214,214,177,0)), url('https://storage.googleapis.com/ygoprodeck.com/pics/38229962.jpg')"
 			}
@@ -219,76 +186,62 @@ export default {
 
 <style scoped>
 .archetype {
-	font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+	position: relative;
+	border: 2px solid var(--color-darker);
+	border-radius: var(--border-radius);
+	background-color: #b25124;
+}
+
+.archetype > * {
+	margin: var(--space-0);
+}
+
+.scales {
+	width: 100%;
+	justify-items: center;
+}
+
+.scales img {
+	height: 2vmax;
+}
+
+.name,
+.date-pack {
+	background: var(--color-darker);
+	border-radius: var(--border-radius);
+	padding: var(--space-0);
 	color: var(--color-light);
+	text-align: center;
 }
 
-.archetype {
-	flex-direction: column;
-	border: 2%;
-	border-radius: 1vh;
-	background-color: var(--color-darker);
+.name {
+	font-size: 95%;
 }
 
-.archetype-header,
-.archetype-footer {
-	display: flex;
-	justify-content: flex-end;
-	align-items: center;
-}
-
-.archetype-header div {
-	display: flex;
-	justify-content: flex-end;
-	flex-wrap: wrap;
-	margin: 1%;
-	width: 25%;
+.date-pack {
+	font-size: 75%;
 }
 
 .attribute,
 .type {
-	width: 12% !important;
-	margin: 0 1% 0 1%;
+	width: 100% !important;
 }
 
-.archetype-body {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.archetype-body .left {
-	margin: 1%;
-	width: 25%;
-
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-}
-
-.archetype-body .left img {
+.poster {
 	width: 100%;
-	border-radius: 10%;
+	border-radius: var(--border-radius);
 }
 
 .crest {
 	background-color: white;
-	width: 20% !important;
-	margin-top: 3%;
-	margin-bottom: -9%;
-	border-radius: 10%;
+	height: 3vmax;
+	margin: var(--space-0);
+	background-position: center center;
+	border-radius: var(--border-radius);
 }
 
-.archetype-body .right {
-	width: 75%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.archetype-body .right img {
-	width: 16%;
-	margin: 0 0.2% 0 0.2%;
+.crest img {
+	height: 100%;
+	border-radius: var(--border-radius);
 }
 </style>

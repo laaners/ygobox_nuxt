@@ -2,7 +2,7 @@
 	<div class="flex-col">
 		<grid-view
 			:columns="3"
-			col-gap="0.5"
+			:col-gap="0.5"
 			:row-gap="1"
 			style="width: 60%; justify-items: center; align-items: center"
 		>
@@ -22,13 +22,13 @@
 			<p>Vedere i pacchetti<br />Vedere le carte di un pacchetto</p>
 			<div class="done"></div>
 
-			<h2>Carca Carta</h2>
+			<h2>Cerca Carta</h2>
 			<p>Cercare le carte tra tutte e non solo dalla collezione</p>
 			<div class="done"></div>
 
 			<h2>Archetipi</h2>
 			<p>Vedere tutti gli archetipi e loro dettagli</p>
-			<div class="notdone"></div>
+			<div class="halfdone"></div>
 
 			<h2>Trivia</h2>
 			<p>Da una carta, trovare tutte le carte con quello nell'immagine o viceversa</p>
@@ -76,6 +76,13 @@ export default {
 	width: var(--font-size-body);
 	height: var(--font-size-body);
 	background: lightgreen;
+}
+
+.halfdone {
+	border-radius: 50%;
+	width: var(--font-size-body);
+	height: var(--font-size-body);
+	background: yellow;
 }
 
 .notdone {

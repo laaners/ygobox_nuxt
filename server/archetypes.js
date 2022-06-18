@@ -108,7 +108,7 @@ function arcFocus(arc) {
 			!monster.type.includes("Fusion") &&
 			!monster.type.includes("Synchro") &&
 			!monster.type.includes("XYZ") &&
-			!monster.type.includes("Pendulum") &&
+			/* !monster.type.includes("Pendulum") && */
 			!monster.type.includes("Link")
 		)
 			ris["No Extra"] += 1
