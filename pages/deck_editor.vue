@@ -659,8 +659,7 @@ export default {
 			if (e?.which === 3) {
 				try {
 					const cardId = +e.target.src
-						.split("/")
-						.at(-1)
+						.split("/")[e.target.src.split("/").length-1]
 						.replace(".jpg", "")
 					const toRemove = this.savedCards.find(
 						(_) => _.id === cardId
