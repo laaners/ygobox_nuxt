@@ -265,6 +265,15 @@ export function exceptionArc(arc, allcards, grouped) {
 			mergeWith("Dark Contract")
 			break
 		}
+		case "Charmer": {
+			mergeWith("Possessed")
+			const notMembers = [
+				"Possessed Dark Soul",
+				"Keldo the Possessed Statue",
+			]
+			excludeMembers(notMembers)
+			break
+		}
 		case "@Ignister": {
 			mergeWith("A.I.")
 			break

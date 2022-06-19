@@ -2,6 +2,23 @@
 	<div class="flex-col">
 		<div class="flex-col top-menu">
 			<h1>{{ archetypeList.length }} archetipi in questa sezione</h1>
+			<h4>ORDINE:</h4>
+			<grid-view
+				:columns="3"
+				:row-gap="0"
+				:col-gap="2"
+				style="width: 80%"
+			>				
+				<button-secondary
+					v-for="sortLabel of ['CRONOLOGICO', 'ALFABETICO', 'PER NUMERO MEMBRI']"
+					:key="sortLabel"
+					:title="sortLabel"
+					:style="{
+						opacity: sortFilter === sortLabel ? 1 : 0.5,
+					}"
+					@click.native="sortFilter = sortLabel"
+				/>
+			</grid-view>
 			<grid-view
 				:columns="9"
 				:col-gap="1"
@@ -45,13 +62,16 @@
 					<option label="10">10</option>
 				</select>
 			</div>
-			<h3 style="cursor: pointer;" @click="inclusiveAttributes = !inclusiveAttributes">
-				{{
-					inclusiveAttributes
-						? "ATTRIBUTI INCLUSIVI"
-						: "ATTRIBUTI ESCLUSIVI"
-				}}
-			</h3>
+			<span
+				style="cursor: pointer; font-weight: bolder;"
+				@click="inclusiveAttributes = !inclusiveAttributes"
+			>
+				INCLUDE
+				<span style="color: blue;">
+					{{ inclusiveAttributes ? "ANCHE" : "ESATTAMENTE E SOLO" }}
+				</span>
+				QUESTI ATTRIBUTI (CLICCAMI PER CAMBIARE)
+			</span>
 			<div class="flex-row" style="width: 100%; flex-wrap: wrap">
 				<img
 					v-for="attribute in attributes"
@@ -73,9 +93,16 @@
 					"
 				/>
 			</div>
-			<h3 style="cursor: pointer;" @click="inclusiveTypes = !inclusiveTypes">
-				{{ inclusiveTypes ? "TIPI INCLUSIVI" : "TIPI ESCLUSIVI" }}
-			</h3>
+			<span
+				style="cursor: pointer; font-weight: bolder;"
+				@click="inclusiveTypes = !inclusiveTypes"
+			>
+				INCLUDE
+				<span style="color: blue;">
+					{{ inclusiveTypes ? "ANCHE" : "ESATTAMENTE E SOLO" }}
+				</span>
+				QUESTI TIPI (CLICCAMI PER CAMBIARE)
+			</span>
 			<div class="flex-row" style="width: 100%; flex-wrap: wrap">
 				<img
 					v-for="type in types"
@@ -99,7 +126,6 @@
 			</div>
 			<!--
 				#members (sort by date)
-				waifu
 			-->
 		</div>
 		<div v-if="loading" class="loader"></div>
@@ -186,6 +212,7 @@ export default {
 			typeFilter: [],
 			inclusiveAttributes: false,
 			inclusiveTypes: false,
+			sortFilter: "CRONOLOGICO"
 		}
 	},
 	head() {
@@ -237,6 +264,12 @@ export default {
 				this.updateArchetypeList()
 			}, 10)
 		},
+		sortFilter(newV, oldV) {
+			this.loading = true
+			setTimeout(() => {
+				this.updateArchetypeList()
+			}, 10)
+		}
 	},
 	methods: {
 		updateArchetypeList() {
@@ -264,6 +297,21 @@ export default {
 				this.archetypeList.forEach((_) => {
 					_.focus["No Extra"] = 0
 				})
+			}
+			switch(this.sortFilter) {
+				case "CRONOLOGICO": {
+					this.archetypeList.sort((a, b) => (a.date > b.date ? -1 : 1))
+					break
+				}
+				case "ALFABETICO": {
+					this.archetypeList.sort((a, b) => (a.archetype.toUpperCase() > b.archetype.toUpperCase() ? 1 : -1))
+					break
+				}
+				case "PER NUMERO MEMBRI": {
+					this.archetypeList.sort((a, b) => (b.members - a.members))
+					break
+				}
+				default: break
 			}
 			switch (this.filter) {
 				case "Crest": {
