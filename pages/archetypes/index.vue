@@ -3,7 +3,7 @@
 		<div class="flex-col top-menu">
 			<h1>{{ archetypeList.length }} archetipi in questa sezione</h1>
 			<grid-view
-				:columns="8"
+				:columns="9"
 				:col-gap="1"
 				:row-gap="0"
 				style="width: 80%"
@@ -11,6 +11,7 @@
 				<button-secondary
 					v-for="(btn, i) of [
 						'Crest',
+						'Waifu',
 						'All',
 						'Ritual',
 						'Fusion',
@@ -44,7 +45,7 @@
 					<option label="10">10</option>
 				</select>
 			</div>
-			<h3 @click="inclusiveAttributes = !inclusiveAttributes">
+			<h3 style="cursor: pointer;" @click="inclusiveAttributes = !inclusiveAttributes">
 				{{
 					inclusiveAttributes
 						? "ATTRIBUTI INCLUSIVI"
@@ -72,7 +73,7 @@
 					"
 				/>
 			</div>
-			<h3 @click="inclusiveTypes = !inclusiveTypes">
+			<h3 style="cursor: pointer;" @click="inclusiveTypes = !inclusiveTypes">
 				{{ inclusiveTypes ? "TIPI INCLUSIVI" : "TIPI ESCLUSIVI" }}
 			</h3>
 			<div class="flex-row" style="width: 100%; flex-wrap: wrap">
@@ -101,6 +102,7 @@
 				waifu
 			-->
 		</div>
+		<div v-if="loading" class="loader"></div>
 		<grid-view
 			:columns="
 				archetypeList.length > 3
@@ -131,6 +133,7 @@ export default {
 	async asyncData({ $axios }) {
 		const { data } = await $axios.get("/api/archetypes")
 		return {
+			loading: false,
 			allArchetypes: data,
 			counter: 0,
 			archetypeList: data.filter(
@@ -199,27 +202,40 @@ export default {
 	},
 	watch: {
 		toggleExtraColor(newToggle, oldToggle) {
-			this.updateArchetypeList()
-			this.updateArchetypeList()
+			this.loading = true
+			setTimeout(() => {
+				this.updateArchetypeList()
+			}, 10)
 		},
 		filter(newFilter, oldFilter) {
-			console.log(newFilter)
-			this.updateArchetypeList()
-		},
-		archetypesPerRow(newV, oldV) {
-			console.log(newV)
+			this.loading = true
+			setTimeout(() => {
+				this.updateArchetypeList()
+			}, 10)
 		},
 		attributeFilter(newV, oldV) {
-			this.updateArchetypeList()
+			this.loading = true
+			setTimeout(() => {
+				this.updateArchetypeList()
+			}, 10)
 		},
 		typeFilter(newV, oldV) {
-			this.updateArchetypeList()
+			this.loading = true
+			setTimeout(() => {
+				this.updateArchetypeList()
+			}, 10)
 		},
 		inclusiveAttributes(newV, oldV) {
-			this.updateArchetypeList()
+			this.loading = true
+			setTimeout(() => {
+				this.updateArchetypeList()
+			}, 10)
 		},
 		inclusiveTypes(newV, oldV) {
-			this.updateArchetypeList()
+			this.loading = true
+			setTimeout(() => {
+				this.updateArchetypeList()
+			}, 10)
 		},
 	},
 	methods: {
@@ -253,6 +269,12 @@ export default {
 				case "Crest": {
 					this.archetypeList = this.archetypeList.filter(
 						(_) => _.crest !== undefined
+					)
+					break
+				}
+				case "Waifu": {
+					this.archetypeList = this.archetypeList.filter(
+						(_) => _.waifu
 					)
 					break
 				}
@@ -296,6 +318,7 @@ export default {
 					break
 				}
 			}
+			this.loading = false
 		},
 		getArchetypeList() {
 			const ris = JSON.parse(JSON.stringify(this.archetypeList))

@@ -1,12 +1,12 @@
 <template>
 	<div>
-		<h2 style="text-align: center">{{ arc }}</h2>
+		<h2 style="text-align: center" @click="artwork = !artwork">{{ arc }}</h2>
 		<grid-view :columns="7" :row-gap="0" :col-gap="0">
 			<card-modal
 				v-for="member of members"
 				:key="member.id"
 				:card-id="member.id"
-				:src="getPicUrl(member.id)"
+				:src="artwork ? getPicArtUrl(member.id) : getPicUrl(member.id)"
 				:rarity="'Common'"
 			/>
 		</grid-view>
@@ -131,6 +131,18 @@ export default {
 			artwork: false,
 			arc: id,
 			members,
+		}
+	},
+	head() {
+		return {
+			title: this.arc,
+			meta: [
+				{
+					hid: this.arc,
+					name: this.arc,
+					content: this.arc,
+				},
+			],
 		}
 	},
 	methods: {
