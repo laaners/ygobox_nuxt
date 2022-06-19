@@ -979,7 +979,7 @@
     {"arc":"Kuriboh","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/20065322.jpg"},
     {"arc":"Labrynth",
         "imgs": {
-            "Poster": 69895264,
+            "Poster": 2347656,
             "Effect": 2347656
         },
         "crest": "/crests/Labrynth.png"
@@ -1940,7 +1940,8 @@
             "Effect": 81914447,
             "Fusion": 18313046,
             "Synchro": 44708154
-        }
+        },
+        "waifu": "a"
     },
     {"arc":"Beetrooper","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/38229962.jpg"},
     {"arc":"Swordsoul",
@@ -1958,7 +1959,8 @@
             "Effect": 16474916,
             "Xyz": 59242457
         },
-        "crest": "https://ms.yugipedia.com//0/05/Crest-Exosister.png"
+        "crest": "https://ms.yugipedia.com//0/05/Crest-Exosister.png",
+        "waifu": "a"
     },
     {"arc":"Adventurer Token","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/100417029.jpg"},
     {"arc":"The Sanctuary in the Sky",
@@ -1972,6 +1974,32 @@
     {"arc":"D/D/D","url":"NO"},
     {"arc":"Abhyss","url":"NO"},
     {"arc":"White","url":"NO"},
-    {"arc":"Dinoruffia","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/25419323.jpg","waifu":"a"},
+    {"arc":"Tearalaments",
+        "imgs": {
+            "Poster": 74920585
+        },
+        "waifu": "a"
+    },
+    {"arc":"Dinomorphia",
+        "imgs": {
+            "Poster": 78420796
+        }
+    },
+    {"arc":"Exchange of the Spirit",
+        "imgs": {
+            "Poster": 17484499
+        }
+    },
+    {"arc":"Vernalizer Fairy", "imgs": { "Poster": 63708033 } },
+    {"arc":"Mysterune", "imgs": { "Poster": 92107604 } },
+    {"arc":"Splight", "imgs": { "Poster": 54498517} },
+    {"arc":"Hellfire", "imgs": { "Poster": 64104037} },
+    {"arc":"Valiants", "imgs": { "Poster": 40680521} },
+    {"arc":"Mokey Mokey", "imgs": { "Poster": 27288416} },
+    {"arc":"Kairyu-Shin", "imgs": { "Poster": 95602345} },
+    {"arc":"Therions", "imgs": { "Poster": 10604644} },
+    {"arc":"Scareclaw", "imgs": { "Poster": 82361809} },
+    {"arc":"Libromancer", "imgs": { "Poster": 15590355} },
+    {"arc":"Crystal", "imgs": { "Poster": 63945693} },
     {"arc":"Lady of Lament","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/25643346.jpg","waifu":"a"}
 ]    

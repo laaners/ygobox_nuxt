@@ -1,5 +1,6 @@
 import fs from "fs"
 import request from "request"
+import { load } from "cheerio"
 import bannedCards from "./data/bannedCards.json"
 
 function csvJSON(csv) {
@@ -117,6 +118,39 @@ function ocgAllCards() {
 	})
 }
 
+function getFemaleCards() {
+	console.log(`Retrieving all female cards`)
+	return new Promise((resolve, reject) => {
+		request(
+			{
+				//  url specificato con nome dal docker compose e non localhost
+				url: `https://yugioh.fandom.com/wiki/Concept:Female_official_cards?limit=10000`,
+				method: "GET",
+			},
+			function (error, resp, body) {
+				if (error || resp.statusCode !== 200) {
+					console.log("Got allsets from LOCAL")
+					resolve({})
+				} else {
+					const list = {}
+                    const $ = load(body);
+					$(".smw-column-responsive li").each(function(idx, li) {
+						const $li = $(li);
+						load($li.html())("a").each(function(idx, a) {
+							const $a = $(a);
+							if($a.text() !== "+") {
+								list[$a.text()] = true
+							}
+						});
+					});
+					console.log("Retrieved all female cards")
+                    resolve(list)
+				}
+			}
+		)
+	})
+}
+
 export async function initData() {
 	const taskAllSets = getAllSets()
 	//  const taskBannedCards = getBannedCards();
@@ -137,12 +171,13 @@ export async function initData() {
 	const allcards3 = await taskAllCards3
 	const allcards4 = await taskAllCards4
 	*/
-	const [allcards1, allcards2, allcards3, allcards4, allcardsToT] = await Promise.all([
+	const [allcards1, allcards2, allcards3, allcards4, allcardsToT, femaleCards] = await Promise.all([
 		allCardsSegment("01/01/1100", "01/01/2006"),
 		allCardsSegment("01/01/2006", "01/01/2012"),
 		allCardsSegment("01/01/2012", "01/01/2018"),
 		allCardsSegment("01/01/2018", "01/01/2024"),
-		ocgAllCards()
+		ocgAllCards(),
+		getFemaleCards()
 	])
 
 	const allcards = [
@@ -182,5 +217,6 @@ export async function initData() {
 		cardsIT,
 		allcards,
 		allcardsToT,
+		femaleCards
 	}
 }

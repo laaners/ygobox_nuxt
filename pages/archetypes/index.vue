@@ -9,36 +9,20 @@
 				style="width: 80%"
 			>
 				<button-secondary
-					:title="'Crest'"
-					@click.native="filter = 'Crest'"
-				/>
-				<button-secondary
-					:title="'All'"
-					@click.native="filter = 'All'"
-				/>
-				<button-secondary
-					:title="'Ritual'"
-					@click.native="filter = 'Ritual'"
-				/>
-				<button-secondary
-					:title="'Fusion'"
-					@click.native="filter = 'Fusion'"
-				/>
-				<button-secondary
-					:title="'Synchro'"
-					@click.native="filter = 'Synchro'"
-				/>
-				<button-secondary
-					:title="'Xyz'"
-					@click.native="filter = 'Xyz'"
-				/>
-				<button-secondary
-					:title="'Link'"
-					@click.native="filter = 'Link'"
-				/>
-				<button-secondary
-					:title="'Pendulum'"
-					@click.native="filter = 'Pendulum'"
+					v-for="(btn, i) of [
+						'Crest',
+						'All',
+						'Ritual',
+						'Fusion',
+						'Synchro',
+						'Xyz',
+						'Link',
+						'Pendulum',
+					]"
+					:key="btn + i"
+					:title="btn"
+					:style="{ opacity: filter === btn ? 1 : 0.5 }"
+					@click.native="filter = btn"
 				/>
 			</grid-view>
 			<button-secondary
@@ -60,33 +44,69 @@
 					<option label="10">10</option>
 				</select>
 			</div>
-			<div class="flex-row" style="width: 15%">
+			<h3 @click="inclusiveAttributes = !inclusiveAttributes">
+				{{
+					inclusiveAttributes
+						? "ATTRIBUTI INCLUSIVI"
+						: "ATTRIBUTI ESCLUSIVI"
+				}}
+			</h3>
+			<div class="flex-row" style="width: 100%; flex-wrap: wrap">
 				<img
 					v-for="attribute in attributes"
 					:key="attribute"
-					:src="attribute+'.png'"
-					:style="{ width: 100/attributes.length+'%', marginLeft: 'var(--space-0)', marginRight: 'var(--space-0)'}"
-					@click="attributeFilter = attribute"
+					:src="attribute + '.png'"
+					:style="{
+						width: 20 / attributes.length + '%',
+						marginLeft: 'var(--space-0)',
+						marginRight: 'var(--space-0)',
+						cursor: 'pointer',
+						opacity: attributeFilter.includes(attribute) ? 1 : 0.5,
+					}"
+					@click="
+						attributeFilter.includes(attribute)
+							? (attributeFilter = attributeFilter.filter(
+									(_) => _ !== attribute
+							  ))
+							: attributeFilter.push(attribute)
+					"
 				/>
- 			</div>
-			<div class="flex-row" style="width: 60%">
+			</div>
+			<h3 @click="inclusiveTypes = !inclusiveTypes">
+				{{ inclusiveTypes ? "TIPI INCLUSIVI" : "TIPI ESCLUSIVI" }}
+			</h3>
+			<div class="flex-row" style="width: 100%; flex-wrap: wrap">
 				<img
 					v-for="type in types"
 					:key="type"
-					:src="type.toUpperCase()+'.png'"
-					:style="{ width: 100/types.length+'%', marginLeft: 'var(--space-0)', marginRight: 'var(--space-0)'}"
-					@click="typeFilter = type"
+					:src="type.toUpperCase() + '.png'"
+					:style="{
+						width: 60 / types.length + '%',
+						marginLeft: 'var(--space-0)',
+						marginRight: 'var(--space-0)',
+						cursor: 'pointer',
+						opacity: typeFilter.includes(type) ? 1 : 0.5,
+					}"
+					@click="
+						typeFilter.includes(type)
+							? (typeFilter = typeFilter.filter(
+									(_) => _ !== type
+							  ))
+							: typeFilter.push(type)
+					"
 				/>
- 			</div>
+			</div>
 			<!--
-				attribute
-				types
 				#members (sort by date)
 				waifu
 			-->
 		</div>
 		<grid-view
-			:columns="archetypeList.length > 1 ? +archetypesPerRow : archetypeList.length+2"
+			:columns="
+				archetypeList.length > 3
+					? +archetypesPerRow
+					: archetypeList.length + 3
+			"
 			:col-gap="0.5"
 			:row-gap="10 / archetypeList.length"
 			style="align-self: flex-start"
@@ -113,14 +133,56 @@ export default {
 		return {
 			allArchetypes: data,
 			counter: 0,
-			archetypeList: data.filter((_) => _.crest !== undefined),
+			archetypeList: data.filter(
+				(_) => _.imgs.Poster === undefined || _.imgs === undefined
+			),
+			//	archetypeList: data.filter((_) => _.crest !== undefined),
+			//	archetypeList: data.filter((_) => !_.waifu),
 			filter: "Crest",
 			toggleExtraColor: false,
 			archetypesPerRow: 10,
-			attributes: ['EARTH', 'DARK', 'LIGHT', 'FIRE', 'WATER', 'WIND', 'DIVINE'],
-			types: ['Fairy', 'Beast', 'Fiend', 'Dragon', 'Thunder', 'Zombie', 'Spellcaster', 'Machine', 'Psychic', 'Aqua', 'Warrior', 'Sea Serpent', 'Reptile', 'Plant', 'Beast-Warrior', 'Cyberse', 'Dinosaur', 'Winged Beast', 'Fish', 'Wyrm', 'Insect', 'Rock', 'Pyro', 'Divine-Beast', 'Creator-God'],
-			attributeFilter: 'All',
-			typeFilter: 'All',
+			attributes: [
+				"EARTH",
+				"DARK",
+				"LIGHT",
+				"FIRE",
+				"WATER",
+				"WIND",
+				"DIVINE",
+				"SPELL",
+				"TRAP",
+			],
+			types: [
+				"Fairy",
+				"Beast",
+				"Fiend",
+				"Dragon",
+				"Thunder",
+				"Zombie",
+				"Spellcaster",
+				"Machine",
+				"Psychic",
+				"Aqua",
+				"Warrior",
+				"Sea Serpent",
+				"Reptile",
+				"Plant",
+				"Beast-Warrior",
+				"Cyberse",
+				"Dinosaur",
+				"Winged Beast",
+				"Fish",
+				"Wyrm",
+				"Insect",
+				"Rock",
+				"Pyro",
+				"Divine-Beast",
+				"Creator-God",
+			],
+			attributeFilter: [],
+			typeFilter: [],
+			inclusiveAttributes: false,
+			inclusiveTypes: false,
 		}
 	},
 	head() {
@@ -137,7 +199,6 @@ export default {
 	},
 	watch: {
 		toggleExtraColor(newToggle, oldToggle) {
-			console.log(newToggle)
 			this.updateArchetypeList()
 			this.updateArchetypeList()
 		},
@@ -153,29 +214,36 @@ export default {
 		},
 		typeFilter(newV, oldV) {
 			this.updateArchetypeList()
-		}
-
+		},
+		inclusiveAttributes(newV, oldV) {
+			this.updateArchetypeList()
+		},
+		inclusiveTypes(newV, oldV) {
+			this.updateArchetypeList()
+		},
 	},
 	methods: {
-		next() {
-			this.counter += 20
-			this.archetypeList = this.allArchetypes.slice(
-				this.counter,
-				this.counter + 20
-			)
-		},
-		prev() {
-			this.counter -= 20
-			this.archetypeList = this.allArchetypes.slice(
-				this.counter,
-				this.counter + 20
-			)
-		},
 		updateArchetypeList() {
 			this.archetypeList = JSON.parse(JSON.stringify(this.allArchetypes))
-			if(this.attributeFilter !== 'All') this.archetypeList = this.archetypeList.filter(_=>_.attributes.includes(this.attributeFilter))
-			if(this.typeFilter !== 'All') this.archetypeList = this.archetypeList.filter(_=>_.types.includes(this.typeFilter))
-			console.log(this.toggleExtraColor)
+			this.archetypeList = this.archetypeList.filter((_) => {
+				//	For each of attributeFilter, there exists an attribute in archetypes.attributes
+				return (
+					this.attributeFilter.length === 0 ||
+					(this.attributeFilter.every((aF) =>
+						_.attributes.includes(aF)
+					) &&
+						(this.attributeFilter.length === _.attributes.length ||
+							this.inclusiveAttributes))
+				)
+			})
+			this.archetypeList = this.archetypeList.filter((_) => {
+				return (
+					this.typeFilter.length === 0 ||
+					(this.typeFilter.every((tF) => _.types.includes(tF)) &&
+						(this.typeFilter.length === _.types.length ||
+							this.inclusiveTypes))
+				)
+			})
 			if (this.toggleExtraColor === true) {
 				this.archetypeList.forEach((_) => {
 					_.focus["No Extra"] = 0

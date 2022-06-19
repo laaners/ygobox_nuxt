@@ -13,7 +13,7 @@
 				</h3>
 			</a>
 			<grid-view
-				:columns="6"
+				:columns="archetype.attributes.length < 7 ? 6 : archetype.attributes.length"
 				:col-gap="2"
 				:row-gap="0"
 				style="width: 100%; margin-bottom: var(--space-0)"

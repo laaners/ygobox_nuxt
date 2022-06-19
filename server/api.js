@@ -10,9 +10,9 @@ app.use(express.json())
 
 export default app
 ;(async () => {
-	const { allsets, bannedCards, cardsCH, cardsIT, allcards, allcardsToT } =
+	const { allsets, bannedCards, cardsCH, cardsIT, allcards, allcardsToT, femaleCards } =
 		await initData()
-	const archetypes = retrieveArchetypes(allcardsToT, allsets)
+	const archetypes = retrieveArchetypes(allcardsToT, allsets, femaleCards)
 	console.log("Got all the data now!")
 
 	app.get("/", (req, res) => {
@@ -42,6 +42,8 @@ export default app
 						types: _.types,
 						crest: _?.crest,
 						focus: _.focus,
+						monsters: _.monsters,
+						waifu: _.waifu
 					}
 					return obj
 				})
@@ -50,6 +52,10 @@ export default app
 
 	app.get("/archetypes/:id", (req, res) => {
 		return res.json(archetypes.filter((_) => _.archetype === req.params.id))
+	})
+
+	app.get("/female_cards", (req, res) => {
+		return res.json(femaleCards)
 	})
 
 	app.get("/card/:id", (req, res) => {
@@ -258,7 +264,6 @@ export default app
 			setNameCorrect
 		})
 	})
-
 
 	function packImage(set_name) {
 		return `/sets/${

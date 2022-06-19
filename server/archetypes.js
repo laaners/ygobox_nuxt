@@ -60,25 +60,25 @@ function arcAttr(arc) {
 		if (monster.attribute === undefined) return
 		if (!ris.includes(monster.attribute)) ris.push(monster?.attribute)
 	})
-	if (ris.length === 0) {
-		if (arc.filter((_) => _.type.includes("Spell").length > 0))
+	//	if (ris.length === 0) {
+		if (arc.filter((_) => _.type.includes("Spell")).length > 0)
 			ris.push("SPELL")
-		if (arc.filter((_) => _.type.includes("Trap").length > 0))
+		if (arc.filter((_) => _.type.includes("Trap")).length > 0)
 			ris.push("TRAP")
-	}
+	//	}
 	return ris
 }
 
 function arcType(arc) {
 	const ris = []
-	arc.forEach((monster) => {
+	arc.filter((_) => _.type.includes("Monster")).forEach((monster) => {
 		if (monster.race === undefined) return
 		if (!ris.includes(monster.race)) ris.push(monster.race)
 	})
 	return ris
 }
 
-function arcFocus(arc) {
+function arcFocusAndWaifu(arc, femaleCards) {
 	/*
     Ritual
     Fusion
@@ -97,8 +97,11 @@ function arcFocus(arc) {
 		"Link",
 	]
 	const ris = {}
+	const monsters = arc.filter((_) => _.type.includes("Monster"))
+	let waifu = 0
 	focus.forEach((key) => (ris[key] = 0))
-	arc.filter((_) => _.type.includes("Monster")).forEach((monster) => {
+	monsters.forEach((monster) => {
+		if(femaleCards[monster.name] !== undefined) waifu += 1
 		focus.forEach((key) => {
 			if (monster.type.toUpperCase().includes(key.toUpperCase()))
 				ris[key] += 1
@@ -114,10 +117,13 @@ function arcFocus(arc) {
 			ris["No Extra"] += 1
 	})
 
-	return ris
+	return {
+		focus: ris,
+		waifu: waifu > monsters.length/2,
+	}
 }
 
-export function retrieveArchetypes(allcards, allsets) {
+export function retrieveArchetypes(allcards, allsets, femaleCards) {
 	const grouped = groupBy(
 		allcards.filter((_) => _.archetype !== undefined),
 		"archetype",
@@ -151,19 +157,21 @@ export function retrieveArchetypes(allcards, allsets) {
 	})
 
 	grouped.forEach((arc) => {
+		const { focus, waifu } = arcFocusAndWaifu(arc.members, femaleCards)
+		arc.focus = focus
+		arc.waifu = waifu
+
 		const arcPic = archetypesPics.find((x) => x.arc === arc.archetype)
 		if (arcPic === undefined) arc.imgs = { Poster: undefined }
 		else {
 			if (arcPic.imgs === undefined) arc.imgs = { Poster: arcPic.url }
 			else arc.imgs = arcPic.imgs
 			if (arcPic.crest !== undefined) arc.crest = arcPic.crest
+			arc.waifu = arc.waifu || arcPic.waifu !== undefined 
 		}
 
 		arc.attributes = arcAttr(arc.members)
 		arc.types = arcType(arc.members)
-
-		arc.focus = arcFocus(arc.members)
-		// arc["members"] = arc["members"].length;
 	})
 
 	grouped.sort((a, b) => (a.date > b.date ? -1 : 1))
