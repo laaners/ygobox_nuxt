@@ -140,9 +140,9 @@
 				v-for="(archetype, index) of archetypeList"
 				:key="`archetype-index-${archetype.true_name + index}`"
 				:archetype="archetype"
-				class="flex-elem"
 			/>
 		</grid-view>
+
 	</div>
 </template>
 

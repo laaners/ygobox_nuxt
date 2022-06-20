@@ -1,30 +1,55 @@
 <template>
 	<div class="flex-col">
-		<grid-view
-			:columns="3"
-			:col-gap="0.5"
-			:row-gap="1"
-			style="width: 60%; justify-items: center; align-items: center"
-		>
-			<h2>Trivia</h2>
-			<p>Da una carta, trovare tutte le carte con quello nell'immagine o viceversa</p>
-			<div class="notdone"></div>
-		</grid-view>
+		<div class="flex-col" style="width: 100%">
+			<input
+				v-model="root"
+				type="text"
+				list="allcards"
+				placeholder="Digita il nome di una carta!"
+				style="width: 20%"
+			/>
+			<datalist id="allcards">
+				<option
+					v-for="(card, i) of allcards"
+					:key="card.id + i"
+					:value="card.name"
+				>
+					{{ card.name }}
+				</option>
+			</datalist>
+			<button-secondary :title="'CERCA'" @click.native="startGraph()" />
+			<div>
+				<div
+					id="mainCanvas"
+					class="canvas"
+					style="width: 95vw; height: 95vh; border: 1px solid black"
+				>
+					<div
+						v-for="(draggable, i) of connections"
+						:id="draggable.id"
+						:key="'elem' + draggable.id + i"
+						class="block draggable"
+					>
+						<img :src="getPicSmallUrl(draggable.id)" />
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </template>
 
 <script>
-import GridView from "../components/GridView.vue"
+import ButtonSecondary from "../components/ButtonSecondary.vue"
 import Utils from "~/mixins/utils"
 export default {
 	name: "IndexPage",
-	components: { GridView },
+	components: { ButtonSecondary },
 	mixins: [Utils],
 	data: () => ({
 		allcards: [],
-		bannedCards: [],
-		savedCards: [],
-		deck: [],
+		hashAllcards: {},
+		connections: [],
+		root: "",
 	}),
 	head() {
 		return {
@@ -38,6 +63,23 @@ export default {
 			],
 		}
 	},
+	async mounted() {
+		this.allcards = await this.getAllCards()
+		this.hashAllcards = this.hashGroupBy(this.allcards, "name")
+	},
+	methods: {
+		async startGraph() {
+			this.connections = await this.$axios.$get(
+				`/api/trivia/${this.root}`
+			)
+			this.connections.push({
+				id: this.hashAllcards[this.root][0].id,
+				name: this.root,
+				desc: "",
+			})
+			console.log(this.connections[0])
+		},
+	},
 	/*
 	async mounted() {
 		this.allcards = await this.getAllCards()
@@ -47,21 +89,20 @@ export default {
 </script>
 
 <style scoped>
-.done {
-	border-radius: 50%;
-	width: var(--font-size-body);
-	height: var(--font-size-body);
-	background: lightgreen;
+.flex-col > * {
+	margin: var(--space-0);
 }
 
-.notdone {
-	border-radius: 50%;
-	width: var(--font-size-body);
-	height: var(--font-size-body);
-	background: red;
+.canvas {
+	overflow: scroll;
 }
 
-p {
-	text-align: center;
+img {
+	width: 5vw;
 }
+
+.connector {
+	border: 1px solid black;
+}
+
 </style>

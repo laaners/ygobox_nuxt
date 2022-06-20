@@ -1,6 +1,8 @@
 /* eslint-disable no-eval */
 import express from "express"
 import bodyParser from "body-parser"
+import request from "request"
+import { load } from "cheerio"
 import { initData } from "./database"
 import { retrieveArchetypes } from "./archetypes"
 import archetypesBlacklist from "./data/blacklist.json"
@@ -13,6 +15,7 @@ export default app
 	const { allsets, bannedCards, cardsCH, cardsIT, allcards, allcardsToT, femaleCards } =
 		await initData()
 	const archetypes = retrieveArchetypes(allcardsToT, allsets, femaleCards)
+	const hashAllCards = hashGroupBy(allcardsToT, "name")
 	console.log("Got all the data now!")
 
 	app.get("/", (req, res) => {
@@ -265,6 +268,43 @@ export default app
 		})
 	})
 
+	app.get("/trivia/:id", (req, res) => {
+		const card = req.params.id
+		request({
+			url: encodeURI(`https://yugipedia.com/wiki/Card_Trivia:${card.replace(/ /g,"_")}`),
+			method: 'GET'
+		}, function(error, resp, body){
+			if(error || resp.statusCode !== 200) {
+				const msg = "ERRORE: "+`https://yugipedia.com/wiki/Card_Trivia:${card.replace(/ /g,"_")}`+" "+error
+				console.log(msg)
+				return res.json([msg])
+			}
+			else {
+				const $ = load(body);
+				//	const lines = $(".mw-parser-output").html().split("\n").filter(_=>_.includes("<li>") && _.includes("href="));
+				let ris = []
+				$(".mw-parser-output li").each(function(idx, li) {
+					const $li = $(li);
+					const desc = $li.text().replace(/\n/g,"\n\t\t");
+					const relatedCardsList = []
+					load($li.html())("a").each(function(idx, a) {
+						const $a = $(a);
+						const att = $a.attr('title');
+						if(att !== undefined) relatedCardsList.push({ card: att, desc})
+					});
+					ris = ris.concat(relatedCardsList.filter(_=>hashAllCards[_.card] !== undefined))
+				});
+				return res.json(ris.map(_ => {
+					return {
+						id: hashAllCards[_.card][0].id,
+						name: _.card,
+						desc: _.desc
+					}
+				}))
+			}
+		});
+	})
+
 	function packImage(set_name) {
 		return `/sets/${
 			allsets.find(
@@ -328,6 +368,19 @@ export default app
 			}
 		})
 		return tmpArr
+	}
+
+	function hashGroupBy(obj, key) {
+		const ris = {}
+		if (obj[0][key] === undefined) return ris
+		obj.forEach((elem) => {
+			const risElem = ris[elem[key]]
+			if (risElem === undefined) {
+				const toPush = [elem]
+				ris[elem[key]] = toPush
+			} else risElem.push(elem)
+		})
+		return ris
 	}
 
 	app.post("/search_cards", (req, res) => {

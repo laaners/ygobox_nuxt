@@ -32,6 +32,7 @@
 				@change="handleFile"
 			/>
 		</div>
+		<!--
 		<button-secondary
 			v-if="savedCards.length === 0 && allcards.length > 0"
 			style="left: auto; right: auto; margin-top: var(--space-1) !important;"
@@ -49,6 +50,7 @@
 				recentlySaved = true
 			"
 		/>
+		-->
 		<div v-if="savedCards.length > 0" class="flex-col">
 			<h1>
 				HAI {{ savedCards.length }} CARTE DIVERSE NELLA TUA COLLEZIONE!

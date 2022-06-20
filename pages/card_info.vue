@@ -58,7 +58,6 @@ import GridView from "../components/GridView.vue"
 import CardModal from "../components/CardModal.vue"
 import ButtonSecondary from "../components/ButtonSecondary.vue"
 import Utils from "~/mixins/utils"
-
 export default {
 	name: "CardInfoPage",
 	components: { SearchForm, CardModal, GridView, ButtonSecondary },
