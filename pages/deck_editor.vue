@@ -32,29 +32,27 @@
 				@change="handleFile"
 			/>
 		</div>
-		<!--
 		<button-secondary
 			v-if="savedCards.length === 0 && allcards.length > 0"
-			style="left: auto; right: auto;"
-			:title="'RICOMINCIA DA ZERO'"
+			style="left: auto; right: auto; margin-top: var(--space-1) !important;"
+			:title="'TESTING MODE'"
 			@click.native="
 				savedCards = [
 					{
 						id: 24094653,
-						copies: 3,
-						checked: 3,
+						copies: 20,
+						checked: 20,
 						favourite: true,
 						sets: ['2002-03-08 Legend of Blue Eyes White Dragon'],
 					},
-				]
+				];
+				recentlySaved = true
 			"
 		/>
-		-->
 		<div v-if="savedCards.length > 0" class="flex-col">
 			<h1>
 				HAI {{ savedCards.length }} CARTE DIVERSE NELLA TUA COLLEZIONE!
 			</h1>
-
 			<div class="flex-row after-page">
 				<div
 					class="flex-col deck-container"
@@ -367,7 +365,6 @@
 					</div>
 				</div>
 			</div>
-
 			<div class="flex-col pack-section">
 				<input
 					ref="openPack"
@@ -397,26 +394,6 @@
 				>
 					<img id="pack-img" ref="packImg" loading="lazy" />
 					<h3 ref="packInfo"></h3>
-					<h4>ORDINA PER:</h4>
-					<grid-view
-						:columns="3"
-						:row-gap="0"
-						:col-gap="2"
-						style="width: 80%"
-					>
-						<button-secondary
-							:title="'RARITÀ'"
-							@click.native="sort('rarity')"
-						/>
-						<button-secondary
-							:title="'ORDINE DEFAULT DEL PACCHETTO'"
-							@click.native="sort('default')"
-						/>
-						<button-secondary
-							:title="'CATEGORIA'"
-							@click.native="sort('category')"
-						/>
-					</grid-view>
 					<grid-view
 						class="cardsPack"
 						:columns="packAppendCards.length < 6 ? 4 : 6"
@@ -969,30 +946,6 @@ export default {
 			this.packLoading = false
 			this.recentlySaved = false
 		},
-		sort(option) {
-			switch (option) {
-				case "rarity": {
-					this.packAppendCards.sort(
-						(a, b) => a.rarity.percentage - b.rarity.percentage
-					)
-					break
-				}
-				case "category": {
-					this.packAppendCards = this.categorySort(
-						this.packAppendCards
-					)
-					break
-				}
-				default:
-					this.packAppendCards.sort((a, b) => {
-						const setCodeA = a.rarity.set_code
-						const setCodeB = b.rarity.set_code
-						if (setCodeA < setCodeB) return -1
-						if (setCodeA > setCodeB) return 1
-						return 0
-					})
-			}
-		},
 		getFavouriteStyle(cardId) {
 			if (this.savedCards.find((_) => _.id === cardId).favourite)
 				return {
@@ -1016,7 +969,6 @@ export default {
 			const checkboxes = this.$el.querySelectorAll(
 				`input[value='${cardId}']`
 			)
-			console.log(value)
 			if (checkboxes.length !== 0) {
 				if(value) {
 					for (const checkbox of checkboxes) {

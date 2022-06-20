@@ -147,15 +147,16 @@ export function retrieveArchetypes(allcards, allsets, femaleCards) {
 			.forEach((member) => {
 				if (!arc.members.includes(member)) arc.members.push(member)
 			})
-
 		arc.true_name = arc.archetype
 	})
 
 	grouped.forEach((arc) => {
 		exceptionArc(arc, allcards, grouped)
+		arc.members = arc.members.filter(_=>!(_.type+_.race).includes("Token") && !(_.type+_.race).includes("Skill"))
 		arc.date = searchDate(arc.members, arc.archetype, allsets)
 	})
 
+	//	Poster based on changed name
 	grouped.forEach((arc) => {
 		const { focus, waifu } = arcFocusAndWaifu(arc.members, femaleCards)
 		arc.focus = focus

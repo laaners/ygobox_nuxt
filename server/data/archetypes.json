@@ -383,13 +383,15 @@
             "Poster": 72060415,
             "Effect": 78868119,
             "Synchro": 50793215
-        }
+        },
+        "waifu": "a"
     },
     {"arc":"Ruin & Demise",
         "imgs": {
             "Poster": 13518809,
             "Ritual": 59913418
-        }
+        },
+        "waifu": "a"
     },
     {"arc":"Deskbot",
         "imgs": {
@@ -547,7 +549,11 @@
     },
     {"arc":"Evil HERO","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/58332301.jpg"},
     {"arc":"Evil★Twin & Live☆Twin",
-        "url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/62098216.jpg","waifu":"a"},
+        "url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/62098216.jpg",
+        "waifu":"a",
+        "crest": "/crests/EvilTwinLiveTwin.png",
+        "credit": "https://www.pixiv.net/en/users/1156555/artworks"
+    },
     {"arc":"Evilswarm",
         "imgs": {
             "Poster": 35419032,
@@ -657,7 +663,10 @@
             "Xyz": 90809975
         }
     },
-    {"arc":"Fur Hire","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/48214588.jpg"},
+    {"arc":"Fur Hire","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/48214588.jpg",
+        "crest":"/crests/Fur Hire.png",
+        "credit": "https://www.pixiv.net/en/users/1156555/artworks"
+    },
     {"arc":"Gadget",
         "imgs": {
             "Poster": 63717421,
@@ -750,7 +759,8 @@
             "Ritual": 66729231,
             "Xyz": 76372778
         },
-        "crest": "https://ms.yugipedia.com//b/bb/Crest-Gishki.svg"
+        "crest": "https://ms.yugipedia.com//b/bb/Crest-Gishki.svg",
+        "waifu": "a"
     },
     {"arc":"Gizmek","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/24793135.jpg"},
     {"arc":"Glacial Beast","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/6568731.jpg"},
@@ -804,7 +814,8 @@
             "Synchro": 10755984,
             "Xyz": 581014
         },
-        "crest": "https://ms.yugipedia.com//2/21/Crest-Gusto.svg"
+        "crest": "https://ms.yugipedia.com//2/21/Crest-Gusto.svg",
+        "waifu": "a"
     },
     {"arc":"HERO","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/73239437.jpg"},
     {"arc":"Harpie",
@@ -982,7 +993,8 @@
             "Poster": 2347656,
             "Effect": 2347656
         },
-        "crest": "/crests/Labrynth.png"
+        "crest": "/crests/Labrynth.png",
+        "waifu": "a"
     },
     {"arc":"Laval",
         "imgs": {
@@ -1002,7 +1014,7 @@
     },
     {"arc":"Lightsworn",
         "imgs": {
-            "Poster": 32233746,
+            "Poster": 30100551,
             "Effect": 57774843,
             "Synchro": 4779823,
             "Xyz": 30100551,
@@ -1121,7 +1133,7 @@
     },
     {"arc":"Mecha Phantom Beast",
         "imgs": {
-            "Poster": 904185,
+            "Poster": 22110647,
             "Synchro": 26949946,
             "Xyz": 22110647,
             "Link": 44097050
@@ -1216,7 +1228,7 @@
         "credit": "https://www.pixiv.net/en/users/1156555/artworks"
     },
     {"arc":"Nemeses","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/6728559.jpg"},
-    {"arc":"Neo-Spacian",
+    {"arc":"Neos & Neo-Spacian",
         "imgs": {
             "Poster": 74414885,
             "Effect": 89943723,
@@ -2001,5 +2013,6 @@
     {"arc":"Scareclaw", "imgs": { "Poster": 82361809} },
     {"arc":"Libromancer", "imgs": { "Poster": 15590355} },
     {"arc":"Crystal", "imgs": { "Poster": 63945693} },
+    {"arc":"Pendulum Magician", "imgs": { "Poster": 53208660} },
     {"arc":"Lady of Lament","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/25643346.jpg","waifu":"a"}
 ]    

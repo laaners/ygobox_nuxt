@@ -28,7 +28,7 @@
 
 			<h2>Archetipi</h2>
 			<p>Vedere tutti gli archetipi e loro dettagli</p>
-			<div class="halfdone"></div>
+			<div class="done"></div>
 
 			<h2>Trivia</h2>
 			<p>Da una carta, trovare tutte le carte con quello nell'immagine o viceversa</p>

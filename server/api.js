@@ -51,7 +51,7 @@ export default app
 	})
 
 	app.get("/archetypes/:id", (req, res) => {
-		return res.json(archetypes.filter((_) => _.archetype === req.params.id))
+		return res.json(archetypes.find((_) => _.archetype === req.params.id))
 	})
 
 	app.get("/female_cards", (req, res) => {

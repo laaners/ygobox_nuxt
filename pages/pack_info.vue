@@ -71,16 +71,13 @@
 				style="width: 80%"
 			>
 				<button-secondary
-					:title="'DEFAULT'"
-					@click.native="sort('default')"
-				/>
-				<button-secondary
-					:title="'RARITÀ'"
-					@click.native="sort('rarity')"
-				/>
-				<button-secondary
-					:title="'CATEGORIA'"
-					@click.native="sort('category')"
+					v-for="sortLabel of ['DEFAULT', 'RARITÀ', 'CATEGORIA']"
+					:key="sortLabel"
+					:title="sortLabel"
+					:style="{
+						opacity: sortFilter === sortLabel ? 1 : 0.5,
+					}"
+					@click.native="sortFilter = sortLabel"
 				/>
 			</grid-view>
 			<grid-view
@@ -115,25 +112,12 @@ export default {
 		ContainerPackScroll,
 	},
 	mixins: [Utils],
-	/*
-	async asyncData({ $axios }) {
-		const allsets = await $axios.$get("/api/allsets")
-		return {
-			allsets: allsets
-				.filter(
-					(_) =>
-						_.tcg_date !== undefined &&
-						!_.set_name.toLowerCase().includes("sneak peek")
-				)
-				.sort((a, b) => (a.tcg_date > b.tcg_date ? 1 : -1)),
-		}
-	},
-	*/
 	data: () => ({
 		appendCards: [],
 		allsets: [],
 		dateFilter: "1900",
 		clickedSet: "",
+		sortFilter: 'DEFAULT'
 	}),
 	head() {
 		return {
@@ -147,12 +131,30 @@ export default {
 			],
 		}
 	},
-	/*
-	async fetch() {
-		this.allcards = await this.getAllCards()
+	watch: {
+		sortFilter(newV, olV) {
+			switch (newV) {
+				case "RARITÀ": {
+					this.appendCards.sort(
+						(a, b) => a.rarity.percentage - b.rarity.percentage
+					)
+					break
+				}
+				case "CATEGORIA": {
+					this.appendCards = this.categorySort(this.appendCards)
+					break
+				}
+				default:
+					this.appendCards.sort((a, b) => {
+						const setCodeA = a.rarity.set_code
+						const setCodeB = b.rarity.set_code
+						if (setCodeA < setCodeB) return -1
+						if (setCodeA > setCodeB) return 1
+						return 0
+					})
+			}
+		}
 	},
-    fetchOnServer: true,
-    */
 	async mounted() {
 		const allsets = await this.$axios.$get("/api/allsets")
 		this.allsets = allsets
@@ -190,28 +192,7 @@ export default {
 				" carte diverse nel pacchetto\nSe apri il pacchetto avrai " +
 				draftN +
 				" carte a caso tra queste:"
-		},
-		sort(option) {
-			switch (option) {
-				case "rarity": {
-					this.appendCards.sort(
-						(a, b) => a.rarity.percentage - b.rarity.percentage
-					)
-					break
-				}
-				case "category": {
-					this.appendCards = this.categorySort(this.appendCards)
-					break
-				}
-				default:
-					this.appendCards.sort((a, b) => {
-						const setCodeA = a.rarity.set_code
-						const setCodeB = b.rarity.set_code
-						if (setCodeA < setCodeB) return -1
-						if (setCodeA > setCodeB) return 1
-						return 0
-					})
-			}
+			this.sortFilter = 'DEFAULT'
 		},
 	},
 }

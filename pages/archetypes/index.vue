@@ -124,14 +124,11 @@
 					"
 				/>
 			</div>
-			<!--
-				#members (sort by date)
-			-->
 		</div>
 		<div v-if="loading" class="loader"></div>
 		<grid-view
 			:columns="
-				archetypeList.length > 3
+				archetypeList.length > 2
 					? +archetypesPerRow
 					: archetypeList.length + 3
 			"
@@ -162,10 +159,12 @@ export default {
 			loading: false,
 			allArchetypes: data,
 			counter: 0,
+			/*
 			archetypeList: data.filter(
 				(_) => _.imgs.Poster === undefined || _.imgs === undefined
 			),
-			//	archetypeList: data.filter((_) => _.crest !== undefined),
+			*/
+			archetypeList: data.filter((_) => _.crest !== undefined),
 			//	archetypeList: data.filter((_) => !_.waifu),
 			filter: "Crest",
 			toggleExtraColor: false,
@@ -293,11 +292,6 @@ export default {
 							this.inclusiveTypes))
 				)
 			})
-			if (this.toggleExtraColor === true) {
-				this.archetypeList.forEach((_) => {
-					_.focus["No Extra"] = 0
-				})
-			}
 			switch(this.sortFilter) {
 				case "CRONOLOGICO": {
 					this.archetypeList.sort((a, b) => (a.date > b.date ? -1 : 1))
@@ -342,7 +336,7 @@ export default {
 							}
 						}
 						return (
-							arc.focus.Pendulum > 1 && arc.focus.Pendulum === max
+							arc.focus.Pendulum >= 1 && arc.focus.Pendulum === max
 						)
 					})
 					break
@@ -359,12 +353,17 @@ export default {
 								max = arc.focus[key]
 						}
 						return (
-							arc.focus[this.filter] > 1 &&
+							arc.focus[this.filter] >= 1 &&
 							arc.focus[this.filter] === max
 						)
 					})
 					break
 				}
+			}
+			if (this.toggleExtraColor === true) {
+				this.archetypeList.forEach((_) => {
+					_.focus["No Extra"] = 0
+				})
 			}
 			this.loading = false
 		},

@@ -31,7 +31,7 @@ export function exceptionArc(arc, allcards, grouped) {
 			})
 	}
 
-	function mergeWith(toaddArc) {
+	function mergeWith(toaddArc) { //	Date of arc and NOT of toAddArc!!!
 		const toaddObj = grouped.find((_) => _.archetype === toaddArc)
 		toaddObj.members.forEach((member) => {
 			if (!arc.members.includes(member)) arc.members.push(member)
@@ -45,6 +45,38 @@ export function exceptionArc(arc, allcards, grouped) {
 		}
 		case "Frog": {
 			excludeMembers(["Slime Toad"])
+			break
+		}
+		case "Herald": {
+			const notMembers = [
+				"Zeradias, Herald of Heaven",
+				"Advanced Heraldry Art",
+				"Augmented Heraldry",
+				"Charged-Up Heraldry",
+				"Heraldic Beast Aberconway",
+				"Heraldic Beast Amphisbaena",
+				"Heraldic Beast Basilisk",
+				"Heraldic Beast Berners Falcon",
+				"Heraldic Beast Eale",
+				"Heraldic Beast Leo",
+				"Heraldic Beast Twin-Headed Eagle",
+				"Heraldic Beast Unicorn",
+				"Heraldry Change",
+				"Heraldry Reborn",
+				"Heraldry Record",
+				"Number 18: Heraldry Patriarch",
+				"Number 69: Heraldry Crest",
+				"Number 8: Heraldic King Genom-Heritage",
+				"Number C69: Heraldry Crest of Horror",
+			]
+			excludeMembers(notMembers)
+			break
+		}
+		case "Neo-Spacian": {
+			changeName("Neos & Neo-Spacian")
+			nameIncludes("Neos")
+			descIncludes("Neos")
+			mergeWith("Neo Space")
 			break
 		}
 		case "Earthbound": {
@@ -90,33 +122,16 @@ export function exceptionArc(arc, allcards, grouped) {
 			excludeMembers(["Dogmatika Fleurdelis, the Knighted"])
 			break
 		}
-		case "Herald": {
-			const notMembers = [
-				"Zeradias, Herald of Heaven",
-				"Advanced Heraldry Art",
-				"Augmented Heraldry",
-				"Charged-Up Heraldry",
-				"Heraldic Beast Aberconway",
-				"Heraldic Beast Amphisbaena",
-				"Heraldic Beast Basilisk",
-				"Heraldic Beast Berners Falcon",
-				"Heraldic Beast Eale",
-				"Heraldic Beast Leo",
-				"Heraldic Beast Twin-Headed Eagle",
-				"Heraldic Beast Unicorn",
-				"Heraldry Change",
-				"Heraldry Reborn",
-				"Heraldry Record",
-				"Number 18: Heraldry Patriarch",
-				"Number 69: Heraldry Crest",
-				"Number 8: Heraldic King Genom-Heritage",
-				"Number C69: Heraldry Crest of Horror",
-			]
-			excludeMembers(notMembers)
-			break
-		}
 		case "Starry Knight": {
 			includeMembers(["Starry Night, Starry Dragon"])
+			break
+		}
+		case "Blue-Eyes": {
+			includeMembers(["Azure-Eyes Silver Dragon"])
+			break
+		}
+		case "Digital Bug": {
+			includeMembers(["Bug Emergency","Bug Matrix","Bug Signal"])
 			break
 		}
 		case "Nemesys": {
@@ -174,6 +189,31 @@ export function exceptionArc(arc, allcards, grouped) {
 			includeMembers(["W Nebula Meteorite"])
 			break
 		}
+		case "Djinn": {
+			arc.members = arc.members.filter((_) => {
+				return _.type.toUpperCase().includes("XYZ")
+			})
+			break
+		}
+		case "Magician": {
+			changeName("Pendulum Magician")
+			arc.members = arc.members.filter((_) => {
+				return (
+					(
+						_.type.includes("Monster") &&
+						(
+							_.type.toUpperCase().includes("PENDULUM") ||
+							_.desc.includes("Pendulum")
+						)
+					) || 
+					(
+						!_.type.includes("Monster") &&
+						_.desc.includes("Pendulum")
+					)
+				)
+			})
+			break
+		}
 		case "Majestic": {
 			const notMembers = [
 				"Majestic Mech - Goryu",
@@ -209,6 +249,7 @@ export function exceptionArc(arc, allcards, grouped) {
 			mergeWith("Masked HERO")
 			mergeWith("Vision HERO")
 			mergeWith("Evil HERO")
+			descIncludes('"Change" Quick-Play')
 			break
 		}
 		case "The Agent": {
@@ -245,6 +286,7 @@ export function exceptionArc(arc, allcards, grouped) {
 			mergeWith("Gagaga")
 			mergeWith("Dododo")
 			nameIncludes("Zubaba")
+			descIncludes("Zubaba")
 			mergeWith("Gogogo")
 			break
 		}
@@ -255,6 +297,11 @@ export function exceptionArc(arc, allcards, grouped) {
 		case "Fluffal": {
 			mergeWith("Frightfur")
 			mergeWith("Edge Imp")
+			break
+		}
+		case "Sunavalon": {
+			mergeWith("Sunvine")
+			mergeWith("Sunseed")
 			break
 		}
 		case "Heraldic": {
@@ -274,6 +321,10 @@ export function exceptionArc(arc, allcards, grouped) {
 			excludeMembers(notMembers)
 			break
 		}
+		case "Zexal": {
+			mergeWith("ZEXAL")
+			break
+		}
 		case "@Ignister": {
 			mergeWith("A.I.")
 			break
@@ -283,6 +334,11 @@ export function exceptionArc(arc, allcards, grouped) {
 			break
 		}
 		case "Infernoble Knight": {
+			mergeWith("Roland")
+			break
+		}
+		case "Noble Knight": {
+			mergeWith("Infernoble Knight")
 			mergeWith("Roland")
 			break
 		}
@@ -297,10 +353,18 @@ export function exceptionArc(arc, allcards, grouped) {
 		}
 		case "Infernoid": {
 			mergeWith("Void")
+			const notMembers = [
+				"Unformed Void"
+			]
+			excludeMembers(notMembers)
 			break
 		}
 		case "Infernity": {
 			mergeWith("Void")
+			const notMembers = [
+				"Unformed Void"
+			]
+			excludeMembers(notMembers)
 			break
 		}
 		default:

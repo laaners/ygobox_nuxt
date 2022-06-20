@@ -2,10 +2,8 @@
     "Madoor",
     "Star",
     "White",
-    "Magician",
     "Man-Eater Bug",
     "Angel",
-    "Forbidden",
     "Knight",
     "Doll",
     "Bugroth",
@@ -37,7 +35,6 @@
     "Symphonic",
     "Trap Monster",
     "Vassal",
-    "Neo Space",
     "Jester",
     "Synchro",
     "D/D/D",
@@ -46,6 +43,7 @@
     "Puppet",
     "Mayakashi\n Shiranui",
 
+    "Forbidden",
     "Jar",
     "Book of",
     "Greed",
@@ -86,5 +84,9 @@
     "Attraction",
     "Dark Contract",
     "Void",
-    "Possessed"
+    "Possessed",
+    "ZEXAL",
+    "Sunvine",
+    "Sunseed",
+    "Neo Space"
 ]
