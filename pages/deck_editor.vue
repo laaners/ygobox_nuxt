@@ -645,7 +645,7 @@ export default {
 		},
 		/* DECK CONTAINER */
 		removeFromDeck(e) {
-			if (e?.which === 3) {
+			if (e?.which === 3 && e.target === e.currentTarget.querySelector("img")) {
 				try {
 					const cardId = +e.target.src
 						.split("/")[e.target.src.split("/").length-1]

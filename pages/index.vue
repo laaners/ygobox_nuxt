@@ -31,8 +31,8 @@
 			<div class="done"></div>
 
 			<h2>Trivia</h2>
-			<p>Da una carta, trovare tutte le carte con quello nell'immagine o viceversa</p>
-			<div class="notdone"></div>
+			<p>Da una carta, trovare tutte le carte con quello nell'immagine o collegate e viceversa, costruendo un grafo</p>
+			<div class="done"></div>
 		</grid-view>
 	</div>
 </template>

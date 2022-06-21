@@ -277,7 +277,7 @@ export default app
 			if(error || resp.statusCode !== 200) {
 				const msg = "ERRORE: "+`https://yugipedia.com/wiki/Card_Trivia:${card.replace(/ /g,"_")}`+" "+error
 				console.log(msg)
-				return res.json([msg])
+				return res.json([])
 			}
 			else {
 				const $ = load(body);
