@@ -160,17 +160,50 @@ export async function initData() {
 	const allsets = await taskAllSets
 	//  const bannedCards = await taskBannedCards;
 
-	/*
-	const taskAllCards1 = allCardsSegment("01/01/1100", "01/01/2006")
-	const taskAllCards2 = allCardsSegment("01/01/2006", "01/01/2012")
-	const taskAllCards3 = allCardsSegment("01/01/2012", "01/01/2018")
-	const taskAllCards4 = allCardsSegment("01/01/2018", "01/01/2024")
+	const [allcardsToT, femaleCards] = await Promise.all([
+		ocgAllCards(),
+		getFemaleCards()
+	])
 
-	const allcards1 = await taskAllCards1
-	const allcards2 = await taskAllCards2
-	const allcards3 = await taskAllCards3
-	const allcards4 = await taskAllCards4
-	*/
+	const len = allcardsToT.length
+	const step = Math.floor(len/8)
+
+	const allcards = [
+		allcardsToT.slice(0, step),
+		allcardsToT.slice(step, step*2),
+		allcardsToT.slice(step*2,step*3),
+		allcardsToT.slice(step*3,step*4),
+		allcardsToT.slice(step*4,step*5),
+		allcardsToT.slice(step*5,step*6),
+		allcardsToT.slice(step*6,step*7),
+		allcardsToT.slice(step*7,len),
+	]
+
+	allcardsToT.forEach((card) => {
+		const bannedCard = bannedCards.find((_) => _.id === card.id)
+		if (bannedCard !== undefined) bannedCard.info = card
+	})
+
+	return {
+		allsets,
+		bannedCards,
+		cardsCH,
+		cardsIT,
+		allcards,
+		allcardsToT,
+		femaleCards
+	}
+}
+
+export async function initData2() {
+	const taskAllSets = getAllSets()
+	//  const taskBannedCards = getBannedCards();
+
+	const cardsCH = csvJSON(fs.readFileSync("./server/data/cardsCH.txt"))
+	const cardsIT = csvJSON(fs.readFileSync("./server/data/cardsIT.txt"))
+	const allsets = await taskAllSets
+	//  const bannedCards = await taskBannedCards;
+
 	const [allcards1, allcards2, allcards3, allcards4, allcardsToT, femaleCards] = await Promise.all([
 		allCardsSegment("01/01/1100", "01/01/2006"),
 		allCardsSegment("01/01/2006", "01/01/2012"),
@@ -209,6 +242,9 @@ export async function initData() {
 		const bannedCard = bannedCards.find((_) => _.id === card.id)
 		if (bannedCard !== undefined) bannedCard.info = card
 	})
+
+	console.log(allcards.reduce((a,b)=>a.concat(b)).length)
+	console.log(allcardsToT.length)
 
 	return {
 		allsets,

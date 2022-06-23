@@ -192,6 +192,9 @@ export default {
 				top,
 				left,
 				width,
+				border: this.edge.reverseWeight ? '2px solid var(--color-darker)' : 'none',
+				height: this.edge.reverseWeight ? '2px' : '2px',
+				background: this.edge.reverseWeight ? 'var(--color-light)' : 'var(--color-darker)',
 			}
 		},
 	},
@@ -201,14 +204,11 @@ export default {
 <style scoped>
 .edge {
 	z-index: 0;
-	height: 2px;
-	background: var(--color-darker);
-	border: none;
 	cursor: pointer;
 }
 
 .edge:hover {
-	background: blue;
+	background: blue !important;
 }
 
 .image-loader {
