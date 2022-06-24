@@ -447,6 +447,11 @@ export default app
 					!_.race.toLowerCase().includes("divine-beast") &&
 					!_.race.toLowerCase().includes("beast-warrior")
 			)
+		if (raceMonster === "Warrior")
+			filtered = filtered.filter(
+				(_) =>
+					!_.race.toLowerCase().includes("beast-warrior")
+			)
 		if (attribute !== "")
 			filtered = filtered
 				.filter((_) => _.attribute !== undefined)
