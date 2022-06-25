@@ -90,6 +90,17 @@ export function exceptionArc(arc, allcards, grouped) {
 			descIncludes("Assault Mode Activate")
 			break
 		}
+		case "Evil HERO": {
+			nameIncludes("Dark Fusion")
+			descIncludes("Dark Fusion")
+			break
+		}
+		case "Destruction Sword": {
+			changeName("Buster Blader & Destruction Sword")
+			nameIncludes("Buster Blader")
+			descIncludes("Buster Blader")
+			break
+		}
 		case "Brave Token": {
 			changeName("Adventurer Token")
 			break
@@ -310,6 +321,11 @@ export function exceptionArc(arc, allcards, grouped) {
 		}
 		case "D/D": {
 			mergeWith("Dark Contract")
+			break
+		}
+		case "Monarch": {
+			mergeWith("Vassal")
+			excludeMembers(["Gravekeeper's Vassal"])
 			break
 		}
 		case "Charmer": {
