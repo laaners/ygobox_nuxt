@@ -129,14 +129,6 @@ export default {
 					content: `Trivia Page`,
 				},
 			],
-			script: [
-				{
-					src: "https://html2canvas.hertzen.com/dist/html2canvas.min.js",
-				},
-				{
-					src: "https://html2canvas.hertzen.com/dist/html2canvas.js",
-				},
-			],
 		}
 	},
 	watch: {
