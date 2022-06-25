@@ -223,7 +223,6 @@ export default {
 					...seg8,
 				]),
 			]
-			allcards.sort((a, b) => a.id - b.id)
 			return allcards
 		},
 	},

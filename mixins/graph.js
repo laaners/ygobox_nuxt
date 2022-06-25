@@ -18,6 +18,17 @@ export default {
 		/* List<GraphEdge> */ getNeighbors(node) {
 			return node.outEdges
 		},
+
+		/* List<GraphEdge> */ getInEdges(g, n) {
+			const inEdges = []
+			for (const node of g.nodes) {
+				if(node.value.id === n.value.id) continue
+				const e = node.outEdges.find(_=>_.target === n.value.id)
+				if(e !== undefined) inEdges.push(e)
+			}
+			return inEdges
+		},
+
 		/* GraphNode */ addNode(g, value) {
 			const n = this.newGraphNode(value, [])
 			for (const node of g.nodes) {

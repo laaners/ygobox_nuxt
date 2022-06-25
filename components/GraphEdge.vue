@@ -3,7 +3,9 @@
 		<hr
 			class="edge"
 			:style="getEdgeStyle()"
+			oncontextmenu="return false;"
 			@click="fullImage = !fullImage"
+			@mousedown="rightClickRemove"
 		/>
 		<transition name="fade">
 			<div
@@ -121,6 +123,12 @@ export default {
 		}
 	},
 	methods: {
+		rightClickRemove(e) {
+			if (e?.which === 3 && e.target === e.currentTarget) {
+				this.$emit("update:removeEdge", this.edge)
+				this.fullImage = false
+			}
+		},
 		rightClickClose(e) {
 			if (e?.which === 3) {
 				this.fullImage = false

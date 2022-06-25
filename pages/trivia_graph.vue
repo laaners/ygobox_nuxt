@@ -17,8 +17,8 @@
 			/>&ensp;
 			<datalist id="allcards">
 				<option
-					v-for="(card, i) of allcards"
-					:key="card.id + i"
+					v-for="card of allcards"
+					:key="card.id"
 					:value="card.name"
 				>
 					{{ card.name }}
@@ -35,7 +35,11 @@
 				margin-bottom: var(--space-1);
 			"
 		></div>
-		<div v-if="allcards.length > 0" class="canvas">
+		<div
+			v-if="allcards.length > 0"
+			class="canvas"
+			oncontextmenu="return false;"
+		>
 			<div v-show="g.nodes.length > 0">
 				<graph-edge
 					v-for="edge of edges"
@@ -45,6 +49,7 @@
 					:target="g.nodes.find((_) => _.value.id === edge.target)"
 					:draggable-width="draggableWidth"
 					:draggable-height="draggableHeight"
+					:remove-edge.sync="removeEdge"
 				/>
 				<graph-node
 					v-for="(node, i) of g.nodes"
@@ -104,6 +109,7 @@ export default {
 		root: "",
 		g: { nodes: [] },
 		addNewNode: "",
+		removeEdge: "",
 		draggableSize: 7,
 		draggableHeight: 0,
 		draggableWidth: 0,
@@ -123,23 +129,63 @@ export default {
 					content: `Trivia Page`,
 				},
 			],
+			script: [
+				{
+					src: "https://html2canvas.hertzen.com/dist/html2canvas.min.js",
+				},
+				{
+					src: "https://html2canvas.hertzen.com/dist/html2canvas.js",
+				},
+			],
 		}
 	},
 	watch: {
+		removeEdge(newV, oldV) {
+			const source = this.g.nodes.find((_) => _.value.id === newV.source)
+			const target = this.g.nodes.find((_) => _.value.id === newV.target)
+			source.outEdges = source.outEdges.filter(
+				(_) => !(_.source === newV.source && _.target === newV.target)
+			)
+			target.outEdges = target.outEdges.filter(
+				(_) => !(_.source === newV.target && _.target === newV.source)
+			)
+			if (
+				source.outEdges.length === 0 &&
+				this.getInEdges(this.g, source).length === 0
+			)
+				this.g.nodes = this.g.nodes.filter(
+					(_) => _.value.id !== source.value.id
+				)
+			if (
+				target.outEdges.length === 0 &&
+				this.getInEdges(this.g, target).length === 0
+			)
+				this.g.nodes = this.g.nodes.filter(
+					(_) => _.value.id !== target.value.id
+				)
+			this.popUpText = "Rimosso un arco"
+			this.edges = []
+			setTimeout(() => this.getEdges(), 100)
+		},
+		isFullArt(newV, oldV) {
+			this.edges = []
+			setTimeout(() => this.getEdges(), 100)
+		},
 		nodePosition(newV, oldV) {
 			const n = this.g.nodes.find((_) => _.value.id === newV.id)
 			n.value.left = newV.left
 			n.value.top = newV.top
 		},
 		draggableSize(newV, oldV) {
-			this.edges = []
 			this.draggableWidth =
 				this.$el.querySelector(`.canvas .nodes img`).clientWidth
 			this.draggableHeight =
 				this.$el.querySelector(`.canvas .nodes img`).clientHeight
+			this.edges = []
 			setTimeout(() => this.getEdges(), 100)
 		},
 		async addNewNode(newV, oldV) {
+			if (newV === "") return
 			this.popUpText = "Caricamento..."
 
 			this.draggableWidth =
@@ -189,8 +235,10 @@ export default {
 					this.addEdge(this.g, N1.value.id, N2.value.id, _.desc)
 				}
 			})
-			this.popUpText = "Aggiunti nuovi nodi"
-			this.getEdges()
+			this.popUpText =
+				"Aggiunti nuovi nodi, tasto destro su un arco per rimuoverlo!"
+			this.edges = []
+			setTimeout(() => this.getEdges(), 100)
 		},
 	},
 	async mounted() {
@@ -214,10 +262,10 @@ export default {
 					name: this.root,
 					id: this.hashAllcardsName[this.root][0].id,
 					top: 10,
-					left:
-						(canvas.clientWidth -
+					left: canvas.clientWidth - canvas.clientWidth + 10,
+					/*	(canvas.clientWidth -
 							(window.innerWidth * this.draggableSize) / 100) /
-						2,
+						2	*/
 				})
 				this.popUpText =
 					"Tasto destro su una carta per avere i collegamenti!"
@@ -225,36 +273,6 @@ export default {
 		},
 		getEdges() {
 			const edges = []
-			/*
-			for (const node of this.g.nodes) {
-				for (const edge of node.outEdges) {
-					if (
-						edges.find((_) => {
-							return (
-								_.target === edge.target &&
-								_.source === edge.source
-							)
-						}) === undefined
-					) {
-						const reverseEdge = edges.find((_) => {
-							return (
-								_.target === edge.source &&
-								_.source === edge.target
-							)
-						})
-						if (reverseEdge !== undefined)
-							edges.push({
-								source: edge.source,
-								target: edge.target,
-								weight: edge.weight,
-								reverseWeight: reverseEdge.weight,
-							})
-						else edges.push(edge)
-					}
-				}
-			}
-			this.edges = edges
-			*/
 			for (const node of this.g.nodes) {
 				for (const edge of node.outEdges) {
 					if (
@@ -286,12 +304,8 @@ export default {
 						}) === undefined
 					)
 						this.edges.push(e)
-				}
-				else
-					this.edges.push(e)
+				} else this.edges.push(e)
 			})
-			console.log(edges)
-			console.log(this.edges)
 		},
 	},
 }
