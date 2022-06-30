@@ -411,7 +411,7 @@
 							<container-pack-info
 								:src="getPicUrl(card.id)"
 								:card="card"
-								:rarity="'Common'"
+								:rarity="card.rarity.set_rarity"
 								:percentage="card.rarity.percentage"
 							/>
 							<div class="flex-row pack-card-checkbox-star">
