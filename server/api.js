@@ -351,7 +351,7 @@ export default app
 			rarity.times = times
 			currentN = rarity.n
 		})
-		if (differentRarities.length < 5)
+		if (differentRarities.length < 5 || draftN === 90)
 			differentRarities.find((_) => _.times === 1).times =
 				1 + Math.ceil(Math.sqrt(draftN) / 2)
 	}
