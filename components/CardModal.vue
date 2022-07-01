@@ -133,12 +133,17 @@ export default {
 			this.fullImage = !this.fullImage
 			if (this.fullImage) {
 				this.loading = true
+				/*
 				const promises = [
 					this.$axios.$get(`/api/card/${this.cardId}`),
 					this.$axios.$get(`/api/cheff/${this.cardId}`),
 					this.$axios.$get(`/api/iteff/${this.cardId}`),
 				]
 				const [enCard, chCard, itCard] = await Promise.all(promises)
+				*/
+				const enCard = await this.$axios.$get(`/api/card/${this.cardId}`)
+				const chCard = enCard.cheff
+				const itCard = enCard.iteff
 				this.cheff = chCard.desc
 				this.iteff = itCard.desc
 				this.eneff = enCard.desc

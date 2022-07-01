@@ -115,34 +115,34 @@ export default app
 					100
 				).toFixed(2)
 		})
+
+		card.iteff = foreign(cardsIT,id)
+		card.cheff = foreign(cardsCH,id)
+
 		return res.json(card)
 	})
 
 	app.get("/cheff/:id", (req, res) => {
 		const id = +req.params.id
-		let card = cardsCH.find((_) => _.id === id)
-		let i = -1
-		while (card === undefined && i < 2) {
-			card = cardsCH.find((_) => _.id === id + i)
-			i += 2
-		}
-		if (card === undefined || card.desc === "[INVALID_DATA]")
-			return res.send("Undefined type of card or [INVALID_DATA]")
-		return res.json({ name: card.name, desc: card.desc })
+		return res.json(foreign(cardsCH,id))
 	})
 
 	app.get("/iteff/:id", (req, res) => {
 		const id = +req.params.id
-		let card = cardsIT.find((_) => _.id === id)
+		return res.json(foreign(cardsIT,id))
+	})
+
+	function foreign(arr, id) {
+		let card = arr.find((_) => _.id === id)
 		let i = -1
 		while (card === undefined && i < 2) {
-			card = cardsIT.find((_) => _.id === id + i)
+			card = arr.find((_) => _.id === id + i)
 			i += 2
 		}
 		if (card === undefined || card.desc === "[INVALID_DATA]")
-			return res.send("Undefined type of card or [INVALID_DATA]")
-		return res.json({ name: card.name, desc: card.desc })
-	})
+			return "Undefined type of card or [INVALID_DATA]"
+		return { name: card.name, desc: card.desc }
+	}
 
 	app.get("/banned_cards", (req, res) => {
 		return res.json(bannedCards)
