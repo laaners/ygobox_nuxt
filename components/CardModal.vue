@@ -133,7 +133,7 @@ export default {
 			this.fullImage = !this.fullImage
 			if (this.fullImage) {
 				this.loading = true
-				/*
+				/* Multiple
 				const promises = [
 					this.$axios.$get(`/api/card/${this.cardId}`),
 					this.$axios.$get(`/api/cheff/${this.cardId}`),
