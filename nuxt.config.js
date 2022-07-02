@@ -55,6 +55,7 @@ export default {
 	modules: [
 		"@nuxtjs/axios",
 		"nuxt-clipboard",
+		"@aceforth/nuxt-optimized-images",
 		["nuxt-clipboard", { autoSetContainer: true }],
 	],
 
@@ -87,5 +88,9 @@ export default {
 
 	static: {
 		prefix: false,
+	},
+
+	optimizedImages: {
+		optimizeImagesInDev: true,
 	},
 }
