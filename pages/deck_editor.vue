@@ -451,6 +451,7 @@ import MultiPageIcon from "../components/icons/MultiPageIcon.vue"
 import ScrollPageIcon from "../components/icons/ScrollPageIcon.vue"
 import StarIcon from "../components/icons/StarIcon.vue"
 import Utils from "~/mixins/utils"
+import Drafting from "~/mixins/drafting"
 export default {
 	name: "IndexPage",
 	components: {
@@ -462,7 +463,7 @@ export default {
 		ScrollPageIcon,
 		StarIcon,
 	},
-	mixins: [Utils],
+	mixins: [Utils, Drafting],
 	/*
 	async asyncData({ $getAllCards }) {
 		const allcards = await $getAllCards()
@@ -471,10 +472,12 @@ export default {
 	*/
 	async asyncData({ $axios }) {
 		const bannedCards = await $axios.$get("/api/banned_cards")
-		return { bannedCards }
+		const allsets = await $axios.$get("/api/allsets")
+		return { bannedCards, allsets }
 	},
 	data: () => ({
 		bannedCards: [],
+		allsets: [],
 		allcards: [],
 		hashAllcards: {},
 		savedCards: [],
@@ -892,7 +895,7 @@ export default {
 			toUpdate.componentInstance.checked = checked
 		},
 		/* PACK */
-		async drafting() {
+		/*	async	*/ drafting() {
 			if (!this.recentlySaved) {
 				alert(
 					"NON PUOI APRIRE UN ALTRO PACCHETTO SE NON HAI SALVATO DI RECENTE"
@@ -907,8 +910,11 @@ export default {
 				this.packLoading = false
 				return
 			}
+			/*
 			const { pack_img, cards, draftN, packN, setNameCorrect } =
 				await this.$axios.$get(`api/drafting/${set_name}`)
+			*/
+			const { pack_img, cards, draftN, packN, setNameCorrect } = this.clientDrafting(set_name, this.allsets, this.allcards)
 			if (cards.length === 0) {
 				alert(pack_img)
 				this.packLoading = false

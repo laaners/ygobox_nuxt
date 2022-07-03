@@ -9,16 +9,13 @@
 				style="width: 100%"
 			>
 				<button-secondary
-					:title="'CRONOLOGICO'"
-					@click.native="sort('chronological')"
-				/>
-				<button-secondary
-					:title="'PER CATEGORIA'"
-					@click.native="sort('category')"
-				/>
-				<button-secondary
-					:title="'PER PERSONA'"
-					@click.native="sort('banner')"
+					v-for="sortLabel of ['CRONOLOGICO', 'PER CATEGORIA', 'PER PERSONA']"
+					:key="sortLabel"
+					:title="sortLabel"
+					:style="{
+						opacity: sortFilter === sortLabel ? 1 : 0.5,
+					}"
+					@click.native="sortFilter = sortLabel"
 				/>
 			</grid-view>
 		</div>
@@ -119,32 +116,15 @@ export default {
 	components: { GridView, CardModal },
 	mixins: [Utils],
 	async asyncData({ $axios }) {
-		/*
-		const rawBannedCards = await $axios.$get("/api/banned_cards")
-		const promises = []
-		rawBannedCards
-			.filter((_) => _.banner !== undefined)
-			.forEach((card) => {
-				promises.push($axios.$get(`/api/card/${card.id}`))
-			})
-		const bannedCards = await Promise.all(promises)
-		bannedCards.forEach((_) => {
-			_.banner = rawBannedCards.find((x) => x.id === _.id).banner
-		})
-		return {
-			bannedCards,
-			defaultOrder: bannedCards,
-		}
-		*/
 		const bannedCards = await $axios.$get("/api/banned_cards")
 		return {
 			bannedCards: bannedCards.filter((_) => _.banner !== undefined),
 			defaultOrder: bannedCards.filter((_) => _.banner !== undefined),
 		}
 	},
-	
 	data: () => ({
 		showPerBanner: false,
+		sortFilter: "CRONOLOGICO",
 		defaultOrder: [],
 		bannedCards: [],
 	}),
@@ -160,15 +140,37 @@ export default {
 			],
 		}
 	},
+	watch: {
+		sortFilter(newV, olV) {
+			this.showPerBanner = false
+			switch (newV) {
+				case "PER CATEGORIA": {
+					this.bannedCards = this.categorySort(
+						this.bannedCards.map((_) => _.info)
+					)
+					break
+				}
+				case "PER PERSONA": {
+					this.showPerBanner = true
+					this.bannedCards = this.defaultOrder
+					break
+				}
+				default:
+					this.bannedCards = this.defaultOrder
+			}
+		}
+	},
 	methods: {
 		sort(option) {
 			this.showPerBanner = false
 			switch (option) {
 				case "category": {
-					this.bannedCards = this.categorySort(this.bannedCards.map(_=>_.info))
+					this.bannedCards = this.categorySort(
+						this.bannedCards.map((_) => _.info)
+					)
 					break
 				}
-				case "banner":{
+				case "banner": {
 					this.showPerBanner = true
 					this.bannedCards = this.defaultOrder
 					break
@@ -190,5 +192,4 @@ export default {
 .banner > * {
 	margin: 0;
 }
-
 </style>
