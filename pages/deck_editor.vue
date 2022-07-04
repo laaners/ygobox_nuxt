@@ -850,6 +850,11 @@ export default {
 					.filter((_) => _.favourite)
 					.map((_) => _.id)
 			}
+			else {
+				this.$el.querySelector(
+					".search-form-component"
+				).__vue__.form.favouriteCards = []
+			}
 		},
 		bindSelectedSet(e) {
 			const pack = e.target.value.replace(e.target.value.split(" ")[0] + " ","")
