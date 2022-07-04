@@ -919,45 +919,47 @@ export default {
 			const { pack_img, cards, draftN, packN, setNameCorrect } =
 				await this.$axios.$get(`api/drafting/${set_name}`)
 			*/
-			const { pack_img, cards, draftN, packN, setNameCorrect } = this.clientDrafting(set_name, this.allsets, this.allcards)
-			if (cards.length === 0) {
-				alert(pack_img)
-				this.packLoading = false
-				return
-			}
-			this.packAppendCards = cards
-				.sort((a, b) => {
-					const setCodeA = a.rarity.set_code
-					const setCodeB = b.rarity.set_code
-					if (setCodeA < setCodeB) return -1
-					if (setCodeA > setCodeB) return 1
-					return 0
-				})
-				.sort((a, b) => a.rarity.percentage - b.rarity.percentage)
-			this.packAppendCards.forEach((card) => {
-				const elem = this.savedCards.find((_) => _.id === card.id)
-				if (elem !== undefined) {
-					elem.copies += 1
-					if (!elem.sets.includes(setNameCorrect))
-						elem.sets.push(setNameCorrect)
-				} else {
-					this.savedCards.push({
-						id: card.id,
-						copies: 1,
-						checked: 0,
-						favourite: false,
-						sets: [setNameCorrect],
-					})
+			setTimeout(() => {
+				const { pack_img, cards, draftN, packN, setNameCorrect } = this.clientDrafting(set_name, this.allsets, this.allcards)
+				if (cards.length === 0) {
+					alert(pack_img)
+					this.packLoading = false
+					return
 				}
-			})
-			this.$refs.packImg.src = pack_img
-			this.$refs.packInfo.innerHTML =
-				packN +
-				" carte diverse nel pacchetto\nSe apri il pacchetto avrai " +
-				draftN +
-				" carte a caso tra queste:"
-			this.packLoading = false
-			this.recentlySaved = false
+				this.packAppendCards = cards
+					.sort((a, b) => {
+						const setCodeA = a.rarity.set_code
+						const setCodeB = b.rarity.set_code
+						if (setCodeA < setCodeB) return -1
+						if (setCodeA > setCodeB) return 1
+						return 0
+					})
+					.sort((a, b) => a.rarity.percentage - b.rarity.percentage)
+				this.packAppendCards.forEach((card) => {
+					const elem = this.savedCards.find((_) => _.id === card.id)
+					if (elem !== undefined) {
+						elem.copies += 1
+						if (!elem.sets.includes(setNameCorrect))
+							elem.sets.push(setNameCorrect)
+					} else {
+						this.savedCards.push({
+							id: card.id,
+							copies: 1,
+							checked: 0,
+							favourite: false,
+							sets: [setNameCorrect],
+						})
+					}
+				})
+				this.$refs.packImg.src = pack_img
+				this.$refs.packInfo.innerHTML =
+					packN +
+					" carte diverse nel pacchetto\nSe apri il pacchetto avrai " +
+					draftN +
+					" carte a caso tra queste:"
+				this.packLoading = false
+				this.recentlySaved = false
+			}, 10)
 		},
 		getFavouriteStyle(cardId) {
 			if (this.savedCards.find((_) => _.id === cardId).favourite)
