@@ -23,7 +23,7 @@
 			<img
 				v-for="type in archetype.types"
 				:key="type"
-				:src="'/'+type.toUpperCase() + '.png'"
+				:src="'/' + type.toUpperCase() + '.png'"
 				:style="{
 					width: '2.4%',
 					marginLeft: 'var(--space-0)',
@@ -71,7 +71,15 @@
 				@click.native="sortFilter = sortLabel"
 			/>
 		</grid-view>
-		<grid-view :columns="+cardsPerRow" :row-gap="0" :col-gap="0">
+		<grid-view
+			:columns="
+				+cardsPerRow < archetype.members.length
+					? +cardsPerRow
+					: archetype.members.length
+			"
+			:row-gap="0"
+			:col-gap="0"
+		>
 			<card-modal
 				v-for="member of archetype.members"
 				:key="member.id"

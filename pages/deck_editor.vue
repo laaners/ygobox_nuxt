@@ -132,9 +132,7 @@
 						/>
 					</grid-view>
 				</div>
-				<div
-					class="form-container flex-col"
-				>
+				<div class="form-container flex-col">
 					<h3>CERCA</h3>
 					<div
 						class="flex-col search-form"
@@ -204,7 +202,7 @@
 						class="flex-col"
 						style="position: relative"
 					>
-						<h3 style="margin: var(--space-0);">
+						<h3 style="margin: var(--space-0)">
 							{{ searchedAppendCards.length }} risultati trovati
 						</h3>
 						<div v-if="multiPage" class="flex-col">
@@ -567,14 +565,16 @@ export default {
 			)
 			const oldChecked = savedCard.checked
 			savedCard.checked = newCheckedChange.checked
-			this.updatePackCard(newCheckedChange.cardId, savedCard.checked > oldChecked)
+			this.updatePackCard(
+				newCheckedChange.cardId,
+				savedCard.checked > oldChecked
+			)
 			this.reloadDeck(this.savedCards)
 		},
 		formFavouriteChange(newFavouriteChange, oldFavouriteChange) {
 			const cardId = newFavouriteChange.cardId
-			this.savedCards.find(
-				(_) => _.id === cardId
-			).favourite = newFavouriteChange.favourite
+			this.savedCards.find((_) => _.id === cardId).favourite =
+				newFavouriteChange.favourite
 
 			//	Update form favourite if checked from pack cards
 			const searchResults = this.$el.querySelector(".search-results")
@@ -582,8 +582,13 @@ export default {
 				const toUpdate = searchResults.__vue__.$slots.default.find(
 					(slot) => slot.componentOptions.propsData.card.id === cardId
 				)
-				if (!(toUpdate === undefined || toUpdate === null) && toUpdate.componentInstance.favourite !== newFavouriteChange.favourite)
-					toUpdate.componentInstance.favourite = newFavouriteChange.favourite
+				if (
+					!(toUpdate === undefined || toUpdate === null) &&
+					toUpdate.componentInstance.favourite !==
+						newFavouriteChange.favourite
+				)
+					toUpdate.componentInstance.favourite =
+						newFavouriteChange.favourite
 			}
 		},
 		packAppendCards(newPackAppendCards, oldPackAppendCards) {
@@ -615,7 +620,7 @@ export default {
 	beforeUnmount() {
 		window.removeEventListener("scroll", this.fixDeckContainer, false)
 		window.removeEventListener("resize", this.fixDeckContainer, false)
-	},	
+	},
 	methods: {
 		/* BEFORE PAGE */
 		async handleFile(e) {
@@ -648,11 +653,14 @@ export default {
 		},
 		/* DECK CONTAINER */
 		removeFromDeck(e) {
-			if (e?.which === 3 && e.target === e.currentTarget.querySelector("img")) {
+			if (
+				e?.which === 3 &&
+				e.target === e.currentTarget.querySelector("img")
+			) {
 				try {
 					const cardId = +e.target.src
-						.split("/")[e.target.src.split("/").length-1]
-						.replace(".jpg", "")
+						.split("/")
+						[e.target.src.split("/").length - 1].replace(".jpg", "")
 					const toRemove = this.savedCards.find(
 						(_) => _.id === cardId
 					)
@@ -705,7 +713,7 @@ export default {
 			const threshold = this.$el.querySelector(".cardsPack")?.offsetTop
 			if (threshold === 0) return
 			const deckContainer = this.$el.querySelector(".deck-container")
-			if(deckContainer === undefined) return
+			if (deckContainer === undefined) return
 			//	document.body.querySelector(".deck-container").style
 			const setStyle = {
 				top: 0,
@@ -724,7 +732,12 @@ export default {
 				}
 			} else {
 				for (const prop of Object.keys(setStyle)) {
-					if (deckContainer === undefined || deckContainer === null || deckContainer.style === undefined) return
+					if (
+						deckContainer === undefined ||
+						deckContainer === null ||
+						deckContainer.style === undefined
+					)
+						return
 					deckContainer.style[prop.toString()] = ""
 				}
 			}
@@ -849,16 +862,19 @@ export default {
 				).__vue__.form.favouriteCards = this.savedCards
 					.filter((_) => _.favourite)
 					.map((_) => _.id)
-			}
-			else {
+			} else {
 				this.$el.querySelector(
 					".search-form-component"
 				).__vue__.form.favouriteCards = []
 			}
 		},
 		bindSelectedSet(e) {
-			const pack = e.target.value.replace(e.target.value.split(" ")[0] + " ","")
-			this.$el.querySelector(".search-form-component").__vue__.form.pack = pack				
+			const pack = e.target.value.replace(
+				e.target.value.split(" ")[0] + " ",
+				""
+			)
+			this.$el.querySelector(".search-form-component").__vue__.form.pack =
+				pack
 		},
 		getSavedSets() {
 			return [
@@ -900,7 +916,7 @@ export default {
 			toUpdate.componentInstance.checked = checked
 		},
 		/* PACK */
-		/*	async	*/ drafting() {
+		async drafting() {
 			if (!this.recentlySaved) {
 				alert(
 					"NON PUOI APRIRE UN ALTRO PACCHETTO SE NON HAI SALVATO DI RECENTE"
@@ -915,11 +931,8 @@ export default {
 				this.packLoading = false
 				return
 			}
-			/*
 			const { pack_img, cards, draftN, packN, setNameCorrect } =
 				await this.$axios.$get(`api/drafting/${set_name}`)
-			*/
-			const { pack_img, cards, draftN, packN, setNameCorrect } = this.clientDrafting(set_name, this.allsets, this.allcards)
 			if (cards.length === 0) {
 				alert(pack_img)
 				this.packLoading = false
@@ -983,15 +996,14 @@ export default {
 				`input[value='${cardId}']`
 			)
 			if (checkboxes.length !== 0) {
-				if(value) {
+				if (value) {
 					for (const checkbox of checkboxes) {
 						if (!checkbox.checked) {
 							checkbox.checked = true
 							return
 						}
 					}
-				}
-				else {
+				} else {
 					for (const checkbox of checkboxes) {
 						if (checkbox.checked) {
 							checkbox.checked = false
