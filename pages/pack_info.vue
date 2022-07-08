@@ -12,7 +12,10 @@
 		<h-scroll-view style="width: 90%">
 			<container-pack-scroll
 				v-for="(set, i) of allsets.filter(
-					(_) => _.tcg_date > dateFilter
+					(_) => {
+						if(dateFilter === 'Deck') return _.set_name.includes('Deck')
+						return _.tcg_date > dateFilter
+					}
 				)"
 				:key="set.set_code + i"
 				:clicked-set.sync="clickedSet"
@@ -24,6 +27,7 @@
 				<p>Mostra solo i pacchetti a partire dal:</p>
 				<select v-model="dateFilter" name="setsFilter">
 					<option label="Tutti" selected="selected">1900</option>
+					<option label="Solo i deck" selected="selected">Deck</option>
 					<option label="2001">2001</option>
 					<option label="2002">2002</option>
 					<option label="2003">2003</option>
@@ -117,7 +121,7 @@ export default {
 		allsets: [],
 		dateFilter: "1900",
 		clickedSet: "",
-		sortFilter: 'DEFAULT'
+		sortFilter: "DEFAULT",
 	}),
 	head() {
 		return {
@@ -135,6 +139,14 @@ export default {
 		sortFilter(newV, olV) {
 			switch (newV) {
 				case "RARITÀ": {
+					this.appendCards.sort((a, b) => {
+						if (a.rarity.percentage.includes("-"))
+							return (
+								a.rarity.percentage.split(" - ")[1] -
+								b.rarity.percentage.split(" - ")[1]
+							)
+						return a.rarity.percentage - b.rarity.percentage
+					})
 					this.appendCards.sort(
 						(a, b) => a.rarity.percentage - b.rarity.percentage
 					)
@@ -153,7 +165,7 @@ export default {
 						return 0
 					})
 			}
-		}
+		},
 	},
 	async mounted() {
 		const allsets = await this.$axios.$get("/api/allsets")
@@ -173,7 +185,7 @@ export default {
 				alert("Empty set name")
 				return
 			}
-			const { pack_img, cards } = await this.$axios.$get(
+			const { pack_img, cards, draftN } = await this.$axios.$get(
 				`api/set/${set_name}`
 			)
 			if (cards.length === 0) {
@@ -182,17 +194,13 @@ export default {
 			}
 			this.appendCards = cards
 
-			const draftN =
-				Math.ceil(cards.length * 1.5) > 120
-					? 120
-					: Math.ceil(cards.length * 1.5)
 			this.$el.querySelector("#pack-img").src = pack_img
 			this.$refs.packInfo.innerHTML =
 				cards.length +
 				" carte diverse nel pacchetto\nSe apri il pacchetto avrai " +
 				draftN +
 				" carte a caso tra queste:"
-			this.sortFilter = 'DEFAULT'
+			this.sortFilter = "DEFAULT"
 		},
 	},
 }

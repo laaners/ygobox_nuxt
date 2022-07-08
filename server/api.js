@@ -94,7 +94,7 @@ export default app
 			})
 			const draftN =
 				Math.ceil(cards.length * 1.5) > 120
-					? 120
+					? (cards.length > 120 ? cards.length : 120)
 					: Math.ceil(cards.length * 1.5)
 			const differentRarities = rarityAssignAndOccurrence(
 				cards,
@@ -109,11 +109,18 @@ export default app
 				(_) => _.set_rarity_code === set.set_rarity_code
 			)
 			if (tmp === undefined) set.percentage = 0
-			else
-				set.percentage = (
-					(1 - ((totNumber - +tmp.times) / totNumber) ** draftN) *
+			else if(!set_name.includes("deck")) {
+					set.percentage = (
+						(1 - ((totNumber - +tmp.times) / totNumber) ** draftN) *
+						100
+					).toFixed(2)
+			}
+			else {
+				set.percentage = 100+" - "+(
+					(1 - ((totNumber - +tmp.times) / totNumber) ** (draftN-cards.length)) *
 					100
 				).toFixed(2)
+			}
 		})
 
 		card.iteff = foreign(cardsIT,id)
@@ -167,7 +174,7 @@ export default app
 			})
 		const draftN =
 			Math.ceil(cards.length * 1.5) > 120
-				? 120
+				? (cards.length > 120 ? cards.length : 120)
 				: Math.ceil(cards.length * 1.5)
 		const differentRarities = rarityAssignAndOccurrence(
 			cards,
@@ -182,10 +189,18 @@ export default app
 			const tmp = differentRarities.find(
 				(_) => _.set_rarity_code === elem.rarity.set_rarity_code
 			)
-			elem.rarity.percentage = (
-				(1 - ((totNumber - +tmp.times) / totNumber) ** draftN) *
-				100
-			).toFixed(2)
+			if(!set_name.includes("deck")) {
+				elem.rarity.percentage = (
+					(1 - ((totNumber - +tmp.times) / totNumber) ** draftN) *
+					100
+				).toFixed(2)
+			}
+			else {
+				elem.rarity.percentage = 100+" - "+(
+					(1 - ((totNumber - +tmp.times) / totNumber) ** (draftN-cards.length)) *
+					100
+				).toFixed(2)
+			}
 		})
 		cards.sort((a, b) => {
 			const setCodeA = a.rarity.set_code
@@ -232,7 +247,7 @@ export default app
 		const packN = cards.length
 		const draftN =
 			Math.ceil(cards.length * 1.5) > 120
-				? 120
+				? (cards.length > 120 ? cards.length : 120)
 				: Math.ceil(cards.length * 1.5)
 		const differentRarities = rarityAssignAndOccurrence(
 			cards,
@@ -243,22 +258,46 @@ export default app
 
 		cards = listCardsPrecedence(cards, differentRarities)
 		const totNumber = cards.length
-		const filtered = [];
-		for(let i = 0; i < draftN; i++) {
-			filtered.push(cards[Math.floor(Math.random()*cards.length)]);
-		}
-		cards = filtered
-		//	cards = cards.sort(() => Math.random() - 0.5).slice(0,draftN)
-		cards.forEach((elem) => {
-			const tmp = differentRarities.find(
-				(_) => _.set_rarity_code === elem.rarity.set_rarity_code
-			)
-			elem.rarity.percentage = (
-				(1 - ((totNumber - +tmp.times) / totNumber) ** draftN) *
-				100
-			).toFixed(2)
-		})
 		const setNameCorrect = set.tcg_date+" "+set.set_name
+		const filtered = [];
+		if(!setNameCorrect.includes("Deck")) {
+			for(let i = 0; i < draftN; i++) {
+				filtered.push(cards[Math.floor(Math.random()*cards.length)]);
+			}
+			cards = filtered
+			//	cards = cards.sort(() => Math.random() - 0.5).slice(0,draftN)
+			cards.forEach((elem) => {
+				const tmp = differentRarities.find(
+					(_) => _.set_rarity_code === elem.rarity.set_rarity_code
+				)
+				elem.rarity.percentage = (
+					(1 - ((totNumber - +tmp.times) / totNumber) ** draftN) *
+					100
+				).toFixed(2)
+			})
+		}
+		else {
+			[...new Set(cards)].forEach(elem => {
+				const toPush = {...elem}
+				toPush.rarity.percentage = 100
+				filtered.push(toPush)
+			})
+			const difference = draftN-filtered.length
+			console.log(filtered.length)
+			console.log(draftN)
+			for(let i = 0; i < difference; i++) {
+				const elem = cards[Math.floor(Math.random()*cards.length)]
+				const tmp = differentRarities.find(
+					(_) => _.set_rarity_code === elem.rarity.set_rarity_code
+				)
+				elem.rarity.percentage = 100+" - "+(
+					(1 - ((totNumber - +tmp.times) / totNumber) ** (draftN-packN)) *
+					100
+				).toFixed(2)
+				filtered.push(elem);
+			}
+			cards = filtered
+		}
 		return res.json({
 			pack_img: `/sets/${set.set_code}.jpg`,
 			cards,
