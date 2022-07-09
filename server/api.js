@@ -94,7 +94,7 @@ export default app
 			})
 			const draftN =
 				Math.ceil(cards.length * 1.5) > 120
-					? (cards.length > 120 ? cards.length : 120)
+					? (cards.length > 120 && set_name.includes("deck")? cards.length : 120)
 					: Math.ceil(cards.length * 1.5)
 			const differentRarities = rarityAssignAndOccurrence(
 				cards,
@@ -174,7 +174,7 @@ export default app
 			})
 		const draftN =
 			Math.ceil(cards.length * 1.5) > 120
-				? (cards.length > 120 ? cards.length : 120)
+				? (cards.length > 120 && set_name.includes("deck") ? cards.length : 120)
 				: Math.ceil(cards.length * 1.5)
 		const differentRarities = rarityAssignAndOccurrence(
 			cards,
@@ -247,7 +247,7 @@ export default app
 		const packN = cards.length
 		const draftN =
 			Math.ceil(cards.length * 1.5) > 120
-				? (cards.length > 120 ? cards.length : 120)
+				? (cards.length > 120 && set.set_name.includes("Deck") ? cards.length : 120)
 				: Math.ceil(cards.length * 1.5)
 		const differentRarities = rarityAssignAndOccurrence(
 			cards,

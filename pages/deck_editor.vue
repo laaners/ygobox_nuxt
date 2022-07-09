@@ -723,6 +723,8 @@ export default {
 				height: "30%",
 				justifyContent: "flex-start",
 				backgroundColor: "var(--color-light)",
+				paddingRight: "1vw",
+				paddingLeft: "1vw",
 				zIndex: 9998,
 			}
 			if (window.scrollY >= threshold) {
@@ -797,12 +799,14 @@ export default {
 									(_) => _.id === savedCard.id
 								).checked = 0
 								this.updateSearchedCard(savedCard.id, 0)
+								this.updatePackCard(savedCard.id, false)
 							}
 						})
 				} else {
 					this.savedCards.forEach((_) => {
 						_.checked = 0
 						this.updateSearchedCard(_.id, 0)
+						this.updatePackCard(_.id, false)
 					})
 				}
 				this.reloadDeck(this.savedCards)
