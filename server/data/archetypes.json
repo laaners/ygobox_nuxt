@@ -975,7 +975,10 @@
         }
     },
     {"arc":"Knight","url":"NO"},
-    {"arc":"Knightmare","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/65330383.jpg"},
+    {"arc":"Knightmare","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/65330383.jpg",
+        "crest":"/crests/Mekk-Knight.png",
+        "credit": "https://www.pixiv.net/en/users/1156555/artworks"
+    },
     {"arc":"Koa'ki Meiru",
         "imgs": {
             "Poster": 36623431,
@@ -1586,7 +1589,7 @@
             "Effect": 14509651
         }
     },
-    {"arc":"Springans","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/7496001.jpg"},
+    {"arc":"Springans","img": { "Poster": 62941499} },
     {"arc":"Star Seraph",
         "imgs": {
             "Poster": 49678559,
@@ -1971,7 +1974,7 @@
             "Effect": 16474916,
             "Xyz": 59242457
         },
-        "crest": "https://ms.yugipedia.com//0/05/Crest-Exosister.png",
+        "crest": "/crests/Exosister.png",
         "waifu": "a"
     },
     {"arc":"Adventurer Token","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/100417029.jpg"},
@@ -2006,7 +2009,7 @@
     {"arc":"Mysterune", "imgs": { "Poster": 92107604 } },
     {"arc":"Splight", "imgs": { "Poster": 54498517} },
     {"arc":"Hellfire", "imgs": { "Poster": 64104037} },
-    {"arc":"Valiants", "imgs": { "Poster": 40680521} },
+    {"arc":"Valiants", "imgs": { "Poster": 40680521}, "crest": "/crests/Vaylantz.png"},
     {"arc":"Mokey Mokey", "imgs": { "Poster": 27288416} },
     {"arc":"Kairyu-Shin", "imgs": { "Poster": 95602345} },
     {"arc":"Therions", "imgs": { "Poster": 10604644} },
