@@ -12,6 +12,7 @@
 				v-show="fullImage"
 				class="modal flex-col"
 				oncontextmenu="return false;"
+				:style="getScaleStyle()"
 				@mousedown="rightClickClose"
 			>
 				<button
@@ -122,7 +123,20 @@ export default {
 			fullImage: false,
 		}
 	},
+	watch: {
+		fullImage(newV, oldV) {
+			if(newV) {
+				const parentZoom = +document.body.querySelector(".canvas-content").style.zoom
+				this.$el.querySelector(".modal").style.zoom = 1/+parentZoom
+			}
+		}
+	},
 	methods: {
+		getScaleStyle() {
+			return {
+				
+			}
+		},
 		rightClickRemove(e) {
 			if (e?.which === 3 && e.target === e.currentTarget) {
 				this.$emit("update:removeEdge", this.edge)

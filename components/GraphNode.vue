@@ -47,15 +47,19 @@ export default {
 			}
 		},
 		startDrag(e) {
+			const zoom = +document.body.querySelector(".canvas-content").style.zoom
+
 			this.offsetX =
 				this.offsetX === 0
-					? e.clientX - this.left
-					: e.clientX - this.mutableLeft
+					? e.clientX/zoom - this.left
+					: e.clientX/zoom - this.mutableLeft
 			this.offsetY =
 				this.offsetY === 0
-					? e.clientY - this.top
-					: e.clientY - this.mutableTop
+					? e.clientY/zoom - this.top
+					: e.clientY/zoom - this.mutableTop
 			this.drag = true
+
+
 
 			this.emittingInterval = setInterval(() => {
 				this.$emit("update:nodePosition", {
@@ -67,8 +71,9 @@ export default {
 		},
 		dragging(e) {
 			if (!this.drag || e.clientX === 0 || e.clientY === 0) return
-			this.mutableLeft = e.clientX - this.offsetX
-			this.mutableTop = e.clientY - this.offsetY
+			const zoom = +document.body.querySelector(".canvas-content").style.zoom
+			this.mutableLeft = e.clientX/zoom - this.offsetX
+			this.mutableTop = e.clientY/zoom - this.offsetY
 		},
 		endDrag(e) {
 			this.drag = false

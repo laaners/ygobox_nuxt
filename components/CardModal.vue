@@ -123,6 +123,20 @@ export default {
 		iteff: "",
 		cardSets: [],
 	}),
+	watch: {
+		fullImage(newV, oldV) {
+			if (
+				document.body.querySelector(".canvas-content") === undefined ||
+				document.body.querySelector(".canvas-content") === null
+			)
+				return
+			if (newV) {
+				const parentZoom =
+					+document.body.querySelector(".canvas-content").style.zoom
+				this.$el.querySelector(".modal").style.zoom = 1 / +parentZoom
+			}
+		},
+	},
 	methods: {
 		rightClickClose(e) {
 			if (e?.which === 3) {
@@ -141,7 +155,9 @@ export default {
 				]
 				const [enCard, chCard, itCard] = await Promise.all(promises)
 				*/
-				const enCard = await this.$axios.$get(`/api/card/${this.cardId}`)
+				const enCard = await this.$axios.$get(
+					`/api/card/${this.cardId}`
+				)
 				const chCard = enCard.cheff
 				const itCard = enCard.iteff
 				this.cheff = chCard.desc
@@ -211,10 +227,11 @@ export default {
 	width: 100%;
 	padding: 0vw;
 	transition: all 0.2s ease;
+	transform: scale(1);
 }
 
 .small-image:hover {
-	width: 95%;
+	filter: brightness(50%);
 }
 
 .modal {
@@ -229,6 +246,7 @@ export default {
 	position: fixed;
 	overflow: auto;
 	z-index: 9998;
+	transform: scale(1);
 }
 
 .modal-close {

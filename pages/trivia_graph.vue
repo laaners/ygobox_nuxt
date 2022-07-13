@@ -40,10 +40,11 @@
 			class="canvas"
 			oncontextmenu="return false;"
 		>
-			<div v-show="g.nodes.length > 0">
+			<div v-show="g.nodes.length > 0" class="canvas-content">
 				<graph-edge
 					v-for="edge of edges"
 					:key="edge.target + '-' + edge.source"
+					class="edges"
 					:edge="edge"
 					:source="g.nodes.find((_) => _.value.id === edge.source)"
 					:target="g.nodes.find((_) => _.value.id === edge.target)"
@@ -66,7 +67,7 @@
 					:top="node.value.top"
 					:add-new-node.sync="addNewNode"
 					:node-position.sync="nodePosition"
-					:style="{ width: draggableSize + 'vmax' }"
+					:style="{ width: '90px' }"
 				/>
 			</div>
 		</div>
@@ -75,18 +76,18 @@
 			:columns="3"
 			:col-gap="1"
 			:row-gap="0"
-			style="width: 40%; position absolute; margin-top: 1%; margin-left: 1%; justify-items: center; margin-bottom: 0;"
+			style="width: 50%; position absolute; margin-top: 1%; margin-left: 1%; justify-items: center; margin-bottom: 0;"
 		>
 			<button-secondary
 				:title="'-'"
 				style="padding: 0; border-radius: 4px; width: 80%"
-				@click.native="draggableSize--"
+				@click.native="draggableSize-=0.1"
 			/>
-			<span>Immagini {{ draggableSize }}% dello schermo</span>
+			<span>Zoom a {{ draggableSize.toFixed(1) }}</span>
 			<button-secondary
 				:title="'+'"
 				style="padding: 0; border-radius: 4px; width: 80%"
-				@click.native="draggableSize++"
+				@click.native="draggableSize+=0.1"
 			/>
 		</grid-view>
 	</div>
@@ -109,7 +110,7 @@ export default {
 		g: { nodes: [] },
 		addNewNode: "",
 		removeEdge: "",
-		draggableSize: 7,
+		draggableSize: 1,
 		draggableHeight: 0,
 		draggableWidth: 0,
 		popUpText: "Nessun nodo presente",
@@ -167,12 +168,15 @@ export default {
 			n.value.top = newV.top
 		},
 		draggableSize(newV, oldV) {
+			/*
 			this.draggableWidth =
 				this.$el.querySelector(`.canvas .nodes img`).clientWidth
 			this.draggableHeight =
 				this.$el.querySelector(`.canvas .nodes img`).clientHeight
 			this.edges = []
 			setTimeout(() => this.getEdges(), 100)
+			*/
+			this.$el.querySelector(".canvas-content").style.zoom = newV
 		},
 		async addNewNode(newV, oldV) {
 			if (newV === "") return
@@ -259,6 +263,7 @@ export default {
 				})
 				this.popUpText =
 					"Tasto destro su una carta per avere i collegamenti!"
+				this.$el.querySelector(".canvas-content").style.zoom = 1
 			}, 100)
 		},
 		getEdges() {
