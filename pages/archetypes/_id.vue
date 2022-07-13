@@ -55,6 +55,14 @@
 				</option>
 			</select>
 		</div>
+		<div class="flex-row">
+			<span><b>&ensp;Separa membri nel nome da supporti&ensp;</b></span>
+			<input
+				ref="favourite"
+				type="checkbox"
+				@change="separateSupports = !separateSupports"
+			/>
+		</div>
 		<h4>ORDINE:</h4>
 		<grid-view :columns="3" :row-gap="0" :col-gap="2" style="width: 80%">
 			<button-secondary
@@ -71,7 +79,28 @@
 				@click.native="sortFilter = sortLabel"
 			/>
 		</grid-view>
-		<div v-if="actualMembers.length > 0" class="flex-col">
+		<div v-if="!separateSupports" class="flex-col">
+			<grid-view
+				:columns="
+					+cardsPerRow < archetype.members.length
+						? +cardsPerRow
+						: archetype.members.length
+				"
+				:row-gap="0"
+				:col-gap="0"
+			>
+				<card-modal
+					v-for="member of archetype.members"
+					:key="member.id"
+					:card-id="member.id"
+					:src="
+						artwork ? getPicArtUrl(member.id) : getPicUrl(member.id)
+					"
+					:rarity="'Common'"
+				/>
+			</grid-view>
+		</div>
+		<div v-if="actualMembers.length > 0 && separateSupports" class="flex-col">
 			<hr />
 			<h3>
 				Membri di {{ archetype.true_name }} ({{ actualMembers.length }})
@@ -97,7 +126,7 @@
 				/>
 			</grid-view>
 		</div>
-		<div v-if="supportMembers.length > 0" class="flex-col">
+		<div v-if="supportMembers.length > 0 && separateSupports" class="flex-col">
 			<hr />
 			<h3>
 				Supporti di {{ archetype.true_name }} ({{
@@ -163,6 +192,7 @@ export default {
 			archetype: {},
 			cardsPerRow: 7,
 			sortFilter: "PER CATEGORIA",
+			separateSupports: false,
 		}
 	},
 	head() {
