@@ -344,5 +344,8 @@ export default {
 	width: 98vw;
 	height: 75vh;
 	border: 1px solid var(--color-darker);
+
+	box-sizing: border-box;
+	padding-left: 800px !important;
 }
 </style>

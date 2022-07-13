@@ -101,10 +101,6 @@ export function exceptionArc(arc, allcards, grouped) {
 			descIncludes("Buster Blader")
 			break
 		}
-		case "Brave Token": {
-			changeName("Adventurer Token")
-			break
-		}
 		case "Demise": {
 			changeName("Ruin & Demise")
 			const notMembers = [
@@ -261,6 +257,10 @@ export function exceptionArc(arc, allcards, grouped) {
 			mergeWith("Vision HERO")
 			mergeWith("Evil HERO")
 			descIncludes('"Change" Quick-Play')
+			break
+		}
+		case "Adventurer Token": {
+			mergeWith("Brave Token")
 			break
 		}
 		case "The Agent": {

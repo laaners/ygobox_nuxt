@@ -215,7 +215,7 @@ export default {
 				left,
 				width,
 				border: this.edge.reverseWeight ? '2px solid var(--color-darker)' : 'none',
-				height: this.edge.reverseWeight ? '2px' : '2px',
+				height: '2px',
 				background: this.edge.reverseWeight ? 'var(--color-light)' : 'var(--color-darker)',
 			}
 		},

@@ -37,8 +37,10 @@ export default {
 	}),
 	methods: {
 		packImage() {
-			return `/sets/${this.set.set_code}.jpg`
-			//	return `https://ygoprodeck.com/pics_sets/${this.set.set_code}.jpg`
+			//	if(this.set.tcg_date < "2016-09-15")
+			if(this.set.tcg_date < "2022-02-24")
+				return `/sets/${this.set.set_code}.jpg`
+			return `https://ygoprodeck.com/pics_sets/${this.set.set_code}.jpg`
 		},
 		async handleRedirect() {
 			await this.$copyText(this.set.set_name)

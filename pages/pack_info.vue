@@ -28,27 +28,13 @@
 				<select v-model="dateFilter" name="setsFilter">
 					<option label="Tutti" selected="selected">1900</option>
 					<option label="Solo i deck" selected="selected">Deck</option>
-					<option label="2001">2001</option>
-					<option label="2002">2002</option>
-					<option label="2003">2003</option>
-					<option label="2004">2004</option>
-					<option label="2005">2005</option>
-					<option label="2006">2006</option>
-					<option label="2007">2007</option>
-					<option label="2008">2008</option>
-					<option label="2009">2009</option>
-					<option label="2010">2010</option>
-					<option label="2011">2011</option>
-					<option label="2012">2012</option>
-					<option label="2013">2013</option>
-					<option label="2014">2014</option>
-					<option label="2015">2015</option>
-					<option label="2016">2016</option>
-					<option label="2017">2017</option>
-					<option label="2018">2018</option>
-					<option label="2019">2019</option>
-					<option label="2021">2021</option>
-					<option label="2022">2022</option>
+					<option
+						v-for="i of Array(2022-2000).fill(2001).map((v,i)=>v+i)"
+						:key="'date-'+i"
+						:label="i"
+					>
+						{{ i }}
+					</option>
 				</select>
 			</div>
 			<input
@@ -57,15 +43,25 @@
 				maxlength="125"
 				size="40"
 				placeholder="Scrivi qua o clicca su un pacchetto!"
+				list="allsets"
 				:value="clickedSet"
 			/>
+			<datalist id="allsets">
+				<option
+					v-for="set of allsets"
+					:key="set.set_code"
+					:value="set.set_name"
+				>
+					{{ set.set_name }}
+				</option>
+			</datalist>
 			<button-secondary
 				:title="'APRI PACCHETTO'"
 				@click.native="listCardsPack()"
 			/>
 		</div>
 		<div v-show="appendCards.length > 0" class="flex-col">
-			<img id="pack-img" loading="lazy" />
+			<container-pack-scroll id="pack-img" :set="openedSet"/>
 			<h3 ref="packInfo"></h3>
 			<h4>ORDINA PER:</h4>
 			<grid-view
@@ -85,7 +81,7 @@
 				/>
 			</grid-view>
 			<grid-view
-				:columns="appendCards.length < 6 ? 4 : 6"
+				:columns="appendCards.length < 6 ? appendCards.length : 6"
 				:row-gap="0.5"
 				:col-gap="1"
 				style="width: 90%"
@@ -121,6 +117,7 @@ export default {
 		allsets: [],
 		dateFilter: "1900",
 		clickedSet: "",
+		openedSet: {},
 		sortFilter: "DEFAULT",
 	}),
 	head() {
@@ -193,8 +190,8 @@ export default {
 				return
 			}
 			this.appendCards = cards
-
-			this.$el.querySelector("#pack-img").src = pack_img
+			this.openedSet = this.allsets.find(_=>_.set_name.toLowerCase() === set_name.toLowerCase())
+			//	this.$el.querySelector("#pack-img").src = pack_img
 			this.$refs.packInfo.innerHTML =
 				cards.length +
 				" carte diverse nel pacchetto\nSe apri il pacchetto avrai " +

@@ -373,7 +373,17 @@
 					maxlength="125"
 					size="40"
 					placeholder="Scrivi qua un pacchetto!"
+					list="allsets"
 				/>
+				<datalist id="allsets">
+					<option
+						v-for="set of allsets"
+						:key="set.set_code"
+						:value="set.set_name"
+					>
+						{{ set.set_name }}
+					</option>
+				</datalist>
 				<button-secondary
 					:title="'APRI PACCHETTO'"
 					@click.native="drafting()"
@@ -392,11 +402,11 @@
 					v-show="packAppendCards.length > 0"
 					class="flex-col visible-pack"
 				>
-					<img id="pack-img" ref="packImg" loading="lazy" />
+					<container-pack-scroll id="pack-img" :set="openedSet"/>
 					<h3 ref="packInfo"></h3>
 					<grid-view
 						class="cardsPack"
-						:columns="packAppendCards.length < 6 ? 4 : 6"
+						:columns="packAppendCards.length < 6 ? packAppendCards.length : 6"
 						:row-gap="0.5"
 						:col-gap="1"
 						style="width: 90%"
@@ -494,6 +504,7 @@ export default {
 		recentlySaved: false,
 		packAppendCards: [],
 		packLoading: false,
+		openedSet: {}
 	}),
 	head() {
 		return {
@@ -967,7 +978,9 @@ export default {
 					})
 				}
 			})
-			this.$refs.packImg.src = pack_img
+			//	this.$refs.packImg.src = pack_img
+			this.openedSet = this.allsets.find(_=>_.set_name.toLowerCase() === set_name.toLowerCase())
+
 			this.$refs.packInfo.innerHTML =
 				packN +
 				" carte diverse nel pacchetto\nSe apri il pacchetto avrai " +

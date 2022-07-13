@@ -71,23 +71,60 @@
 				@click.native="sortFilter = sortLabel"
 			/>
 		</grid-view>
-		<grid-view
-			:columns="
-				+cardsPerRow < archetype.members.length
-					? +cardsPerRow
-					: archetype.members.length
-			"
-			:row-gap="0"
-			:col-gap="0"
-		>
-			<card-modal
-				v-for="member of archetype.members"
-				:key="member.id"
-				:card-id="member.id"
-				:src="artwork ? getPicArtUrl(member.id) : getPicUrl(member.id)"
-				:rarity="'Common'"
-			/>
-		</grid-view>
+		<div v-if="actualMembers.length > 0" class="flex-col">
+			<hr />
+			<h3>
+				Membri di {{ archetype.true_name }} ({{ actualMembers.length }})
+			</h3>
+			<hr />
+			<grid-view
+				:columns="
+					+cardsPerRow < actualMembers.length
+						? +cardsPerRow
+						: actualMembers.length
+				"
+				:row-gap="0"
+				:col-gap="0"
+			>
+				<card-modal
+					v-for="member of actualMembers"
+					:key="member.id"
+					:card-id="member.id"
+					:src="
+						artwork ? getPicArtUrl(member.id) : getPicUrl(member.id)
+					"
+					:rarity="'Common'"
+				/>
+			</grid-view>
+		</div>
+		<div v-if="supportMembers.length > 0" class="flex-col">
+			<hr />
+			<h3>
+				Supporti di {{ archetype.true_name }} ({{
+					supportMembers.length
+				}})
+			</h3>
+			<hr />
+			<grid-view
+				:columns="
+					+cardsPerRow < supportMembers.length
+						? +cardsPerRow
+						: supportMembers.length
+				"
+				:row-gap="0"
+				:col-gap="0"
+			>
+				<card-modal
+					v-for="member of supportMembers"
+					:key="member.id"
+					:card-id="member.id"
+					:src="
+						artwork ? getPicArtUrl(member.id) : getPicUrl(member.id)
+					"
+					:rarity="'Common'"
+				/>
+			</grid-view>
+		</div>
 	</div>
 </template>
 
@@ -104,9 +141,19 @@ export default {
 			"/api/archetypes/" + id.replace(/\//g, "%2F")
 		)
 		const allsets = await $axios.$get("/api/allsets")
+
+		const actualMembers = data.members.filter((_) =>
+			_.name.toLowerCase().includes(data.true_name.toLowerCase())
+		)
+		const supportMembers = data.members.filter(
+			(_) => !_.name.toLowerCase().includes(data.true_name.toLowerCase())
+		)
+
 		return {
 			artwork: false,
 			archetype: data,
+			actualMembers,
+			supportMembers,
 			allsets,
 		}
 	},
@@ -137,10 +184,18 @@ export default {
 					this.archetype.members = this.categorySort(
 						this.archetype.members
 					)
+					this.actualMembers = this.categorySort(this.actualMembers)
+					this.supportMembers = this.categorySort(this.supportMembers)
 					break
 				}
 				case "ALFABETICO": {
 					this.archetype.members.sort((a, b) =>
+						a.name >= b.name ? 1 : -1
+					)
+					this.actualMembers.sort((a, b) =>
+						a.name >= b.name ? 1 : -1
+					)
+					this.supportMembers.sort((a, b) =>
 						a.name >= b.name ? 1 : -1
 					)
 					break
@@ -148,6 +203,16 @@ export default {
 				case "CRONOLOGICO": {
 					this.archetype.members = this.categorySort(
 						this.archetype.members
+					).sort((a, b) =>
+						this.searchDate(a) >= this.searchDate(b) ? 1 : -1
+					)
+					this.actualMembers = this.categorySort(
+						this.actualMembers
+					).sort((a, b) =>
+						this.searchDate(a) >= this.searchDate(b) ? 1 : -1
+					)
+					this.supportMembers = this.categorySort(
+						this.supportMembers
 					).sort((a, b) =>
 						this.searchDate(a) >= this.searchDate(b) ? 1 : -1
 					)
@@ -160,6 +225,8 @@ export default {
 	},
 	mounted() {
 		this.archetype.members = this.categorySort(this.archetype.members)
+		this.actualMembers = this.categorySort(this.actualMembers)
+		this.supportMembers = this.categorySort(this.supportMembers)
 		this.allsets = this.hashGroupBy(this.allsets, "set_name")
 	},
 	methods: {
@@ -199,5 +266,10 @@ export default {
 .crest img {
 	height: 100%;
 	border-radius: var(--border-radius);
+}
+
+hr {
+	border: solid var(--color-darker);
+	width: 100%;
 }
 </style>
