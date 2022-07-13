@@ -3,7 +3,7 @@
 		<h1 style="text-align: center">
 			{{ archetype.archetype }}
 		</h1>
-		<h3>{{ archetype.members.length }} membri</h3>
+		<h2>{{ archetype.members.length }} membri e supporti</h2>
 		<div v-if="archetype.crest" class="crest">
 			<img :src="archetype.crest" />
 		</div>
