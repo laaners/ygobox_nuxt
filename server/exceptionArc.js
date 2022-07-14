@@ -259,10 +259,6 @@ export function exceptionArc(arc, allcards, grouped) {
 			descIncludes('"Change" Quick-Play')
 			break
 		}
-		case "Adventurer Token": {
-			mergeWith("Brave Token")
-			break
-		}
 		case "The Agent": {
 			mergeWith("Hyperion")
 			break
