@@ -244,27 +244,33 @@ export function exceptionArc(arc, allcards, grouped) {
 		}
 		case "Volcanic": {
 			mergeWith("Blaze Accelerator")
+			changeName("Volcanic & Blaze Accelerator")
 			break
 		}
 		case "Nordic": {
 			mergeWith("Aesir")
+			changeName("Nordic & Aesir")
 			break
 		}
 		case "HERO": {
 			mergeWith("Elemental HERO")
 			mergeWith("Destiny HERO")
 			mergeWith("Masked HERO")
+			descIncludes('"Change" Quick-Play')
 			mergeWith("Vision HERO")
 			mergeWith("Evil HERO")
-			descIncludes('"Change" Quick-Play')
+			nameIncludes("Dark Fusion")
+			descIncludes("Dark Fusion")
 			break
 		}
 		case "The Agent": {
 			mergeWith("Hyperion")
+			changeName("The Agent & Hyperion")
 			break
 		}
 		case "Ninja": {
 			mergeWith("Ninjitsu Art")
+			changeName("Ninja & Ninjitsu Art")
 			break
 		}
 		case "Butterspy": {
@@ -277,14 +283,17 @@ export function exceptionArc(arc, allcards, grouped) {
 		}
 		case "Fire Fist": {
 			mergeWith("Fire Formation")
+			changeName("Fire Fist & Fire Formation")
 			break
 		}
 		case "Evilswarm": {
 			mergeWith("Infestation")
+			changeName("Evilswarm & Infestation")
 			break
 		}
 		case "Steelswarm": {
 			mergeWith("Infestation")
+			changeName("Steelswarm & Infestation")
 			break
 		}
 		case "Onomato": {
@@ -304,28 +313,34 @@ export function exceptionArc(arc, allcards, grouped) {
 		case "Fluffal": {
 			mergeWith("Frightfur")
 			mergeWith("Edge Imp")
+			changeName("Fluffal & Edge Imp & Frightfur")
 			break
 		}
 		case "Sunavalon": {
 			mergeWith("Sunvine")
 			mergeWith("Sunseed")
+			changeName("Sunavalon & Sunvine & Sunseed")
 			break
 		}
 		case "Heraldic": {
 			mergeWith("Heraldry")
+			changeName("Heraldic Beast & Heraldry")
 			break
 		}
 		case "D/D": {
 			mergeWith("Dark Contract")
+			changeName("D/D & Dark Contract")
 			break
 		}
 		case "Monarch": {
 			mergeWith("Vassal")
 			excludeMembers(["Gravekeeper's Vassal"])
+			changeName("Monarch & Vassal")
 			break
 		}
 		case "Charmer": {
 			mergeWith("Possessed")
+			changeName("Charmer & Possessed")
 			const notMembers = [
 				"Possessed Dark Soul",
 				"Keldo the Possessed Statue",
@@ -339,19 +354,23 @@ export function exceptionArc(arc, allcards, grouped) {
 		}
 		case "@Ignister": {
 			mergeWith("A.I.")
+			changeName("@Ignister & A.I.")
 			break
 		}
 		case "Eldlich": {
 			mergeWith("Golden Land")
+			changeName("Eldlich & Eldlixir & Golden Land")
 			break
 		}
 		case "Infernoble Knight": {
 			mergeWith("Roland")
+			changeName("Infernoble Knight & Roland")
 			break
 		}
 		case "Noble Knight": {
 			mergeWith("Infernoble Knight")
 			mergeWith("Roland")
+			changeName("Noble Knight & Noble Arms & Artorigus & Roland")
 			break
 		}
 		case "Evil★Twin": {
@@ -361,10 +380,12 @@ export function exceptionArc(arc, allcards, grouped) {
 		}
 		case "Amazement": {
 			mergeWith("Attraction")
+			changeName("Amazement & Attraction")
 			break
 		}
 		case "Infernoid": {
 			mergeWith("Void")
+			changeName("Infernoid & Void")
 			const notMembers = [
 				"Unformed Void"
 			]
@@ -373,6 +394,7 @@ export function exceptionArc(arc, allcards, grouped) {
 		}
 		case "Infernity": {
 			mergeWith("Void")
+			changeName("Infernity & Void")
 			const notMembers = [
 				"Unformed Void"
 			]

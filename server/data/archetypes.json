@@ -1,5 +1,5 @@
 [
-    {"arc":"@Ignister",
+    {"arc":"@Ignister & A.I.",
         "imgs": {
             "Poster": 54374642,
             "Effect": 55762976,
@@ -67,7 +67,7 @@
         "crest": "https://ms.yugipedia.com//f/f4/Crest-AllyofJustice.svg"
     },
     {"arc":"Altergeist","url":"https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/15b84c98-5292-47ff-853e-44ffd3d074b8/dbftnfk-896a7d6e-6ad2-45d1-8bfc-4bed933c6f49.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzE1Yjg0Yzk4LTUyOTItNDdmZi04NTNlLTQ0ZmZkM2QwNzRiOFwvZGJmdG5may04OTZhN2Q2ZS02YWQyLTQ1ZDEtOGJmYy00YmVkOTMzYzZmNDkucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0._cLWRgmHbKLbjAY3G_meBapsodeeqw9xyZs5BWZta6c"},
-    {"arc":"Amazement",
+    {"arc":"Amazement & Attraction",
         "imgs": {
             "Poster": 6374519,
             "Effect": 94821366
@@ -250,7 +250,7 @@
             "Link": 49202162
         }
     },
-    {"arc":"Charmer",
+    {"arc":"Charmer & Possessed",
         "imgs": {
             "Poster": 62256492,
             "Effect": 86395581,
@@ -334,7 +334,7 @@
             "Effect": 7572887
         }
     },
-    {"arc":"D/D",
+    {"arc":"D/D & Dark Contract",
         "imgs": {
             "Poster": 44852429,
             "Effect": 40227329,
@@ -518,7 +518,7 @@
             "Fusion": 42166000
         }
     },
-    {"arc":"Eldlich","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/95440946.jpg"},
+    {"arc":"Eldlich & Eldlixir & Golden Land","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/95440946.jpg"},
     {"arc":"Elemental HERO",
         "imgs": {
             "Poster": 55428811,
@@ -554,7 +554,7 @@
         "crest": "/crests/EvilTwinLiveTwin.png",
         "credit": "https://www.pixiv.net/en/users/1156555/artworks"
     },
-    {"arc":"Evilswarm",
+    {"arc":"Evilswarm & Infestation",
         "imgs": {
             "Poster": 35419032,
             "Effect": 77841719,
@@ -590,7 +590,7 @@
         "crest": "/crests/Fabled.png"
     },
     {"arc":"Fairy Tail","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/55623480.jpg"},
-    {"arc":"Fire Fist",
+    {"arc":"Fire Fist & Fire Formation",
         "imgs": {
             "Poster": 57103969,
             "Effect": 6353603,
@@ -629,7 +629,7 @@
         }
     },
     {"arc":"Flower Cardian","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/42291297.jpg"},
-    {"arc":"Fluffal",
+    {"arc":"Fluffal & Edge Imp & Frightfur",
         "imgs": {
             "Poster": 34773082,
             "Effect": 61173621,
@@ -844,7 +844,7 @@
             "Link": 46935289
         }
     },
-    {"arc":"Heraldic",
+    {"arc":"Heraldic Beast & Heraldry",
         "imgs": {
             "Poster": 84482694,
             "Effect": 82293134,
@@ -894,14 +894,14 @@
     {"arc":"Icejade","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/82777208.jpg","waifu":"a"},
     {"arc":"Igknight","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/23296404.jpg"},
     {"arc":"Impcantation","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/86758915.jpg"},
-    {"arc":"Infernity",
+    {"arc":"Infernity & Void",
         "imgs": {
             "Poster": 66957584,
             "Effect": 99177923,
             "Synchro": 72896720
         }
     },
-    {"arc":"Infernoble Knight",
+    {"arc":"Infernoble Knight & Roland",
         "imgs": {
             "Poster": 56824871,
             "Effect": 58346901,
@@ -909,7 +909,7 @@
         },
         "crest": "/crests/Infernoble Knight.png"
     },
-    {"arc":"Infernoid",
+    {"arc":"Infernoid & Void",
         "imgs": {
             "Poster": 23440231,
             "Effect": 14799437,
@@ -1199,7 +1199,7 @@
             "Synchro": 89310929
         }
     },
-    {"arc":"Monarch",
+    {"arc":"Monarch & Vassal",
         "imgs": {
             "Poster": 19870120,
             "Effect": 23064604
@@ -1245,7 +1245,7 @@
             "Effect": 68353324
         }
     },
-    {"arc":"Ninja",
+    {"arc":"Ninja & Ninjitsu Art",
         "imgs": {
             "Poster": 50766506,
             "Effect": 95027497,
@@ -1255,7 +1255,7 @@
         }
     },
     {"arc":"Ninjitsu Art","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/90200789.jpg"},
-    {"arc":"Noble Knight",
+    {"arc":"Noble Knight & Noble Arms & Artorigus & Roland",
         "imgs": {
             "Poster": 55742055,
             "Effect": 59057152,
@@ -1264,7 +1264,7 @@
             "Link": 59934749
         }
     },
-    {"arc":"Nordic",
+    {"arc":"Nordic & Aesir",
         "imgs": {
             "Poster": 40844552,
             "Effect": 91697229,
@@ -1607,7 +1607,7 @@
     },
     {"arc":"Starliege","url":"NO"},
     {"arc":"Starry Knight","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/85590798.jpg"},
-    {"arc":"Steelswarm",
+    {"arc":"Steelswarm & Infestation",
         "imgs": {
             "Poster": 27207573,
             "Effect": 94092230,
@@ -1619,7 +1619,7 @@
     {"arc":"Stigmata","url":"NO"},
     {"arc":"Stigmatika","url":"NO"},
     {"arc":"Subterror","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/74640994.jpg"},
-    {"arc":"Sunavalon","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/92770064.jpg"},
+    {"arc":"Sunavalon & Sunvine & Sunseed","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/92770064.jpg"},
     {"arc":"Sunseed","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/66407907.jpg"},
     {"arc":"Sunvine","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/91557476.jpg"},
     {"arc":"Super Defense Robot",
@@ -1689,7 +1689,7 @@
         "crest": "/crests/Tellarknight.png"
     },
     {"arc":"Tenyi","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/39730727.jpg"},
-    {"arc":"The Agent",
+    {"arc":"The Agent & Hyperion",
         "imgs": {
             "Poster": 91188343,
             "Effect": 55794644,
@@ -1832,7 +1832,7 @@
     {"arc":"Virtual World","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/13364097.jpg"},
     {"arc":"Vision HERO","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/46759931.jpg"},
     {"arc":"Void","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/57047293.jpg"},
-    {"arc":"Volcanic",
+    {"arc":"Volcanic & Blaze Accelerator",
         "imgs": {
             "Poster": 69750546,
             "Effect": 32543380
