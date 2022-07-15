@@ -194,7 +194,7 @@ export default {
 
 			const newNode = this.hashAllcardsId[+newV][0]
 			const nodeEdge = await this.$axios.$get(
-				`/api/trivia/${newNode.name}`
+				`/api/trivia/${newNode.name.replace(/\//g, "%2F")}`
 			)
 
 			if (nodeEdge.length === 0) {
