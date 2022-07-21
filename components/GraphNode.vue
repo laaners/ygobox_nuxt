@@ -53,6 +53,7 @@ export default {
 		startDrag(e) {
 			const zoom = +document.body.querySelector(".canvas-content").style.zoom
 
+			/*	GROUP DRAG
 			const nodes = document.body.querySelectorAll(".nodes")
 			let count = 0
 			for(const i of nodes) {
@@ -77,8 +78,8 @@ export default {
 
 				count++
 			}
+			*/
 
-/*
 			this.offsetX =
 				this.offsetX === 0
 					? e.clientX/zoom - this.left
@@ -96,9 +97,9 @@ export default {
 					top: this.mutableTop,
 				})
 			}, 50)
-			*/
 		},
 		dragging(e) {
+			/* GROUP DRAG
 			const nodes = document.body.querySelectorAll(".nodes")
 			for(const i of nodes) {
 				const node = i.__vue__
@@ -108,14 +109,14 @@ export default {
 				node.mutableLeft = e.clientX/zoom - node.offsetX
 				node.mutableTop = e.clientY/zoom - node.offsetY
 			}
-/*
+			*/
 			if (!this.drag || e.clientX === 0 || e.clientY === 0) return
 			const zoom = +document.body.querySelector(".canvas-content").style.zoom
 			this.mutableLeft = e.clientX/zoom - this.offsetX
 			this.mutableTop = e.clientY/zoom - this.offsetY
-			*/
 		},
 		endDrag(e) {
+			/* GROUP DRAG
 			const nodes = document.body.querySelectorAll(".nodes")
 			for(const i of nodes) {
 				const node = i.__vue__
@@ -128,7 +129,7 @@ export default {
 					top: node.mutableTop,
 				})
 			}
-			/*
+			*/
 			this.drag = false
 			clearInterval(this.emittingInterval)
 			this.$emit("update:nodePosition", {
@@ -136,7 +137,6 @@ export default {
 				left: this.mutableLeft,
 				top: this.mutableTop,
 			})
-			*/
 		},
 	},
 }
