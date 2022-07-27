@@ -14,12 +14,13 @@ export default app
 ;(async () => {
 	const { allsets, bannedCards, cardsCH, cardsIT, allcards, allcardsToT, femaleCards } =
 		await initData()
-	const archetypes = retrieveArchetypes(allcardsToT, allsets, femaleCards)
+	let archetypes = retrieveArchetypes(allcardsToT, allsets, femaleCards)
 	const hashAllCards = hashGroupBy(allcardsToT, "name")
 	console.log("Got all the data now!")
 
 	app.get("/", (req, res) => {
-		return res.json(cardsIT)
+		archetypes = retrieveArchetypes(allcardsToT, allsets, femaleCards)
+		return res.send("Updated archetypes")
 	})
 
 	app.get("/allcards", (req, res) => {

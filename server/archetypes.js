@@ -1,4 +1,5 @@
-import archetypesPics from "./data/archetypes.json"
+import fs from "fs"
+//	import archetypesPics from "./data/archetypes.json"
 import { exceptionArc } from "./exceptionArc"
 
 function groupBy(obj, key, listName) {
@@ -161,6 +162,8 @@ export function retrieveArchetypes(allcards, allsets, femaleCards) {
 		const { focus, waifu } = arcFocusAndWaifu(arc.members, femaleCards)
 		arc.focus = focus
 		arc.waifu = waifu
+
+		const archetypesPics = JSON.parse(fs.readFileSync("server/data/archetypes.json").toString())
 
 		const arcPic = archetypesPics.find((x) => x.arc === arc.archetype)
 		if (arcPic === undefined) arc.imgs = { Poster: undefined }
