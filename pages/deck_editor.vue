@@ -402,11 +402,15 @@
 					v-show="packAppendCards.length > 0"
 					class="flex-col visible-pack"
 				>
-					<container-pack-scroll id="pack-img" :set="openedSet"/>
+					<container-pack-scroll id="pack-img" :set="openedSet" />
 					<h3 ref="packInfo"></h3>
 					<grid-view
 						class="cardsPack"
-						:columns="packAppendCards.length < 6 ? packAppendCards.length : 6"
+						:columns="
+							packAppendCards.length < 6
+								? packAppendCards.length
+								: 6
+						"
 						:row-gap="0.5"
 						:col-gap="1"
 						style="width: 90%"
@@ -504,7 +508,7 @@ export default {
 		recentlySaved: false,
 		packAppendCards: [],
 		packLoading: false,
-		openedSet: {}
+		openedSet: {},
 	}),
 	head() {
 		return {
@@ -872,15 +876,11 @@ export default {
 		/* FORM */
 		bindFavouriteCards(e) {
 			if (e.target.checked) {
-				this.$el.querySelector(
-					".search-form-component"
-				).__vue__.form.favouriteCards = this.savedCards
+				this.$refs.searchForm.form.favouriteCards = this.savedCards
 					.filter((_) => _.favourite)
 					.map((_) => _.id)
 			} else {
-				this.$el.querySelector(
-					".search-form-component"
-				).__vue__.form.favouriteCards = []
+				this.$refs.searchForm.form.favouriteCards = []
 			}
 		},
 		bindSelectedSet(e) {
@@ -920,9 +920,6 @@ export default {
 		},
 		updateSearchedCard(cardId, checked) {
 			const searchResults = this.$el.querySelector(".search-results")
-			// document.body.querySelector(".search-results").__vue__.$slots.default[0]
-			// document.body.querySelector(".search-results").__vue__.$slots.default[0].componentInstance.copies = 10
-			// document.body.querySelector(".search-results").__vue__.$slots.default[0].componentOptions.propsData.card.id
 			if (searchResults === undefined || searchResults === null) return
 			const toUpdate = searchResults.__vue__.$slots.default.find(
 				(slot) => slot.componentOptions.propsData.card.id === cardId
@@ -979,7 +976,9 @@ export default {
 				}
 			})
 			//	this.$refs.packImg.src = pack_img
-			this.openedSet = this.allsets.find(_=>_.set_name.toLowerCase() === set_name.toLowerCase())
+			this.openedSet = this.allsets.find(
+				(_) => _.set_name.toLowerCase() === set_name.toLowerCase()
+			)
 
 			this.$refs.packInfo.innerHTML =
 				packN +
