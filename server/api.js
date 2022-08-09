@@ -20,7 +20,8 @@ export default app
 
 	app.get("/", (req, res) => {
 		archetypes = retrieveArchetypes(allcardsToT, allsets, femaleCards)
-		return res.send("Updated archetypes")
+		//	return res.send("Updated archetypes")
+		return res.json(allcardsToT.map(_=>{ return {"name":_.name, "id": _.id} }))
 	})
 
 	app.get("/allcards", (req, res) => {

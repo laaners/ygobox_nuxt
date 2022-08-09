@@ -312,5 +312,20 @@
 		"id": 81439173,
 		"name": "Foolish Burial",
 		"banner": "Ale"
+	},
+	{
+		"id": 70828912,
+		"name": "Premature Burial",
+		"banner": "Ale"
+	},
+	{
+		"id": 74003290,
+		"name": "Lost Wind",
+		"banner": "Sandro"
+	},
+	{
+		"id": 14558127,
+		"name": "Ash Blossom & Joyous Spring",
+		"banner": "Siwei"
 	}
 ]
