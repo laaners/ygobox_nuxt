@@ -12,7 +12,7 @@ const app = express()
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.json())
 
-const ws = new WebSocket.Server({ server: app.listen(+process.env.PORT+8080 || 8080), path: "/ws" })
+//	const ws = new WebSocket.Server({ server: app.listen(+process.env.PORT+8080 || 8080), path: "/ws" })
 
 export default app
 ;(async () => {
@@ -584,6 +584,7 @@ export default app
 		return res.send("Banned: "+card.name)
 	})
 
+	const ws = new WebSocket.Server({ port: 8080 });
 	const CLIENTS = []
 	ws.on("connection", (conn) => {
 		CLIENTS.push(conn)
@@ -597,6 +598,10 @@ export default app
 			CLIENTS.splice(CLIENTS.indexOf(conn), 1)
 			console.log("Connection closed: "+CLIENTS.length)
 		})
+	})
+
+	ws.on("error", (err) => {
+		console.log(err)
 	})
 
 	function sendAll() {
