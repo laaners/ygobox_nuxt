@@ -2,13 +2,17 @@
 import express from "express"
 import bodyParser from "body-parser"
 import request from "request"
+import WebSocket from "ws"
 import { load } from "cheerio"
 import { initData } from "./database"
 import { retrieveArchetypes } from "./archetypes"
 import archetypesBlacklist from "./data/blacklist.json"
+
 const app = express()
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.json())
+
+const ws = new WebSocket.Server({ port: 8080 })
 
 export default app
 ;(async () => {
@@ -155,6 +159,16 @@ export default app
 
 	app.get("/banned_cards", (req, res) => {
 		return res.json(bannedCards)
+	})
+
+	app.get("/banned_cards_short", (req,res) => {
+		return res.send(
+			JSON.stringify(
+				bannedCards.map(_=>{
+					return { id: _.id, name: _.name, banner: _.banner }
+				}),null,4
+			)
+		)
 	})
 
 	app.get("/set/:id", (req, res) => {
@@ -550,4 +564,46 @@ export default app
 		}
 		return res.json(filtered)
 	})
+
+	app.get("/update_banlist", (req,res) => {
+		if(req.query.id === undefined || req.query.id === null) return res.send("Undefined id")
+		if(req.query.banner === undefined || req.query.banner === null) return res.send("Undefined banner")
+
+		if(!["Ale","Leo","Sandro","Siwei"].includes(req.query.banner)) return res.send("Non existent banner")
+		if(bannedCards.find(_=>_.id === +req.query.id) !== undefined) return res.send("Already existent card")
+		const card = allcardsToT.find(_=>_.id === +req.query.id)
+		if(card === undefined) return res.send("Non existent id")
+		bannedCards.push({
+			id: card.id,
+			name: card.name,
+			banner: req.query.banner,
+			info: card
+		})
+		sendAll()
+		return res.send("Banned: "+card.name)
+	})
+
+	const CLIENTS = []
+	ws.on("connection", (conn) => {
+		CLIENTS.push(conn)
+		console.log("Connection opened: "+CLIENTS.length)
+		conn.on("message", (message) => {
+			console.log("Received message: "+message)
+			sendAll()
+		})
+
+		conn.on("close", () => {
+			CLIENTS.splice(CLIENTS.indexOf(conn), 1)
+			console.log("Connection closed: "+CLIENTS.length)
+		})
+	})
+
+	function sendAll() {
+		console.log("Sending to all")
+		CLIENTS.forEach((client) => {
+			client.send(
+				JSON.stringify(bannedCards)
+			)
+		})
+	}
 })()

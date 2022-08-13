@@ -1,5 +1,32 @@
 <template>
 	<div class="flex-col">
+		<div v-if="$route.query.admin !== undefined" class="flex-col" style="width: 30%">
+			<div class="flex-row" style="width: 100%">
+				<input
+					v-model="bancard"
+					type="text"
+					list="allcards"
+					placeholder="Digita il nome di una carta!"
+					style="width: 100%"
+				/>&ensp;
+				<select v-model="banner" name="banner">
+					<option label="Ale" selected="selected">Ale</option>
+					<option label="Leo">Leo</option>
+					<option label="Sandro">Sandro</option>
+					<option label="Siwei">Siwei</option>
+				</select>
+				<datalist id="allcards">
+					<option
+						v-for="card of allcards"
+						:key="card.id"
+						:value="card.id"
+					>
+						{{ card.name }}
+					</option>
+				</datalist>
+			</div>
+			<button-secondary :title="'BANDISCI'" @click.native="banCard()" />
+		</div>
 		<div class="flex-col" style="width: 60%">
 			<h4>ORDINE:</h4>
 			<grid-view
@@ -9,7 +36,11 @@
 				style="width: 100%"
 			>
 				<button-secondary
-					v-for="sortLabel of ['CRONOLOGICO', 'PER CATEGORIA', 'PER PERSONA']"
+					v-for="sortLabel of [
+						'CRONOLOGICO',
+						'PER CATEGORIA',
+						'PER PERSONA',
+					]"
 					:key="sortLabel"
 					:title="sortLabel"
 					:style="{
@@ -22,14 +53,14 @@
 		<grid-view
 			v-if="!showPerBanner"
 			style="width: 90%"
-			:columns="15"
+			:columns="cardsPerRow"
 			:row-gap="0"
 			:col-gap="0"
 		>
 			<card-modal
 				v-for="card of bannedCards"
 				:key="card.id"
-				:src="getPicUrl(card.id)"
+				:src="getPicSmallUrl(card.id)"
 				:card-id="card.id"
 				:rarity="'Common'"
 			/>
@@ -38,7 +69,7 @@
 			<h4>Ale</h4>
 			<grid-view
 				style="width: 90%"
-				:columns="15"
+				:columns="cardsPerRow"
 				:row-gap="0"
 				:col-gap="0"
 			>
@@ -47,7 +78,7 @@
 						(_) => _.banner === 'Ale'
 					)"
 					:key="card.id"
-					:src="getPicUrl(card.id)"
+					:src="getPicSmallUrl(card.id)"
 					:card-id="card.id"
 					:rarity="'Common'"
 				/>
@@ -55,7 +86,7 @@
 			<h4>Leo</h4>
 			<grid-view
 				style="width: 90%"
-				:columns="15"
+				:columns="cardsPerRow"
 				:row-gap="0"
 				:col-gap="0"
 			>
@@ -64,7 +95,7 @@
 						(_) => _.banner === 'Leo'
 					)"
 					:key="card.id"
-					:src="getPicUrl(card.id)"
+					:src="getPicSmallUrl(card.id)"
 					:card-id="card.id"
 					:rarity="'Common'"
 				/>
@@ -72,7 +103,7 @@
 			<h4>Sandro</h4>
 			<grid-view
 				style="width: 90%"
-				:columns="15"
+				:columns="cardsPerRow"
 				:row-gap="0"
 				:col-gap="0"
 			>
@@ -81,7 +112,7 @@
 						(_) => _.banner === 'Sandro'
 					)"
 					:key="card.id"
-					:src="getPicUrl(card.id)"
+					:src="getPicSmallUrl(card.id)"
 					:card-id="card.id"
 					:rarity="'Common'"
 				/>
@@ -89,7 +120,7 @@
 			<h4>Siwei</h4>
 			<grid-view
 				style="width: 90%"
-				:columns="15"
+				:columns="cardsPerRow"
 				:row-gap="0"
 				:col-gap="0"
 			>
@@ -98,7 +129,7 @@
 						(_) => _.banner === 'Siwei'
 					)"
 					:key="card.id"
-					:src="getPicUrl(card.id)"
+					:src="getPicSmallUrl(card.id)"
 					:card-id="card.id"
 					:rarity="'Common'"
 				/>
@@ -125,8 +156,12 @@ export default {
 	data: () => ({
 		showPerBanner: false,
 		sortFilter: "CRONOLOGICO",
+		cardsPerRow: 20,
 		defaultOrder: [],
 		bannedCards: [],
+		allcards: [],
+		bancard: 0,
+		banner: "Ale",
 	}),
 	head() {
 		return {
@@ -158,19 +193,34 @@ export default {
 				default:
 					this.bannedCards = this.defaultOrder
 			}
-		}
+		},
 	},
-	methods: {
-		sort(option) {
+	async mounted() {
+		this.socket = new WebSocket(`ws://${window.location.hostname}:8080/`)
+
+		// Connection opened
+		this.socket.addEventListener("open", (event) => {
+			this.socket.send("Hello Server!")
+		})
+
+		// Listen for messages
+		this.socket.addEventListener("message", (event) => {
+			console.log("Updating banlist")
+			this.bannedCards = JSON.parse(event.data).filter(
+				(_) => _.banner !== undefined
+			)
+			this.defaultOrder = JSON.parse(event.data).filter(
+				(_) => _.banner !== undefined
+			)
 			this.showPerBanner = false
-			switch (option) {
-				case "category": {
+			switch (this.sortFilter) {
+				case "PER CATEGORIA": {
 					this.bannedCards = this.categorySort(
 						this.bannedCards.map((_) => _.info)
 					)
 					break
 				}
-				case "banner": {
+				case "PER PERSONA": {
 					this.showPerBanner = true
 					this.bannedCards = this.defaultOrder
 					break
@@ -178,6 +228,17 @@ export default {
 				default:
 					this.bannedCards = this.defaultOrder
 			}
+		})
+
+		if(this.$route.query.admin !== undefined)
+			this.allcards = await this.getAllCards()
+	},
+	methods: {
+		async banCard() {
+			const msg = await this.$axios.get(
+				`api/update_banlist?id=${this.bancard}&banner=${this.banner}`
+			)
+			alert(msg.data)
 		},
 	},
 }
