@@ -12,7 +12,7 @@ const app = express()
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.json())
 
-const ws = new WebSocket.Server({ port: 8080 })
+const ws = new WebSocket.Server({ server: app.listen(8080 || process.env.PORT) })
 
 export default app
 ;(async () => {
