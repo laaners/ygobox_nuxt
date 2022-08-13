@@ -12,7 +12,7 @@ const app = express()
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.json())
 
-const ws = new WebSocket.Server({ server: app.listen(process.env.PORT+8080 || 8080) })
+const ws = new WebSocket.Server({ server: app.listen(+process.env.PORT+8080 || 8080) })
 
 export default app
 ;(async () => {
@@ -20,7 +20,7 @@ export default app
 		await initData()
 	let archetypes = retrieveArchetypes(allcardsToT, allsets, femaleCards)
 	const hashAllCards = hashGroupBy(allcardsToT, "name")
-	console.log("The port is: "+(process.env.PORT+8080 || 8080))
+	console.log("The port is: "+(+process.env.PORT+8080 || 8080))
 	console.log("Got all the data now!")
 
 	app.get("/", (req, res) => {
