@@ -197,7 +197,7 @@ export default {
 	},
 	async mounted() {
 		//	this.socket = new WebSocket(`ws://${window.location.hostname}:8080/`)
-		this.socket = new WebSocket(location.origin.replace(/^http/, 'ws'))
+		this.socket = new WebSocket(location.origin.replace(/^http/, 'ws')+"/ws")
 
 		// Connection opened
 		this.socket.addEventListener("open", (event) => {
