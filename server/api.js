@@ -2,7 +2,6 @@
 import express from "express"
 import bodyParser from "body-parser"
 import request from "request"
-import WebSocket from "ws"
 import { load } from "cheerio"
 import { initData } from "./database"
 import { retrieveArchetypes } from "./archetypes"
@@ -12,15 +11,13 @@ const app = express()
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.json())
 
-//	const ws = new WebSocket.Server({ server: app.listen(+process.env.PORT+8080 || 8080), path: "/ws" })
-
 export default app
 ;(async () => {
 	const { allsets, bannedCards, cardsCH, cardsIT, allcards, allcardsToT, femaleCards } =
 		await initData()
 	let archetypes = retrieveArchetypes(allcardsToT, allsets, femaleCards)
 	const hashAllCards = hashGroupBy(allcardsToT, "name")
-	console.log("The port is: "+(+process.env.PORT+8080 || 8080))
+	console.log("The port is: "+process.env.PORT)
 	console.log("Got all the data now!")
 
 	app.get("/", (req, res) => {
@@ -580,36 +577,6 @@ export default app
 			banner: req.query.banner,
 			info: card
 		})
-		sendAll()
 		return res.send("Banned: "+card.name)
 	})
-
-	const ws = new WebSocket.Server({ port: 8080 });
-	const CLIENTS = []
-	ws.on("connection", (conn) => {
-		CLIENTS.push(conn)
-		console.log("Connection opened: "+CLIENTS.length)
-		conn.on("message", (message) => {
-			console.log("Received message: "+message)
-			sendAll()
-		})
-
-		conn.on("close", () => {
-			CLIENTS.splice(CLIENTS.indexOf(conn), 1)
-			console.log("Connection closed: "+CLIENTS.length)
-		})
-	})
-
-	ws.on("error", (err) => {
-		console.log(err)
-	})
-
-	function sendAll() {
-		console.log("Sending to all")
-		CLIENTS.forEach((client) => {
-			client.send(
-				JSON.stringify(bannedCards)
-			)
-		})
-	}
 })()

@@ -1,6 +1,10 @@
 <template>
 	<div class="flex-col">
-		<div v-if="$route.query.admin !== undefined" class="flex-col" style="width: 30%">
+		<div
+			v-if="$route.query.admin !== undefined"
+			class="flex-col"
+			style="width: 30%"
+		>
 			<div class="flex-row" style="width: 100%">
 				<input
 					v-model="bancard"
@@ -205,12 +209,11 @@ export default {
 		})
 
 		// Listen for messages
-		this.socket.addEventListener("message", (event) => {
+		this.socket.addEventListener("message", async (event) => {
 			console.log("Updating banlist")
-			this.bannedCards = JSON.parse(event.data).filter(
-				(_) => _.banner !== undefined
-			)
-			this.defaultOrder = JSON.parse(event.data).filter(
+			const bannedCards = await this.$axios.$get("/api/banned_cards")
+			this.bannedCards = bannedCards.filter((_) => _.banner !== undefined)
+			this.defaultOrder = bannedCards.filter(
 				(_) => _.banner !== undefined
 			)
 			this.showPerBanner = false
@@ -231,7 +234,7 @@ export default {
 			}
 		})
 
-		if(this.$route.query.admin !== undefined)
+		if (this.$route.query.admin !== undefined)
 			this.allcards = await this.getAllCards()
 	},
 	methods: {
@@ -239,6 +242,7 @@ export default {
 			const msg = await this.$axios.get(
 				`api/update_banlist?id=${this.bancard}&banner=${this.banner}`
 			)
+			this.socket.send("Update banlist")
 			alert(msg.data)
 		},
 	},
