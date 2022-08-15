@@ -143,6 +143,7 @@
 </template>
 
 <script>
+import Pusher from "pusher-js"
 import CardModal from "../components/CardModal.vue"
 import GridView from "../components/GridView.vue"
 import Utils from "~/mixins/utils"
@@ -200,6 +201,7 @@ export default {
 		},
 	},
 	async mounted() {
+		/*
 		//	this.socket = new WebSocket(`ws://${window.location.hostname}:3001/ws/`)
 		this.socket = new WebSocket(location.origin.replace(/^http/, 'ws')+"/ws")
 
@@ -211,7 +213,24 @@ export default {
 		// Listen for messages
 		this.socket.addEventListener("message", async (event) => {
 			console.log("Updating banlist")
+			await this.updateBanlist()
+		})
+		*/
+		this.pusher = new Pusher("8b57261ee3e07fd82f1d", {
+			cluster: "eu",
+		})
+
+		this.channel = this.pusher.subscribe("my-channel")
+		this.channel.bind("my-event", async (data) => {
 			const bannedCards = await this.$axios.$get("/api/banned_cards")
+			this.updateBanlist(bannedCards)
+		})
+
+		if (this.$route.query.admin !== undefined)
+			this.allcards = await this.getAllCards()
+	},
+	methods: {
+		updateBanlist(bannedCards) {
 			this.bannedCards = bannedCards.filter((_) => _.banner !== undefined)
 			this.defaultOrder = bannedCards.filter(
 				(_) => _.banner !== undefined
@@ -232,18 +251,13 @@ export default {
 				default:
 					this.bannedCards = this.defaultOrder
 			}
-		})
-
-		if (this.$route.query.admin !== undefined)
-			this.allcards = await this.getAllCards()
-	},
-	methods: {
+		},
 		async banCard() {
-			const msg = await this.$axios.get(
+			const { data } = await this.$axios.get(
 				`api/update_banlist?id=${this.bancard}&banner=${this.banner}`
 			)
-			this.socket.send("Update banlist")
-			alert(msg.data)
+			//	this.socket.send("Update banlist")
+			alert(data)
 		},
 	},
 }

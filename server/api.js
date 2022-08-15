@@ -3,6 +3,7 @@ import express from "express"
 import bodyParser from "body-parser"
 import request from "request"
 import { load } from "cheerio"
+import Pusher from "pusher"
 import { initData } from "./database"
 import { retrieveArchetypes } from "./archetypes"
 import archetypesBlacklist from "./data/blacklist.json"
@@ -10,6 +11,14 @@ import archetypesBlacklist from "./data/blacklist.json"
 const app = express()
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.json())
+
+const pusher = new Pusher({
+	appId: process.env.PUSHER_ID,
+	key: process.env.PUSHER_KEY,
+	secret: process.env.PUSHER_SECRET,
+	cluster: "eu",
+	useTLS: true
+})
 
 export default app
 ;(async () => {
@@ -576,6 +585,9 @@ export default app
 			name: card.name,
 			banner: req.query.banner,
 			info: card
+		})
+		pusher.trigger("my-channel", "my-event", {
+			message: "hello world"
 		})
 		return res.send("Banned: "+card.name)
 	})
