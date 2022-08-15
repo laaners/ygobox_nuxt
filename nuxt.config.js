@@ -12,6 +12,10 @@ export default {
 			path: "/api",
 			handler: "~/server/api.js",
 		},
+		{
+			path: "/ws",
+			handler: "~/server/ws.js",
+		},
 	],
 	head: {
 		title: "YGOBox-Nuxt",
