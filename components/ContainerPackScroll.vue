@@ -1,5 +1,5 @@
 <template>
-	<div v-if="notError" class="flex-col container">
+	<div v-show="notError" class="flex-col container">
 		<img
 			loading="lazy"
 			:src="packImage()"
