@@ -9,7 +9,7 @@
 		/>
 		<transition name="fade">
 			<div
-				v-show="fullImage"
+				v-if="fullImage"
 				class="modal flex-col"
 				oncontextmenu="return false;"
 				@mousedown="rightClickClose"
@@ -62,11 +62,11 @@
 						</grid-view>
 					</div>
 					<div
-						v-show="loading"
+						v-if="loading"
 						class="loader"
 						style="align-self: flex-start; margin-top: 10vw"
 					></div>
-					<div v-show="!loading" class="effects">
+					<div v-if="!loading" class="effects">
 						<p>{{ formatEneff(eneff) }}</p>
 						<hr />
 						<p>{{ formatCheff(cheff) }}</p>
