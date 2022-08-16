@@ -57,7 +57,7 @@
 	{
 		"id": 80604092,
 		"name": "Ultimate Offering",
-		"banner": "Sandro"		
+		"banner": "Sandro"
 	},
 	{
 		"id": 3136426,
@@ -236,7 +236,7 @@
 	{
 		"id": 8903700,
 		"name": "Djinn Releaser of Rituals",
-		"banner": "Ale"		
+		"banner": "Ale"
 	},
 	{
 		"id": 38331564,
@@ -347,5 +347,25 @@
 		"id": 21377582,
 		"name": "Master Peace, the True Dracoslaying King",
 		"banner": "Siwei"
+	},
+	{
+		"id": 48905153,
+		"name": "Zoodiac Drident",
+		"banner": "Siwei"
+	},
+	{
+		"id": 63995093,
+		"name": "Machine Duplication",
+		"banner": "Sandro"
+	},
+	{
+		"id": 52653092,
+		"name": "Number S0: Utopic ZEXAL",
+		"banner": "Leo"
+	},
+	{
+		"id": 73628505,
+		"name": "Terraforming",
+		"banner": "Ale"
 	}
 ]
