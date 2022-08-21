@@ -2020,5 +2020,7 @@
     {"arc":"Vernalizer Fairy", "imgs": { "Poster": 63708033 }, "crest": "/crests/Vernusylph.png" },
     {"arc":"Lady of Lament","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/25643346.jpg","waifu":"a"},
     {"arc":"Seven Emperors","url": "https://storage.googleapis.com/ygoprodeck.com/pics_artgame/97769122.jpg"},
-    {"arc":"Barian's","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/47660516.jpg"}
+    {"arc":"Barian's","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/47660516.jpg"},
+
+    {"arc":"Rescue-ACE","imgs": { "Poster": 40680521 }, "crest": "/crests/Rescue-ACE.png" }
 ]    
