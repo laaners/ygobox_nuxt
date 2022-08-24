@@ -87,6 +87,7 @@
 							type="file"
 							class="text-center"
 							@change="uploadDeck"
+							@click="$refs.upload.value=null"
 						/>
 					</grid-view>
 					<span style="margin-top: var(--space-1)"
@@ -828,6 +829,7 @@ export default {
 			}
 		},
 		async uploadDeck(e) {
+			console.log("upload new deck")
 			if (!this.recentlySaved) {
 				alert(
 					"NON PUOI CARICARE UN DECK SE NON HAI SALVATO DI RECENTE, SALVA E RICARICA LA PAGINA"

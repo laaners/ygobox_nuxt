@@ -101,7 +101,7 @@ export default {
 			if (n === 29) return "Spell Card Equip"
 			if (n === 30) return "Spell Card Field"
 			if (n === 31) return "Trap Card Normal"
-			if (n === 35) return "Trap Card Continuous"
+			if (n === 32) return "Trap Card Continuous"
 			if (n === 33) return "Trap Card Counter"
 			if (n === 34) return "Skill Card Andrew"
 			if (n === 35) return "Skill Card Arkana"
@@ -151,12 +151,112 @@ export default {
 			if (n === 79) return "Token Zombie"
 		},
 		categorySort(cards) {
+			const listOrder= {
+				"1": "Normal Monster", "Normal Monster": 1,
+				"2": "Effect Monster", "Effect Monster": 2,
+				"3": "Spirit Monster", "Spirit Monster": 3,
+				"4": "Flip Effect Monster", "Flip Effect Monster": 4,
+				"5": "Toon Monster", "Toon Monster": 5,
+				"6": "Union Effect Monster", "Union Effect Monster": 6,
+				"7": "Gemini Monster", "Gemini Monster": 7,
+				"8": "Tuner Monster", "Tuner Monster": 8,
+				"9": "Normal Tuner Monster", "Normal Tuner Monster": 9,
+				"10": "Pendulum Normal Monster", "Pendulum Normal Monster": 10,
+				"11": "Pendulum Effect Monster", "Pendulum Effect Monster": 11,
+				"12": "Pendulum Flip Effect Monster", "Pendulum Flip Effect Monster": 12,
+				"13": "Pendulum Tuner Effect Monster", "Pendulum Tuner Effect Monster": 13,
+				"14": "Ritual Monster", "Ritual Monster": 14,
+				"15": "Ritual Effect Monster", "Ritual Effect Monster": 15,
+				"16": "Pendulum Effect Ritual Monster", "Pendulum Effect Ritual Monster": 16,
+				"17": "Fusion Monster", "Fusion Monster": 17,
+				"18": "Pendulum Effect Fusion Monster", "Pendulum Effect Fusion Monster": 18,
+				"19": "Synchro Monster", "Synchro Monster": 19,
+				"20": "Synchro Tuner Monster", "Synchro Tuner Monster": 20,
+				"21": "Synchro Pendulum Effect Monster", "Synchro Pendulum Effect Monster": 21,
+				"22": "XYZ Monster", "XYZ Monster": 22,
+				"23": "XYZ Pendulum Effect Monster", "XYZ Pendulum Effect Monster": 23,
+				"24": "Link Monster", "Link Monster": 24,
+				"25": "Spell Card Normal", "Spell Card Normal": 25,
+				"26": "Spell Card Ritual", "Spell Card Ritual": 26,
+				"27": "Spell Card Quick-Play", "Spell Card Quick-Play": 27,
+				"28": "Spell Card Continuous", "Spell Card Continuous": 28,
+				"29": "Spell Card Equip", "Spell Card Equip": 29,
+				"30": "Spell Card Field", "Spell Card Field": 30,
+				"31": "Trap Card Normal", "Trap Card Normal": 31,
+				"32": "Trap Card Continuous", "Trap Card Continuous": 35,
+				"33": "Trap Card Counter", "Trap Card Counter": 33,
+				"34": "Skill Card Andrew", "Skill Card Andrew": 34,
+				"35": "Skill Card Arkana", "Skill Card Arkana": 35,
+				"36": "Skill Card Bonz", "Skill Card Bonz": 36,
+				"37": "Skill Card Christine", "Skill Card Christine": 37,
+				"38": "Skill Card David", "Skill Card David": 38,
+				"39": "Skill Card Emma", "Skill Card Emma": 39,
+				"40": "Skill Card Espa Roba", "Skill Card Espa Roba": 40,
+				"41": "Skill Card Ishizu", "Skill Card Ishizu": 41,
+				"42": "Skill Card Ishizu Ishtar", "Skill Card Ishizu Ishtar": 42,
+				"43": "Skill Card Joey", "Skill Card Joey": 43,
+				"44": "Skill Card Joey Wheeler", "Skill Card Joey Wheeler": 44,
+				"45": "Skill Card Kaiba", "Skill Card Kaiba": 45,
+				"46": "Skill Card Keith", "Skill Card Keith": 46,
+				"47": "Skill Card Lumis Umbra", "Skill Card Lumis Umbra": 47,
+				"48": "Skill Card Mai", "Skill Card Mai": 48,
+				"49": "Skill Card Mai Valentine", "Skill Card Mai Valentine": 49,
+				"50": "Skill Card Mako", "Skill Card Mako": 50,
+				"51": "Skill Card Odion", "Skill Card Odion": 51,
+				"52": "Skill Card Pegasus", "Skill Card Pegasus": 52,
+				"53": "Skill Card Rex", "Skill Card Rex": 53,
+				"54": "Skill Card Seto Kaiba", "Skill Card Seto Kaiba": 54,
+				"55": "Skill Card Tea Gardner", "Skill Card Tea Gardner": 55,
+				"56": "Skill Card Weevil", "Skill Card Weevil": 56,
+				"57": "Skill Card Yami Bakura", "Skill Card Yami Bakura": 57,
+				"58": "Skill Card Yami Marik", "Skill Card Yami Marik": 58,
+				"59": "Skill Card Yami Yugi", "Skill Card Yami Yugi": 59,
+				"60": "Skill Card Yugi", "Skill Card Yugi": 60,
+				"61": "Token Aqua", "Token Aqua": 61,
+				"62": "Token Beast", "Token Beast": 62,
+				"63": "Token Cyberse", "Token Cyberse": 63,
+				"64": "Token Dinosaur", "Token Dinosaur": 64,
+				"65": "Token Dragon", "Token Dragon": 65,
+				"66": "Token Fairy", "Token Fairy": 66,
+				"67": "Token Fiend", "Token Fiend": 67,
+				"68": "Token Fish", "Token Fish": 68,
+				"69": "Token Insect", "Token Insect": 69,
+				"70": "Token Machine", "Token Machine": 70,
+				"71": "Token Plant", "Token Plant": 71,
+				"72": "Token Pyro", "Token Pyro": 72,
+				"73": "Token Reptile", "Token Reptile": 73,
+				"74": "Token Rock", "Token Rock": 74,
+				"75": "Token Thunder", "Token Thunder": 75,
+				"76": "Token Warrior", "Token Warrior": 76,
+				"77": "Token Winged Beast", "Token Winged Beast": 77,
+				"78": "Token Wyrm", "Token Wyrm": 78,
+				"79": "Token Zombie", "Token Zombie": 79
+			}
 			let res = []
+			res = cards.map((card) => {
+				const type = listOrder[card.type.includes("Monster") ? card.type : card.type+" "+card.race]
+				const level = card.level ? card.level : 0
+				const linkval = card.linkval ? card.linkval : 0
+				return {
+					"cardInfo": card,
+					"number": 
+						type*10**6
+						+level*10**2
+						+linkval
+				}
+			})
+			
+			res = res
+				.sort((a, b) => (a.cardInfo.name < b.cardInfo.name ? -1 : 1))
+				.sort((a, b) => (a.cardInfo.race < b.cardInfo.race ? -1 : 1))
+				.sort((a, b)=>a.number-b.number).map(_=>_.cardInfo)
+
+			/*
 			for (let i = 1; i <= 79; i++) {
 				//	ordino anche per livelli o link rate
 				res = res.concat(
 					cards
-						.filter((x) => x.type === this.listOrder(i))
+						.filter((x) => x.type === listOrder[i])
 						.sort((a, b) => (a.name < b.name ? -1 : 1))
 						.sort((a, b) => (a.race < b.race ? -1 : 1))
 						.sort((a, b) => a.level - b.level)
@@ -165,7 +265,7 @@ export default {
 				res = res.concat(
 					cards
 						.filter(
-							(x) => x.type + " " + x.race === this.listOrder(i)
+							(x) => x.type + " " + x.race === listOrder[i]
 						)
 						.sort((a, b) => (a.name < b.name ? -1 : 1))
 						.sort((a, b) => (a.race < b.race ? -1 : 1))
@@ -173,6 +273,7 @@ export default {
 						.sort((a, b) => a.linkval - b.linkval)
 				)
 			}
+			*/
 			console.log(
 				cards.filter((_) => !res.includes(_)).map((_) => _.type)
 			)
