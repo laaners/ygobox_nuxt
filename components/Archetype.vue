@@ -31,7 +31,7 @@
 						? archetype.imgs.Poster
 						: getPicArtUrl(archetype.imgs.Poster)
 				"
-				alt=""
+				alt="NOT FOUND"
 				class="poster"
 				loading="lazy"
 			/>

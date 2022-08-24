@@ -100,7 +100,10 @@
 				/>
 			</grid-view>
 		</div>
-		<div v-if="actualMembers.length > 0 && separateSupports" class="flex-col">
+		<div
+			v-if="actualMembers.length > 0 && separateSupports"
+			class="flex-col"
+		>
 			<hr />
 			<h3>
 				Membri di {{ archetype.true_name }} ({{ actualMembers.length }})
@@ -126,7 +129,10 @@
 				/>
 			</grid-view>
 		</div>
-		<div v-if="supportMembers.length > 0 && separateSupports" class="flex-col">
+		<div
+			v-if="supportMembers.length > 0 && separateSupports"
+			class="flex-col"
+		>
 			<hr />
 			<h3>
 				Supporti di {{ archetype.true_name }} ({{
@@ -171,12 +177,40 @@ export default {
 		)
 		const allsets = await $axios.$get("/api/allsets")
 
-		const actualMembers = data.members.filter((_) =>
-			_.name.toLowerCase().includes(data.true_name.toLowerCase())
-		)
-		const supportMembers = data.members.filter(
-			(_) => !_.name.toLowerCase().includes(data.true_name.toLowerCase())
-		)
+		const actualMembers = data.members.filter((_) => {
+			const alwaysTreated =
+				_.desc
+					.toLowerCase()
+					.includes(
+						`this card is always treated as a "${data.true_name.toLowerCase()}"`
+					) ||
+				_.desc
+					.toLowerCase()
+					.includes(
+						`this card is always treated as an "${data.true_name.toLowerCase()}"`
+					)
+			return (
+				_.name.toLowerCase().includes(data.true_name.toLowerCase()) ||
+				alwaysTreated
+			)
+		})
+		const supportMembers = data.members.filter((_) => {
+			const alwaysTreated =
+				_.desc
+					.toLowerCase()
+					.includes(
+						`this card is always treated as a "${data.true_name.toLowerCase()}"`
+					) ||
+				_.desc
+					.toLowerCase()
+					.includes(
+						`this card is always treated as an "${data.true_name.toLowerCase()}"`
+					)
+			return (
+				!_.name.toLowerCase().includes(data.true_name.toLowerCase()) &&
+				!alwaysTreated
+			)
+		})
 
 		return {
 			artwork: false,

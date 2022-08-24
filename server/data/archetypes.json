@@ -701,6 +701,7 @@
             "Xyz": 68396121
         }        
     },
+    {"arc":"Galaxy","imgs": {"Poster": 63956833}},
     {"arc":"Gandora","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/64681432.jpg"},
     {"arc":"Geargia",
         "imgs": {
@@ -1989,7 +1990,7 @@
     {"arc":"D/D/D","url":"NO"},
     {"arc":"Abhyss","url":"NO"},
     {"arc":"White","url":"NO"},
-    {"arc":"Tearalaments",
+    {"arc":"Tearlaments",
         "imgs": {
             "Poster": 74920585
         },
@@ -2008,7 +2009,7 @@
     {"arc":"Vaylantz", "imgs": { "Poster": 40680521}, "crest": "/crests/Vaylantz.png"},
     {"arc":"Mysterune", "imgs": { "Poster": 92107604 } },
     {"arc":"Runick", "imgs": { "Poster": 92107604 } },
-    {"arc":"Splight", "imgs": { "Poster": 54498517} },
+    {"arc":"Spright", "imgs": { "Poster": 54498517} },
     {"arc":"Hellfire", "imgs": { "Poster": 64104037} },
     {"arc":"Mokey Mokey", "imgs": { "Poster": 27288416} },
     {"arc":"Kairyu-Shin", "imgs": { "Poster": 95602345} },

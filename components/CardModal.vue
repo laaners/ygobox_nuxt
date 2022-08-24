@@ -9,7 +9,7 @@
 		/>
 		<transition name="fade">
 			<div
-				v-if="fullImage"
+				v-show="fullImage"
 				class="modal flex-col"
 				oncontextmenu="return false;"
 				@mousedown="rightClickClose"
