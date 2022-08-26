@@ -24,10 +24,14 @@ export default app
 ;(async () => {
 	const { allsets, bannedCards, cardsCH, cardsIT, allcards, allcardsToT, femaleCards } =
 		await initData()
+
+	const initialBannedCards = JSON.parse(JSON.stringify(bannedCards))
+
 	let archetypes = retrieveArchetypes(allcardsToT, allsets, femaleCards)
 	const hashAllCards = hashGroupBy(allcardsToT, "name")
 	console.log("The port is: "+process.env.PORT)
 	console.log("Got all the data now!")
+	console.log(`We are in ${process.env.NODE_ENV}`)
 
 	app.get("/", (req, res) => {
 		archetypes = retrieveArchetypes(allcardsToT, allsets, femaleCards)
@@ -168,7 +172,13 @@ export default app
 		return res.json(bannedCards)
 	})
 
-	app.get("/banned_cards_short", (req,res) => {
+	app.get("/banned_cards_reset", (req, res) => {
+		bannedCards.length = 0
+		initialBannedCards.forEach(_=>bannedCards.push(_))
+		return res.send("Reset")
+	})
+
+	app.get("/banned_cards_short", (req, res) => {
 		return res.send(
 			JSON.stringify(
 				bannedCards.map(_=>{
