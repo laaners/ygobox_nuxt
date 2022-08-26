@@ -401,6 +401,10 @@ export function exceptionArc(arc, allcards, grouped) {
 			excludeMembers(notMembers)
 			break
 		}
+		case "Seven Emperors": {
+			changeName("Seventh")
+			break
+		}
 		default:
 	}
 }
