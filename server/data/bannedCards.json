@@ -402,5 +402,25 @@
 		"id": 58921041,
 		"name": "Anti-Spell Fragrance",
 		"banner": "Siwei"
+	},
+	{
+		"id": 86120751,
+		"name": "Aleister the Invoker",
+		"banner": "Siwei"
+	},
+	{
+		"id": 9929398,
+		"name": "Blackwing - Gofu the Vague Shadow",
+		"banner": "Leo"
+	},
+	{
+		"id": 68462976,
+		"name": "Secret Village of the Spellcasters",
+		"banner": "Ale"
+	},
+	{
+		"id": 37520316,
+		"name": "Mind Control",
+		"banner": "Sandro"
 	}
 ]
