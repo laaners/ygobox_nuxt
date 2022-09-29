@@ -79,6 +79,10 @@ export function exceptionArc(arc, allcards, grouped) {
 			mergeWith("Neo Space")
 			break
 		}
+		case "Vernalizer Fairy": {
+			changeName("Vernusylph")
+			break
+		}
 		case "Earthbound": {
 			changeName("Earthbound Immortal")
 			const notMembers = ["Earthbound Spirit", "Call of the Earthbound"]
@@ -308,6 +312,12 @@ export function exceptionArc(arc, allcards, grouped) {
 		}
 		case "Tellarknight": {
 			mergeWith("Stellarknight")
+			break
+		}
+		case "True Draco": {
+			changeName("True Draco & True King")
+			nameIncludes("True King")
+			descIncludes("True King")
 			break
 		}
 		case "Fluffal": {

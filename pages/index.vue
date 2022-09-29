@@ -38,85 +38,18 @@
 			<div class="done"></div>
 		</grid-view>
 
-		<div
-			v-for="type in types.slice(21,29)"
-			:key="type"
-			style="
-				width: 100%;
-				flex-wrap: wrap;
-				margin-top: 1%;
-				margin-bottom: 1%;
-			"
-			class="flex-row"
+		<grid-view
+			v-if="archetypes.length > 0"
+			style="width: 100%; align-items: center; justify-items: center"
+			:columns="9"
+			:row-gap="0"
+			:col-gap="0"
 		>
-			<div class="flex-col" style="width: 14%">
-				<img
-					:src="type.toUpperCase() + '.png'"
-					:style="{
-						marginLeft: 'var(--space-0)',
-						marginRight: 'var(--space-0)',
-						cursor: 'pointer',
-					}"
-				/>
-				<h3>
-					{{ type }} ({{
-						showCards.filter((_) => _.race === type).length
-					}})
-				</h3>
+			<div v-for="arc of archetypes" :key="arc.arc" class="flex-col">
+				<img :src="arc.crest" alt="" style="width: 80%" />
+				<p>{{ arc.arc }}</p>
 			</div>
-			<grid-view
-				style="width: 83%"
-				:columns="8"
-				:row-gap="0"
-				:col-gap="0"
-			>
-				<card-modal
-					v-for="card of showCards.filter((_) => _.race === type)"
-					:key="card.id"
-					:src="getPicUrl(card.id)"
-					:card-id="card.id"
-					:rarity="'Common'"
-				/>
-			</grid-view>
-			<hr style="height: 2px; background-color: black; width: 100%" />
-		</div>
-
-		<!--
-		<div
-			v-for="type in types"
-			:key="type"
-			style="width: 100%; justify-content: start; margin-bottom: 0.4%"
-			class="flex-row"
-		>
-			<div class="flex-col" style="width: 10%">
-				<img
-					:src="type.toUpperCase() + '.png'"
-					:style="{
-						marginLeft: 'var(--space-0)',
-						marginRight: 'var(--space-0)',
-						marginBottom: '0',
-						width: '50px',
-						cursor: 'pointer',
-					}"
-				/>
-				<p style="margin: 0">
-					{{ type }} ({{
-						showCards.filter((_) => _.race === type).length
-					}})
-				</p>
-			</div>
-			<div
-				:style="{
-					width:
-						(showCards.filter((_) => _.race === type).length / 66.5) *
-							100 +
-						'%',
-					height: '70px',
-					backgroundImage: 'linear-gradient(yellow, orange,orange)',
-				}"
-			></div>
-		</div>
-		-->
+		</grid-view>
 	</div>
 </template>
 
@@ -127,38 +60,36 @@ export default {
 	name: "IndexPage",
 	components: { GridView },
 	mixins: [Utils],
+	async asyncData({ $axios }) {
+		const { data } = await $axios.get("/api/crests")
+		const archetypes = data
+			.sort((a, b) => (a.arc > b.arc ? 1 : -1))
+			.filter((_) => {
+				return (
+					_.arc !== "Endymion" &&
+					_.arc !== "Infernoid & Void" &&
+					_.arc !== "True Draco & True King"
+				)
+			})
+			.filter((_) => _.crest !== undefined)
+		archetypes.forEach((_) => {
+			if (_.arc === "Evilswarm & Infestation") _.arc = "lswarm"
+			if (_.arc === "Buster Blader & Destruction Sword")
+				_.arc = "Buster Blader"
+			if (_.arc === "Evil★Twin & Live☆Twin") _.arc = "Live☆Twin"
+			if (_.arc === "Heraldic Beast & Heraldry") _.arc = "Heraldic Beast"
+			if (_.arc === "Infernoble Knight & Roland")
+				_.arc = "Infernoble Knight"
+			if (_.arc === "Steelswarm & Infestation") _.arc = "Steelswarm"
+		})
+		return {
+			archetypes,
+		}
+	},
 	data: () => ({
-		allcards: [],
-		showCards: [],
 		bannedCards: [],
 		savedCards: [],
 		deck: [],
-		types: [
-			"Fairy",
-			"Beast",
-			"Fiend",
-			"Thunder",
-			"Zombie",
-			"Spellcaster",
-			"Machine",
-			"Psychic",
-			"Aqua",
-			"Warrior",
-			"Sea Serpent",
-			"Reptile",
-			"Plant",
-			"Beast-Warrior",
-			"Cyberse",
-			"Dinosaur",
-			"Winged Beast",
-			"Fish",
-			"Wyrm",
-			"Insect",
-			"Rock",
-			"Pyro",
-			"Divine-Beast",
-			"Creator-God",
-		].sort((a, b) => (a > b ? 1 : -1)),
 	}),
 	head() {
 		return {
@@ -172,17 +103,26 @@ export default {
 			],
 		}
 	},
-	async mounted() {
-		this.allcards = await this.getAllCards()
-		this.showCards = this.categorySort(
-			this.allcards.filter(
-				(_) =>
-					_.name.includes("Dragon") &&
-					_.race.toLowerCase() !== "dragon" &&
-					_.type.includes("Monster")
-			)
-		)
+	mounted() {
+		let x = ""
+		this.archetypes.forEach((_) => {
+			x += `- [${_.arc}](${_.credit})\n`
+		})
+		console.log(x)
 	},
+	/*
+	async mounted() {
+		this.archetypes = await this.$axios.get("/api/crests")
+		this.archetypes = this.archetypes.data
+			.sort((a, b) => (a.arc > b.arc ? 1 : -1))
+			.filter((_) => {
+				return _.arc !== "Endymion"
+			})
+			.forEach((_) => {
+				if (_.arc === "Evilswarm & Infestation") _.arc = "lswarm"
+			})
+	},
+	*/
 }
 </script>
 
