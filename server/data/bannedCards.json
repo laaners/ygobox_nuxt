@@ -432,5 +432,20 @@
 		"id": 2295440,
 		"name": "One for One",
 		"banner": "Ale"
+	},
+	{
+		"id": 61665245,
+		"name": "Summon Sorceress",
+		"banner": "Ale"
+	},
+	{
+		"id": 30741503,
+		"name": "Galatea, the Orcust Automaton",
+		"banner": "Siwei"
+	},
+	{
+		"id": 4055337,
+		"name": "Orcust Knightmare",
+		"banner": "Leo"
 	}
 ]

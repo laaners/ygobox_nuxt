@@ -1,5 +1,5 @@
 /* eslint-disable no-eval */
-import fs from "fs"
+import fs, { readSync } from "fs"
 import express from "express"
 import bodyParser from "body-parser"
 import request from "request"
@@ -48,8 +48,13 @@ export default app
 		return res.json(allsets)
 	})
 
+	// Cazzeggio
 	app.get("/crests", (req,res) => {
 		return res.json(JSON.parse(fs.readFileSync("server/data/archetypes.json").toString()))
+	})
+
+	app.get("/banlist_history", (req,res) => {
+		return res.json(JSON.parse(fs.readFileSync("../banlists_by_cards/ris.json").toString()))
 	})
 
 	app.get("/archetypes", (req, res) => {
