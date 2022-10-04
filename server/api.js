@@ -1,5 +1,5 @@
 /* eslint-disable no-eval */
-import fs, { readSync } from "fs"
+import fs from "fs"
 import express from "express"
 import bodyParser from "body-parser"
 import request from "request"
