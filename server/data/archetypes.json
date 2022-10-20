@@ -1532,7 +1532,7 @@
             "Xyz": 33779875
         },
         "crest": "/crests/Rikka.png",
-        "credit": "https://yugipedia.com/wiki/Teardrop_the_Rikka_Queen"
+        "credit": "https://www.pixiv.net/en/artworks/95575591"
     },
     {"arc":"Ritual Beast",
         "imgs": {
@@ -2142,6 +2142,8 @@
         "imgs": {
             "Poster": 74920585
         },
+        "crest": "/crests/Tearlaments.png",
+        "credit": "https://twitter.com/YuGiOh_OCG_INFO/status/1517427992842190848",
         "waifu": "a"
     },
     {"arc":"Dinomorphia",
@@ -2154,7 +2156,9 @@
             "Poster": 17484499
         }
     },
-    {"arc":"Vaylantz", "imgs": { "Poster": 40680521}, "crest": "/crests/Vaylantz.png", "credit": "https://yugipedia.com/wiki/Vaylantz_World_-_Konig_Wissen"},
+    {"arc":"Vaylantz", "imgs": { "Poster": 40680521},
+        "crest": "/crests/Vaylantz.png",
+        "credit": "https://ygorganization.com/reference-art-some-valiants/"},
     {"arc":"Mysterune", "imgs": { "Poster": 92107604 } },
     {"arc":"Runick", "imgs": { "Poster": 92107604 } },
     {"arc":"Spright", "imgs": { "Poster": 54498517} },
