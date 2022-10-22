@@ -457,5 +457,20 @@
 		"id": 76375976,
 		"name": "Mystic Mine",
 		"banner": "Leo"
+	},
+	{
+		"id": 32807846,
+		"name": "Reinforcement of the Army",
+		"banner": "Ale"
+	},
+	{
+		"id": 64697231,
+		"name": "Trap Dustshoot",
+		"banner": "Sandro"
+	},
+	{
+		"id": 81275020,
+		"name": "Speedroid Terrortop",
+		"banner": "Leo"
 	}
 ]
