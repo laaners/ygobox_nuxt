@@ -87,7 +87,7 @@
 							type="file"
 							class="text-center"
 							@change="uploadDeck"
-							@click="$refs.upload.value=null"
+							@click="$refs.upload.value = null"
 						/>
 					</grid-view>
 					<span style="margin-top: var(--space-1)"
@@ -945,12 +945,42 @@ export default {
 				this.packLoading = false
 				return
 			}
-			const { pack_img, cards, draftN, packN, setNameCorrect } =
+			let { pack_img, cards, draftN, packN, setNameCorrect } =
 				await this.$axios.$get(`api/drafting/${set_name}`)
+
+			//	this.$refs.packImg.src = pack_img
+
 			if (cards.length === 0) {
-				alert(pack_img)
-				this.packLoading = false
-				return
+				const cardTmp = this.allcards.find(
+					(_) => _.name.toLowerCase() === set_name.toLowerCase()
+				)
+				if (cardTmp !== undefined) {
+					const singleCard = await this.$axios.$get(
+						`api/card/${cardTmp.id}`
+					)
+					const card_set = singleCard.rarity
+					pack_img =
+						"/sets/" + card_set.set_code.split("-")[0] + ".jpg"
+					cards = [singleCard]
+					draftN = 1
+					packN = 1
+					setNameCorrect = `${card_set.tcg_date} ${card_set.set_name}`
+					this.openedSet = {
+						set_name: card_set.set_name,
+						set_code: card_set.set_code.split("-")[0],
+						num_of_cards: 1,
+						tcg_date: card_set.tcg_date,
+					}
+					alert(JSON.stringify(this.openedSet))
+				} else {
+					alert(pack_img)
+					this.packLoading = false
+					return
+				}
+			} else {
+				this.openedSet = this.allsets.find(
+					(_) => _.set_name.toLowerCase() === set_name.toLowerCase()
+				)
 			}
 			this.packAppendCards = cards
 				.sort((a, b) => {
@@ -977,10 +1007,6 @@ export default {
 					})
 				}
 			})
-			//	this.$refs.packImg.src = pack_img
-			this.openedSet = this.allsets.find(
-				(_) => _.set_name.toLowerCase() === set_name.toLowerCase()
-			)
 
 			this.$refs.packInfo.innerHTML =
 				packN +

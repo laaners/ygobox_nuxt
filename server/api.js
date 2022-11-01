@@ -487,7 +487,7 @@ export default app
 		if(favouriteCards.length !== 0) {
 			filtered = filtered.filter(_=>favouriteCards.includes(_.id))
 		}
-		if (pack !== "")
+		if (pack !== "") 
 			filtered = filtered
 				.filter((_) => _.card_sets !== undefined)
 				.filter((_) =>
