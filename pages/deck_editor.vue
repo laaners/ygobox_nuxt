@@ -971,7 +971,6 @@ export default {
 						num_of_cards: 1,
 						tcg_date: card_set.tcg_date,
 					}
-					alert(JSON.stringify(this.openedSet))
 				} else {
 					alert(pack_img)
 					this.packLoading = false
