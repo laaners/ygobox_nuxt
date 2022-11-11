@@ -280,13 +280,13 @@ export default {
 			return res
 		},
 		getPicUrl(id) {
-			return `https://storage.googleapis.com/ygoprodeck.com/pics/${id}.jpg`
+			return `https://images.ygoprodeck.com/images/cards/${id}.jpg`
 		},
 		getPicSmallUrl(id) {
-			return `https://storage.googleapis.com/ygoprodeck.com/pics_small/${id}.jpg`
+			return `https://images.ygoprodeck.com/images/cards_small/${id}.jpg`
 		},
 		getPicArtUrl(id) {
-			return `https://storage.googleapis.com/ygoprodeck.com/pics_artgame/${id}.jpg`
+			return `https://images.ygoprodeck.com/images/cards_cropped/${id}.jpg`
 		},
 		download(filename, text) {
 			const element = document.createElement('a');
