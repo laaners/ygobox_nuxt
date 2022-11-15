@@ -178,8 +178,27 @@ export default app
 		return { name: card.name, desc: card.desc }
 	}
 
-	app.get("/banned_cards", (req, res) => {
-		return res.json(bannedCards)
+	app.get("/banned_cards", async (req, res) => {
+		const bannedCardsGit = await new Promise((resolve, reject) => {
+			request({
+				url: `https://raw.githubusercontent.com/laaners/ygobox_nuxt/master/server/data/bannedCards.json`,
+				method: 'GET',
+			}, function(error, resp, body){
+				if(error || resp.statusCode !== 200) {
+					console.log("ERROR bannedCards: "+error);
+					resolve([]);
+				}
+				else{
+					console.log("Got bannedCards");
+					const ris = JSON.parse(body)
+					ris.forEach(card => {
+						card.info = allcardsToT.find(_=>_.id === card.id)
+					})
+					resolve(JSON.parse(body));
+				}
+			});
+		});
+		return res.json(bannedCardsGit)
 	})
 
 	app.get("/banned_cards_reset", (req, res) => {
