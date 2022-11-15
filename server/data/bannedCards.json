@@ -497,5 +497,20 @@
 		"id": 75732622,
 		"name": "Grinder Golem",
 		"banner": "Ale"
+	},
+	{
+		"id": 50588353,
+		"name": "Crystron Halqifibrax",
+		"banner": "Siwei"
+	},
+	{
+		"id": 70369116,
+		"name": "Predaplant Verte Anaconda",
+		"banner": "Leo"
+	},
+	{
+		"id": 72330894,
+		"name": "Simorgh, Bird of Sovereignty",
+		"banner": "Ale"
 	}
 ]
