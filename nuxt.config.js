@@ -1,4 +1,5 @@
 export default {
+	telemetry: false,
 	// Global page headers: https://go.nuxtjs.dev/config-head
 	ssr: true,
 	target: "server",
