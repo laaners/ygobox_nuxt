@@ -194,7 +194,7 @@ export default app
 					ris.forEach(card => {
 						card.info = allcardsToT.find(_=>_.id === card.id)
 					})
-					resolve(JSON.parse(body));
+					resolve(ris);
 				}
 			});
 		});

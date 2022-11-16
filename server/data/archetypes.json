@@ -31,7 +31,7 @@
             "Effect": 97565997
         }
     },
-    {"arc":"Abyss Actor",
+    {"arc":"Abyss Actor & Abyss Script",
         "imgs": {
             "Poster": 4682617,
             "Effect": 52240819,
@@ -47,7 +47,7 @@
             "Synchro": 9464441
         }
     },
-    {"arc":"Aether","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/56804361.jpg"},
+    {"arc":"Aether","url":"https://images.ygoprodeck.com/images/cards_cropped/56804361.jpg"},
     {"arc":"Alien",
         "imgs": {
             "Poster": 59258334,
@@ -98,7 +98,7 @@
     {"arc":"Angel","url":"NO"},
     {"arc":"Anti","url":"NO"},
     {"arc":"Apoqliphort","url":"NO"},
-    {"arc":"Appliancer","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/30996652.jpg"},
+    {"arc":"Appliancer","url":"https://images.ygoprodeck.com/images/cards_cropped/30996652.jpg"},
     {"arc":"Aquaactress",
         "imgs": {
             "Poster": 66668900,
@@ -122,7 +122,7 @@
             "Link": 68295149
         }
     },
-    {"arc":"Armed Dragon","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/58153103.jpg"},
+    {"arc":"Armed Dragon","url":"https://images.ygoprodeck.com/images/cards_cropped/58153103.jpg"},
     {"arc":"Aroma",
         "imgs": {
             "Poster": 15177750,
@@ -149,23 +149,23 @@
             "Effect": 47027714
         }
     },
-    {"arc":"Atlantean","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/73199638.jpg"},
+    {"arc":"Atlantean","url":"https://images.ygoprodeck.com/images/cards_cropped/73199638.jpg"},
     {"arc":"B.E.S.",
         "imgs": {
             "Poster": 66947414,
             "Effect": 82821760
         }
     },
-    {"arc":"Bamboo Sword","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/41587307.jpg"},
-    {"arc":"Barbaros","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/78651105.jpg"},
+    {"arc":"Bamboo Sword","url":"https://images.ygoprodeck.com/images/cards_cropped/41587307.jpg"},
+    {"arc":"Barbaros","url":"https://images.ygoprodeck.com/images/cards_cropped/78651105.jpg"},
     {"arc":"Batteryman",
         "imgs": {
             "Poster": 88086137,
             "Effect": 19441018
         }
     },
-    {"arc":"Battleguard","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/78621186.jpg"},
-    {"arc":"Battlewasp","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/80949182.jpg"},
+    {"arc":"Battleguard","url":"https://images.ygoprodeck.com/images/cards_cropped/78621186.jpg"},
+    {"arc":"Battlewasp","url":"https://images.ygoprodeck.com/images/cards_cropped/80949182.jpg"},
     {"arc":"Battlin' Boxer",
         "imgs": {
             "Poster": 36916401,
@@ -173,7 +173,7 @@
             "Xyz": 85121942
         }
     },
-    {"arc":"Black Luster Soldier","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/72989439.jpg"},
+    {"arc":"Black Luster Soldier","url":"https://images.ygoprodeck.com/images/cards_cropped/72989439.jpg"},
     {"arc":"Blackwing",
         "imgs": {
             "Poster": 2009101,
@@ -199,10 +199,10 @@
         "crest": "/crests/Blue-Eyes.png",
         "credit": "https://www.pixiv.net/en/artworks/74516520"
     },
-    {"arc":"Bonding","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/6022371.jpg"},
-    {"arc":"Book of","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/14087893.jpg"},
-    {"arc":"Boot-Up","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/63717421.jpg"},
-    {"arc":"Borrel","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/31833038.jpg"},
+    {"arc":"Bonding","url":"https://images.ygoprodeck.com/images/cards_cropped/6022371.jpg"},
+    {"arc":"Book of","url":"https://images.ygoprodeck.com/images/cards_cropped/14087893.jpg"},
+    {"arc":"Boot-Up","url":"https://images.ygoprodeck.com/images/cards_cropped/63717421.jpg"},
+    {"arc":"Borrel","url":"https://images.ygoprodeck.com/images/cards_cropped/31833038.jpg"},
     {"arc":"Bounzer",
         "imgs": {
             "Poster": 48582558,
@@ -210,7 +210,7 @@
             "Xyz": 92661479
         }
     },
-    {"arc":"Branded","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/62022479.jpg"},
+    {"arc":"Branded","url":"https://images.ygoprodeck.com/images/cards_cropped/62022479.jpg"},
     {"arc":"Bujin",
         "imgs": {
             "Poster": 33611061,
@@ -246,9 +246,9 @@
             "Xyz": 67926903
         }
     },
-    {"arc":"Cataclysmic","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/39505816.jpg"},
-    {"arc":"Celtic Guard","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/52077741.jpg"},
-    {"arc":"Chaos Phantom","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/89190953.jpg"},
+    {"arc":"Cataclysmic","url":"https://images.ygoprodeck.com/images/cards_cropped/39505816.jpg"},
+    {"arc":"Celtic Guard","url":"https://images.ygoprodeck.com/images/cards_cropped/52077741.jpg"},
+    {"arc":"Chaos Phantom","url":"https://images.ygoprodeck.com/images/cards_cropped/89190953.jpg"},
     {"arc":"Chaos",
         "imgs": {
             "Poster": 76766706,
@@ -266,7 +266,7 @@
             "Link": 9839945
         }
     },
-    {"arc":"Chemicritter","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/38026562.jpg"},
+    {"arc":"Chemicritter","url":"https://images.ygoprodeck.com/images/cards_cropped/38026562.jpg"},
     {"arc":"Chronomaly",
         "imgs": {
             "Poster": 26345570,
@@ -280,16 +280,16 @@
             "Effect": 42682609
         }
     },
-    {"arc":"Cipher","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/18963306.jpg"},
-    {"arc":"Clear Wing","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/82044280.jpg"},
+    {"arc":"Cipher","url":"https://images.ygoprodeck.com/images/cards_cropped/18963306.jpg"},
+    {"arc":"Clear Wing","url":"https://images.ygoprodeck.com/images/cards_cropped/82044280.jpg"},
     {"arc":"Cloudian",
         "imgs": {
             "Poster": 88210105,
             "Effect": 57610714
         }
     },
-    {"arc":"Code Talker","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/1861629.jpg"},
-    {"arc":"Codebreaker","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/84121193.jpg"},
+    {"arc":"Code Talker","url":"https://images.ygoprodeck.com/images/cards_cropped/1861629.jpg"},
+    {"arc":"Codebreaker","url":"https://images.ygoprodeck.com/images/cards_cropped/84121193.jpg"},
     {"arc":"Constellar",
         "imgs": {
             "Poster": 35631584,
@@ -325,9 +325,9 @@
         "crest":"/crests/Crystron.png",
         "credit": "https://www.pixiv.net/en/artworks/74516791"
     },
-    {"arc":"Cubic","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/30270176.jpg"},
-    {"arc":"Cupid","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/11851647.jpg","waifu":"a"},
-    {"arc":"Cyber Angel","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/27331568.jpg","waifu":"a"},
+    {"arc":"Cubic","url":"https://images.ygoprodeck.com/images/cards_cropped/30270176.jpg"},
+    {"arc":"Cupid","url":"https://images.ygoprodeck.com/images/cards_cropped/11851647.jpg","waifu":"a"},
+    {"arc":"Cyber Angel","url":"https://images.ygoprodeck.com/images/cards_cropped/27331568.jpg","waifu":"a"},
     {"arc":"Cyber Dragon",
         "imgs": {
             "Poster": 18597560,
@@ -337,8 +337,8 @@
             "Link": 46724542
         }
     },
-    {"arc":"Cyber","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/32768230.jpg"},
-    {"arc":"Cyberdark","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/37542782.jpg"},
+    {"arc":"Cyber","url":"https://images.ygoprodeck.com/images/cards_cropped/32768230.jpg"},
+    {"arc":"Cyberdark","url":"https://images.ygoprodeck.com/images/cards_cropped/37542782.jpg"},
     {"arc":"D.D.",
         "imgs": {
             "Poster": 27174286,
@@ -355,8 +355,8 @@
             "Link": 9024198
         }
     },
-    {"arc":"Danger!","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/15083304.jpg"},
-    {"arc":"Dark Contract","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/46372010.jpg"},
+    {"arc":"Danger!","url":"https://images.ygoprodeck.com/images/cards_cropped/15083304.jpg"},
+    {"arc":"Dark Contract","url":"https://images.ygoprodeck.com/images/cards_cropped/46372010.jpg"},
     {"arc":"Dark Magician",
         "imgs": {
             "Poster": 86509711,
@@ -412,7 +412,7 @@
             "Synchro": 89544521
         }
     },
-    {"arc":"Despia","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/18666161.jpg"},
+    {"arc":"Despia","url":"https://images.ygoprodeck.com/images/cards_cropped/18666161.jpg"},
     {"arc":"Destiny HERO",
         "imgs": {
             "Poster": 48032131,
@@ -435,7 +435,7 @@
         "credit": "https://www.pixiv.net/en/artworks/74516520"
     },
     {"arc":"Dice","url":"NO"},
-    {"arc":"Digital Bug","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/86643777.jpg"},
+    {"arc":"Digital Bug","url":"https://images.ygoprodeck.com/images/cards_cropped/86643777.jpg"},
     {"arc":"Dinomist",
         "imgs": {
             "Poster": 41554273,
@@ -487,10 +487,10 @@
         "credit": "https://twitter.com/YuGiOh_OCG_INFO/status/1248521098494386177"
     },
     {"arc":"Doll","url":"NO"},
-    {"arc":"Doriado","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/99414168.jpg"},
-    {"arc":"Dracoslayer","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/34079868.jpg"},
-    {"arc":"Dracoverlord","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/98287529.jpg"},
-    {"arc":"Dragonmaid","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/15754711.jpg","waifu":"a"},
+    {"arc":"Doriado","url":"https://images.ygoprodeck.com/images/cards_cropped/99414168.jpg"},
+    {"arc":"Dracoslayer","url":"https://images.ygoprodeck.com/images/cards_cropped/34079868.jpg"},
+    {"arc":"Dracoverlord","url":"https://images.ygoprodeck.com/images/cards_cropped/98287529.jpg"},
+    {"arc":"Dragonmaid","url":"https://images.ygoprodeck.com/images/cards_cropped/15754711.jpg","waifu":"a"},
     {"arc":"Dragunity",
         "imgs": {
             "Poster": 28927782,
@@ -501,10 +501,10 @@
         "crest": "/crests/Dragunity.png",
         "credit": "https://www.pixiv.net/en/artworks/74516590"
     },
-    {"arc":"Dream Mirror","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/25964547.jpg",
+    {"arc":"Dream Mirror","url":"https://images.ygoprodeck.com/images/cards_cropped/25964547.jpg",
     "crest": "/crests/Dream Mirror.png",
     "credit": "https://www.pixiv.net/en/artworks/95676500"},
-    {"arc":"Drytron","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/22398665.jpg"},
+    {"arc":"Drytron","url":"https://images.ygoprodeck.com/images/cards_cropped/22398665.jpg"},
     {"arc":"Dual Avatar",
         "imgs": {
             "Poster": 13764602,
@@ -529,7 +529,7 @@
         "crest": "/crests/Earthbound Immortal.png",
         "credit": "https://yugipedia.com/wiki/Offering_to_the_Immortals"
     },
-    {"arc":"Edge Imp","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/30068120.jpg"},
+    {"arc":"Edge Imp","url":"https://images.ygoprodeck.com/images/cards_cropped/30068120.jpg"},
     {"arc":"Egyptian God",
         "imgs": {
             "Poster": 10000090,
@@ -537,7 +537,7 @@
             "Fusion": 42166000
         }
     },
-    {"arc":"Eldlich & Eldlixir & Golden Land","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/95440946.jpg"},
+    {"arc":"Eldlich & Eldlixir & Golden Land","url":"https://images.ygoprodeck.com/images/cards_cropped/95440946.jpg"},
     {"arc":"Elemental HERO",
         "imgs": {
             "Poster": 55428811,
@@ -547,9 +547,9 @@
         "crest": "https://ms.yugipedia.com//a/a8/Crest-HERO.svg",
         "credit": "https://yugipedia.com/wiki/File:Crest-HERO.svg"
     },
-    {"arc":"Elemental Lord","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/13959634.jpg"},
-    {"arc":"Elementsaber","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/71797713.jpg"},
-    {"arc":"Empowered Warrior","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/54250060.jpg"},
+    {"arc":"Elemental Lord","url":"https://images.ygoprodeck.com/images/cards_cropped/13959634.jpg"},
+    {"arc":"Elementsaber","url":"https://images.ygoprodeck.com/images/cards_cropped/71797713.jpg"},
+    {"arc":"Empowered Warrior","url":"https://images.ygoprodeck.com/images/cards_cropped/54250060.jpg"},
     {"arc":"Endymion",
         "imgs": {
             "Poster": 38943357,
@@ -568,9 +568,9 @@
         "crest": "/crests/Evil Eye.png",
         "credit": "https://www.deviantart.com/linkgamecube23/art/Crest-of-The-Evil-Eye-856528535"
     },
-    {"arc":"Evil HERO","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/58332301.jpg"},
+    {"arc":"Evil HERO","url":"https://images.ygoprodeck.com/images/cards_cropped/58332301.jpg"},
     {"arc":"Evil★Twin & Live☆Twin",
-        "url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/62098216.jpg",
+        "url":"https://images.ygoprodeck.com/images/cards_cropped/62098216.jpg",
         "waifu":"a",
         "crest": "/crests/EvilTwinLiveTwin.png",
         "credit": "https://www.pixiv.net/en/artworks/95575591"
@@ -594,7 +594,7 @@
         "crest": "/crests/Evol.png",
         "credit": "https://www.pixiv.net/en/artworks/74516570"
     },
-    {"arc":"Exodia","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/58604027.jpg"},
+    {"arc":"Exodia","url":"https://images.ygoprodeck.com/images/cards_cropped/58604027.jpg"},
     {"arc":"Eyes Restrict",
         "imgs": {
             "Poster": 78063197,
@@ -604,7 +604,7 @@
             "Link": 94259633
         }
     },
-    {"arc":"F.A.","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/33158448.jpg"},
+    {"arc":"F.A.","url":"https://images.ygoprodeck.com/images/cards_cropped/33158448.jpg"},
     {"arc":"Fabled",
         "imgs": {
             "Poster": 22555834,
@@ -614,7 +614,7 @@
         "crest": "/crests/Fabled.png",
         "credit": "https://www.pixiv.net/en/artworks/74516590"
     },
-    {"arc":"Fairy Tail","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/55623480.jpg"},
+    {"arc":"Fairy Tail","url":"https://images.ygoprodeck.com/images/cards_cropped/55623480.jpg"},
     {"arc":"Fire Fist & Fire Formation",
         "imgs": {
             "Poster": 57103969,
@@ -653,7 +653,7 @@
             "Synchro": 84815190
         }
     },
-    {"arc":"Flower Cardian","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/42291297.jpg"},
+    {"arc":"Flower Cardian","url":"https://images.ygoprodeck.com/images/cards_cropped/42291297.jpg"},
     {"arc":"Fluffal & Edge Imp & Frightfur",
         "imgs": {
             "Poster": 34773082,
@@ -661,9 +661,9 @@
             "Fusion": 80889750
         }
     },
-    {"arc":"Floowandereeze","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/101106017.jpg"},
-    {"arc":"Forbidden","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/27243130.jpg"},
-    {"arc":"Fortune Fairy","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/31461282.jpg"},
+    {"arc":"Floowandereeze","url":"https://images.ygoprodeck.com/images/cards_cropped/80611581.jpg"},
+    {"arc":"Forbidden","url":"https://images.ygoprodeck.com/images/cards_cropped/27243130.jpg"},
+    {"arc":"Fortune Fairy","url":"https://images.ygoprodeck.com/images/cards_cropped/31461282.jpg"},
     {"arc":"Fortune Lady",
         "imgs": {
             "Poster": 84218527,
@@ -680,7 +680,7 @@
             "Fusion": 21225115
         }
     },
-    {"arc":"Frightfur","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/464362.jpg"},
+    {"arc":"Frightfur","url":"https://images.ygoprodeck.com/images/cards_cropped/464362.jpg"},
     {"arc":"Frog",
         "imgs": {
             "Poster": 6203182,
@@ -689,7 +689,7 @@
             "Xyz": 90809975
         }
     },
-    {"arc":"Fur Hire","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/48214588.jpg",
+    {"arc":"Fur Hire","url":"https://images.ygoprodeck.com/images/cards_cropped/48214588.jpg",
         "crest":"/crests/Fur Hire.png",
         "credit": "https://www.pixiv.net/en/artworks/74516815"
     },
@@ -729,7 +729,7 @@
         }        
     },
     {"arc":"Galaxy","imgs": {"Poster": 63956833}},
-    {"arc":"Gandora","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/64681432.jpg"},
+    {"arc":"Gandora","url":"https://images.ygoprodeck.com/images/cards_cropped/64681432.jpg"},
     {"arc":"Geargia",
         "imgs": {
             "Poster": 6148016,
@@ -780,7 +780,7 @@
             "Link": 97520532
         }
     },
-    {"arc":"Gishki",
+    {"arc":"Gishki & Aquamirror",
         "imgs": {
             "Poster": 46337945,
             "Effect": 63942761,
@@ -791,8 +791,8 @@
         "credit": "https://yugipedia.com/wiki/File:Crest-Gishki.svg",
         "waifu": "a"
     },
-    {"arc":"Gizmek","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/24793135.jpg"},
-    {"arc":"Glacial Beast","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/6568731.jpg"},
+    {"arc":"Gizmek","url":"https://images.ygoprodeck.com/images/cards_cropped/24793135.jpg"},
+    {"arc":"Glacial Beast","url":"https://images.ygoprodeck.com/images/cards_cropped/6568731.jpg"},
     {"arc":"Gladiator Beast",
         "imgs": {
             "Poster": 52394047,
@@ -808,8 +808,8 @@
             "Xyz": 46871387
         }
     },
-    {"arc":"Golden Castle of Stromberg","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/72283691.jpg"},
-    {"arc":"Golden Land","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/20590515.jpg"},
+    {"arc":"Golden Castle of Stromberg","url":"https://images.ygoprodeck.com/images/cards_cropped/72283691.jpg"},
+    {"arc":"Golden Land","url":"https://images.ygoprodeck.com/images/cards_cropped/20590515.jpg"},
     {"arc":"Gorgonic",
         "imgs": {
             "Poster": 37984162,
@@ -817,7 +817,7 @@
             "Xyz": 84401683
         }
     },
-    {"arc":"Gouki","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/62376646.jpg"},
+    {"arc":"Gouki","url":"https://images.ygoprodeck.com/images/cards_cropped/62376646.jpg"},
     {"arc":"Gravekeeper's",
         "imgs": {
             "Poster": 30450531,
@@ -827,16 +827,16 @@
         "crest": "/crests/Gravekeeper.png",
         "credit": "https://www.pixiv.net/en/artworks/74516552"
     },
-    {"arc":"Graydle","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/52145422.jpg"},
-    {"arc":"Greed","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/55144522.jpg"},
-    {"arc":"Grepher","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/75953262.jpg"},
+    {"arc":"Graydle","url":"https://images.ygoprodeck.com/images/cards_cropped/52145422.jpg"},
+    {"arc":"Greed","url":"https://images.ygoprodeck.com/images/cards_cropped/55144522.jpg"},
+    {"arc":"Grepher","url":"https://images.ygoprodeck.com/images/cards_cropped/75953262.jpg"},
     {"arc":"Guardian",
         "imgs": {
             "Poster": 55569674,
             "Effect": 34022290
         }
     },
-    {"arc":"Guardragon","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/59537380.jpg"},
+    {"arc":"Guardragon","url":"https://images.ygoprodeck.com/images/cards_cropped/59537380.jpg"},
     {"arc":"Gusto",
         "imgs": {
             "Poster": 91822647,
@@ -848,7 +848,7 @@
         "credit": "https://yugipedia.com/wiki/File:Crest-Gusto.svg",
         "waifu": "a"
     },
-    {"arc":"HERO","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/73239437.jpg"},
+    {"arc":"HERO","url":"https://images.ygoprodeck.com/images/cards_cropped/73239437.jpg"},
     {"arc":"Harpie",
         "imgs": {
             "Poster": 39275698,
@@ -894,7 +894,7 @@
         "credit": "https://www.pixiv.net/en/artworks/74515079"
     },
 
-    {"arc":"Heraldry","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/61314842.jpg"},
+    {"arc":"Heraldry","url":"https://images.ygoprodeck.com/images/cards_cropped/61314842.jpg"},
     {"arc":"Heroic",
         "imgs": {
             "Poster": 53466826,
@@ -904,7 +904,7 @@
         "crest":"/crests/Heroic.png",
         "credit": "https://www.pixiv.net/en/artworks/74515079"
     },
-    {"arc":"Hi-Speedroid","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/86154370.jpg"},
+    {"arc":"Hi-Speedroid","url":"https://images.ygoprodeck.com/images/cards_cropped/86154370.jpg"},
     {"arc":"Hieratic",
         "imgs": {
             "Poster": 25377819,
@@ -915,16 +915,16 @@
         "crest": "/crests/Hieratic.png",
         "credit": "https://www.pixiv.net/en/artworks/74516846"
     },
-    {"arc":"Hole","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/29401950.jpg"},
+    {"arc":"Hole","url":"https://images.ygoprodeck.com/images/cards_cropped/29401950.jpg"},
     {"arc":"Holy Knight","url":"NO"},
-    {"arc":"Holy Night","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/85590798.jpg"},
+    {"arc":"Holy Night","url":"https://images.ygoprodeck.com/images/cards_cropped/85590798.jpg"},
     {"arc":"Horus the Black Flame Dragon",
         "imgs": {
             "Poster": 11224103,
             "Effect": 48229808
         }
     },
-    {"arc":"Hyperion","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/55794644.jpg"},
+    {"arc":"Hyperion","url":"https://images.ygoprodeck.com/images/cards_cropped/55794644.jpg"},
     {"arc":"Ice Barrier",
         "imgs": {
             "Poster": 64990807,
@@ -934,12 +934,12 @@
         "crest": "https://ms.yugipedia.com//f/fa/Crest-Ice_Barrier.svg",
         "credit": "https://yugipedia.com/wiki/File:Crest-Ice_Barrier.svg"
     },
-    {"arc":"Icejade","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/82777208.jpg","waifu":"a"},
-    {"arc":"Igknight","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/23296404.jpg",
+    {"arc":"Icejade","url":"https://images.ygoprodeck.com/images/cards_cropped/82777208.jpg","waifu":"a"},
+    {"arc":"Igknight","url":"https://images.ygoprodeck.com/images/cards_cropped/23296404.jpg",
         "crest": "/crests/Igknight.png",
         "credit": "https://www.pixiv.net/en/artworks/74516791"
     },
-    {"arc":"Impcantation","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/86758915.jpg"},
+    {"arc":"Impcantation","url":"https://images.ygoprodeck.com/images/cards_cropped/86758915.jpg"},
     {"arc":"Infernity & Void",
         "imgs": {
             "Poster": 66957584,
@@ -974,7 +974,7 @@
         "crest": "/crests/Infernoid.png",
         "credit": "https://www.pixiv.net/en/artworks/74516779"
     },
-    {"arc":"Infestation","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/35419032.jpg"},
+    {"arc":"Infestation","url":"https://images.ygoprodeck.com/images/cards_cropped/35419032.jpg"},
     {"arc":"Infinitrack",
         "imgs": {
             "Poster": 22866836,
@@ -985,7 +985,7 @@
         "crest":"/crests/Infinitrack.png",
         "credit": "https://www.pixiv.net/en/artworks/74516815"
     },
-    {"arc":"Invoked","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/74063034.jpg",
+    {"arc":"Invoked","url":"https://images.ygoprodeck.com/images/cards_cropped/74063034.jpg",
     "crest": "/crests/Invoked.png",
     "credit": "https://www.pixiv.net/en/artworks/74516520"},
     {"arc":"Inzektor",
@@ -1026,7 +1026,7 @@
             "Synchro": 17548456
         }
     },
-    {"arc":"Kaiju","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/93332803.jpg"},
+    {"arc":"Kaiju","url":"https://images.ygoprodeck.com/images/cards_cropped/93332803.jpg"},
     {"arc":"Karakuri",
         "imgs": {
             "Poster": 23874409,
@@ -1035,7 +1035,7 @@
         }
     },
     {"arc":"Knight","url":"NO"},
-    {"arc":"Knightmare","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/65330383.jpg",
+    {"arc":"Knightmare","url":"https://images.ygoprodeck.com/images/cards_cropped/65330383.jpg",
         "crest":"/crests/Mekk-Knight.png",
         "credit": "https://www.pixiv.net/en/artworks/74516800"
     },
@@ -1048,12 +1048,12 @@
         "credit": "https://yugipedia.com/wiki/File:Crest-Koa%27ki_Meiru.svg"
     },
     {"arc":"Koala","url":"NO"},
-    {"arc":"Kozmo","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/55885348.jpg"},
+    {"arc":"Kozmo","url":"https://images.ygoprodeck.com/images/cards_cropped/55885348.jpg"},
     {"arc":"Kragen","url":"NO"},
-    {"arc":"Krawler","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/88316955.jpg",
+    {"arc":"Krawler","url":"https://images.ygoprodeck.com/images/cards_cropped/88316955.jpg",
     "crest": "/crests/Krawler.png",
     "credit": "https://www.pixiv.net/en/artworks/74516800"},
-    {"arc":"Kuriboh","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/20065322.jpg"},
+    {"arc":"Kuriboh","url":"https://images.ygoprodeck.com/images/cards_cropped/20065322.jpg"},
     {"arc":"Labrynth",
         "imgs": {
             "Poster": 2347656,
@@ -1092,7 +1092,7 @@
         "credit": "https://www.pixiv.net/en/artworks/74516570"
     },
     {"arc":"Live Twin","url":"NO"},
-    {"arc":"Live☆Twin","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/37582948.jpg","waifu":"a"},
+    {"arc":"Live☆Twin","url":"https://images.ygoprodeck.com/images/cards_cropped/37582948.jpg","waifu":"a"},
     {"arc":"Lunalight",
         "imgs": {
             "Poster": 11193246,
@@ -1102,7 +1102,7 @@
         "crest": "/crests/Lunalight.png",
         "credit": "https://www.pixiv.net/en/artworks/74515098"
     },
-    {"arc":"Lyrilusc","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/45354718.jpg","waifu":"a"},
+    {"arc":"Lyrilusc","url":"https://images.ygoprodeck.com/images/cards_cropped/45354718.jpg","waifu":"a"},
     {"arc":"Machina",
         "imgs": {
             "Poster": 86852702,
@@ -1118,7 +1118,7 @@
         }
     },
     {"arc":"Madoor","url":"NO"},
-    {"arc":"Magical Musket","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/47810543.jpg"},
+    {"arc":"Magical Musket","url":"https://images.ygoprodeck.com/images/cards_cropped/47810543.jpg"},
     {"arc":"Magician Girl",
         "imgs": {
             "Poster": 89448140,
@@ -1141,8 +1141,8 @@
         "crest": "/crests/Magikey.png",
         "credit": "https://twitter.com/YuGiOh_OCG_INFO/status/1375417253076770824"
     },
-    {"arc":"Magistus","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/34755994.jpg"},
-    {"arc":"Magnet Warrior","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/54734082.jpg"},
+    {"arc":"Magistus","url":"https://images.ygoprodeck.com/images/cards_cropped/34755994.jpg"},
+    {"arc":"Magnet Warrior","url":"https://images.ygoprodeck.com/images/cards_cropped/54734082.jpg"},
     {"arc":"Majespecter",
         "imgs": {
             "Poster": 76473843,
@@ -1158,7 +1158,7 @@
             "Synchro": 40939228
         }
     },
-    {"arc":"Maju","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/36584821.jpg"},
+    {"arc":"Maju","url":"https://images.ygoprodeck.com/images/cards_cropped/36584821.jpg"},
     {"arc":"Malefic",
         "imgs": {
             "Poster": 75223115,
@@ -1191,8 +1191,8 @@
             "Link": 1948619
         }
     },
-    {"arc":"Materiactor","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/70597485.jpg"},
-    {"arc":"Mathmech","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/42632209.jpg"},
+    {"arc":"Materiactor","url":"https://images.ygoprodeck.com/images/cards_cropped/70597485.jpg"},
+    {"arc":"Mathmech","url":"https://images.ygoprodeck.com/images/cards_cropped/42632209.jpg"},
     {"arc":"Mayakashi",
         "imgs": {
             "Poster": 39753577,
@@ -1263,8 +1263,8 @@
             "Link": 23545031
         }
     },
-    {"arc":"Metalfoes","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/4688231.jpg"},
-    {"arc":"Metaphys","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/66719533.jpg"},
+    {"arc":"Metalfoes","url":"https://images.ygoprodeck.com/images/cards_cropped/4688231.jpg"},
+    {"arc":"Metaphys","url":"https://images.ygoprodeck.com/images/cards_cropped/66719533.jpg"},
     {"arc":"Mist Valley",
         "imgs": {
             "Poster": 82199284,
@@ -1284,8 +1284,8 @@
             "Effect": 93542102
         }
     },
-    {"arc":"Mystical Beast of the Forest","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/97317530.jpg"},
-    {"arc":"Myutant","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/6182103.jpg"},
+    {"arc":"Mystical Beast of the Forest","url":"https://images.ygoprodeck.com/images/cards_cropped/97317530.jpg"},
+    {"arc":"Myutant","url":"https://images.ygoprodeck.com/images/cards_cropped/6182103.jpg"},
     {"arc":"Naturia",
         "imgs": {
             "Poster": 37322745,
@@ -1305,7 +1305,7 @@
         "crest": "/crests/Nekroz.png",
         "credit": "https://www.pixiv.net/en/artworks/74516779"
     },
-    {"arc":"Nemeses","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/6728559.jpg"},
+    {"arc":"Nemeses","url":"https://images.ygoprodeck.com/images/cards_cropped/6728559.jpg"},
     {"arc":"Neos & Neo-Spacian",
         "imgs": {
             "Poster": 74414885,
@@ -1313,7 +1313,7 @@
             "Fusion": 90050480
         }
     },
-    {"arc":"Nephthys","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/50847759.jpg"},
+    {"arc":"Nephthys","url":"https://images.ygoprodeck.com/images/cards_cropped/50847759.jpg"},
     {"arc":"Nimble",
         "imgs": {
             "Poster": 2843014,
@@ -1351,7 +1351,7 @@
         "crest": "https://ms.yugipedia.com//c/c5/Crest-Shien.svg",
         "credit": "https://yugipedia.com/wiki/File:Crest-Shien.svg"
     },
-    {"arc":"Ninjitsu Art","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/90200789.jpg"},
+    {"arc":"Ninjitsu Art","url":"https://images.ygoprodeck.com/images/cards_cropped/90200789.jpg"},
     {"arc":"Noble Knight & Noble Arms & Artorigus & Roland",
         "imgs": {
             "Poster": 55742055,
@@ -1376,7 +1376,7 @@
             "Xyz": 15862758
         }
     },
-    {"arc":"Numeron","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/77402960.jpg"},
+    {"arc":"Numeron","url":"https://images.ygoprodeck.com/images/cards_cropped/77402960.jpg"},
     {"arc":"Odd-Eyes",
         "imgs": {
             "Poster": 16178681,
@@ -1404,16 +1404,16 @@
             "Xyz": 31563350
         }
     },
-    {"arc":"Orcust","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/30741503.jpg",
+    {"arc":"Orcust","url":"https://images.ygoprodeck.com/images/cards_cropped/30741503.jpg",
     "crest": "/crests/Orcust.png",
     "credit": "https://www.pixiv.net/en/artworks/74516800"},
-    {"arc":"PSY-Frame","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/74586817.jpg"},
+    {"arc":"PSY-Frame","url":"https://images.ygoprodeck.com/images/cards_cropped/74586817.jpg"},
     {"arc":"Paladins of Dragons","url":"NO"},
-    {"arc":"Paleozoic","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/35035481.jpg"},
+    {"arc":"Paleozoic","url":"https://images.ygoprodeck.com/images/cards_cropped/35035481.jpg"},
     {"arc":"Parasite","url":"NO"},
-    {"arc":"Parshath","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/18036057.jpg"},
-    {"arc":"Pendulum Dragon","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/16178681.jpg"},
-    {"arc":"Pendulum","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/37469904.jpg"},
+    {"arc":"Parshath","url":"https://images.ygoprodeck.com/images/cards_cropped/18036057.jpg"},
+    {"arc":"Pendulum Dragon","url":"https://images.ygoprodeck.com/images/cards_cropped/16178681.jpg"},
+    {"arc":"Pendulum","url":"https://images.ygoprodeck.com/images/cards_cropped/37469904.jpg"},
     {"arc":"Penguin",
         "imgs": {
             "Poster": 91397409,
@@ -1421,7 +1421,7 @@
             "Synchro": 91397409
         }
     },
-    {"arc":"Performage","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/68819554.jpg"},
+    {"arc":"Performage","url":"https://images.ygoprodeck.com/images/cards_cropped/68819554.jpg"},
     {"arc":"Performapal",
         "imgs": {
             "Poster": 92958307,
@@ -1429,8 +1429,8 @@
             "Fusion": 65029288
         }
     },
-    {"arc":"Phantasm Spiral","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/56649609.jpg"},
-    {"arc":"Phantom Knights","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/62709239.jpg"},
+    {"arc":"Phantasm Spiral","url":"https://images.ygoprodeck.com/images/cards_cropped/56649609.jpg"},
+    {"arc":"Phantom Knights","url":"https://images.ygoprodeck.com/images/cards_cropped/62709239.jpg"},
     {"arc":"Photon",
         "imgs": {
             "Poster": 60222582,
@@ -1453,8 +1453,8 @@
         "crest": "/crests/Plunder Patroll.png",
         "credit": "https://www.pixiv.net/en/artworks/95676500"
     },
-    {"arc":"Possessed","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/65046521.jpg","waifu":"a"},
-    {"arc":"Potan","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/76218643.jpg"},
+    {"arc":"Possessed","url":"https://images.ygoprodeck.com/images/cards_cropped/65046521.jpg","waifu":"a"},
+    {"arc":"Potan","url":"https://images.ygoprodeck.com/images/cards_cropped/76218643.jpg"},
     {"arc":"Power Tool",
         "imgs": {
             "Poster": 2403771,
@@ -1471,7 +1471,7 @@
         "crest":"/crests/Prank-Kids.png",
         "credit": "https://www.pixiv.net/en/artworks/74516815"
     },
-    {"arc":"Predaplant","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/72129804.jpg"},
+    {"arc":"Predaplant","url":"https://images.ygoprodeck.com/images/cards_cropped/72129804.jpg"},
     {"arc":"Prediction Princess",
         "imgs": {
             "Poster": 32231618,
@@ -1499,7 +1499,7 @@
         "crest": "/crests/Raidraptor.png",
         "credit": "https://www.pixiv.net/en/artworks/74515098"
     },
-    {"arc":"Rank-Up-Magic","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/47660516.jpg"},
+    {"arc":"Rank-Up-Magic","url":"https://images.ygoprodeck.com/images/cards_cropped/47660516.jpg"},
     {"arc":"Red-Eyes",
         "imgs": {
             "Poster": 74677422,
@@ -1544,9 +1544,9 @@
         "crest": "/crests/Ritual Beast.png",
         "credit": "https://www.pixiv.net/en/artworks/74516779"
     },
-    {"arc":"Rokket","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/53266486.jpg"},
-    {"arc":"Roland","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/40251688.jpg"},
-    {"arc":"Rose Dragon","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/73580471.jpg"},
+    {"arc":"Rokket","url":"https://images.ygoprodeck.com/images/cards_cropped/53266486.jpg"},
+    {"arc":"Roland","url":"https://images.ygoprodeck.com/images/cards_cropped/40251688.jpg"},
+    {"arc":"Rose Dragon","url":"https://images.ygoprodeck.com/images/cards_cropped/73580471.jpg"},
     {"arc":"Rose",
         "imgs": {
             "Poster": 71645242,
@@ -1580,7 +1580,7 @@
             "Fusion": 43378048
         }
     },
-    {"arc":"Salamangreat","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/87871125.jpg"},
+    {"arc":"Salamangreat","url":"https://images.ygoprodeck.com/images/cards_cropped/87871125.jpg"},
     {"arc":"Scrap",
         "imgs": {
             "Poster": 76774528,
@@ -1635,9 +1635,9 @@
         "crest": "/crests/Shiranui.png",
         "credit": "https://www.pixiv.net/en/artworks/74516846"
     },
-    {"arc":"Silent Magician","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/72443568.jpg","waifu":"a"},
-    {"arc":"Silent Swordsman","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/37267041.jpg"},
-    {"arc":"Simorgh","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/14989021.jpg"},
+    {"arc":"Silent Magician","url":"https://images.ygoprodeck.com/images/cards_cropped/72443568.jpg","waifu":"a"},
+    {"arc":"Silent Swordsman","url":"https://images.ygoprodeck.com/images/cards_cropped/37267041.jpg"},
+    {"arc":"Simorgh","url":"https://images.ygoprodeck.com/images/cards_cropped/14989021.jpg"},
     {"arc":"Six Samurai",
         "imgs": {
             "Poster": 72345736,
@@ -1672,9 +1672,9 @@
         "credit": "https://yugipedia.com/wiki/File:Crest-SkyStriker.png"
     },
     {"arc":"Slime","url":"NO"},
-    {"arc":"Solemn","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/41420027.jpg"},
-    {"arc":"Solfachord","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/92043888.jpg","waifu":"a"},
-    {"arc":"Speedroid","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/81275020.jpg"},
+    {"arc":"Solemn","url":"https://images.ygoprodeck.com/images/cards_cropped/41420027.jpg"},
+    {"arc":"Solfachord","url":"https://images.ygoprodeck.com/images/cards_cropped/92043888.jpg","waifu":"a"},
+    {"arc":"Speedroid","url":"https://images.ygoprodeck.com/images/cards_cropped/81275020.jpg"},
     {"arc":"Spellbook",
         "imgs": {
             "Poster": 97997309,
@@ -1714,7 +1714,7 @@
         }
     },
     {"arc":"Starliege","url":"NO"},
-    {"arc":"Starry Knight","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/85590798.jpg",
+    {"arc":"Starry Knight","url":"https://images.ygoprodeck.com/images/cards_cropped/85590798.jpg",
     "crest": "/crests/Starry Knight.png",
     "credit": "https://www.pixiv.net/en/artworks/95676500"},
     {"arc":"Steelswarm & Infestation",
@@ -1729,10 +1729,10 @@
     },
     {"arc":"Stigmata","url":"NO"},
     {"arc":"Stigmatika","url":"NO"},
-    {"arc":"Subterror","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/74640994.jpg"},
-    {"arc":"Sunavalon & Sunvine & Sunseed","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/92770064.jpg"},
-    {"arc":"Sunseed","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/66407907.jpg"},
-    {"arc":"Sunvine","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/91557476.jpg"},
+    {"arc":"Subterror","url":"https://images.ygoprodeck.com/images/cards_cropped/74640994.jpg"},
+    {"arc":"Sunavalon & Sunvine & Sunseed","url":"https://images.ygoprodeck.com/images/cards_cropped/92770064.jpg"},
+    {"arc":"Sunseed","url":"https://images.ygoprodeck.com/images/cards_cropped/66407907.jpg"},
+    {"arc":"Sunvine","url":"https://images.ygoprodeck.com/images/cards_cropped/91557476.jpg"},
     {"arc":"Super Defense Robot",
         "imgs": {
             "Poster": 8091563,
@@ -1758,8 +1758,8 @@
             "Link": 33918636
         }
     },
-    {"arc":"Supreme King","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/84869738.jpg"},
-    {"arc":"Suship","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/75215744.jpg"},
+    {"arc":"Supreme King","url":"https://images.ygoprodeck.com/images/cards_cropped/84869738.jpg"},
+    {"arc":"Suship","url":"https://images.ygoprodeck.com/images/cards_cropped/75215744.jpg"},
     {"arc":"Sylvan",
         "imgs": {
             "Poster": 82016179,
@@ -1775,7 +1775,7 @@
             "Synchro": 24070330
         }
     },
-    {"arc":"Synchro","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/36737092.jpg"},
+    {"arc":"Synchro","url":"https://images.ygoprodeck.com/images/cards_cropped/36737092.jpg"},
     {"arc":"Synchron",
         "imgs": {
             "Poster": 50091196,
@@ -1802,7 +1802,7 @@
         "crest": "/crests/Tellarknight.png",
         "credit": "https://www.pixiv.net/en/artworks/74516779"
     },
-    {"arc":"Tenyi","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/39730727.jpg"},
+    {"arc":"Tenyi","url":"https://images.ygoprodeck.com/images/cards_cropped/39730727.jpg"},
     {"arc":"The Agent & Hyperion",
         "imgs": {
             "Poster": 91188343,
@@ -1820,7 +1820,7 @@
         "crest": "/crests/The Weather.png",
         "credit": "https://www.pixiv.net/en/artworks/74516815"
     },
-    {"arc":"Thunder Dragon","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/41685633.jpg"},
+    {"arc":"Thunder Dragon","url":"https://images.ygoprodeck.com/images/cards_cropped/41685633.jpg"},
     {"arc":"Time Thief",
         "imgs": {
             "Poster": 76587747,
@@ -1839,7 +1839,7 @@
         "crest":"/crests/Rescue Squad.png",
         "credit": "https://www.pixiv.net/en/artworks/74516846"
     },
-    {"arc":"Timelord","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/8967776.jpg"},
+    {"arc":"Timelord","url":"https://images.ygoprodeck.com/images/cards_cropped/8967776.jpg"},
     {"arc":"Tindangle",
         "imgs": {
             "Poster": 99157310,
@@ -1882,7 +1882,7 @@
         "crest": "/crests/Tri-Brigade.png",
         "credit": "https://www.pixiv.net/en/artworks/95676513"
     },
-    {"arc":"Triamid","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/72772445.jpg"},
+    {"arc":"Triamid","url":"https://images.ygoprodeck.com/images/cards_cropped/72772445.jpg"},
     {"arc":"Trickstar",
         "imgs": {
             "Poster": 35371948,
@@ -1939,8 +1939,8 @@
             "Effect": 10485110
         }
     },
-    {"arc":"Unchained","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/27412542.jpg"},
-    {"arc":"Ursarctic","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/53865474.jpg"},
+    {"arc":"Unchained","url":"https://images.ygoprodeck.com/images/cards_cropped/27412542.jpg"},
+    {"arc":"Ursarctic","url":"https://images.ygoprodeck.com/images/cards_cropped/53865474.jpg"},
     {"arc":"Utopia",
         "imgs": {
             "Poster": 84013237,
@@ -1955,7 +1955,7 @@
             "Xyz": 26973555
         }
     },
-    {"arc":"Valkyrie","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/2204038.jpg","waifu":"a"},
+    {"arc":"Valkyrie","url":"https://images.ygoprodeck.com/images/cards_cropped/2204038.jpg","waifu":"a"},
     {"arc":"Vampire",
         "imgs": {
             "Poster": 68688135,
@@ -1964,8 +1964,8 @@
             "Link": 72860663
         }
     },
-    {"arc":"Vassal","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/95993388.jpg"},
-    {"arc":"Vendread","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/4388680.jpg"},
+    {"arc":"Vassal","url":"https://images.ygoprodeck.com/images/cards_cropped/95993388.jpg"},
+    {"arc":"Vendread","url":"https://images.ygoprodeck.com/images/cards_cropped/4388680.jpg"},
     {"arc":"Venom",
         "imgs": {
             "Poster": 73899015,
@@ -1973,9 +1973,9 @@
             "Fusion": 39915560
         }
     },
-    {"arc":"Virtual World","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/13364097.jpg"},
-    {"arc":"Vision HERO","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/46759931.jpg"},
-    {"arc":"Void","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/57047293.jpg"},
+    {"arc":"Virtual World","url":"https://images.ygoprodeck.com/images/cards_cropped/13364097.jpg"},
+    {"arc":"Vision HERO","url":"https://images.ygoprodeck.com/images/cards_cropped/46759931.jpg"},
+    {"arc":"Void","url":"https://images.ygoprodeck.com/images/cards_cropped/57047293.jpg"},
     {"arc":"Volcanic & Blaze Accelerator",
         "imgs": {
             "Poster": 69750546,
@@ -1990,7 +1990,7 @@
             "Xyz": 39987164
         }
     },
-    {"arc":"War Rock","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/71331215.jpg"},
+    {"arc":"War Rock","url":"https://images.ygoprodeck.com/images/cards_cropped/71331215.jpg"},
     {"arc":"Watt",
         "imgs": {
             "Poster": 56577312,
@@ -2015,7 +2015,7 @@
         "credit": "https://yugipedia.com/wiki/Legendary_Wind-Up_Key"
     },
     {"arc":"Windwitch",
-        "url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/96156729.jpg","waifu":"a"},
+        "url":"https://images.ygoprodeck.com/images/cards_cropped/96156729.jpg","waifu":"a"},
     {"arc":"Witchcrafter",
         "imgs": {
             "Poster": 94553671,
@@ -2025,8 +2025,8 @@
         "crest": "https://ms.yugipedia.com//c/c9/Crest-Witchcrafter.png",
         "credit": "https://yugipedia.com/wiki/File:Crest-Witchcrafter.png"
     },
-    {"arc":"World Chalice","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/97648103.jpg"},
-    {"arc":"World Legacy","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/92562411.jpg"},
+    {"arc":"World Chalice","url":"https://images.ygoprodeck.com/images/cards_cropped/97648103.jpg"},
+    {"arc":"World Legacy","url":"https://images.ygoprodeck.com/images/cards_cropped/92562411.jpg"},
     {"arc":"Worm",
         "imgs": {
             "Poster": 11722335,
@@ -2068,7 +2068,7 @@
             "Fusion": 90307498
         }
     },
-    {"arc":"ZEXAL","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/36224040.jpg"},
+    {"arc":"ZEXAL","url":"https://images.ygoprodeck.com/images/cards_cropped/36224040.jpg"},
     {"arc":"Zefra",
         "imgs": {
             "Poster": 98076754,
@@ -2078,7 +2078,7 @@
         "crest": "https://ms.yugipedia.com//3/3d/Zefra-Crest.png",
         "credit": "https://yugipedia.com/wiki/File:Zefra-Crest.png"
     },
-    {"arc":"Zexal","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/36224040.jpg"},
+    {"arc":"Zexal","url":"https://images.ygoprodeck.com/images/cards_cropped/36224040.jpg"},
     {"arc":"Zoodiac",
         "imgs": {
             "Poster": 98918572,
@@ -2106,7 +2106,7 @@
         },
         "waifu": "a"
     },
-    {"arc":"Beetrooper","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/38229962.jpg"},
+    {"arc":"Beetrooper","url":"https://images.ygoprodeck.com/images/cards_cropped/38229962.jpg"},
     {"arc":"Swordsoul",
         "imgs": {
             "Poster": 99137266,
@@ -2126,7 +2126,7 @@
         "credit": "https://twitter.com/YuGiOh_OCG_INFO/status/1431224987550195713",
         "waifu": "a"
     },
-    {"arc":"Adventurer Token","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/100417029.jpg"},
+    {"arc":"Adventurer Token","url":"https://images.ygoprodeck.com/images/cards_cropped/39568067.jpg"},
     {"arc":"The Sanctuary in the Sky",
         "imgs": {
             "Poster": 56433456,
@@ -2153,7 +2153,7 @@
     },
     {"arc":"Exchange of the Spirit",
         "imgs": {
-            "Poster": 17484499
+            "Poster": 63542003
         }
     },
     {"arc":"Vaylantz", "imgs": { "Poster": 40680521},
@@ -2171,9 +2171,15 @@
     {"arc":"Crystal", "imgs": { "Poster": 63945693} },
     {"arc":"Pendulum Magician", "imgs": { "Poster": 53208660} },
     {"arc":"Vernusylph", "imgs": { "Poster": 63708033 }, "crest": "/crests/Vernusylph.png", "credit": "https://twitter.com/YuGiOh_TCG/status/1551960655598538754" },
-    {"arc":"Lady of Lament","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/25643346.jpg","waifu":"a"},
-    {"arc":"Seventh","url": "https://storage.googleapis.com/ygoprodeck.com/pics_artgame/97769122.jpg"},
-    {"arc":"Barian's","url":"https://storage.googleapis.com/ygoprodeck.com/pics_artgame/47660516.jpg"},
+    {"arc":"Lady of Lament","url":"https://images.ygoprodeck.com/images/cards_cropped/25643346.jpg","waifu":"a"},
+    {"arc":"Seventh","url": "https://images.ygoprodeck.com/images/cards_cropped/97769122.jpg"},
+    {"arc":"Barian's","url":"https://images.ygoprodeck.com/images/cards_cropped/47660516.jpg"},
+    {"arc": "Ghoti", "url": "https://images.ygoprodeck.com/images/cards_cropped/38409239.jpg"},
+    {"arc": "\"C\"", "url": "https://images.ygoprodeck.com/images/cards_cropped/23434538.jpg"},
+    {"arc": "Kshatri-La", "url": "https://images.ygoprodeck.com/images/cards_cropped/48626373.jpg"},
+    {"arc": "Bystial", "url": "https://images.ygoprodeck.com/images/cards_cropped/33854624.jpg"},
 
-    {"arc":"Rescue-ACE","imgs": { "Poster": 40680521 }, "crest": "/crests/Rescue-ACE.png", "credit": "https://yugipedia.com/wiki/File:Crest-RescueACE.png" }
+    {"arc": "Purery", "url": "https://images.ygoprodeck.com/images/cards_cropped/25550531.jpg"},
+    {"arc": "Mikanko", "url": "https://images.ygoprodeck.com/images/cards_cropped/16310544.jpg", "waifu":"a"},
+    {"arc":"Rescue-ACE","url": "https://images.ygoprodeck.com/images/cards_cropped/37495766.jpg", "crest": "/crests/Rescue-ACE.png", "credit": "https://yugipedia.com/wiki/File:Crest-RescueACE.png" }
 ]    

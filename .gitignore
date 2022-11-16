@@ -93,3 +93,4 @@ sw.*
 Dockerfile
 fly.toml
 .dockerignore
+ygo_box_nuxt.bat

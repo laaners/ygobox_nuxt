@@ -342,6 +342,11 @@ export function exceptionArc(arc, allcards, grouped) {
 			changeName("D/D & Dark Contract")
 			break
 		}
+		case "Abyss Actor": {
+			mergeWith("Abyss Script")
+			changeName("Abyss Actor & Abyss Script")
+			break
+		}
 		case "Monarch": {
 			mergeWith("Vassal")
 			excludeMembers(["Gravekeeper's Vassal"])
@@ -386,6 +391,11 @@ export function exceptionArc(arc, allcards, grouped) {
 		case "Evil★Twin": {
 			mergeWith("Live☆Twin")
 			changeName("Evil★Twin & Live☆Twin")
+			break
+		}
+		case "Gishki": {
+			mergeWith("Aquamirror")
+			changeName("Gishki & Aquamirror")
 			break
 		}
 		case "Amazement": {
