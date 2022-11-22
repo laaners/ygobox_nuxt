@@ -23,7 +23,7 @@ const pusher = new Pusher({
 
 export default app
 ;(async () => {
-	const { allsets, bannedCards, cardsCH, cardsIT, allcards, allcardsToT, femaleCards } =
+	let { allsets, bannedCards, cardsCH, cardsIT, allcards, allcardsToT, femaleCards } =
 		await initData()
 
 	const initialBannedCards = JSON.parse(JSON.stringify(bannedCards))
@@ -178,7 +178,11 @@ export default app
 		return { name: card.name, desc: card.desc }
 	}
 
-	app.get("/banned_cards", async (req, res) => {
+	app.get("/banned_cards", (req, res) => {
+		return res.json(bannedCards)
+	})
+
+	app.get("/banned_cards_reset", async (req, res) => {
 		const bannedCardsGit = await new Promise((resolve, reject) => {
 			request({
 				url: `https://raw.githubusercontent.com/laaners/ygobox_nuxt/master/server/data/bannedCards.json`,
@@ -198,12 +202,7 @@ export default app
 				}
 			});
 		});
-		return res.json(bannedCardsGit)
-	})
-
-	app.get("/banned_cards_reset", (req, res) => {
-		bannedCards.length = 0
-		initialBannedCards.forEach(_=>bannedCards.push(_))
+		bannedCards = bannedCardsGit;
 		return res.send("Reset")
 	})
 

@@ -508,9 +508,19 @@
 		"name": "Predaplant Verte Anaconda",
 		"banner": "Leo"
 	},
-  {
+	{
 		"id": 72330894,
 		"name": "Simorgh, Bird of Sovereignty",
 		"banner": "Ale"
+	},
+	{
+		"id": 1344018,
+		"name": "Time Pendulumgraph",
+		"banner": "Ale"
+	},
+	{
+		"id": 92519087,
+		"name": "Virtual World Kyubi - Shenshen",
+		"banner": "Leo"
 	}
 ]
