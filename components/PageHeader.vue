@@ -70,6 +70,7 @@ export default {
 			{ uri: "/pack_info", name: "Info Pacchetto" },
 			{ uri: "/card_info", name: "Cerca Carta" },
 			{ uri: "/archetypes", name: "Archetipi" },
+			{ uri: "/guess_card", name: "Indovina la Carta" },
 			{ uri: "/trivia_graph", name: "Trivia" },
 		],
 	}),

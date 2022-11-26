@@ -23,10 +23,9 @@ const pusher = new Pusher({
 
 export default app
 ;(async () => {
+	// eslint-disable-next-line prefer-const
 	let { allsets, bannedCards, cardsCH, cardsIT, allcards, allcardsToT, femaleCards } =
 		await initData()
-
-	const initialBannedCards = JSON.parse(JSON.stringify(bannedCards))
 
 	let archetypes = retrieveArchetypes(allcardsToT, allsets, femaleCards)
 	const hashAllCards = hashGroupBy(allcardsToT, "name")
@@ -628,5 +627,13 @@ export default app
 			message: "hello world"
 		})
 		return res.send("Banned: "+card.name)
+	})
+
+	app.get("/guess_card", (req,res) => {
+		if(req.query.cardsFilter === undefined || req.query.cardsFilter === null) return res.send("Undefined filter")
+		pusher.trigger("my-channel", "my-event", {
+			message: req.query.cardsFilter
+		})
+		return res.send(req.query.cardsFilter)
 	})
 })()
