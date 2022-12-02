@@ -763,8 +763,8 @@ export default {
 		/* BUTTONS FOR YDK AND EXPORTING */
 		saveDeck() {
 			const mainDeck = this.getMainDeck()
-			if (mainDeck.length < 20 || mainDeck.length > 30)
-				return alert("Scegli tra 20 e 30 carte!")
+			if (mainDeck.length < 40 || mainDeck.length > 60)
+				return alert("Scegli tra 40 e 60 carte!")
 			const extraDeck = this.getExtraDeck()
 			if (extraDeck.length >= 16)
 				return alert("Troppe carte in extra deck!")
@@ -783,8 +783,8 @@ export default {
 			mainDeck.forEach((_) => {
 				text += _.id + "\n"
 			})
-			text += "300104005" //	Switcheroo
-			//	text += "\n511002116"; //Orichalcum
+			// text += "300104005" //	Switcheroo
+			// text += "\n511002116"; //Orichalcum
 
 			text += "\n#extra\n"
 
