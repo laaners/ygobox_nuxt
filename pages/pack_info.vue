@@ -28,8 +28,9 @@
 				<select v-model="dateFilter" name="setsFilter">
 					<option label="Tutti" selected="selected">1900</option>
 					<option label="Solo i deck" selected="selected">Deck</option>
+					// Array(2023-2000).fill(2001).map((v,i)=>v+i)"
 					<option
-						v-for="i of Array(2022-2000).fill(2001).map((v,i)=>v+i)"
+						v-for="i of Array.from(new Set(allsets.map(_=>_.tcg_date.split('-')[0])))"
 						:key="'date-'+i"
 						:label="i"
 					>

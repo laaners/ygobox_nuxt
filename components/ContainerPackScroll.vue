@@ -38,7 +38,7 @@ export default {
 	methods: {
 		packImage() {
 			//	if(this.set.tcg_date < "2016-09-15")
-			if(this.set.tcg_date < "2022-02-24")
+			if(this.set.tcg_date < "2022-02-24" || this.set.set_code === "GFP2")
 				return `/sets/${this.set.set_code}.jpg`
 			return `https://ygoprodeck.com/pics_sets/${this.set.set_code}.jpg`
 		},
