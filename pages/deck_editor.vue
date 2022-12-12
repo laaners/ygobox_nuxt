@@ -35,7 +35,11 @@
 		<!--
 		<button-secondary
 			v-if="savedCards.length === 0 && allcards.length > 0"
-			style="left: auto; right: auto; margin-top: var(--space-1) !important;"
+			style="
+				left: auto;
+				right: auto;
+				margin-top: var(--space-1) !important;
+			"
 			:title="'TESTING MODE'"
 			@click.native="
 				savedCards = [
@@ -46,7 +50,17 @@
 						favourite: true,
 						sets: ['2002-03-08 Legend of Blue Eyes White Dragon'],
 					},
-				];
+				]
+				savedCards = allcards.map((_) => {
+					return {
+						id: _.id,
+						copies: 3,
+						checked:
+							_.desc.includes('Dark Magician') === true ? 1 : 0,
+						favourite: false,
+						sets: allsets.map((_) => _.set_name).slice(0, 4),
+					}
+				})
 				recentlySaved = true
 			"
 		/>
@@ -112,6 +126,21 @@
 							:rarity="'Common'"
 							@mousedown.native="removeFromDeck"
 						/>
+						<!--
+						<div
+							v-for="(card, i) of getMainDeck()"
+							:key="card.id + i"
+						>
+							<keep-alive>
+								<card-modal
+									:src="getPicSmallUrl(card.id)"
+									:card-id="card.id"
+									:rarity="'Common'"
+									@mousedown.native="removeFromDeck"
+								/>
+							</keep-alive>
+						</div>
+						-->
 					</grid-view>
 					<h3>EXTRA DECK ({{ getExtraDeck().length }})</h3>
 					<grid-view
@@ -163,7 +192,7 @@
 									selected="selected"
 								></option>
 								<option
-									v-for="(set, i) of getSavedSets()"
+									v-for="(set, i) of savedSets"
 									:key="set + i"
 									:label="set"
 								>
@@ -494,6 +523,7 @@ export default {
 		allcards: [],
 		hashAllcards: {},
 		savedCards: [],
+		savedSets: [],
 		deck: [],
 
 		searchedCards: [],
@@ -525,6 +555,13 @@ export default {
 	},
 	watch: {
 		savedCards(newSavedCards, oldSavedCards) {
+			this.savedSets = [
+				...new Set(
+					newSavedCards
+						.map((_) => _.sets)
+						.reduce((a, b) => a.concat(b))
+				),
+			].sort((a, b) => (a > b ? -1 : 1))
 			this.reloadDeck(newSavedCards)
 		},
 		searchedCards(newSearchedCard, oldSearchedCard) {
@@ -669,10 +706,7 @@ export default {
 		},
 		/* DECK CONTAINER */
 		removeFromDeck(e) {
-			if (
-				e?.which === 3 &&
-				e.target === e.currentTarget.querySelector("img")
-			) {
+			if (e?.which === 3) {
 				try {
 					const cardId = +e.target.src
 						.split("/")
@@ -704,6 +738,7 @@ export default {
 
 			console.log("activated reload deck")
 			this.deck = this.categorySort(this.deck)
+			console.log("finish sort")
 		},
 		getMainDeck() {
 			return this.deck.filter((card) => {
@@ -892,15 +927,6 @@ export default {
 			)
 			this.$el.querySelector(".search-form-component").__vue__.form.pack =
 				pack
-		},
-		getSavedSets() {
-			return [
-				...new Set(
-					this.savedCards
-						.map((_) => _.sets)
-						.reduce((a, b) => a.concat(b))
-				),
-			].sort((a, b) => (a > b ? -1 : 1))
 		},
 		enterIndex(e) {
 			if (e.which === 13) {

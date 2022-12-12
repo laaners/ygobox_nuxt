@@ -101,12 +101,10 @@ export default {
 				return alert("Non hai puoi togliere ancora di meno!")
 			this.checked += n
 
-			setTimeout(() => {
-				this.$emit("update:formCheckedChange", {
-					cardId: this.card.id,
-					checked: this.checked,
-				})
-			}, 10)
+			this.$emit("update:formCheckedChange", {
+				cardId: this.card.id,
+				checked: this.checked,
+			})
 		},
 		getFavouriteStyle() {
 			if (this.favourite)
