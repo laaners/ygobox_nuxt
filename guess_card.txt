@@ -1,5 +1,8 @@
 _=> { 
-    return _.type.includes("Monster") && (_.attribute == "DARK" || _.attribute == "LIGHT" || _.attribute == "EARTH") &&
+    return _.type.includes("Monster") &&
+	!(_.type.includes("Fusion") || _.type.includes("Synchro") || _.type.toLowerCase().includes("xyz") || _.type.toLowerCase().includes("link"))
+}
+	&& (_.attribute == "DARK" || _.attribute == "LIGHT" || _.attribute == "EARTH") &&
     !((_.level <= 4 || _.desc.toLowerCase().includes("without tributing")) && !_.type.includes("Fusion") && !_.type.includes("Ritual") && !_.type.includes("Synchro") && !_.type.toLowerCase().includes("xyz") && !_.desc.includes("cannot be normal")) &&
     _.tcg_date >= "2016-01-01" &&
     !(_.archetype === "Unchained") &&

@@ -1,7 +1,7 @@
 import fs from "fs"
 import request from "request"
 import { load } from "cheerio"
-import bannedCards from "./data/bannedCards.json"
+// import bannedCards from "./data/bannedCards.json"
 
 function csvJSON(csv) {
 	const lines = csv.toString().split("\n")
@@ -42,53 +42,25 @@ function getAllSets() {
 	})
 }
 
-function allCardsSegment(startdate, enddate) {
-	console.log(`Retrieving all cards between ${startdate}-${enddate}...`)
-	return new Promise((resolve, reject) => {
-		//  "https://db.ygoprodeck.com/api/v7/cardinfo.php?&startdate=01/01/1100&enddate=01/01/2011
-		request(
-			{
-				url: `https://db.ygoprodeck.com/api/v7/cardinfo.php?&startdate=${startdate}&enddate=${enddate}`,
-				method: "GET",
-			},
-			function (error, resp, body) {
-				if (error || resp.statusCode !== 200) {
-					// eslint-disable-next-line prefer-promise-reject-errors
-					reject([])
-				} else {
-					console.log(`Got all cards between ${startdate}-${enddate}`)
-					const ris = JSON.parse(body).data
-					for (let i = 0; i < ris.length; i++) {
-						delete ris[i].card_prices
-						//	delete ris[i].archetype
-					}
-					resolve(ris)
-				}
-			}
-		)
-	})
-}
-
-/*
 function getBannedCards() {
     console.log("Retrieving bannedCards...")
-    return new Promise((resolve, reject) => {
-        request({
-            url: `https://raw.githubusercontent.com/laaners/test/main/BannedCards.json`,
-            method: 'GET',
-        }, function(error, resp, body){
-            if(error || resp.statusCode !== 200) {
-                console.log("ERROR bannedCards: "+error);
-                resolve([]);
-            }
-            else{
-                console.log("Got bannedCards");
-                resolve(JSON.parse(body));
-            }
-        });
-    });
+	return new Promise((resolve, reject) => {
+		request({
+			url: `https://raw.githubusercontent.com/laaners/ygobox_nuxt/master/server/data/bannedCards.json`,
+			method: 'GET',
+		}, function(error, resp, body){
+			if(error || resp.statusCode !== 200) {
+				console.log("ERROR bannedCards: "+error);
+				resolve([]);
+			}
+			else{
+				console.log("Got bannedCards");
+				const ris = JSON.parse(body)
+				resolve(ris);
+			}
+		});
+	});
 }
-*/
 
 // eslint-disable-next-line no-unused-vars
 function ocgAllCards() {
@@ -153,12 +125,12 @@ function getFemaleCards() {
 
 export async function initData() {
 	const taskAllSets = getAllSets()
-	//  const taskBannedCards = getBannedCards();
+	const taskBannedCards = getBannedCards();
 
 	const cardsCH = csvJSON(fs.readFileSync("./server/data/cardsCH.txt"))
 	const cardsIT = csvJSON(fs.readFileSync("./server/data/cardsIT.txt"))
 	const allsets = await taskAllSets
-	//  const bannedCards = await taskBannedCards;
+	const bannedCards = await taskBannedCards;
 
 	const [allcardsToT, femaleCards] = await Promise.all([
 		ocgAllCards(),
@@ -183,68 +155,6 @@ export async function initData() {
 		const bannedCard = bannedCards.find((_) => _.id === card.id)
 		if (bannedCard !== undefined) bannedCard.info = card
 	})
-
-	return {
-		allsets,
-		bannedCards,
-		cardsCH,
-		cardsIT,
-		allcards,
-		allcardsToT,
-		femaleCards
-	}
-}
-
-export async function initData2() {
-	const taskAllSets = getAllSets()
-	//  const taskBannedCards = getBannedCards();
-
-	const cardsCH = csvJSON(fs.readFileSync("./server/data/cardsCH.txt"))
-	const cardsIT = csvJSON(fs.readFileSync("./server/data/cardsIT.txt"))
-	const allsets = await taskAllSets
-	//  const bannedCards = await taskBannedCards;
-
-	const [allcards1, allcards2, allcards3, allcards4, allcardsToT, femaleCards] = await Promise.all([
-		allCardsSegment("01/01/1100", "01/01/2006"),
-		allCardsSegment("01/01/2006", "01/01/2012"),
-		allCardsSegment("01/01/2012", "01/01/2018"),
-		allCardsSegment("01/01/2018", "01/01/2024"),
-		ocgAllCards(),
-		getFemaleCards()
-	])
-
-	const allcards = [
-		allcards1.slice(0, Math.floor(allcards1.length / 2)),
-		allcards1.slice(Math.floor(allcards1.length / 2)),
-		allcards2.slice(0, Math.floor(allcards2.length / 2)),
-		allcards2.slice(Math.floor(allcards2.length / 2)),
-		allcards3.slice(0, Math.floor(allcards3.length / 2)),
-		allcards3.slice(Math.floor(allcards3.length / 2)),
-		allcards4.slice(0, Math.floor(allcards4.length / 2)),
-		allcards4.slice(Math.floor(allcards4.length / 2)),
-	]
-	/*
-	const allcardsToT = [
-		...new Set([
-			...allcards[0],
-			...allcards[1],
-			...allcards[2],
-			...allcards[3],
-			...allcards[4],
-			...allcards[5],
-			...allcards[6],
-			...allcards[7],
-		]),
-	]
-	*/
-
-	allcardsToT.forEach((card) => {
-		const bannedCard = bannedCards.find((_) => _.id === card.id)
-		if (bannedCard !== undefined) bannedCard.info = card
-	})
-
-	console.log(allcards.reduce((a,b)=>a.concat(b)).length)
-	console.log(allcardsToT.length)
 
 	return {
 		allsets,
