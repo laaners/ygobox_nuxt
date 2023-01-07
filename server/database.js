@@ -1,6 +1,8 @@
 import fs from "fs"
+import { exec } from "child_process"
 import request from "request"
 import { load } from "cheerio"
+import sqlite3 from "sqlite3"
 // import bannedCards from "./data/bannedCards.json"
 
 function csvJSON(csv) {
@@ -20,6 +22,38 @@ function csvJSON(csv) {
 	return result
 }
 
+function execPromise(cmd) {
+	return new Promise((resolve, reject) => {
+        exec(
+            cmd,
+            (error, stdout, stderr) => {
+                error ? reject(error) : resolve(stdout);
+            }
+        );
+	});
+}
+
+async function getDB(dbFile, dbURL) {
+	await execPromise(`curl -L -o "./server/data/${dbFile}" "${dbURL}"`);
+	return new Promise((resolve, reject) => {
+		const db = new sqlite3.Database(`./server/data/${dbFile}`, sqlite3.OPEN_READONLY, (err) => {
+			if (err) {
+				console.log("Error in dabase open: "+err.message);
+				resolve([]);
+			}
+			else
+				console.log(`Connected to ${dbFile}`);
+		});
+		db.all("select id, name, replace(replace(desc,CHAR(13),''),CHAR(10),' ') as desc, str1 from texts", (err, rows) => {
+			if(err) {
+				console.log("Failed query: "+err);
+				resolve([]);
+			}
+			resolve(rows);
+		});
+	});
+}
+
 function getAllSets() {
 	console.log("Retrieving allsets...")
 	return new Promise((resolve, reject) => {
@@ -32,7 +66,7 @@ function getAllSets() {
 			function (error, resp, body) {
 				if (error || resp.statusCode !== 200) {
 					console.log("Got allsets from LOCAL")
-					resolve(JSON.parse(fs.readFileSync("allsets.json")))
+					resolve([])
 				} else {
 					console.log("Got allsets from API")
 					resolve(JSON.parse(body))
@@ -115,7 +149,7 @@ function getFemaleCards() {
 							}
 						});
 					});
-					console.log("Retrieved all female cards")
+					console.log("Got all female cards")
                     resolve(list)
 				}
 			}
@@ -124,18 +158,18 @@ function getFemaleCards() {
 }
 
 export async function initData() {
-	const taskAllSets = getAllSets()
-	const taskBannedCards = getBannedCards();
-
-	const cardsCH = csvJSON(fs.readFileSync("./server/data/cardsCH.txt"))
-	const cardsIT = csvJSON(fs.readFileSync("./server/data/cardsIT.txt"))
-	const allsets = await taskAllSets
-	const bannedCards = await taskBannedCards;
-
-	const [allcardsToT, femaleCards] = await Promise.all([
+	// eslint-disable-next-line no-unused-vars, prefer-const
+	let [allsets, bannedCards, allcardsToT, femaleCards, cardsIT, cardsCH] = await Promise.all([
+		getAllSets(),
+		getBannedCards(),
 		ocgAllCards(),
-		getFemaleCards()
-	])
+		getFemaleCards(),
+		getDB("cardsIT.cdb","https://github.com/Team13fr/IgnisMulti/blob/master/Italiano/cards.cdb?raw=true"),
+		getDB("cardsCH.cdb","https://github.com/mycard/ygopro/blob/server/cards.cdb?raw=true")
+	]);
+
+	if(cardsIT.length === 0) cardsIT = csvJSON(fs.readFileSync("./server/data/cardsIT.txt"))
+	if(cardsCH.length === 0) cardsCH = csvJSON(fs.readFileSync("./server/data/cardsCH.txt"))
 
 	const len = allcardsToT.length
 	const step = Math.floor(len/8)
