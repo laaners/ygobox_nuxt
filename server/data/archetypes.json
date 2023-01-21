@@ -86,14 +86,7 @@
     {"arc":"Amorphage","url":"https://vignette3.wikia.nocookie.net/yugioh/images/6/66/AmorphageArchetype.png/revision/latest?cb=20160219013150",
     "crest": "/crests/Amorphage.png",
     "credit": "https://www.pixiv.net/en/artworks/74516791"},
-    {"arc":"Ancient Gear",
-        "imgs": {
-            "Poster": 44052074,
-            "Effect": 83104731,
-            "Fusion": 51788412,
-            "Link": 10547580
-        }
-    },
+    {"arc":"Ancient Gear", "url": "https://images.ygoprodeck.com/images/cards_cropped/83104731.jpg"},
     {"arc":"Ancient Warriors","url":"https://ms.yugipedia.com//3/3a/AncientWarriorsSagaThreeVisits-LOD2-JP-VG-artwork.png"},
     {"arc":"Angel","url":"NO"},
     {"arc":"Anti","url":"NO"},
@@ -339,6 +332,7 @@
     },
     {"arc":"Cyber","url":"https://images.ygoprodeck.com/images/cards_cropped/32768230.jpg"},
     {"arc":"Cyberdark","url":"https://images.ygoprodeck.com/images/cards_cropped/37542782.jpg"},
+    {"arc":"Cynet","url":"https://images.ygoprodeck.com/images/cards_cropped/57160136.jpg"},
     {"arc":"D.D.",
         "imgs": {
             "Poster": 27174286,
@@ -374,12 +368,7 @@
         "crest": "https://ms.yugipedia.com//7/7c/Crest-Dark_Scorpion.svg",
         "credit": "https://yugipedia.com/wiki/File:Crest-Dark_Scorpion.svg"
     },
-    {"arc":"Dark World",
-        "imgs": {
-            "Poster": 85325774,
-            "Effect": 34230233
-        }
-    },
+    {"arc":"Dark World", "url": "https://images.ygoprodeck.com/images/cards_cropped/34230233.jpg"},
     {"arc":"Darklord",
         "imgs": {
             "Poster": 58787301,
@@ -1635,8 +1624,10 @@
         "crest": "/crests/Shiranui.png",
         "credit": "https://www.pixiv.net/en/artworks/74516846"
     },
+    {"arc":"Rainbow Bridge","url":"https://images.ygoprodeck.com/images/cards_cropped/10938846.jpg"},
     {"arc":"Silent Magician","url":"https://images.ygoprodeck.com/images/cards_cropped/72443568.jpg","waifu":"a"},
     {"arc":"Silent Swordsman","url":"https://images.ygoprodeck.com/images/cards_cropped/37267041.jpg"},
+    {"arc":"Phantasm","url":"https://images.ygoprodeck.com/images/cards_cropped/89190953.jpg"},
     {"arc":"Simorgh","url":"https://images.ygoprodeck.com/images/cards_cropped/14989021.jpg"},
     {"arc":"Six Samurai",
         "imgs": {
@@ -1668,8 +1659,8 @@
             "Effect": 26077387,
             "Link": 63288574
         },
-        "crest": "https://ms.yugipedia.com//d/d2/Crest-SkyStriker.png",
-        "credit": "https://yugipedia.com/wiki/File:Crest-SkyStriker.png"
+        "crest": "/crests/Sky Striker.png",
+        "credit": "https://www.pixiv.net/en/artworks/74516815"
     },
     {"arc":"Slime","url":"NO"},
     {"arc":"Solemn","url":"https://images.ygoprodeck.com/images/cards_cropped/41420027.jpg"},
@@ -1727,6 +1718,7 @@
         "crest": "https://ms.yugipedia.com//b/b4/Crest-Steelswarm.svg",
         "credit": "https://yugipedia.com/wiki/File:Crest-Steelswarm.svg"
     },
+    {"arc":"Stealth Kragen","url":"https://images.ygoprodeck.com/images/cards_cropped/67557908.jpg"},
     {"arc":"Stigmata","url":"NO"},
     {"arc":"Stigmatika","url":"NO"},
     {"arc":"Subterror","url":"https://images.ygoprodeck.com/images/cards_cropped/74640994.jpg"},
@@ -1990,7 +1982,7 @@
             "Xyz": 39987164
         }
     },
-    {"arc":"War Rock","url":"https://images.ygoprodeck.com/images/cards_cropped/71331215.jpg"},
+    {"arc":"War Rock","url":"https://images.ygoprodeck.com/images/cards_cropped/19275188.jpg"},
     {"arc":"Watt",
         "imgs": {
             "Poster": 56577312,
@@ -2165,7 +2157,7 @@
     {"arc":"Hellfire", "imgs": { "Poster": 64104037} },
     {"arc":"Mokey Mokey", "imgs": { "Poster": 27288416} },
     {"arc":"Kairyu-Shin", "imgs": { "Poster": 95602345} },
-    {"arc":"Therions", "imgs": { "Poster": 10604644} },
+    {"arc":"Therion", "imgs": { "Poster": 10604644} },
     {"arc":"Scareclaw", "imgs": { "Poster": 82361809} },
     {"arc":"Libromancer", "imgs": { "Poster": 15590355} },
     {"arc":"Crystal", "imgs": { "Poster": 63945693} },
@@ -2176,10 +2168,22 @@
     {"arc":"Barian's","url":"https://images.ygoprodeck.com/images/cards_cropped/47660516.jpg"},
     {"arc": "Ghoti", "url": "https://images.ygoprodeck.com/images/cards_cropped/38409239.jpg"},
     {"arc": "\"C\"", "url": "https://images.ygoprodeck.com/images/cards_cropped/23434538.jpg"},
-    {"arc": "Kshatri-La", "url": "https://images.ygoprodeck.com/images/cards_cropped/48626373.jpg"},
+    {"arc": "Kashtira", "url": "https://images.ygoprodeck.com/images/cards_cropped/48626373.jpg"},
     {"arc": "Bystial", "url": "https://images.ygoprodeck.com/images/cards_cropped/33854624.jpg"},
+    {"arc": "Spider", "url": "https://images.ygoprodeck.com/images/cards_cropped/26640671.jpg"},
+    {"arc": "Advanced Crystal Beast", "url": "https://images.ygoprodeck.com/images/cards_cropped/12644061.jpg"},
+    {"arc": "Doodle Beast & Doodlebook", "url": "https://images.ygoprodeck.com/images/cards_cropped/67725394.jpg"},
+    {"arc": "G Golem", "url": "https://images.ygoprodeck.com/images/cards_cropped/50546029.jpg"},
 
-    {"arc": "Purery", "url": "https://images.ygoprodeck.com/images/cards_cropped/25550531.jpg"},
-    {"arc": "Mikanko", "url": "https://images.ygoprodeck.com/images/cards_cropped/16310544.jpg", "waifu":"a"},
+    {"arc": "Purrely", "url": "https://images.ygoprodeck.com/images/cards_cropped/25550531.jpg",
+        "crest": "/crests/Purrely.png",
+        "credit": "https://yugipedia.com/wiki/Purrely_(card)"},
+    {
+        "arc": "Mikanko",
+        "url": "https://images.ygoprodeck.com/images/cards_cropped/16310544.jpg",
+        "crest":"/crests/Mikanko.png",
+        "credit": "https://twitter.com/YuGiOh_OCG_INFO/status/1613513753034723329",
+        "waifu":"a"
+    },
     {"arc":"Rescue-ACE","url": "https://images.ygoprodeck.com/images/cards_cropped/37495766.jpg", "crest": "/crests/Rescue-ACE.png", "credit": "https://yugipedia.com/wiki/File:Crest-RescueACE.png" }
 ]    

@@ -8,6 +8,7 @@ import Pusher from "pusher"
 import { initData } from "./database"
 import { retrieveArchetypes } from "./archetypes"
 import archetypesBlacklist from "./data/blacklist.json"
+import allbanlist from "./data/banlist.json"
 
 const app = express()
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -53,7 +54,18 @@ export default app
 	})
 
 	app.get("/banlist_history", (req,res) => {
-		return res.json(JSON.parse(fs.readFileSync("../banlists_by_cards/ris.json").toString()))
+		return res.json(allbanlist)
+	})
+
+	app.get("/banlist_latest", (req,res) => {
+		const latestBanlist = allbanlist.banlists[allbanlist.banlists.length-1]
+		return res.json(allbanlist.cards.map(card => {
+			const obj = JSON.parse(JSON.stringify(card))
+			delete obj.banlists;
+			obj.status = card.banlists.find(banlist=>banlist.banlist === latestBanlist).status
+			obj.info = hashAllCards[card.name][0]
+			return obj
+		}))
 	})
 
 	app.get("/archetypes", (req, res) => {
@@ -84,7 +96,7 @@ export default app
 	})
 
 	app.get("/female_cards", (req, res) => {
-		return res.json(femaleCards)
+		return res.json({ data: femaleCards})
 	})
 
 	app.get("/card/:id", (req, res) => {

@@ -118,29 +118,31 @@
 						:row-gap="0"
 						:col-gap="0"
 					>
-						<card-modal
-							v-for="(card, i) of getMainDeck()"
-							:key="card.id + i"
-							:src="getPicSmallUrl(card.id)"
-							:card-id="card.id"
-							:rarity="'Common'"
-							@mousedown.native="removeFromDeck"
-						/>
-						<!--
 						<div
 							v-for="(card, i) of getMainDeck()"
 							:key="card.id + i"
+							style="position: relative"
 						>
-							<keep-alive>
-								<card-modal
-									:src="getPicSmallUrl(card.id)"
-									:card-id="card.id"
-									:rarity="'Common'"
-									@mousedown.native="removeFromDeck"
-								/>
-							</keep-alive>
+							<img
+								v-if="getLimitImage(card.id) !== ''"
+								:style="{
+									position: 'absolute',
+									zIndex: 9,
+									backgroundColor: 'red',
+									width: '30%',
+									left: '0%',
+									top: '0%',
+									mixBlendMode: 'multiply',
+								}"
+								:src="getLimitImage(card.id)"
+							/>
+							<card-modal
+								:src="getPicSmallUrl(card.id)"
+								:card-id="card.id"
+								:rarity="'Common'"
+								@mousedown.native="removeFromDeck"
+							/>
 						</div>
-						-->
 					</grid-view>
 					<h3>EXTRA DECK ({{ getExtraDeck().length }})</h3>
 					<grid-view
@@ -152,14 +154,31 @@
 						:row-gap="0"
 						:col-gap="0"
 					>
-						<card-modal
+						<div
 							v-for="(card, i) of getExtraDeck()"
 							:key="card.id + i"
-							:src="getPicSmallUrl(card.id)"
-							:card-id="card.id"
-							:rarity="'Common'"
-							@mousedown.native="removeFromDeck"
-						/>
+							style="position: relative"
+						>
+							<img
+								v-if="getLimitImage(card.id) !== ''"
+								:style="{
+									position: 'absolute',
+									zIndex: 9,
+									backgroundColor: 'red',
+									width: '30%',
+									left: '0%',
+									top: '0%',
+									mixBlendMode: 'multiply',
+								}"
+								:src="getLimitImage(card.id)"
+							/>
+							<card-modal
+								:src="getPicSmallUrl(card.id)"
+								:card-id="card.id"
+								:rarity="'Common'"
+								@mousedown.native="removeFromDeck"
+							/>
+						</div>
 					</grid-view>
 				</div>
 				<div class="form-container flex-col">
@@ -514,11 +533,13 @@ export default {
 	*/
 	async asyncData({ $axios }) {
 		const bannedCards = await $axios.$get("/api/banned_cards")
+		const currentBanlist = await $axios.$get("/api/banlist_latest")
 		const allsets = await $axios.$get("/api/allsets")
-		return { bannedCards, allsets }
+		return { bannedCards, allsets, currentBanlist }
 	},
 	data: () => ({
 		bannedCards: [],
+		currentBanlist: [],
 		allsets: [],
 		allcards: [],
 		hashAllcards: {},
@@ -795,6 +816,12 @@ export default {
 				}
 			}
 		},
+		getLimitImage(id) {
+			const banlistCard = this.currentBanlist.find((_) => _.id === id)
+			if (banlistCard !== undefined && banlistCard.status !== 3)
+				return `/0${banlistCard.status}lim.png`
+			return ""
+		},
 		/* BUTTONS FOR YDK AND EXPORTING */
 		saveDeck() {
 			const mainDeck = this.getMainDeck()
@@ -808,11 +835,23 @@ export default {
 			for (const name in copies) {
 				if (copies[name].length > 3)
 					return alert(`"${name}" presente in 4+ copie!`)
+				const banlistCard = this.currentBanlist.find(
+					(_) => _.name === name
+				)
+				if (
+					banlistCard !== undefined &&
+					copies[name].length > banlistCard.status
+				)
+					return alert(
+						`Deck non valido, "${name}" è a ${banlistCard.status}!`
+					)
 			}
+			/*
 			for (const banned of this.bannedCards) {
 				if (copies[banned.name] !== undefined)
 					return alert(`"${banned.name}" è bandito!`)
 			}
+			*/
 
 			let text = "#main\n"
 			mainDeck.forEach((_) => {

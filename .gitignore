@@ -98,3 +98,7 @@ ygo_box_nuxt.bat
 # DBs
 server/data/cardsIT.cdb
 server/data/cardsCH.cdb
+
+# cazzeggio
+server/cazzeggio/*
+static/crests/or/*

@@ -117,7 +117,6 @@ export default {
 	},
 	data: () => ({
 		sortFilter: "ALFABETICO",
-		defaultOrder: [],
 		possibleCards: [],
 		index: 0,
 		cardsPerPage: 3 * 15,

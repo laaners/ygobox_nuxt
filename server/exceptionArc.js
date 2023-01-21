@@ -31,7 +31,8 @@ export function exceptionArc(arc, allcards, grouped) {
 			})
 	}
 
-	function mergeWith(toaddArc) { //	Date of arc and NOT of toAddArc!!!
+	function mergeWith(toaddArc) {
+		//	Date of arc and NOT of toAddArc!!!
 		const toaddObj = grouped.find((_) => _.archetype === toaddArc)
 		toaddObj.members.forEach((member) => {
 			if (!arc.members.includes(member)) arc.members.push(member)
@@ -72,11 +73,21 @@ export function exceptionArc(arc, allcards, grouped) {
 			excludeMembers(notMembers)
 			break
 		}
+		case "Silent Magician": {
+			descIncludes("Silent Magician")
+			break
+		}
+		case "Doodle Beast": {
+			changeName("Doodle Beast & Doodlebook")
+			mergeWith("Doodlebook")
+			break
+		}
 		case "Neo-Spacian": {
 			changeName("Neos & Neo-Spacian")
 			nameIncludes("Neos")
 			descIncludes("Neos")
 			mergeWith("Neo Space")
+			mergeWith("Neos")
 			break
 		}
 		case "Vernalizer Fairy": {
@@ -92,6 +103,10 @@ export function exceptionArc(arc, allcards, grouped) {
 		case "Assault Mode": {
 			changeName("/Assault Mode")
 			descIncludes("Assault Mode Activate")
+			break
+		}
+		case "Advanced Crystal Beast": {
+			includeMembers(["Advanced Dark"])
 			break
 		}
 		case "Evil HERO": {
@@ -142,7 +157,7 @@ export function exceptionArc(arc, allcards, grouped) {
 			break
 		}
 		case "Digital Bug": {
-			includeMembers(["Bug Emergency","Bug Matrix","Bug Signal"])
+			includeMembers(["Bug Emergency", "Bug Matrix", "Bug Signal"])
 			break
 		}
 		case "Nemesys": {
@@ -155,10 +170,6 @@ export function exceptionArc(arc, allcards, grouped) {
 			descIncludes("Hamon, Lord of Striking Thunder")
 			descIncludes("Uria, Lord of Searing Flames")
 			descIncludes("Raviel, Lord of Phantasms")
-			break
-		}
-		case "Superheavy": {
-			changeName("Superheavy Samurai")
 			break
 		}
 		case "Train": {
@@ -210,17 +221,10 @@ export function exceptionArc(arc, allcards, grouped) {
 			changeName("Pendulum Magician")
 			arc.members = arc.members.filter((_) => {
 				return (
-					(
-						_.type.includes("Monster") &&
-						(
-							_.type.toUpperCase().includes("PENDULUM") ||
-							_.desc.includes("Pendulum")
-						)
-					) || 
-					(
-						!_.type.includes("Monster") &&
-						_.desc.includes("Pendulum")
-					)
+					(_.type.includes("Monster") &&
+						(_.type.toUpperCase().includes("PENDULUM") ||
+							_.desc.includes("Pendulum"))) ||
+					(!_.type.includes("Monster") && _.desc.includes("Pendulum"))
 				)
 			})
 			break
@@ -290,7 +294,7 @@ export function exceptionArc(arc, allcards, grouped) {
 			changeName("Fire Fist & Fire Formation")
 			break
 		}
-		case "Evilswarm": {
+		case "Lswarm": {
 			mergeWith("Infestation")
 			changeName("Evilswarm & Infestation")
 			break
@@ -353,6 +357,19 @@ export function exceptionArc(arc, allcards, grouped) {
 			changeName("Monarch & Vassal")
 			break
 		}
+		case "Seven Emperors": {
+			includeMembers([
+				"Rank-Up-Magic - The Seventh One",
+				"Barian's Chaos Draw",
+			])
+			break
+		}
+		case "Bridge": {
+			excludeMembers(["Evolutionary Bridge", "S-Force Bridgehead"])
+			descIncludes("Rainbow Bridge")
+			changeName("Rainbow Bridge")
+			break
+		}
 		case "Charmer": {
 			mergeWith("Possessed")
 			changeName("Charmer & Possessed")
@@ -365,6 +382,10 @@ export function exceptionArc(arc, allcards, grouped) {
 		}
 		case "Zexal": {
 			mergeWith("ZEXAL")
+			break
+		}
+		case "Chaos Phantom": {
+			changeName("Phantasm")
 			break
 		}
 		case "@Ignister": {
@@ -406,18 +427,14 @@ export function exceptionArc(arc, allcards, grouped) {
 		case "Infernoid": {
 			mergeWith("Void")
 			changeName("Infernoid & Void")
-			const notMembers = [
-				"Unformed Void"
-			]
+			const notMembers = ["Unformed Void"]
 			excludeMembers(notMembers)
 			break
 		}
 		case "Infernity": {
 			mergeWith("Void")
 			changeName("Infernity & Void")
-			const notMembers = [
-				"Unformed Void"
-			]
+			const notMembers = ["Unformed Void"]
 			excludeMembers(notMembers)
 			break
 		}
