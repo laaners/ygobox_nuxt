@@ -45,12 +45,24 @@
 						style="width: 100%; text-align: center"
 					>
 						<div style="width: 50%">
-							<h4 style="margin: 0 !important; font-weight: bold; color: blue">
+							<h4
+								style="
+									margin: 0 !important;
+									font-weight: bold;
+									color: blue;
+								"
+							>
 								First printing: {{ card.tcg_date }}
 							</h4>
 						</div>
 						<div class="flex-col" style="width: 50%">
-							<h4 style="margin: 0 !important; font-weight: bold; color: blue">
+							<h4
+								style="
+									margin: 0 !important;
+									font-weight: bold;
+									color: blue;
+								"
+							>
 								First printing: {{ card.mention.date }}
 							</h4>
 							<p
@@ -58,7 +70,11 @@
 									card.mention.id
 								)"
 								:key="interval.start + interval.end"
-								:style="{ margin: 0, fontWeight: interval.end === '' ? 'bolder' : ''}"
+								:style="{
+									margin: 0,
+									fontWeight:
+										interval.end === '' ? 'bolder' : '',
+								}"
 							>
 								Banned from {{ interval.start }}
 								{{
@@ -69,7 +85,7 @@
 							</p>
 						</div>
 					</div>
-					<hr style="width: 100%; border: 1px solid black;"/>
+					<hr style="width: 100%; border: 1px solid black" />
 				</div>
 			</grid-view>
 		</div>
@@ -153,6 +169,20 @@ export default {
 	},
 	async mounted() {
 		this.allcards = await this.getAllCards()
+		console.log(
+			this.groupBy(
+				this.allcards.filter((_) => _.atk !== undefined),
+				"atk",
+				"list"
+			).filter((_) => _.list.length === 1)
+		)
+		console.log(
+			this.groupBy(
+				this.allcards.filter((_) => _.def !== undefined),
+				"def",
+				"list"
+			).filter((_) => _.list.length === 1)
+		)
 		const ris = []
 		this.bannedCards.forEach((card) => {
 			const topush = this.allcards.find((_) => _.id === card.id)

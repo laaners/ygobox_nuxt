@@ -1,93 +1,110 @@
 <template>
-	<div class="image-loader flex-col">
-		<card-rarity
-			class="small-image"
-			:src="src"
-			:rarity="rarity"
-			:card-id="cardId"
-			@click.native="toggleFullImage()"
+	<div style="position: relative">
+		<img
+			v-if="limitImage !== ''"
+			:style="{
+				position: 'absolute',
+				zIndex: 9,
+				width: '30%',
+				left: '0%',
+				top: '0%',
+			}"
+			:src="limitImage"
 		/>
-		<transition name="fade">
-			<div
-				v-show="fullImage"
-				class="modal flex-col"
-				oncontextmenu="return false;"
-				@mousedown="rightClickClose"
-			>
-				<button
-					class="modal-close"
-					aria-label="close-modal"
-					@click="toggleFullImage()"
+		<div class="image-loader flex-col">
+			<card-rarity
+				class="small-image"
+				:src="src"
+				:rarity="rarity"
+				:card-id="cardId"
+				@click.native="toggleFullImage()"
+			/>
+			<transition name="fade">
+				<div
+					v-show="fullImage"
+					class="modal flex-col"
+					oncontextmenu="return false;"
+					@mousedown="rightClickClose"
 				>
-					<x-icon />
-					<p>O TASTO DESTRO<br />PER CHIUDERE!</p>
-				</button>
-				<h1 ref="name"></h1>
-				<div class="modal-view flex-row">
-					<div
-						class="full-image flex-col"
-						style="justify-content: flex-start"
+					<button
+						class="modal-close"
+						aria-label="close-modal"
+						@click="toggleFullImage()"
 					>
-						<a :href="getPicUrl(cardId)" target="_blank">
-							<img
-								loading="lazy"
-								:src="getPicUrl(cardId)"
-								:alt="cardId"
-							/>
-						</a>
-						<grid-view
-							:columns="2"
-							:col-gap="5"
-							:row-gap="0"
-							style="width: 70%"
+						<x-icon />
+						<p>O TASTO DESTRO<br />PER CHIUDERE!</p>
+					</button>
+					<h1 ref="name"></h1>
+					<div class="modal-view flex-row">
+						<div
+							class="full-image flex-col"
+							style="justify-content: flex-start"
 						>
-							<button-secondary
-								:title="'CARD ART'"
-								@click.native="
-									$el.querySelector('.full-image img').src =
-										getPicUrl(cardId)
-									$el.querySelector('.full-image a').href =
-										getPicUrl(cardId)
-								"
-							/>
-							<button-secondary
-								:title="'FULL ART'"
-								@click.native="
-									$el.querySelector('.full-image img').src =
-										getPicArtUrl(cardId)
-									$el.querySelector('.full-image a').href =
-										getPicArtUrl(cardId)
-								"
-							/>
-						</grid-view>
-					</div>
-					<div
-						v-if="loading"
-						class="loader"
-						style="align-self: flex-start; margin-top: 10vw"
-					></div>
-					<div v-if="!loading" class="effects">
-						<p>{{ formatEneff(eneff) }}</p>
-						<hr />
-						<p>{{ formatCheff(cheff) }}</p>
-						<hr />
-						<p>{{ formatIteff(iteff) }}</p>
-						<hr />
-						<h3 style="text-align: center">
-							Lo puoi trovare nei seguenti pacchetti:
-						</h3>
-						<grid-view :columns="4" :row-gap="0" :col-gap="0">
-							<container-pack-scroll
-								v-for="set of cardSets"
-								:key="set.set_code"
-								:set="set"
-								:rarity-percentage="set.percentage + '%'"
-							/>
-						</grid-view>
+							<a :href="getPicUrl(cardId)" target="_blank">
+								<img
+									loading="lazy"
+									:src="getPicUrl(cardId)"
+									:alt="cardId"
+								/>
+							</a>
+							<grid-view
+								:columns="2"
+								:col-gap="5"
+								:row-gap="0"
+								style="width: 70%"
+							>
+								<button-secondary
+									:title="'CARD ART'"
+									@click.native="
+										$el.querySelector(
+											'.full-image img'
+										).src = getPicUrl(cardId)
+										$el.querySelector(
+											'.full-image a'
+										).href = getPicUrl(cardId)
+									"
+								/>
+								<button-secondary
+									:title="'FULL ART'"
+									@click.native="
+										$el.querySelector(
+											'.full-image img'
+										).src = getPicArtUrl(cardId)
+										$el.querySelector(
+											'.full-image a'
+										).href = getPicArtUrl(cardId)
+									"
+								/>
+							</grid-view>
+						</div>
+						<div
+							v-if="loading"
+							class="loader"
+							style="align-self: flex-start; margin-top: 10vw"
+						></div>
+						<div v-if="!loading" class="effects">
+							<p>{{ formatEneff(eneff) }}</p>
+							<hr />
+							<p>{{ formatCheff(cheff) }}</p>
+							<hr />
+							<p>{{ formatIteff(iteff) }}</p>
+							<hr />
+							<h3 style="text-align: center">
+								Lo puoi trovare nei seguenti pacchetti:
+							</h3>
+							<grid-view :columns="4" :row-gap="0" :col-gap="0">
+								<container-pack-scroll
+									v-for="set of cardSets"
+									:key="set.set_code"
+									:set="set"
+									:rarity-percentage="set.percentage + '%'"
+								/>
+							</grid-view>
+						</div>
 					</div>
 				</div>
-			</div>
-		</transition>
+			</transition>
+		</div>
 	</div>
 </template>
 
@@ -113,6 +130,11 @@ export default {
 		cardId: {
 			type: Number,
 			required: true,
+		},
+		limitImage: {
+			type: String,
+			required: false,
+			default: "",
 		},
 	},
 	data: () => ({

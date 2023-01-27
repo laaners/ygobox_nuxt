@@ -1,5 +1,78 @@
 <template>
 	<div class="flex-col" style="align-items: start">
+		<div
+			style="
+				margin-left: 10px;
+				display: flex;
+				justify-content: flex-start;
+			"
+		>
+			<div class="flex-row" style="margin-right: 60px">
+				<div
+					style="
+						height: 20px;
+						width: 20px;
+						background: gray;
+						textAlign: 'center;
+						border: 2px solid black
+					"
+				></div>
+				&ensp;
+				<p>Not released</p>
+			</div>
+			<div class="flex-row" style="margin-right: 60px">
+				<div
+					style="
+						height: 20px;
+						width: 20px;
+						background: white;
+						textAlign: 'center;
+						border: 2px solid black
+					"
+				></div>
+				&ensp;
+				<p>Unlimited</p>
+			</div>
+			<div class="flex-row" style="margin-right: 60px">
+				<div
+					style="
+						height: 20px;
+						width: 20px;
+						background: yellow;
+						textAlign: 'center;
+						border: 2px solid black
+					"
+				></div>
+				&ensp;
+				<p>Semi-Limited</p>
+			</div>
+			<div class="flex-row" style="margin-right: 60px">
+				<div
+					style="
+						height: 20px;
+						width: 20px;
+						background: orange;
+						textAlign: 'center;
+						border: 2px solid black
+					"
+				></div>
+				&ensp;
+				<p>Limited</p>
+			</div>
+			<div class="flex-row" style="margin-right: 60px">
+				<div
+					style="
+						height: 20px;
+						width: 20px;
+						background: red;
+						textAlign: 'center;
+						border: 2px solid black
+					"
+				></div>
+				&ensp;
+				<p>Forbidden</p>
+			</div>
+		</div>
 		<table style="border-spacing: 0; border-collapse: collapse">
 			<thead>
 				<tr>
@@ -17,41 +90,52 @@
 				<tr
 					v-for="(card, i) of bannedCards.cards.slice(
 						21 * index,
-						21 * (index + 1)
+						210 * (index + 1)
 					)"
 					:key="i"
 					style="border: 1px solid black"
 				>
 					<th class="flex-col" style="margin-right: 50px">
-						<p>{{ card.name }}</p>
+						<p style="margin-bottom: 0; color: blue">
+							{{ card.name }}
+						</p>
+						<p style="margin-top: 0">{{ card.changes }} changes</p>
 						<img
 							style="width: 120px"
 							:src="getPicUrl(card.id)"
 							alt=""
 						/>
-						<p style="font-size: 0.7em">{{ card.date }}</p>
+						<p style="font-size: 0.7em; margin-bottom: 0">
+							{{ card.date.split(" ")[0] }}
+						</p>
+						<p style="font-size: 0.7em; margin-top: 0">
+							{{ card.date.replace(card.date.split(" ")[0], "") }}
+						</p>
 					</th>
 					<td
 						v-for="(banlist, j) of bannedCards.banlists"
 						:key="'banlist-' + card.name + banlist"
 						style="padding: 0"
 					>
-						<p style="font-size: 0.7em; width: 250px">
-							<b>{{
-								(+j + 0) % 5 === 0
-									? card.name
-									: Array(card.name.length)
-											.fill("&ensp;")
-											.join("")
-							}}</b>
-						</p>
 						<div
 							:style="{
 								height: '150px',
 								background: getColor(card, banlist),
 								textAlign: 'center',
+								border: '2px solid white',
 							}"
-						></div>
+							class="flex-row"
+						>
+							<p style="font-size: 0.7em; width: 150px">
+								<b>{{
+									(+j + 0) % 5 === 0
+										? card.name
+										: Array(card.name.length)
+												.fill("&ensp;")
+												.join("")
+								}}</b>
+							</p>
+						</div>
 						<p>
 							<b>{{ banlist }}</b>
 						</p>
@@ -116,7 +200,7 @@ export default {
 		console.log(max.length)
 
 		this.bannedCards.cards.forEach((card) => {
-			let changes = 0
+			let changes = 1
 			for (let i = 1; i < card.banlists.length; i++) {
 				if (card.banlists[i].status !== card.banlists[i - 1].status)
 					changes += 1
@@ -124,10 +208,26 @@ export default {
 			card.changes = changes
 		})
 
+		console.log(this.bannedCards.cards)
+		this.bannedCards.cards = this.bannedCards.cards.filter(
+			(_) => _.changes > 4
+		)
 		this.bannedCards.cards.sort((a, b) => b.changes - a.changes)
 		console.log(this.bannedCards.cards)
 	},
 	methods: {
+		getWidth(card, banlist) {
+			const aY = +card.date.split(" ")[0].split("-")[0]
+			const aM = +card.date.split(" ")[0].split("-")[1]
+			const bY = +banlist.split("-")[0]
+			const bM = +banlist.split("-")[1]
+
+			// in the release month-year got hit
+			if (aY === bY && aM === bM) {
+				return "50%"
+			}
+			return "100%"
+		},
 		getColor(card, banlist) {
 			const cardBanlist = card.banlists.find((_) => _.banlist === banlist)
 			// Unreleased

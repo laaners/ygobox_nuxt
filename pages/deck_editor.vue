@@ -118,31 +118,15 @@
 						:row-gap="0"
 						:col-gap="0"
 					>
-						<div
+						<card-modal
 							v-for="(card, i) of getMainDeck()"
 							:key="card.id + i"
-							style="position: relative"
-						>
-							<img
-								v-if="getLimitImage(card.id) !== ''"
-								:style="{
-									position: 'absolute',
-									zIndex: 9,
-									backgroundColor: 'red',
-									width: '30%',
-									left: '0%',
-									top: '0%',
-									mixBlendMode: 'multiply',
-								}"
-								:src="getLimitImage(card.id)"
-							/>
-							<card-modal
-								:src="getPicSmallUrl(card.id)"
-								:card-id="card.id"
-								:rarity="'Common'"
-								@mousedown.native="removeFromDeck"
-							/>
-						</div>
+							:src="getPicSmallUrl(card.id)"
+							:card-id="card.id"
+							:rarity="'Common'"
+							:limit-image="getLimitImage(card.id)"
+							@mousedown.native="removeFromDeck"
+						/>
 					</grid-view>
 					<h3>EXTRA DECK ({{ getExtraDeck().length }})</h3>
 					<grid-view
@@ -154,31 +138,15 @@
 						:row-gap="0"
 						:col-gap="0"
 					>
-						<div
+						<card-modal
 							v-for="(card, i) of getExtraDeck()"
 							:key="card.id + i"
-							style="position: relative"
-						>
-							<img
-								v-if="getLimitImage(card.id) !== ''"
-								:style="{
-									position: 'absolute',
-									zIndex: 9,
-									backgroundColor: 'red',
-									width: '30%',
-									left: '0%',
-									top: '0%',
-									mixBlendMode: 'multiply',
-								}"
-								:src="getLimitImage(card.id)"
-							/>
-							<card-modal
-								:src="getPicSmallUrl(card.id)"
-								:card-id="card.id"
-								:rarity="'Common'"
-								@mousedown.native="removeFromDeck"
-							/>
-						</div>
+							:src="getPicSmallUrl(card.id)"
+							:card-id="card.id"
+							:rarity="'Common'"
+							:limit-image="getLimitImage(card.id)"
+							@mousedown.native="removeFromDeck"
+						/>
 					</grid-view>
 				</div>
 				<div class="form-container flex-col">
@@ -340,6 +308,7 @@
 									:form-favourite-change.sync="
 										formFavouriteChange
 									"
+									:limit-image="getLimitImage(card.id)"
 								/>
 							</grid-view>
 							<p>
@@ -408,6 +377,7 @@
 									:form-favourite-change.sync="
 										formFavouriteChange
 									"
+									:limit-image="getLimitImage(card.id)"
 								/>
 							</grid-view>
 						</div>
@@ -474,6 +444,7 @@
 								:card="card"
 								:rarity="card.rarity.set_rarity"
 								:percentage="card.rarity.percentage"
+								:limit-image="getLimitImage(card.id)"
 							/>
 							<div class="flex-row pack-card-checkbox-star">
 								<input

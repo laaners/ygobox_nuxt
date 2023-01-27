@@ -5,6 +5,7 @@
 			:src="src"
 			:card-id="card.id"
 			:rarity="'Common'"
+			:limit-image="limitImage"
 		/>
 		<div class="flex-col info">
 			<p style="text-align: center; font-size: 0.9vmax !important">
@@ -70,6 +71,11 @@ export default {
 		savedInfo: {
 			type: Object,
 			required: true,
+		},
+		limitImage: {
+			type: String,
+			required: false,
+			default: "",
 		},
 	},
 	data() {

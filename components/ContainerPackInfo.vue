@@ -1,8 +1,15 @@
 <template>
 	<div class="container" :style="getBorder()">
-		<card-modal :src="src" :card-id="card.id" :rarity="'Common'" />
+		<card-modal
+			:src="src"
+			:card-id="card.id"
+			:rarity="'Common'"
+			:limit-image="limitImage"
+		/>
 		<span>{{ card.name }}</span>
-		<span><b>{{ rarity+' ('+percentage+'%)' }}</b></span>
+		<span
+			><b>{{ rarity + " (" + percentage + "%)" }}</b></span
+		>
 	</div>
 </template>
 
@@ -24,14 +31,19 @@ export default {
 			type: String,
 			required: true,
 		},
-        percentage: {
-            type: String,
-            required: true,
-        },
+		percentage: {
+			type: String,
+			required: true,
+		},
 		// eslint-disable-next-line vue/require-default-prop
 		border: {
 			type: String,
 			required: false,
+		},
+		limitImage: {
+			type: String,
+			required: false,
+			default: "",
 		},
 	},
 	methods: {

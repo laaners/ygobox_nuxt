@@ -1,56 +1,21 @@
 <template>
 	<div v-if="femaleCardsList.length > 0" class="flex-col">
-		<h1 style="margin: 0">{{ femaleCardsList.length }} total monsters</h1>
+		<h3>{{ femaleCardsList.length }} risultati trovati</h3>
 		<div
-			v-for="year of Array(2022 - 2015)
-				.fill(2016)
+			v-for="year of Array(2023 - 2000)
+				.fill(2001)
 				.map((v, i) => v + i)"
 			:key="year"
-			class="flex-col"
 		>
-			<h2>
-				{{ year }} ({{
-					femaleCardsList.filter(
-						(_) => +_.tcg_date.split("-")[0] === year
-					).length
-				}}
-				monsters)
-			</h2>
 			<grid-view
-				:columns="8"
+				:columns="10"
 				:col-gap="0"
 				:row-gap="0"
-				style="width: 100%"
+				style="width: 95%"
 			>
 				<card-modal
 					v-for="card of femaleCardsList.filter(
 						(_) => +_.tcg_date.split('-')[0] === year
-					)"
-					:key="card.id"
-					:card-id="card.id"
-					:rarity="'Common'"
-					:src="getPicUrl(card.id)"
-				/>
-			</grid-view>
-		</div>
-		<div class="flex-col">
-			<h2>
-				Not released yet ({{
-					femaleCardsList.filter(
-						(_) => +_.tcg_date.split("-")[0] === 2200
-					).length
-				}}
-				monsters)
-			</h2>
-			<grid-view
-				:columns="8"
-				:col-gap="0"
-				:row-gap="0"
-				style="width: 100%"
-			>
-				<card-modal
-					v-for="card of femaleCardsList.filter(
-						(_) => +_.tcg_date.split('-')[0] === 2200
 					)"
 					:key="card.id"
 					:card-id="card.id"
@@ -133,11 +98,50 @@ export default {
 	},
 	async mounted() {
 		this.allcards = await this.getAllCards()
-		this.femaleCardsList = this.allcards.filter(
-			(card) =>
-				this.femaleCardsHash[card.name] !== undefined &&
-				card.type.toLowerCase().includes("monster")
-		)
+		const types = [
+			"Aqua",
+			"Beast",
+			"Winged Beast",
+			"Cyberse",
+			"Fiend",
+			"Dinosaur",
+			"Dragon",
+			"Fairy",
+			"Warrior",
+			"Beast-Warrior",
+			"Spellcaster",
+			"Insect",
+			"Machine",
+			"Fish",
+			"Plant",
+			"Psychic",
+			"Pyro",
+			"Reptile",
+			"Rock",
+			"Sea Serpent",
+			"Thunder",
+			"Wyrm",
+			"Zombie",
+		]
+		this.femaleCardsList = this.allcards.filter((card) => {
+			if (
+				card.type.includes("Monster") &&
+				!card.name.toLowerCase().includes("dragon")
+			) {
+				if (
+					types.some(
+						(type) =>
+							card.name
+								.toLowerCase()
+								.includes(type.toLowerCase()) &&
+							card.race !== type
+					)
+				)
+					return true
+			}
+			return false
+		})
+		console.log(this.femaleCardsList)
 
 		this.femaleCardsList.forEach((card) => {
 			card.tcg_date = "2200-11-11"
@@ -152,10 +156,9 @@ export default {
 			})
 		})
 
-		this.femaleCardsList = this.categorySort(this.femaleCardsList).sort(
-			(a, b) => (a.name >= b.name ? 1 : -1)
-		)
-		// .sort((a, b) => (a.tcg_date >= b.tcg_date ? 1 : -1))
+		this.femaleCardsList = this.categorySort(this.femaleCardsList)
+			.sort((a, b) => (a.name >= b.name ? 1 : -1))
+			.sort((a, b) => (a.tcg_date >= b.tcg_date ? 1 : -1))
 	},
 	methods: {
 		fixDate(date) {

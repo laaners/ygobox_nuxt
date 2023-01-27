@@ -53,6 +53,52 @@ export default app
 		return res.json(JSON.parse(fs.readFileSync("server/data/archetypes.json").toString()))
 	})
 
+	app.get("/rush", (req,res) => {
+		const rush1 = JSON.parse(fs.readFileSync("server/cazzeggio/rush1res.json").toString())
+		const rush2 = JSON.parse(fs.readFileSync("server/cazzeggio/rush2res.json").toString())
+		const rush3 = JSON.parse(fs.readFileSync("server/cazzeggio/rush3res.json").toString())
+		return res.json([...rush1, ...rush2, ...rush3])	
+	})
+
+	app.get("/rush_image/:name", async (req, res) => {
+		const card = req.params.name
+		const result = await  new Promise((resolve, reject) => {
+			request(
+				{
+					url: encodeURI(
+						`https://yugipedia.com/wiki/${card.replace(
+							/ /g,
+							"_"
+						)}`
+					),
+					method: "GET",
+				},
+				function (error, resp, body) {
+					if (error || resp.statusCode !== 200) {
+						const msg =
+							"ERRORE: " +
+							`https://yugipedia.com/wiki/${card.replace(
+								/ /g,
+								"_"
+							)}` +
+							" " +
+							error
+						console.log(msg)
+						console.log(resp.statusCode)
+						resolve({})
+					} else {
+						const $ = load(body)
+						// document.body.querySelector(".cardtable-main_image-wrapper .image img").src
+						const img = $(".cardtable-main_image-wrapper .image img").attr("src")
+						const desc = $(".lore").text().substring(1, $(".lore").text().length-1);
+						resolve({img, desc})
+					}
+				}
+			)
+		})
+		return res.json(result)
+	})
+
 	app.get("/banlist_history", (req,res) => {
 		return res.json(allbanlist)
 	})
