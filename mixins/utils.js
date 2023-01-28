@@ -301,6 +301,7 @@ export default {
 			document.body.removeChild(element);
 		},
 		async getAllCards() {
+			/*
 			const [seg1, seg2, seg3, seg4, seg5, seg6, seg7, seg8] =
 				await Promise.all([
 					this.$axios.$get("api/allcards?n=0"),
@@ -325,6 +326,11 @@ export default {
 				]),
 			]
 			return allcards
+			*/
+			const { data } = await this.$axios.$get(
+				"https://db.ygoprodeck.com/api/v7/cardinfo.php"
+			)
+			return data
 		},
 	},
 }
