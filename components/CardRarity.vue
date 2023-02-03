@@ -1,6 +1,19 @@
 <template>
 	<div class="container flex-row">
 		<img loading="lazy" :src="src" />
+		<!--
+		<img
+			v-if="!img_error"
+			:src="`https://images.ygoprodeck.com/images/cards/${
+				cardId + 1
+			}.jpg`"
+			@error="img_error = true"
+		/>
+		<img
+			v-if="img_error"
+			:src="`https://images.ygoprodeck.com/images/cards/${cardId}.jpg`"
+		/>
+		-->
 		<div :class="getClass()"></div>
 	</div>
 </template>
@@ -10,7 +23,6 @@ import Utils from "~/mixins/utils"
 export default {
 	name: "CardRarity",
 	mixins: [Utils],
-
 	props: {
 		src: {
 			type: String,
@@ -27,6 +39,7 @@ export default {
 	},
 	data: () => ({
 		rarity_size: "",
+		img_error: false,
 	}),
 	async fetch() {
 		if (

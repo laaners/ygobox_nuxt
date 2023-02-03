@@ -1,25 +1,7 @@
-import fs from "fs"
 import request from "request"
 import { load } from "cheerio"
 // import { getAllBanlists } from "./banlists"
 // import bannedCards from "./data/bannedCards.json"
-
-function csvJSON(csv) {
-	const lines = csv.toString().split("\n")
-	const result = []
-	const headers = lines[0].split("	")
-	for (let i = 1; i < lines.length; i++) {
-		const obj = {}
-		const currentline = lines[i].split("	")
-		for (let j = 0; j < headers.length; j++) {
-			obj[headers[j]] =
-				headers[j] === "id" ? +currentline[j] : currentline[j]
-		}
-		result.push(obj)
-	}
-	console.log("Parsed a csv")
-	return result
-}
 
 function getAllSets() {
 	console.log("Retrieving allsets...")
@@ -79,12 +61,14 @@ function ocgAllCards() {
 					reject([])
 				} else {
 					console.log(`Got all OCG cards`)
-					const ris = JSON.parse(body).data
-					for (let i = 0; i < ris.length; i++) {
-						delete ris[i].card_prices
+					const data = JSON.parse(body).data
+					for (let i = 0; i < data.length; i++) {
+						delete data[i].card_prices
 						//	delete ris[i].archetype
 					}
-					resolve(ris)
+					data.find(_=>_.id === 1011091).id = 72309040
+					data.find(_=>_.id === 10034401).id = 84544192
+					resolve(data)
 				}
 			}
 		)
@@ -124,17 +108,43 @@ function getFemaleCards() {
 	})
 }
 
+function getDB(url) {
+	console.log(`Retrieving from ${url}`)
+	return new Promise((resolve, reject) => {
+		request(
+			{
+				//  url specificato con nome dal docker compose e non localhost
+				url,
+				method: "GET",
+			},
+			function (error, resp, body) {
+				if (error || resp.statusCode !== 200) {
+					// eslint-disable-next-line prefer-promise-reject-errors
+					console.log(`ERROR in retrieving ${url}: ${resp.statusCode} ${error} `)
+					resolve([])
+				} else {
+					console.log(`Got from ${url}`)
+					const data = JSON.parse(body)
+					resolve(data)
+				}
+			}
+		)
+	})
+}
+
 export async function initData() {
 	// eslint-disable-next-line no-unused-vars, prefer-const
-	let [allsets, bannedCards, allcardsToT, femaleCards] = await Promise.all([
+	let [allsets, bannedCards, allcardsToT, femaleCards, cardsIT, cardsCH] = await Promise.all([
 		getAllSets(),
 		getBannedCards(),
 		ocgAllCards(),
 		getFemaleCards(),
+		getDB("https://ygobox-nuxt-db.onrender.com/iteff"),
+		getDB("https://ygobox-nuxt-db.onrender.com/cheff")
 	]);
 
-	const cardsIT = csvJSON(fs.readFileSync("./server/data/cardsIT.txt"))
-	const cardsCH = csvJSON(fs.readFileSync("./server/data/cardsCH.txt"))
+	if(cardsIT.length === 0) cardsIT = require("./data/cardsIT.json")
+	if(cardsCH.length === 0) cardsCH = require("./data/cardsCH.json")
 
 	const len = allcardsToT.length
 	const step = Math.floor(len/8)
