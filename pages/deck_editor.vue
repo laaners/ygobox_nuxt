@@ -504,7 +504,8 @@ export default {
 	*/
 	async asyncData({ $axios }) {
 		const bannedCards = await $axios.$get("/api/banned_cards")
-		const currentBanlist = await $axios.$get("/api/banlist_latest")
+		const tmp = await $axios.$get("/api/banlist_latest")
+		const currentBanlist = tmp.latest
 		const allsets = await $axios.$get("/api/allsets")
 		return { bannedCards, allsets, currentBanlist }
 	},
