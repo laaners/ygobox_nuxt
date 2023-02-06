@@ -42,7 +42,7 @@
 				style="width: 100%"
 			>
 				<div
-					v-for="card of getCurrentBanlistCards(0)"
+					v-for="card of getBanlistCards(0)"
 					:key="card.id"
 					style="position: relative"
 				>
@@ -72,7 +72,7 @@
 				style="width: 100%"
 			>
 				<div
-					v-for="card of getCurrentBanlistCards(1)"
+					v-for="card of getBanlistCards(1)"
 					:key="card.id"
 					style="position: relative"
 				>
@@ -102,7 +102,7 @@
 				style="width: 100%"
 			>
 				<div
-					v-for="card of getCurrentBanlistCards(2)"
+					v-for="card of getBanlistCards(2)"
 					:key="card.id"
 					style="position: relative"
 				>
@@ -130,7 +130,7 @@
 				style="width: 100%"
 			>
 				<div
-					v-for="card of getCurrentBanlistCards(3)"
+					v-for="card of getBanlistCards(3)"
 					:key="card.id"
 					style="position: relative"
 				>
@@ -151,6 +151,115 @@
 				</div>
 			</grid-view>
 		</div>
+
+		<div class="flex-col" style="width: 60%">
+			<h4>PRIMA:</h4>
+			<grid-view
+				:columns="3"
+				:row-gap="0"
+				:col-gap="2"
+				style="width: 100%"
+			>
+				<button-secondary
+					v-for="sortLabel of [
+						'CRONOLOGICO',
+						'PER CATEGORIA',
+						'PER PERSONA',
+					]"
+					:key="sortLabel"
+					:title="sortLabel"
+					:style="{
+						opacity: sortFilter === sortLabel ? 1 : 0.5,
+					}"
+					@click.native="sortFilter = sortLabel"
+				/>
+			</grid-view>
+		</div>
+		<grid-view
+			v-if="!showPerBanner"
+			style="width: 90%"
+			:columns="cardsPerRow"
+			:row-gap="0"
+			:col-gap="0"
+		>
+			<card-modal
+				v-for="card of bannedCards"
+				:key="card.id"
+				:src="getPicSmallUrl(card.id)"
+				:card-id="card.id"
+				:rarity="'Common'"
+			/>
+		</grid-view>
+		<div v-if="showPerBanner" class="flex-col banner">
+			<h4>Ale</h4>
+			<grid-view
+				style="width: 90%"
+				:columns="cardsPerRow"
+				:row-gap="0"
+				:col-gap="0"
+			>
+				<card-modal
+					v-for="card of bannedCards.filter(
+						(_) => _.banner === 'Ale'
+					)"
+					:key="card.id"
+					:src="getPicSmallUrl(card.id)"
+					:card-id="card.id"
+					:rarity="'Common'"
+				/>
+			</grid-view>
+			<h4>Leo</h4>
+			<grid-view
+				style="width: 90%"
+				:columns="cardsPerRow"
+				:row-gap="0"
+				:col-gap="0"
+			>
+				<card-modal
+					v-for="card of bannedCards.filter(
+						(_) => _.banner === 'Leo'
+					)"
+					:key="card.id"
+					:src="getPicSmallUrl(card.id)"
+					:card-id="card.id"
+					:rarity="'Common'"
+				/>
+			</grid-view>
+			<h4>Sandro</h4>
+			<grid-view
+				style="width: 90%"
+				:columns="cardsPerRow"
+				:row-gap="0"
+				:col-gap="0"
+			>
+				<card-modal
+					v-for="card of bannedCards.filter(
+						(_) => _.banner === 'Sandro'
+					)"
+					:key="card.id"
+					:src="getPicSmallUrl(card.id)"
+					:card-id="card.id"
+					:rarity="'Common'"
+				/>
+			</grid-view>
+			<h4>Siwei</h4>
+			<grid-view
+				style="width: 90%"
+				:columns="cardsPerRow"
+				:row-gap="0"
+				:col-gap="0"
+			>
+				<card-modal
+					v-for="card of bannedCards.filter(
+						(_) => _.banner === 'Siwei'
+					)"
+					:key="card.id"
+					:src="getPicSmallUrl(card.id)"
+					:card-id="card.id"
+					:rarity="'Common'"
+				/>
+			</grid-view>
+		</div>
 	</div>
 </template>
 
@@ -165,12 +274,11 @@ export default {
 	mixins: [Utils],
 	async asyncData({ $axios }) {
 		const bannedCards = await $axios.$get("/api/banned_cards")
-		const data = await $axios.$get("/api/banlist_latest")
+		const currentBanlist = await $axios.$get("/api/banlist_latest")
 		return {
 			bannedCards: bannedCards.filter((_) => _.banner !== undefined),
 			defaultOrder: bannedCards.filter((_) => _.banner !== undefined),
-			currentBanlist: data.latest,
-			prevBanlist: data.prev,
+			currentBanlist,
 		}
 	},
 	data: () => ({
@@ -178,6 +286,7 @@ export default {
 		sortFilter: "CRONOLOGICO",
 		cardsPerRow: 20,
 		defaultOrder: [],
+		bannedCards: [],
 		currentBanlist: [],
 		allcards: [],
 		bancard: 0,
@@ -248,59 +357,68 @@ export default {
 		*/
 	},
 	methods: {
-		getCurrentBanlistCards(status) {
+		getBanlistCards(status) {
 			if (status === 3)
 				return this.categorySort(
-					this.currentBanlist.filter((card) => {
-						const infoNow = card
-						const infoPrev = this.prevBanlist.find(
-							(_) => _.id === card.id
-						)
-						return (
-							infoPrev !== undefined &&
-							infoPrev.status < 3 &&
-							infoNow.status === 3
-						)
-					})
+					this.bannedCards
+						.map((_) => (_.info === undefined ? _ : _.info))
+						.filter((card) => {
+							const banlistCard = this.currentBanlist.find(
+								(_) => _.id === card.id
+							)
+							if (banlistCard === undefined) return true
+							return banlistCard.status === 3
+						})
 				)
 			return this.categorySort(
-				this.currentBanlist.filter((card) => {
-					return card.status === status
-				})
+				this.currentBanlist
+					.filter((_) => _.status === status)
+					.map((_) => _.info)
 			)
 		},
 		getCardChangeText(id) {
-			if (this.index === 0) return ""
-			const infoNow = this.currentBanlist.find((_) => _.id === id)
-			const infoPrev = this.prevBanlist.find((_) => _.id === id)
-
-			// newly banned
-			if (infoPrev === undefined && infoNow !== undefined)
-				return `3->${infoNow.status}`
-			else if (
-				infoPrev !== undefined &&
-				infoNow !== undefined &&
-				infoNow.status !== infoPrev.status
-			)
-				return `${infoPrev.status}->${infoNow.status}`
-			// non existent in both
-			else return ""
+			const before =
+				this.bannedCards.find((_) => _.id === id) === undefined ? 3 : 0
+			const card = this.currentBanlist.find((_) => _.id === id)
+			const now = card === undefined ? 3 : card.status
+			if (before === now) return ""
+			return `${before}->${now}`
 		},
 		getCardChangeColor(id) {
-			if (this.index === 0) return "white"
-			const infoNow = this.currentBanlist.find((_) => _.id === id)
-			const infoPrev = this.prevBanlist.find((_) => _.id === id)
-			const colors = ["red", "orange", "yellow"]
-			// newly banned
-			if (infoPrev === undefined && infoNow !== undefined) return "white"
-			else if (
-				infoPrev !== undefined &&
-				infoNow !== undefined &&
-				infoNow.status !== infoPrev.status
+			const color =
+				this.bannedCards.find((_) => _.id === id) === undefined
+					? "white"
+					: "red"
+			return color
+		},
+		updateBanlist(bannedCards) {
+			this.bannedCards = bannedCards.filter((_) => _.banner !== undefined)
+			this.defaultOrder = bannedCards.filter(
+				(_) => _.banner !== undefined
 			)
-				return colors[infoPrev.status]
-			// non existent in both
-			else return "white"
+			this.showPerBanner = false
+			switch (this.sortFilter) {
+				case "PER CATEGORIA": {
+					this.bannedCards = this.categorySort(
+						this.bannedCards.map((_) => _.info)
+					)
+					break
+				}
+				case "PER PERSONA": {
+					this.showPerBanner = true
+					this.bannedCards = this.defaultOrder
+					break
+				}
+				default:
+					this.bannedCards = this.defaultOrder
+			}
+		},
+		async banCard() {
+			const { data } = await this.$axios.get(
+				`api/update_banlist?id=${this.bancard}&banner=${this.banner}`
+			)
+			//	this.socket.send("Update banlist")
+			alert(data)
 		},
 	},
 }

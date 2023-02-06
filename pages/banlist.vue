@@ -272,6 +272,7 @@ export default {
 		const ris = []
 		this.bannedCards.forEach((card) => {
 			const topush = this.allcards.find((_) => _.id === card.id)
+			console.log(card)
 			topush.date = card.date
 			topush.banlists = card.banlists
 			ris.push(topush)

@@ -39,6 +39,7 @@ export default {
 	async asyncData({ $axios }) {
 		const { data } = await $axios.get("/api/female_cards")
 		const allsets = await $axios.$get("/api/allsets")
+		const cheff =  await $axios.$get("https://ygobox-nuxt-db.onrender.com/iteff")
 		// Sort by release data
 		/*
 		data.cards.sort((a, b) => {
@@ -55,6 +56,7 @@ export default {
 		return {
 			femaleCardsHash: data.data,
 			allsets,
+			cheff
 		}
 	},
 	data: () => ({
@@ -62,6 +64,7 @@ export default {
 		femaleCardsList: [],
 		allcards: [],
 		allsets: [],
+		cheff: []
 	}),
 	head() {
 		return {
@@ -97,7 +100,28 @@ export default {
 		},
 	},
 	async mounted() {
-		this.allcards = await this.getAllCards()
+		this.allcards = await this.getAllCardsLocal()
+		const hashCheff = this.hashGroupBy(this.cheff, "id")
+		this.allcards.forEach((card) => {
+			if(hashCheff[card.id] === undefined)
+				this.femaleCardsList.push(card)
+		})
+		this.femaleCardsList.forEach((card) => {
+			card.tcg_date = "2200-11-11"
+			if (card.card_sets === undefined) return
+			card.card_sets.forEach((set) => {
+				const tcg_date = this.allsets.find(
+					(_) => _.set_name === set.set_name
+				)?.tcg_date
+				// if(tcg_date === undefined) console.log(card+"\n"+set.set_name)
+				if (tcg_date !== undefined && card.tcg_date > tcg_date)
+					card.tcg_date = tcg_date
+			})
+		})
+		console.log(this.femaleCardsList)
+
+		return
+		// eslint-disable-next-line no-unreachable
 		const types = [
 			"Aqua",
 			"Beast",
@@ -141,8 +165,7 @@ export default {
 			}
 			return false
 		})
-		console.log(this.femaleCardsList)
-
+		// eslint-disable-next-line no-unreachable
 		this.femaleCardsList.forEach((card) => {
 			card.tcg_date = "2200-11-11"
 			if (card.card_sets === undefined) return
@@ -155,7 +178,7 @@ export default {
 					card.tcg_date = tcg_date
 			})
 		})
-
+		// eslint-disable-next-line no-unreachable
 		this.femaleCardsList = this.categorySort(this.femaleCardsList)
 			.sort((a, b) => (a.name >= b.name ? 1 : -1))
 			.sort((a, b) => (a.tcg_date >= b.tcg_date ? 1 : -1))

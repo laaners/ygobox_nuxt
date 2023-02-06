@@ -332,7 +332,34 @@ export default {
 			)
 			data.find(_=>_.id === 1011091).id = 72309040
 			data.find(_=>_.id === 10034401).id = 84544192
+			data.find(_=>_.id === 10028504).id = 62219643
 			return data
+		},
+		async getAllCardsLocal() {
+			const [seg1, seg2, seg3, seg4, seg5, seg6, seg7, seg8] =
+				await Promise.all([
+					this.$axios.$get("api/allcards?n=0"),
+					this.$axios.$get("api/allcards?n=1"),
+					this.$axios.$get("api/allcards?n=2"),
+					this.$axios.$get("api/allcards?n=3"),
+					this.$axios.$get("api/allcards?n=4"),
+					this.$axios.$get("api/allcards?n=5"),
+					this.$axios.$get("api/allcards?n=6"),
+					this.$axios.$get("api/allcards?n=7"),
+				])
+			const allcards = [
+				...new Set([
+					...seg1,
+					...seg2,
+					...seg3,
+					...seg4,
+					...seg5,
+					...seg6,
+					...seg7,
+					...seg8,
+				]),
+			]
+			return allcards
 		},
 	},
 }

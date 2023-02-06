@@ -99,19 +99,77 @@ export default app
 		return res.json(result)
 	})
 
+	app.get("/token_image/:name", async (req, res) => {
+		const card = req.params.name
+		const result = await  new Promise((resolve, reject) => {
+			request(
+				{
+					url: encodeURI(
+						`https://yugipedia.com/wiki/${card.replace(
+							/ /g,
+							"_"
+						)}`
+					),
+					method: "GET",
+				},
+				function (error, resp, body) {
+					if (error || resp.statusCode !== 200) {
+						const msg =
+							"ERRORE: " +
+							`https://yugipedia.com/wiki/${card.replace(
+								/ /g,
+								"_"
+							)}` +
+							" " +
+							error
+						console.log(msg)
+						console.log(resp.statusCode)
+						resolve({})
+					} else {
+						const $ = load(body)
+						// document.body.querySelector(".cardtable-main_image-wrapper .image img").src
+						const desc = $(".lore").text().substring(1, $(".lore").text().length-1);
+						const summoner = $(".hcomma ul li a").text()
+						const list = [];
+						$(".imagecolumn .hlist ul li span").each(function(idx, span) {
+							const $span = $(span);
+							const img_url = $span.attr("data-filepath");
+							list.push(img_url)
+						});
+						if(list.length !== 0) {
+							resolve({list, desc, summoner})
+						}
+						else {
+							const img = $(".cardtable-main_image-wrapper .image img").attr("src")
+							resolve({list: [img], desc, summoner})
+						}
+					}
+				}
+			)
+		})
+		return res.json(result)
+	})
+
 	app.get("/banlist_history", (req,res) => {
 		return res.json(allbanlist)
 	})
 
 	app.get("/banlist_latest", (req,res) => {
 		const latestBanlist = allbanlist.banlists[allbanlist.banlists.length-1]
-		return res.json(allbanlist.cards.map(card => {
-			const obj = JSON.parse(JSON.stringify(card))
-			delete obj.banlists;
+		const latest = allbanlist.cards.map(card => {
+			const obj = JSON.parse(JSON.stringify(hashAllCards[card.name][0]))
 			obj.status = card.banlists.find(banlist=>banlist.banlist === latestBanlist).status
-			obj.info = hashAllCards[card.name][0]
 			return obj
-		}))
+		})
+		const prevBanlist = allbanlist.banlists[allbanlist.banlists.length-2]
+		const prev = []
+		allbanlist.cards.forEach(card => {
+			if(card.banlists.find(_=>_.banlist === prevBanlist) === undefined) return
+			const obj = JSON.parse(JSON.stringify(hashAllCards[card.name][0]))
+			obj.status = card.banlists.find(banlist=>banlist.banlist === prevBanlist).status
+			prev.push(obj)
+		})
+		return res.json({latest, prev})
 	})
 
 	app.get("/archetypes", (req, res) => {

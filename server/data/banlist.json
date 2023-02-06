@@ -68,9 +68,131 @@
         "2022-2",
         "2022-5",
         "2022-10",
-        "2022-12"
+        "2022-12",
+        "2023-2"
     ],
     "cards": [
+        {
+            "id": 20292186,
+            "name": "Artifact Scythe",
+            "date": "2014-05-16 Primal Origin",
+            "banlists": [
+                {
+                    "banlist": "2023-2",
+                    "status": 0
+                }
+            ]
+        },
+        {
+            "id": 73356503,
+            "name": "Barrier Statue of the Stormwinds",
+            "date": "2006-11-15 Cyberdark Impact",
+            "banlists": [
+                {
+                    "banlist": "2023-2",
+                    "status": 0
+                }
+            ]
+        },
+        {
+            "id": 92731385,
+            "name": "Tearlaments Kitkallos",
+            "date": "2022-08-04 Power of the Elements",
+            "banlists": [
+                {
+                    "banlist": "2023-2",
+                    "status": 0
+                }
+            ]
+        },
+        {
+            "id": 27381364,
+            "name": "Spright Elf",
+            "date": "2022-08-04 Power of the Elements",
+            "banlists": [
+                {
+                    "banlist": "2023-2",
+                    "status": 0
+                }
+            ]
+        },
+        {
+            "id": 62320425,
+            "name": "Agido the Ancient Sentinel",
+            "date": "2022-11-03 Magnificent Mavens",
+            "banlists": [
+                {
+                    "banlist": "2023-2",
+                    "status": 1
+                }
+            ]
+        },
+        {
+            "id": 25926710,
+            "name": "Kelbek the Ancient Vanguard",
+            "date": "2022-11-03 Magnificent Mavens",
+            "banlists": [
+                {
+                    "banlist": "2023-2",
+                    "status": 1
+                }
+            ]
+        },
+        {
+            "id": 99937011,
+            "name": "Mudora the Sword Oracle",
+            "date": "2022-11-03 Magnificent Mavens",
+            "banlists": [
+                {
+                    "banlist": "2023-2",
+                    "status": 1
+                }
+            ]
+        },
+        {
+            "id": 63542003,
+            "name": "Keldo the Sacred Protector",
+            "date": "2022-11-03 Magnificent Mavens",
+            "banlists": [
+                {
+                    "banlist": "2023-2",
+                    "status": 1
+                }
+            ]
+        },
+        {
+            "id": 37961969,
+            "name": "Tearlaments Havnis",
+            "date": "2022-08-04 Power of the Elements",
+            "banlists": [
+                {
+                    "banlist": "2023-2",
+                    "status": 1
+                }
+            ]
+        },
+        {
+            "id": 74078255,
+            "name": "Tearlaments Merrli",
+            "date": "2022-08-04 Power of the Elements",
+            "banlists": [
+                {
+                    "banlist": "2023-2",
+                    "status": 1
+                }
+            ]
+        },
+        {
+            "id": 572850,
+            "name": "Tearlaments Scheiren",
+            "date": "2022-08-04 Power of the Elements",
+            "banlists": [
+                {
+                    "banlist": "2023-2",
+                    "status": 1
+                }
+            ]
+        },
         {
             "id": 8949584,
             "name": "A Hero Lives",
@@ -231,6 +353,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -310,6 +436,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -360,6 +490,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -592,6 +726,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -795,6 +933,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -994,6 +1136,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -1056,6 +1202,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -1140,6 +1290,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 0
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 1
                 }
             ]
         },
@@ -1259,6 +1413,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -1273,6 +1431,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 1
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 1
                 }
             ]
@@ -1497,6 +1659,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -1672,6 +1838,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -1694,6 +1864,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -1769,6 +1943,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 1
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 1
                 }
             ]
@@ -1901,6 +2079,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -1983,6 +2165,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 1
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 1
                 }
             ]
@@ -2138,6 +2324,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -2410,6 +2600,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -2517,6 +2711,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 1
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 1
                 }
             ]
         },
@@ -2579,6 +2777,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 1
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 1
                 }
             ]
@@ -2823,6 +3025,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -3010,6 +3216,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -3192,6 +3402,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -3380,6 +3594,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -3470,6 +3688,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -3646,6 +3868,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -3696,6 +3922,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 1
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 1
                 }
             ]
@@ -3844,6 +4074,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 0
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 0
                 }
             ]
         },
@@ -3886,6 +4120,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -4114,6 +4352,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -4341,6 +4583,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -4527,6 +4773,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -4734,6 +4984,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -4986,6 +5240,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -5056,6 +5314,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -5240,6 +5502,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -5394,6 +5660,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -5578,6 +5848,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -5732,6 +6006,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -5979,6 +6257,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -6251,6 +6533,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -6329,6 +6615,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 1
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 1
                 }
             ]
@@ -6613,6 +6903,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 1
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 1
                 }
             ]
         },
@@ -6667,6 +6961,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 1
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 1
                 }
             ]
@@ -6862,6 +7160,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -7069,6 +7371,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -7341,6 +7647,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -7555,6 +7865,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 1
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 1
                 }
             ]
@@ -7839,6 +8153,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 1
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 1
                 }
             ]
         },
@@ -8082,6 +8400,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -8096,6 +8418,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -8316,6 +8642,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -8499,6 +8829,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -8609,6 +8943,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -8728,6 +9066,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -8871,6 +9213,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -9059,6 +9405,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 0
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 0
                 }
             ]
         },
@@ -9213,6 +9563,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -9489,6 +9843,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 0
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 0
                 }
             ]
         },
@@ -9643,6 +10001,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -9903,6 +10265,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -10118,6 +10484,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -10137,6 +10507,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 0
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 0
                 }
             ]
         },
@@ -10147,6 +10521,10 @@
             "banlists": [
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -10182,6 +10560,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -10385,6 +10767,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -10661,6 +11047,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 1
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 1
                 }
             ]
         },
@@ -10879,6 +11269,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 1
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 1
                 }
             ]
@@ -11102,6 +11496,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -11334,6 +11732,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -11428,6 +11830,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 1
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 1
                 }
             ]
@@ -11624,6 +12030,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 0
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 0
                 }
             ]
         },
@@ -11686,6 +12096,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -11750,6 +12164,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 1
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 1
                 }
             ]
         },
@@ -11812,6 +12230,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 1
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 1
                 }
             ]
@@ -12008,6 +12430,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -12078,6 +12504,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 1
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 1
                 }
             ]
@@ -12362,6 +12792,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -12597,6 +13031,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -12828,6 +13266,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -13015,6 +13457,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -13189,6 +13635,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -13421,6 +13871,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -13575,6 +14029,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -13851,6 +14309,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 0
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 0
                 }
             ]
         },
@@ -14038,6 +14500,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -14132,6 +14598,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -14323,6 +14793,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -14531,6 +15005,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -14738,6 +15216,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 2
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 2
                 }
             ]
         },
@@ -14789,6 +15271,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 1
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3 
                 }
             ]
         },
@@ -14967,6 +15453,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -15183,6 +15673,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 0
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 0
                 }
             ]
         },
@@ -15337,6 +15831,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -15493,6 +15991,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -15588,6 +16090,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -15642,6 +16148,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 1
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 1
                 }
             ]
@@ -15790,6 +16300,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 1
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 1
                 }
             ]
         },
@@ -15913,6 +16427,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 0
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 0
                 }
             ]
         },
@@ -15999,6 +16517,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -16111,6 +16633,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 1
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 1
                 }
             ]
         },
@@ -16149,6 +16675,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -16297,6 +16827,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -16351,6 +16885,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 1
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 1
                 }
             ]
@@ -16575,6 +17113,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -16738,6 +17280,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -16800,6 +17346,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -16907,6 +17457,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -17027,6 +17581,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -17146,6 +17704,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -17256,6 +17818,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -17471,6 +18037,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -17703,6 +18273,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -17894,6 +18468,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -18049,6 +18627,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -18075,6 +18657,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -18239,6 +18825,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -18394,6 +18984,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -18512,6 +19106,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -18739,6 +19337,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -18998,6 +19600,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -19282,6 +19888,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 1
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 1
                 }
             ]
         },
@@ -19352,6 +19962,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -19612,6 +20226,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 0
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 0
                 }
             ]
         },
@@ -19758,6 +20376,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 1
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 1
                 }
             ]
@@ -19914,6 +20536,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -20000,6 +20626,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -20171,6 +20801,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -20379,6 +21013,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -20582,6 +21220,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 1
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 1
                 }
             ]
         },
@@ -20753,6 +21395,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -20775,6 +21421,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -20995,6 +21645,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -21170,6 +21824,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 1
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 1
                 }
             ]
         },
@@ -21309,6 +21967,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -21391,6 +22053,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 1
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 1
                 }
             ]
@@ -21546,6 +22212,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 1
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 1
                 }
             ]
@@ -21766,6 +22436,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 0
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 0
                 }
             ]
         },
@@ -21957,6 +22631,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -22123,6 +22801,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -22314,6 +22996,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -22521,6 +23207,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 1
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 1
                 }
             ]
@@ -22753,6 +23443,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -22948,6 +23642,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -23138,6 +23836,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -23402,6 +24104,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 0
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 0
                 }
             ]
         },
@@ -23521,6 +24227,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -23615,6 +24325,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -23847,6 +24561,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -24058,6 +24776,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -24265,6 +24987,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -24352,6 +25078,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 0
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 0
                 }
             ]
         },
@@ -24411,6 +25141,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 0
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 0
                 }
             ]
         },
@@ -24441,6 +25175,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -24704,6 +25442,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 1
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 1
                 }
             ]
@@ -24984,6 +25726,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 0
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 0
                 }
             ]
         },
@@ -25063,6 +25809,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 0
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 0
                 }
             ]
         },
@@ -25073,6 +25823,10 @@
             "banlists": [
                 {
                     "banlist": "2022-12",
+                    "status": 1
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 1
                 }
             ]
@@ -25236,6 +25990,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -25420,6 +26178,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -25474,6 +26236,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -25650,6 +26416,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -25744,6 +26514,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -25855,6 +26629,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -26127,6 +26905,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 0
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 0
                 }
             ]
         },
@@ -26261,6 +27043,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 1
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 1
                 }
             ]
@@ -26404,6 +27190,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -26583,6 +27373,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 1
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 1
                 }
             ]
@@ -26843,6 +27637,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -26893,6 +27691,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 1
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 1
                 }
             ]
@@ -26997,6 +27799,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -27051,6 +27857,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 1
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 1
                 }
             ]
@@ -27215,6 +28025,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -27378,6 +28192,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -27421,6 +28239,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 1
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -27692,6 +28514,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -27887,6 +28713,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -27994,6 +28824,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 0
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 0
                 }
             ]
         },
@@ -28073,6 +28907,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 0
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 0
                 }
             ]
         },
@@ -28131,6 +28969,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -28239,6 +29081,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -28305,6 +29151,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -28565,6 +29415,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 0
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 0
                 }
             ]
         },
@@ -28788,6 +29642,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 0
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 0
                 }
             ]
         },
@@ -28910,6 +29768,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -29194,6 +30056,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 1
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 1
                 }
             ]
         },
@@ -29477,6 +30343,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 1
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 1
                 }
             ]
         },
@@ -29648,6 +30518,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -29734,6 +30608,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -29966,6 +30844,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -30168,6 +31050,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -30400,6 +31286,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -30554,6 +31444,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -30826,6 +31720,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -30864,6 +31762,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -31052,6 +31954,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -31235,6 +32141,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -31285,6 +32195,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 1
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 1
                 }
             ]
@@ -31401,6 +32315,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -31423,6 +32341,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 2
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 2
                 }
             ]
@@ -31502,6 +32424,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -31657,6 +32583,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -31925,6 +32855,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -32192,6 +33126,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -32375,6 +33313,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 1
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 1
                 }
             ]
         },
@@ -32445,6 +33387,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 1
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 1
                 }
             ]
@@ -32693,6 +33639,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 0
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 0
                 }
             ]
         },
@@ -32903,6 +33853,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -33131,6 +34085,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -33237,6 +34195,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -33468,6 +34430,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -33711,6 +34677,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -33971,6 +34941,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -34177,6 +35151,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -34401,6 +35379,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -34576,6 +35558,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 0
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 0
                 }
             ]
         },
@@ -34658,6 +35644,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -34778,6 +35768,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -34885,6 +35879,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 0
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 0
                 }
             ]
         },
@@ -34903,6 +35901,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -34947,6 +35949,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 1
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -35154,6 +36160,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -35296,6 +36306,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -35524,6 +36538,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 0
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 0
                 }
             ]
         },
@@ -35586,6 +36604,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -35782,6 +36804,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -35968,6 +36994,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 1
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 1
                 }
             ]
@@ -36184,6 +37214,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -36370,6 +37404,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -36625,6 +37663,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -36905,6 +37947,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -36999,6 +38045,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 1
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 1
                 }
             ]
@@ -37194,6 +38244,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 1
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 1
                 }
             ]
@@ -37478,6 +38532,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 1
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 1
                 }
             ]
         },
@@ -37748,6 +38806,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 1
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 1
                 }
             ]
@@ -38020,6 +39082,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -38030,6 +39096,10 @@
             "banlists": [
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -38266,6 +39336,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -38288,6 +39362,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -38471,6 +39549,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -38675,6 +39757,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -38802,6 +39888,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -38920,6 +40010,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -39135,6 +40229,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -39366,6 +40464,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -39638,6 +40740,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -39793,6 +40899,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 0
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 0
                 }
             ]
         },
@@ -39863,6 +40973,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -39935,6 +41049,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 0
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 0
                 }
             ]
         },
@@ -40002,6 +41120,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 0
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 0
                 }
             ]
         },
@@ -40036,6 +41158,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -40240,6 +41366,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -40398,6 +41528,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 1
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 1
                 }
             ]
@@ -40586,6 +41720,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 1
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 1
                 }
             ]
         },
@@ -40641,6 +41779,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 0
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 0
                 }
             ]
         },
@@ -40695,6 +41837,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -40910,6 +42056,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -41186,6 +42336,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 0
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 0
                 }
             ]
         },
@@ -41293,6 +42447,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -41399,6 +42557,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -41515,6 +42677,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -41629,6 +42795,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -41745,6 +42915,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 1
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 1
                 }
             ]
         },
@@ -41859,6 +43033,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -42055,6 +43233,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -42121,6 +43303,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 1
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 1
                 }
             ]
@@ -42204,6 +43390,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -42395,6 +43585,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -42619,6 +43813,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -42641,6 +43839,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 2
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 2
                 }
             ]
@@ -42804,6 +44006,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -43088,6 +44294,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 0
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 0
                 }
             ]
         },
@@ -43115,6 +44325,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 0
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 0
                 }
             ]
         },
@@ -43133,6 +44347,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -43405,6 +44623,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 0
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 0
                 }
             ]
         },
@@ -43531,6 +44753,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -43702,6 +44928,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -43938,6 +45168,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -44016,6 +45250,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 1
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 1
                 }
             ]
@@ -44143,6 +45381,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -44427,6 +45669,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -44630,6 +45876,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -44712,6 +45962,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -44867,6 +46121,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -45063,6 +46321,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 1
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 1
                 }
             ]
         },
@@ -45229,6 +46491,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -45485,6 +46751,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -45692,6 +46962,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -45747,6 +47021,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 0
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 0
                 }
             ]
         },
@@ -45765,6 +47043,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 1
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 1
                 }
             ]
@@ -45929,6 +47211,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -46075,6 +47361,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -46322,6 +47612,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -46582,6 +47876,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 1
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 1
                 }
             ]
         },
@@ -46724,6 +48022,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -46920,6 +48222,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -47082,6 +48388,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -47281,6 +48591,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -47565,6 +48879,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 1
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 1
                 }
             ]
         },
@@ -47848,6 +49166,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 1
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 1
                 }
             ]
         },
@@ -48103,6 +49425,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -48222,6 +49548,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -48236,6 +49566,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -48444,6 +49778,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -48627,6 +49965,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 0
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 0
                 }
             ]
         },
@@ -48801,6 +50143,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -49033,6 +50379,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -49180,6 +50530,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -49242,6 +50596,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -49306,6 +50664,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 1
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 1
                 }
             ]
         },
@@ -49360,6 +50722,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -49439,6 +50805,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -49719,6 +51089,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -49845,6 +51219,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -50073,6 +51451,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -50127,6 +51509,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 1
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 1
                 }
             ]
@@ -50275,6 +51661,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 0
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 0
                 }
             ]
         },
@@ -50330,6 +51720,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 1
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -50420,6 +51814,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 1
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 1
                 }
             ]
@@ -50592,6 +51990,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -50610,6 +52012,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -50734,6 +52140,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -50756,6 +52166,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -51020,6 +52434,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -51170,6 +52588,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -51354,6 +52776,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -51420,6 +52846,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -51500,6 +52930,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 1
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 1
                 }
             ]
         },
@@ -51558,6 +52992,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -51622,6 +53060,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 1
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 1
                 }
             ]
         },
@@ -51676,6 +53118,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 1
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 1
                 }
             ]
@@ -51747,6 +53193,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 1
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 1
                 }
             ]
@@ -51955,6 +53405,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -51993,6 +53447,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -52269,6 +53727,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 0
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 0
                 }
             ]
         },
@@ -52476,6 +53938,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -52663,6 +54129,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -52838,6 +54308,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -52972,6 +54446,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -53128,6 +54606,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -53226,6 +54708,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 1
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 1
                 }
             ]
@@ -53373,6 +54859,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -53528,6 +55018,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 1
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 1
                 }
             ]
@@ -53748,6 +55242,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -53915,6 +55413,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -54006,6 +55508,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -54056,6 +55562,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -54148,6 +55658,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 1
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 1
                 }
             ]
         },
@@ -54235,6 +55749,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 1
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -54390,6 +55908,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -54420,6 +55942,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 1
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 1
                 }
             ]
@@ -54600,6 +56126,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 1
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 1
                 }
             ]
         },
@@ -54666,6 +56196,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -54858,6 +56392,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -54992,6 +56530,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -55148,6 +56690,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -55230,6 +56776,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -55514,6 +57064,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -55640,6 +57194,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -55812,6 +57370,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 1
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 1
                 }
             ]
         },
@@ -55979,6 +57541,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -56094,6 +57660,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -56148,6 +57718,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -56295,6 +57869,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 1
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 1
                 }
             ]
@@ -56475,6 +58053,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -56553,6 +58135,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 1
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 1
                 }
             ]
@@ -56652,6 +58238,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -56819,6 +58409,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -57095,6 +58689,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 0
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 0
                 }
             ]
         },
@@ -57202,6 +58800,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -57264,6 +58866,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -57331,6 +58937,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -57539,6 +59149,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -57641,6 +59255,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -57869,6 +59487,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -57923,6 +59545,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -58083,6 +59709,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -58229,6 +59859,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -58453,6 +60087,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 1
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 1
                 }
             ]
         },
@@ -58503,6 +60141,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -58574,6 +60216,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -58810,6 +60456,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -58972,6 +60622,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -59155,6 +60809,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -59362,6 +61020,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -59585,6 +61247,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -59837,6 +61503,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -59899,6 +61569,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -60071,6 +61745,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -60166,6 +61844,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 1
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -60200,6 +61882,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -60295,6 +61981,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -60522,6 +62212,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -60782,6 +62476,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -61001,6 +62699,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 0
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 0
                 }
             ]
         },
@@ -61035,6 +62737,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -61302,6 +63008,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -61578,6 +63288,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 1
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 1
                 }
             ]
         },
@@ -61825,6 +63539,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -61951,6 +63669,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -62171,6 +63893,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 0
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 0
                 }
             ]
         },
@@ -62390,6 +64116,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -62501,6 +64231,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -62563,6 +64297,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 1
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 1
                 }
             ]
@@ -62727,6 +64465,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 0
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 0
                 }
             ]
         },
@@ -62886,6 +64628,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -62996,6 +64742,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 3
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 3
                 }
             ]
@@ -63276,6 +65026,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -63535,6 +65289,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 1
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -63742,6 +65500,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 3
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 3
                 }
             ]
         },
@@ -63792,6 +65554,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -63888,6 +65654,10 @@
                 {
                     "banlist": "2022-12",
                     "status": 0
+                },
+                {
+                    "banlist": "2023-2",
+                    "status": 0
                 }
             ]
         },
@@ -63982,6 +65752,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 0
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 0
                 }
             ]
@@ -64085,6 +65859,10 @@
                 },
                 {
                     "banlist": "2022-12",
+                    "status": 1
+                },
+                {
+                    "banlist": "2023-2",
                     "status": 1
                 }
             ]
