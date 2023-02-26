@@ -605,11 +605,11 @@ export default app
 		// const ocgsets = JSON.parse(fs.readFileSync("server/data/ocgsets.json").toString());
 		const ocgsets = await new Promise((resolve, reject) => {
 			request({
-				url: `https://raw.githubusercontent.com/laaners/ygobox_nuxt/master/server/data/bannedCards.json`,
+				url: `https://raw.githubusercontent.com/laaners/ygobox_nuxt/master/server/data/ocgsets.json`,
 				method: 'GET',
 			}, function(error, resp, body){
 				if(error || resp.statusCode !== 200) {
-					console.log("ERROR bannedCards: "+error);
+					console.log("ERROR OCG sets: "+error);
 					resolve([]);
 				}
 				else{
