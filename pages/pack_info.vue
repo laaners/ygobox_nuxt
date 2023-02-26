@@ -14,7 +14,7 @@
 				v-for="(set, i) of allsets.filter(
 					(_) => {
 						if(dateFilter === 'Deck') return _.set_name.includes('Deck')
-						return _.tcg_date > dateFilter
+						return _.tcg_date >= dateFilter
 					}
 				)"
 				:key="set.set_code + i"

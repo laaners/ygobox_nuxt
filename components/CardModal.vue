@@ -34,7 +34,7 @@
 						<x-icon />
 						<p>O TASTO DESTRO<br />PER CHIUDERE!</p>
 					</button>
-					<h1 ref="name"></h1>
+					<h1 ref="name" @click="copyName()"></h1>
 					<div class="modal-view flex-row">
 						<div
 							class="full-image flex-col"
@@ -144,6 +144,7 @@ export default {
 		cheff: "",
 		iteff: "",
 		cardSets: [],
+		name: "",
 	}),
 	watch: {
 		fullImage(newV, oldV) {
@@ -165,6 +166,9 @@ export default {
 				this.fullImage = false
 			}
 		},
+		async copyName() {
+			await this.$copyText(this.name)
+		},
 		async toggleFullImage() {
 			this.fullImage = !this.fullImage
 			if (this.fullImage) {
@@ -182,6 +186,7 @@ export default {
 				)
 				const chCard = enCard.cheff
 				const itCard = enCard.iteff
+				this.name = enCard.name
 				this.cheff = chCard.desc
 				this.iteff = itCard.desc
 				this.eneff = enCard.desc

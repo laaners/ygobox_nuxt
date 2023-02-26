@@ -28,13 +28,16 @@ export default app
 	let { allsets, bannedCards, cardsCH, cardsIT, allcards, allcardsToT, femaleCards } =
 		await initData()
 
+	await updateWithOCG(allsets, allcards, allcardsToT);
+
 	let archetypes = retrieveArchetypes(allcardsToT, allsets, femaleCards)
 	const hashAllCards = hashGroupBy(allcardsToT, "name")
 	console.log("The port is: "+process.env.PORT)
 	console.log("Got all the data now!")
 	console.log(`We are in ${process.env.NODE_ENV}`)
 
-	app.get("/", (req, res) => {
+	app.get("/", async (req, res) => {
+		await updateWithOCG(allsets, allcards, allcardsToT);
 		archetypes = retrieveArchetypes(allcardsToT, allsets, femaleCards)
 		//	return res.send("Updated archetypes")
 		return res.json(allcardsToT.map(_=>{ return {"name":_.name, "id": _.id} }))
@@ -386,7 +389,7 @@ export default app
 			return 0
 		})
 		return res.json({
-			pack_img: packImage(set_name),
+			pack_img: set_name.includes("ocg") ? "https://ms.yugipedia.com//2/2f/SLF1-BoosterJP.png" : packImage(set_name),
 			cards,
 			draftN,
 		})
@@ -596,6 +599,64 @@ export default app
 			} else risElem.push(elem)
 		})
 		return ris
+	}
+
+	async function updateWithOCG(allsets, allcards, allcardsToT) {
+		// const ocgsets = JSON.parse(fs.readFileSync("server/data/ocgsets.json").toString());
+		const ocgsets = await new Promise((resolve, reject) => {
+			request({
+				url: `https://raw.githubusercontent.com/laaners/ygobox_nuxt/master/server/data/bannedCards.json`,
+				method: 'GET',
+			}, function(error, resp, body){
+				if(error || resp.statusCode !== 200) {
+					console.log("ERROR bannedCards: "+error);
+					resolve([]);
+				}
+				else{
+					console.log("Got OCG sets");
+					resolve(JSON.parse(body));
+				}
+			});
+		});
+		ocgsets.forEach((ocgset) => {
+			allsets.push({
+				"set_name": ocgset.set_name,
+				"set_code": ocgset.set_code,
+				"num_of_cards": ocgset.cards.length,
+				"tcg_date": ocgset.tcg_date,
+				"ocg_pic_url": ocgset.ocg_pic_url
+			});
+			allcards.forEach((segment) => {
+				segment.forEach((card) => {
+					const ocgcard = ocgset.cards[card.id];
+					if(ocgcard != undefined) {
+						if(card.card_sets == undefined)
+							card.card_sets = []
+						card.card_sets.push({
+							"set_name": ocgset.set_name,
+							"set_code": ocgcard.set_code,
+							"set_rarity": ocgcard.set_rarity,
+							"set_rarity_code": ocgcard.set_rarity_code,
+							"ocg_pic_url": ocgset.ocg_pic_url
+						})
+					}
+				});
+			});
+			allcardsToT.forEach((card) => {
+				const ocgcard = ocgset.cards[card.id];
+				if(ocgcard != undefined) {
+					if(card.card_sets == undefined)
+					card.card_sets = []
+					card.card_sets.push({
+						"set_name": ocgset.set_name,
+						"set_code": ocgcard.set_code,
+						"set_rarity": ocgcard.set_rarity,
+						"set_rarity_code": ocgcard.set_rarity_code,
+						"ocg_pic_url": ocgset.ocg_pic_url
+					})
+				}
+			});
+		})
 	}
 
 	app.post("/search_cards", (req, res) => {

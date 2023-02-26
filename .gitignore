@@ -102,3 +102,4 @@ server/data/cardsCH.cdb
 # cazzeggio
 server/cazzeggio/*
 static/crests/or/*
+pages/cazzeggio/*
