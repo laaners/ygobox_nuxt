@@ -1090,6 +1090,561 @@
         }
     },
     {
+        "set_name": "(OCG) V Jump April 2019 promotional card",
+        "tcg_date": "OCG 2019-02-21",
+        "url": "https://yugipedia.com/wiki/V_Jump_April_2019_promotional_card",
+        "ocg_pic_url": "https://ms.yugipedia.com//thumb/e/e3/VJMP-2019-4-Cover.png/257px-VJMP-2019-4-Cover.png",
+        "done": false,
+        "set_code": "VJMP-JP159",
+        "cards": {
+            "595626": {
+                "set_code": "VJMP-JP159",
+                "set_rarity": "Ultra Rare",
+                "set_rarity_code": "Ultra Rare"
+            }
+        }
+    },
+    {
+        "set_name": "(OCG) 20th Anniversary Monster Art Box",
+        "tcg_date": "OCG 2019-11-20",
+        "url": "https://yugipedia.com/wiki/20th_Anniversary_Monster_Art_Box",
+        "ocg_pic_url": "https://ms.yugipedia.com//thumb/b/b6/YMAB-PromoJP.png/257px-YMAB-PromoJP.png",
+        "done": false,
+        "set_code": "YMAB",
+        "cards": {
+            "37984331": {
+                "set_code": "YMAB-JP001",
+                "set_rarity": "20th Secret Rare",
+                "set_rarity_code": "20th Secret Rare"
+            }
+        }
+    },
+    {
+        "set_name": "(OCG) Prismatic God Box",
+        "tcg_date": "OCG 2020-12-19",
+        "url": "https://yugipedia.com/wiki/Prismatic_God_Box",
+        "ocg_pic_url": "https://ms.yugipedia.com//thumb/e/ef/PGB1-PromoJP.png/257px-PGB1-PromoJP.png",
+        "done": false,
+        "set_code": "PGB1",
+        "cards": {
+            "2295831": {
+                "set_code": "PGB1-JP036",
+                "set_rarity": "Millennium Rare",
+                "set_rarity_code": "Millennium Rare"
+            },
+            "2519690": {
+                "set_code": "PGB1-JP027",
+                "set_rarity": "Millennium Rare",
+                "set_rarity_code": "Millennium Rare"
+            },
+            "5130393": {
+                "set_code": "PGB1-JP006",
+                "set_rarity": "Millennium Rare",
+                "set_rarity_code": "Millennium Rare"
+            },
+            "5253985": {
+                "set_code": "PGB1-JP003",
+                "set_rarity": "Millennium Ultra Rare",
+                "set_rarity_code": "Millennium Ultra Rare"
+            },
+            "7241272": {
+                "set_code": "PGB1-JP017",
+                "set_rarity": "Millennium Rare",
+                "set_rarity_code": "Millennium Rare"
+            },
+            "10000000": {
+                "set_code": "PGB1-JPS02",
+                "set_rarity": "Prismatic Secret Rare",
+                "set_rarity_code": "Prismatic Secret Rare"
+            },
+            "10000010": {
+                "set_code": "PGB1-JPS03",
+                "set_rarity": "Prismatic Secret Rare",
+                "set_rarity_code": "Prismatic Secret Rare"
+            },
+            "10000020": {
+                "set_code": "PGB1-JPS01",
+                "set_rarity": "Prismatic Secret Rare",
+                "set_rarity_code": "Prismatic Secret Rare"
+            },
+            "10000080": {
+                "set_code": "PGB1-JP013",
+                "set_rarity": "Millennium Ultra Rare",
+                "set_rarity_code": "Millennium Ultra Rare"
+            },
+            "10000090": {
+                "set_code": "PGB1-JP014",
+                "set_rarity": "Millennium Ultra Rare",
+                "set_rarity_code": "Millennium Ultra Rare"
+            },
+            "14057297": {
+                "set_code": "PGB1-JP050",
+                "set_rarity": "Millennium Rare",
+                "set_rarity_code": "Millennium Rare"
+            },
+            "15180041": {
+                "set_code": "PGB1-JP015",
+                "set_rarity": "Millennium Rare",
+                "set_rarity_code": "Millennium Rare"
+            },
+            "16268841": {
+                "set_code": "PGB1-JP023",
+                "set_rarity": "Millennium Rare",
+                "set_rarity_code": "Millennium Rare"
+            },
+            "16435215": {
+                "set_code": "PGB1-JP044",
+                "set_rarity": "Millennium Rare",
+                "set_rarity_code": "Millennium Rare"
+            },
+            "17484499": {
+                "set_code": "PGB1-JP049",
+                "set_rarity": "Millennium Rare",
+                "set_rarity_code": "Millennium Rare"
+            },
+            "18563744": {
+                "set_code": "PGB1-JP037",
+                "set_rarity": "Millennium Rare",
+                "set_rarity_code": "Millennium Rare"
+            },
+            "22634473": {
+                "set_code": "PGB1-JP010",
+                "set_rarity": "Millennium Ultra Rare",
+                "set_rarity_code": "Millennium Ultra Rare"
+            },
+            "23995346": {
+                "set_code": "PGB1-JP028",
+                "set_rarity": "Millennium Ultra Rare",
+                "set_rarity_code": "Millennium Ultra Rare"
+            },
+            "24094653": {
+                "set_code": "PGB1-JP032",
+                "set_rarity": "Millennium Rare",
+                "set_rarity_code": "Millennium Rare"
+            },
+            "24874630": {
+                "set_code": "PGB1-JP034",
+                "set_rarity": "Millennium Rare",
+                "set_rarity_code": "Millennium Rare"
+            },
+            "28297833": {
+                "set_code": "PGB1-JP025",
+                "set_rarity": "Millennium Rare",
+                "set_rarity_code": "Millennium Rare"
+            },
+            "29762407": {
+                "set_code": "PGB1-JP045",
+                "set_rarity": "Millennium Rare",
+                "set_rarity_code": "Millennium Rare"
+            },
+            "31525442": {
+                "set_code": "PGB1-JP007",
+                "set_rarity": "Millennium Rare",
+                "set_rarity_code": "Millennium Rare"
+            },
+            "32247099": {
+                "set_code": "PGB1-JP004",
+                "set_rarity": "Millennium Ultra Rare",
+                "set_rarity_code": "Millennium Ultra Rare"
+            },
+            "41175645": {
+                "set_code": "PGB1-JP016",
+                "set_rarity": "Millennium Rare",
+                "set_rarity_code": "Millennium Rare"
+            },
+            "41426869": {
+                "set_code": "PGB1-JP040",
+                "set_rarity": "Millennium Rare",
+                "set_rarity_code": "Millennium Rare"
+            },
+            "42469671": {
+                "set_code": "PGB1-JP001",
+                "set_rarity": "Millennium Ultra Rare",
+                "set_rarity_code": "Millennium Ultra Rare"
+            },
+            "43845801": {
+                "set_code": "PGB1-JP039",
+                "set_rarity": "Millennium Rare",
+                "set_rarity_code": "Millennium Rare"
+            },
+            "44968459": {
+                "set_code": "PGB1-JP038",
+                "set_rarity": "Millennium Rare",
+                "set_rarity_code": "Millennium Rare"
+            },
+            "46986414": {
+                "set_code": "PGB1-JP011",
+                "set_rarity": "Millennium Ultra Rare",
+                "set_rarity_code": "Millennium Ultra Rare"
+            },
+            "48680970": {
+                "set_code": "PGB1-JP046",
+                "set_rarity": "Millennium Rare",
+                "set_rarity_code": "Millennium Rare"
+            },
+            "53183600": {
+                "set_code": "PGB1-JP020",
+                "set_rarity": "Millennium Rare",
+                "set_rarity_code": "Millennium Rare"
+            },
+            "58330108": {
+                "set_code": "PGB1-JP018",
+                "set_rarity": "Millennium Rare",
+                "set_rarity_code": "Millennium Rare"
+            },
+            "58604027": {
+                "set_code": "PGB1-JP019",
+                "set_rarity": "Millennium Rare",
+                "set_rarity_code": "Millennium Rare"
+            },
+            "63519819": {
+                "set_code": "PGB1-JP029",
+                "set_rarity": "Millennium Rare",
+                "set_rarity_code": "Millennium Rare"
+            },
+            "64043465": {
+                "set_code": "PGB1-JP047",
+                "set_rarity": "Millennium Rare",
+                "set_rarity_code": "Millennium Rare"
+            },
+            "64631466": {
+                "set_code": "PGB1-JP026",
+                "set_rarity": "Millennium Rare",
+                "set_rarity_code": "Millennium Rare"
+            },
+            "69145169": {
+                "set_code": "PGB1-JP008",
+                "set_rarity": "Millennium Ultra Rare",
+                "set_rarity_code": "Millennium Ultra Rare"
+            },
+            "75500286": {
+                "set_code": "PGB1-JP031",
+                "set_rarity": "Millennium Rare",
+                "set_rarity_code": "Millennium Rare"
+            },
+            "76052811": {
+                "set_code": "PGB1-JP022",
+                "set_rarity": "Millennium Rare",
+                "set_rarity_code": "Millennium Rare"
+            },
+            "78063197": {
+                "set_code": "PGB1-JP041",
+                "set_rarity": "Millennium Rare",
+                "set_rarity_code": "Millennium Rare"
+            },
+            "78642798": {
+                "set_code": "PGB1-JP005",
+                "set_rarity": "Millennium Rare",
+                "set_rarity_code": "Millennium Rare"
+            },
+            "79868386": {
+                "set_code": "PGB1-JP002",
+                "set_rarity": "Millennium Ultra Rare",
+                "set_rarity_code": "Millennium Ultra Rare"
+            },
+            "80230510": {
+                "set_code": "PGB1-JP043",
+                "set_rarity": "Millennium Rare",
+                "set_rarity_code": "Millennium Rare"
+            },
+            "83764719": {
+                "set_code": "PGB1-JP030",
+                "set_rarity": "Millennium Rare",
+                "set_rarity_code": "Millennium Rare"
+            },
+            "87567063": {
+                "set_code": "PGB1-JP035",
+                "set_rarity": "Millennium Rare",
+                "set_rarity_code": "Millennium Rare"
+            },
+            "89041555": {
+                "set_code": "PGB1-JP048",
+                "set_rarity": "Millennium Rare",
+                "set_rarity_code": "Millennium Rare"
+            },
+            "89194033": {
+                "set_code": "PGB1-JP024",
+                "set_rarity": "Millennium Rare",
+                "set_rarity_code": "Millennium Rare"
+            },
+            "89631139": {
+                "set_code": "PGB1-JP012",
+                "set_rarity": "Millennium Ultra Rare",
+                "set_rarity_code": "Millennium Ultra Rare"
+            },
+            "89997728": {
+                "set_code": "PGB1-JP042",
+                "set_rarity": "Millennium Rare",
+                "set_rarity_code": "Millennium Rare"
+            },
+            "90960358": {
+                "set_code": "PGB1-JP021",
+                "set_rarity": "Millennium Rare",
+                "set_rarity_code": "Millennium Rare"
+            },
+            "95286165": {
+                "set_code": "PGB1-JP033",
+                "set_rarity": "Millennium Rare",
+                "set_rarity_code": "Millennium Rare"
+            },
+            "96239878": {
+                "set_code": "PGB1-JP009",
+                "set_rarity": "Millennium Ultra Rare",
+                "set_rarity_code": "Millennium Ultra Rare"
+            }
+        }
+    },
+    {
+        "set_name": "(OCG) Yu-Gi-Oh! OCG Structures Volume 4 promotional card",
+        "tcg_date": "OCG 2021-11-04",
+        "url": "https://yugipedia.com/wiki/Yu-Gi-Oh!_OCG_Structures_Volume_4_promotional_card",
+        "ocg_pic_url": "https://ms.yugipedia.com//thumb/c/cc/YO04-PromoJP.png/257px-YO04-PromoJP.png",
+        "done": false,
+        "set_code": "YO04",
+        "cards": {
+            "5916510": {
+                "set_code": "YO04-JP001",
+                "set_rarity": "Ultra Rare",
+                "set_rarity_code": "Ultra Rare"
+            }
+        }
+    },
+    {
+        "set_name": "(OCG) Premium Pack 2022",
+        "tcg_date": "OCG 2021-12-18",
+        "url": "https://yugipedia.com/wiki/Premium_Pack_2022",
+        "ocg_pic_url": "https://ms.yugipedia.com//thumb/1/1e/22PP-BoosterJP.png/257px-22PP-BoosterJP.png",
+        "done": false,
+        "set_code": "22PP",
+        "cards": {
+            "1683982": {
+                "set_code": "22PP-JP008",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "16684346": {
+                "set_code": "22PP-JP029",
+                "set_rarity": "Secret Rare",
+                "set_rarity_code": "Secret Rare"
+            },
+            "18859369": {
+                "set_code": "22PP-JP026",
+                "set_rarity": "Secret Rare",
+                "set_rarity_code": "Secret Rare"
+            },
+            "19050066": {
+                "set_code": "22PP-JP019",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "19272658": {
+                "set_code": "22PP-JP016",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "20994205": {
+                "set_code": "22PP-JP013",
+                "set_rarity": "Ultra Rare",
+                "set_rarity_code": "Ultra Rare"
+            },
+            "25607552": {
+                "set_code": "22PP-JP032",
+                "set_rarity": "Secret Rare",
+                "set_rarity_code": "Secret Rare"
+            },
+            "35705817": {
+                "set_code": "22PP-JP012",
+                "set_rarity": "Ultra Rare",
+                "set_rarity_code": "Ultra Rare"
+            },
+            "38412161": {
+                "set_code": "22PP-JP031",
+                "set_rarity": "Secret Rare",
+                "set_rarity_code": "Secret Rare"
+            },
+            "42228966": {
+                "set_code": "22PP-JP004",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "43256007": {
+                "set_code": "22PP-JP028",
+                "set_rarity": "Secret Rare",
+                "set_rarity_code": "Secret Rare"
+            },
+            "45420955": {
+                "set_code": "22PP-JP027",
+                "set_rarity": "Secret Rare",
+                "set_rarity_code": "Secret Rare"
+            },
+            "47077697": {
+                "set_code": "22PP-JP006",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "49964567": {
+                "set_code": "22PP-JP030",
+                "set_rarity": "Secret Rare",
+                "set_rarity_code": "Secret Rare"
+            },
+            "50354944": {
+                "set_code": "22PP-JP021",
+                "set_rarity": "Secret Rare",
+                "set_rarity_code": "Secret Rare"
+            },
+            "55554175": {
+                "set_code": "22PP-JP020",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "56677752": {
+                "set_code": "22PP-JP017",
+                "set_rarity": "Super Rare",
+                "set_rarity_code": "Super Rare"
+            },
+            "57499304": {
+                "set_code": "22PP-JP014",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "61103515": {
+                "set_code": "22PP-JP011",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "64104037": {
+                "set_code": "22PP-JP009",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "69975751": {
+                "set_code": "22PP-JP025",
+                "set_rarity": "Secret Rare",
+                "set_rarity_code": "Secret Rare"
+            },
+            "77590412": {
+                "set_code": "22PP-JP002",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "82661461": {
+                "set_code": "22PP-JP018",
+                "set_rarity": "Super Rare",
+                "set_rarity_code": "Super Rare"
+            },
+            "83888009": {
+                "set_code": "22PP-JP015",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "84900597": {
+                "set_code": "22PP-JP007",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "86469231": {
+                "set_code": "22PP-JP005",
+                "set_rarity": "Super Rare",
+                "set_rarity_code": "Super Rare"
+            },
+            "88617904": {
+                "set_code": "22PP-JP003",
+                "set_rarity": "Ultra Rare",
+                "set_rarity_code": "Ultra Rare"
+            },
+            "89839552": {
+                "set_code": "22PP-JP001",
+                "set_rarity": "Super Rare",
+                "set_rarity_code": "Super Rare"
+            },
+            "90788081": {
+                "set_code": "22PP-JP022",
+                "set_rarity": "Secret Rare",
+                "set_rarity_code": "Secret Rare"
+            },
+            "94395649": {
+                "set_code": "22PP-JP024",
+                "set_rarity": "Secret Rare",
+                "set_rarity_code": "Secret Rare"
+            },
+            "96352326": {
+                "set_code": "22PP-JP023",
+                "set_rarity": "Secret Rare",
+                "set_rarity_code": "Secret Rare"
+            },
+            "99370594": {
+                "set_code": "22PP-JP010",
+                "set_rarity": "Super Rare",
+                "set_rarity_code": "Super Rare"
+            }
+        }
+    },
+    {
+        "set_name": "(OCG) The Valuable Book EX 2 promotional cards",
+        "tcg_date": "OCG 2022-03-18",
+        "url": "https://yugipedia.com/wiki/The_Valuable_Book_EX_2_promotional_cards",
+        "ocg_pic_url": "https://ms.yugipedia.com//thumb/d/d4/VX02-PromoJP.png/257px-VX02-PromoJP.png",
+        "done": false,
+        "set_code": "VX02",
+        "cards": {
+            "54878729": {
+                "set_code": "VX02-JP001",
+                "set_rarity": "Ultra Rare",
+                "set_rarity_code": "Ultra Rare"
+            },
+            "91262474": {
+                "set_code": "VX02-JP002",
+                "set_rarity": "Ultra Rare",
+                "set_rarity_code": "Ultra Rare"
+            }
+        }
+    },
+    {
+        "set_name": "(OCG) Yu-Gi-Oh! OCG Structures Volume 5 promotional card",
+        "tcg_date": "OCG 2022-06-03",
+        "url": "https://yugipedia.com/wiki/Yu-Gi-Oh!_OCG_Structures_Volume_5_promotional_card",
+        "ocg_pic_url": "https://ms.yugipedia.com//thumb/0/0c/YO05-PromoJP.png/257px-YO05-PromoJP.png",
+        "done": false,
+        "set_code": "YO05",
+        "cards": {
+            "26988374": {
+                "set_code": "YO05-JP001",
+                "set_rarity": "Ultra Rare",
+                "set_rarity_code": "Ultra Rare"
+            }
+        }
+    },
+    {
+        "set_name": "(OCG) V Jump August 2022 promotional card",
+        "tcg_date": "OCG 2022-06-21",
+        "url": "https://yugipedia.com/wiki/V_Jump_August_2022_promotional_card",
+        "ocg_pic_url": "https://ms.yugipedia.com//thumb/3/31/VJMP-2022-8-Cover.png/257px-VJMP-2022-8-Cover.png",
+        "done": false,
+        "set_code": "VJMP-JP219",
+        "cards": {
+            "15464375": {
+                "set_code": "VJMP-JP219",
+                "set_rarity": "Ultra Rare",
+                "set_rarity_code": "Ultra Rare"
+            }
+        }
+    },
+    {
+        "set_name": "(OCG) V Jump October 2022 promotional card",
+        "tcg_date": "OCG 2022-08-20",
+        "url": "https://yugipedia.com/wiki/V_Jump_October_2022_promotional_card",
+        "ocg_pic_url": "https://ms.yugipedia.com//thumb/4/41/VJMP-2022-10-Cover.png/257px-VJMP-2022-10-Cover.png",
+        "done": false,
+        "set_code": "VJMP-JP221",
+        "cards": {
+            "78077209": {
+                "set_code": "VJMP-JP221",
+                "set_rarity": "Ultra Rare",
+                "set_rarity_code": "Ultra Rare"
+            }
+        }
+    },
+    {
         "set_name": "(OCG) V Jump November 2022 promotional card",
         "tcg_date": "OCG 2022-09-21",
         "url": "https://yugipedia.com/wiki/V_Jump_November_2022_promotional_card",
@@ -1829,6 +2384,11 @@
             },
             "97639441": {
                 "set_code": "23PP-JP012",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "34034150": {
+                "set_code": "23PP-JP013",
                 "set_rarity": "Common",
                 "set_rarity_code": "Common"
             }
