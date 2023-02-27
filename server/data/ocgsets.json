@@ -1,5 +1,1095 @@
 [
     {
+        "set_name": "Carte Mancanti (non OCG, garantiti come Deck)",
+        "tcg_date": "2023-02-24",
+        "url": "https://yugipedia.com/wiki/V_Jump_November_2022_promotional_card",
+        "ocg_pic_url": "https://images.ygoprodeck.com/images/cards_cropped/55948544.jpg",
+        "done": false,
+        "set_code": "CASO",
+        "cards": {
+            "662853": {
+                "set_code": "CASO-0178",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "662854": {
+                "set_code": "CASO-0179",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "662855": {
+                "set_code": "CASO-0175",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "662857": {
+                "set_code": "CASO-0177",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "732302": {
+                "set_code": "CASO-0077",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "1761063": {
+                "set_code": "CASO-0025",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "1929294": {
+                "set_code": "CASO-0002",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "2139640": {
+                "set_code": "CASO-0096",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "2370081": {
+                "set_code": "CASO-0205",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "2519690": {
+                "set_code": "CASO-0167",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "2830619": {
+                "set_code": "CASO-0013",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "3170832": {
+                "set_code": "CASO-0075",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "3627449": {
+                "set_code": "CASO-0148",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "3701074": {
+                "set_code": "CASO-0214",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "4179849": {
+                "set_code": "CASO-0080",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "5628232": {
+                "set_code": "CASO-0042",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "5861892": {
+                "set_code": "CASO-0135",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "6297941": {
+                "set_code": "CASO-0024",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "6840573": {
+                "set_code": "CASO-0156",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "7200041": {
+                "set_code": "CASO-0109",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "8327462": {
+                "set_code": "CASO-0164",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "9666558": {
+                "set_code": "CASO-0105",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "10262698": {
+                "set_code": "CASO-0068",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "10315429": {
+                "set_code": "CASO-0065",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "14037717": {
+                "set_code": "CASO-0074",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "14181608": {
+                "set_code": "CASO-0012",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "14344682": {
+                "set_code": "CASO-0108",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "14391920": {
+                "set_code": "CASO-0198",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "14731897": {
+                "set_code": "CASO-0200",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "15013468": {
+                "set_code": "CASO-0132",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "15367030": {
+                "set_code": "CASO-0061",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "15507080": {
+                "set_code": "CASO-0017",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "15510988": {
+                "set_code": "CASO-0018",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "16469012": {
+                "set_code": "CASO-0112",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "16751086": {
+                "set_code": "CASO-0098",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "16899564": {
+                "set_code": "CASO-0070",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "17185260": {
+                "set_code": "CASO-0116",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "17238333": {
+                "set_code": "CASO-0009",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "17502671": {
+                "set_code": "CASO-0122",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "17573739": {
+                "set_code": "CASO-0120",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "17968114": {
+                "set_code": "CASO-0056",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "18914778": {
+                "set_code": "CASO-0000",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "18937875": {
+                "set_code": "CASO-0202",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "19737320": {
+                "set_code": "CASO-0079",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "20101223": {
+                "set_code": "CASO-0182",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "20315854": {
+                "set_code": "CASO-0050",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "20541432": {
+                "set_code": "CASO-0053",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "20871001": {
+                "set_code": "CASO-0181",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "21323861": {
+                "set_code": "CASO-0180",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "22026707": {
+                "set_code": "CASO-0016",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "25005816": {
+                "set_code": "CASO-0209",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "25727454": {
+                "set_code": "CASO-0094",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "26293219": {
+                "set_code": "CASO-0102",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "26932788": {
+                "set_code": "CASO-0150",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "27324313": {
+                "set_code": "CASO-0034",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "27416701": {
+                "set_code": "CASO-0143",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "28003512": {
+                "set_code": "CASO-0038",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "28450915": {
+                "set_code": "CASO-0052",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "28563545": {
+                "set_code": "CASO-0115",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "29802344": {
+                "set_code": "CASO-0067",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "29929832": {
+                "set_code": "CASO-0158",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "29948642": {
+                "set_code": "CASO-0007",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "30155789": {
+                "set_code": "CASO-0208",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "30451366": {
+                "set_code": "CASO-0095",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "30757396": {
+                "set_code": "CASO-0172",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "31066283": {
+                "set_code": "CASO-0195",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "31339260": {
+                "set_code": "CASO-0151",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "32355828": {
+                "set_code": "CASO-0165",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "33413638": {
+                "set_code": "CASO-0097",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "33691040": {
+                "set_code": "CASO-0155",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "33951077": {
+                "set_code": "CASO-0145",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "34290067": {
+                "set_code": "CASO-0040",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "34743446": {
+                "set_code": "CASO-0062",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "35282433": {
+                "set_code": "CASO-0039",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "35752363": {
+                "set_code": "CASO-0159",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "37474917": {
+                "set_code": "CASO-0170",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "38942059": {
+                "set_code": "CASO-0036",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "39175982": {
+                "set_code": "CASO-0010",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "39897277": {
+                "set_code": "CASO-0203",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "40173854": {
+                "set_code": "CASO-0154",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "40200834": {
+                "set_code": "CASO-0048",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "40575313": {
+                "set_code": "CASO-0003",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "41098335": {
+                "set_code": "CASO-0103",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "41182875": {
+                "set_code": "CASO-0193",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "41544074": {
+                "set_code": "CASO-0152",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "41762634": {
+                "set_code": "CASO-0060",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "42348802": {
+                "set_code": "CASO-0027",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "42883273": {
+                "set_code": "CASO-0100",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "43352213": {
+                "set_code": "CASO-0083",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "43366227": {
+                "set_code": "CASO-0171",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "43580269": {
+                "set_code": "CASO-0124",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "43694075": {
+                "set_code": "CASO-0194",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "44910027": {
+                "set_code": "CASO-0126",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "45425051": {
+                "set_code": "CASO-0117",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "45895206": {
+                "set_code": "CASO-0183",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "45909477": {
+                "set_code": "CASO-0071",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "46848859": {
+                "set_code": "CASO-0107",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "47852924": {
+                "set_code": "CASO-0189",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "47986555": {
+                "set_code": "CASO-0088",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "48649353": {
+                "set_code": "CASO-0086",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "51402177": {
+                "set_code": "CASO-0133",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "51402908": {
+                "set_code": "CASO-0138",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "52367652": {
+                "set_code": "CASO-0055",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "53119267": {
+                "set_code": "CASO-0215",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "53581214": {
+                "set_code": "CASO-0021",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "53606874": {
+                "set_code": "CASO-0059",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "53713014": {
+                "set_code": "CASO-0057",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "54539105": {
+                "set_code": "CASO-0196",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "54702678": {
+                "set_code": "CASO-0168",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "54762426": {
+                "set_code": "CASO-0211",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "55321970": {
+                "set_code": "CASO-0204",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "55691901": {
+                "set_code": "CASO-0047",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "55948544": {
+                "set_code": "CASO-0210",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "56260110": {
+                "set_code": "CASO-0186",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "56413937": {
+                "set_code": "CASO-0163",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "56713552": {
+                "set_code": "CASO-0026",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "56931015": {
+                "set_code": "CASO-0113",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "57405307": {
+                "set_code": "CASO-0076",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "57482479": {
+                "set_code": "CASO-0111",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "58074572": {
+                "set_code": "CASO-0185",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "59036972": {
+                "set_code": "CASO-0153",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "59053232": {
+                "set_code": "CASO-0005",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "59983499": {
+                "set_code": "CASO-0001",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "60025883": {
+                "set_code": "CASO-0176",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "60417395": {
+                "set_code": "CASO-0136",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "61405855": {
+                "set_code": "CASO-0206",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "61454890": {
+                "set_code": "CASO-0033",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "61831093": {
+                "set_code": "CASO-0142",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "62337487": {
+                "set_code": "CASO-0146",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "62403074": {
+                "set_code": "CASO-0072",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "63125616": {
+                "set_code": "CASO-0029",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "63804806": {
+                "set_code": "CASO-0141",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "65623423": {
+                "set_code": "CASO-0022",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "66094973": {
+                "set_code": "CASO-0101",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "67120578": {
+                "set_code": "CASO-0119",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "67508932": {
+                "set_code": "CASO-0173",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "67688478": {
+                "set_code": "CASO-0106",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "68171737": {
+                "set_code": "CASO-0089",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "68339286": {
+                "set_code": "CASO-0078",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "68638985": {
+                "set_code": "CASO-0004",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "68811206": {
+                "set_code": "CASO-0129",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "69123138": {
+                "set_code": "CASO-0149",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "69750536": {
+                "set_code": "CASO-0058",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "70084224": {
+                "set_code": "CASO-0085",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "70924884": {
+                "set_code": "CASO-0030",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "71068263": {
+                "set_code": "CASO-0037",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "71746462": {
+                "set_code": "CASO-0043",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "71950093": {
+                "set_code": "CASO-0031",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "72144675": {
+                "set_code": "CASO-0121",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "72299832": {
+                "set_code": "CASO-0087",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "72869010": {
+                "set_code": "CASO-0160",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "72929454": {
+                "set_code": "CASO-0082",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "74277583": {
+                "set_code": "CASO-0063",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "75253697": {
+                "set_code": "CASO-0174",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "75559356": {
+                "set_code": "CASO-0064",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "75582395": {
+                "set_code": "CASO-0073",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "75889523": {
+                "set_code": "CASO-0006",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "76232340": {
+                "set_code": "CASO-0090",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "76634149": {
+                "set_code": "CASO-0081",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "76775123": {
+                "set_code": "CASO-0099",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "77454922": {
+                "set_code": "CASO-0191",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "78082039": {
+                "set_code": "CASO-0207",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "78577570": {
+                "set_code": "CASO-0192",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "78637313": {
+                "set_code": "CASO-0213",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "79629370": {
+                "set_code": "CASO-0069",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "80234301": {
+                "set_code": "CASO-0032",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "80727036": {
+                "set_code": "CASO-0157",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "80887952": {
+                "set_code": "CASO-0118",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "81332143": {
+                "set_code": "CASO-0190",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "81756897": {
+                "set_code": "CASO-0197",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "81919143": {
+                "set_code": "CASO-0123",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "82035781": {
+                "set_code": "CASO-0114",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "82065276": {
+                "set_code": "CASO-0035",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "82085619": {
+                "set_code": "CASO-0051",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "84133008": {
+                "set_code": "CASO-0093",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "84285623": {
+                "set_code": "CASO-0015",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "84990171": {
+                "set_code": "CASO-0066",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "85448931": {
+                "set_code": "CASO-0044",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "86100785": {
+                "set_code": "CASO-0091",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "86164529": {
+                "set_code": "CASO-0162",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "87350908": {
+                "set_code": "CASO-0092",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "87567063": {
+                "set_code": "CASO-0199",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "87997872": {
+                "set_code": "CASO-0134",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "88494120": {
+                "set_code": "CASO-0212",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "89558090": {
+                "set_code": "CASO-0028",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "90330453": {
+                "set_code": "CASO-0184",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "90844184": {
+                "set_code": "CASO-0147",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "92391084": {
+                "set_code": "CASO-0049",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "92667214": {
+                "set_code": "CASO-0020",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "92944626": {
+                "set_code": "CASO-0014",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "93151201": {
+                "set_code": "CASO-0104",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "93343894": {
+                "set_code": "CASO-0046",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "94022093": {
+                "set_code": "CASO-0041",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "94042337": {
+                "set_code": "CASO-0045",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "94515289": {
+                "set_code": "CASO-0169",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "94566432": {
+                "set_code": "CASO-0166",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "95144193": {
+                "set_code": "CASO-0161",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "95288024": {
+                "set_code": "CASO-0084",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "95637655": {
+                "set_code": "CASO-0110",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "96643568": {
+                "set_code": "CASO-0023",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "96967123": {
+                "set_code": "CASO-0011",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "97809599": {
+                "set_code": "CASO-0188",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "97973387": {
+                "set_code": "CASO-0019",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "99030164": {
+                "set_code": "CASO-0008",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "99510761": {
+                "set_code": "CASO-0054",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "99518961": {
+                "set_code": "CASO-0187",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "99721536": {
+                "set_code": "CASO-0144",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "99899504": {
+                "set_code": "CASO-0130",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "111000561": {
+                "set_code": "CASO-0201",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "501000000": {
+                "set_code": "CASO-0140",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "501000001": {
+                "set_code": "CASO-0125",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "501000002": {
+                "set_code": "CASO-0137",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "501000003": {
+                "set_code": "CASO-0127",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "501000004": {
+                "set_code": "CASO-0139",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "501000006": {
+                "set_code": "CASO-0131",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "501000007": {
+                "set_code": "CASO-0128",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            }
+        }
+    },
+    {
         "set_name": "(OCG) V Jump November 2022 promotional card",
         "tcg_date": "OCG 2022-09-21",
         "url": "https://yugipedia.com/wiki/V_Jump_November_2022_promotional_card",

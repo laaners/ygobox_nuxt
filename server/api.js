@@ -602,22 +602,24 @@ export default app
 	}
 
 	async function updateWithOCG(allsets, allcards, allcardsToT) {
-		// const ocgsets = JSON.parse(fs.readFileSync("server/data/ocgsets.json").toString());
-		const ocgsets = await new Promise((resolve, reject) => {
-			request({
-				url: `https://raw.githubusercontent.com/laaners/ygobox_nuxt/master/server/data/ocgsets.json`,
-				method: 'GET',
-			}, function(error, resp, body){
-				if(error || resp.statusCode !== 200) {
-					console.log("ERROR OCG sets: "+error);
-					resolve([]);
-				}
-				else{
-					console.log("Got OCG sets");
-					resolve(JSON.parse(body));
-				}
+		const Local = true;
+		const ocgsets = Local 
+			? JSON.parse(fs.readFileSync("server/data/ocgsets.json").toString())
+			: await new Promise((resolve, reject) => {
+				request({
+					url: `https://raw.githubusercontent.com/laaners/ygobox_nuxt/master/server/data/ocgsets.json`,
+					method: 'GET',
+				}, function(error, resp, body){
+					if(error || resp.statusCode !== 200) {
+						console.log("ERROR OCG sets: "+error);
+						resolve([]);
+					}
+					else{
+						console.log("Got OCG sets");
+						resolve(JSON.parse(body));
+					}
+				});
 			});
-		});
 		ocgsets.forEach((ocgset) => {
 			allsets.push({
 				"set_name": ocgset.set_name,

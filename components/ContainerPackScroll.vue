@@ -6,7 +6,7 @@
 			@error="notError = false"
 			@click="handleRedirect()"
 		/>
-		<span>{{ set.set_name }}</span>
+		<span v-if="notError" class="test-set-name">{{ set.set_name }}</span>
 		<span
 			><b> {{ set.tcg_date }}</b></span
 		>
@@ -38,13 +38,16 @@ export default {
 	methods: {
 		packImage() {
 			//	if(this.set.tcg_date < "2016-09-15")
-			if(this.set.set_name?.includes("OCG")) {
-				console.log(this.set.ocg_pic_url)
+			if (this.set.set_name?.includes("OCG")) {
 				return this.set.ocg_pic_url
 			}
-			if(this.set.tcg_date < "2022-02-24" || this.set.set_code === "GFP2")
+			if (
+				this.set.tcg_date < "2022-02-24" ||
+				this.set.set_code === "GFP2"
+			) {
 				return `/sets/${this.set.set_code}.jpg`
 				// return `https://raw.githubusercontent.com/laaners/ygobox_nuxt/master/static/sets/${this.set.set_code}.jpg`; // `/sets/${this.set.set_code}.jpg`
+			}
 			return `https://ygoprodeck.com/pics_sets/${this.set.set_code}.jpg`
 		},
 		async handleRedirect() {
@@ -81,7 +84,7 @@ h4 {
 	position: absolute;
 	background: #222222;
 	color: white;
-	
+
 	border-radius: var(--border-radius);
 	padding: var(--space-0);
 
