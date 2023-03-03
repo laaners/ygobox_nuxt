@@ -602,7 +602,7 @@ export default app
 	}
 
 	async function updateWithOCG(allsets, allcards, allcardsToT) {
-		const Local = true;
+		const Local = false;
 		const ocgsets = Local 
 			? JSON.parse(fs.readFileSync("server/data/ocgsets.json").toString())
 			: await new Promise((resolve, reject) => {
@@ -631,8 +631,8 @@ export default app
 			allcards.forEach((segment) => {
 				segment.forEach((card) => {
 					const ocgcard = ocgset.cards[card.id];
-					if(ocgcard != undefined) {
-						if(card.card_sets == undefined)
+					if(ocgcard !== undefined) {
+						if(card.card_sets === undefined)
 							card.card_sets = []
 						card.card_sets.push({
 							"set_name": ocgset.set_name,
@@ -646,8 +646,8 @@ export default app
 			});
 			allcardsToT.forEach((card) => {
 				const ocgcard = ocgset.cards[card.id];
-				if(ocgcard != undefined) {
-					if(card.card_sets == undefined)
+				if(ocgcard !== undefined) {
+					if(card.card_sets === undefined)
 					card.card_sets = []
 					card.card_sets.push({
 						"set_name": ocgset.set_name,

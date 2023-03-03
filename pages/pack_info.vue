@@ -11,12 +11,11 @@
 		></div>
 		<h-scroll-view style="width: 90%">
 			<container-pack-scroll
-				v-for="(set, i) of allsets.filter(
-					(_) => {
-						if(dateFilter === 'Deck') return _.set_name.includes('Deck')
-						return _.tcg_date >= dateFilter
-					}
-				)"
+				v-for="(set, i) of allsets.filter((_) => {
+					if (dateFilter === 'Deck')
+						return _.set_name.includes('Deck')
+					return _.tcg_date >= dateFilter
+				})"
 				:key="set.set_code + i"
 				:clicked-set.sync="clickedSet"
 				:set="set"
@@ -27,11 +26,17 @@
 				<p>Mostra solo i pacchetti a partire dal:</p>
 				<select v-model="dateFilter" name="setsFilter">
 					<option label="Tutti" selected="selected">1900</option>
-					<option label="Solo i deck" selected="selected">Deck</option>
+					<option label="Solo i deck" selected="selected">
+						Deck
+					</option>
 					// Array(2023-2000).fill(2001).map((v,i)=>v+i)"
 					<option
-						v-for="i of Array.from(new Set(allsets.map(_=>_.tcg_date.split('-')[0])))"
-						:key="'date-'+i"
+						v-for="i of Array.from(
+							new Set(
+								allsets.map((_) => _.tcg_date.split('-')[0])
+							)
+						)"
+						:key="'date-' + i"
 						:label="i"
 					>
 						{{ i }}
@@ -62,7 +67,7 @@
 			/>
 		</div>
 		<div v-show="appendCards.length > 0" class="flex-col">
-			<container-pack-scroll id="pack-img" :set="openedSet"/>
+			<container-pack-scroll id="pack-img" :set="openedSet" />
 			<h3 ref="packInfo"></h3>
 			<h4>ORDINA PER:</h4>
 			<grid-view
@@ -191,8 +196,10 @@ export default {
 				return
 			}
 			this.appendCards = cards
-			this.openedSet = this.allsets.find(_=>_.set_name.toLowerCase() === set_name.toLowerCase())
-			//	this.$el.querySelector("#pack-img").src = pack_img
+			this.openedSet = this.allsets.find(
+				(_) => _.set_name.toLowerCase() === set_name.toLowerCase()
+			)
+			this.$el.querySelector("#pack-img").src = pack_img
 			this.$refs.packInfo.innerHTML =
 				cards.length +
 				" carte diverse nel pacchetto\nSe apri il pacchetto avrai " +
