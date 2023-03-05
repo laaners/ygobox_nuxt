@@ -1418,7 +1418,7 @@
         "set_name": "(OCG) Prismatic God Box",
         "tcg_date": "OCG 2020-12-19",
         "url": "https://yugipedia.com/wiki/Prismatic_God_Box",
-        "ocg_pic_url": "https://static.wikia.nocookie.net/yugioh/images/8/84/PGB1-DeckJP.png/revision/latest/scale-to-width-down/350?cb=20201018153141",
+        "ocg_pic_url": "https://static.wikia.nocookie.net/yugioh/images/8/84/PGB1-DeckJP.png",
         "done": false,
         "set_code": "PGB1",
         "cards": {
@@ -1708,7 +1708,7 @@
         "set_name": "(OCG) Premium Pack 2022",
         "tcg_date": "OCG 2021-12-18",
         "url": "https://yugipedia.com/wiki/Premium_Pack_2022",
-        "ocg_pic_url": "https://static.wikia.nocookie.net/yugioh/images/1/1e/22PP-BoosterJP.png/revision/latest/scale-to-width-down/240?cb=20220519012647",
+        "ocg_pic_url": "https://static.wikia.nocookie.net/yugioh/images/1/1e/22PP-BoosterJP.png",
         "done": false,
         "set_code": "22PP",
         "cards": {
@@ -1983,7 +1983,7 @@
         "set_name": "(OCG) Selection 5",
         "tcg_date": "OCG 2022-11-05",
         "url": "https://yugipedia.com/wiki/Selection_5",
-        "ocg_pic_url": "https://static.wikia.nocookie.net/yugioh/images/2/2f/SLF1-BoosterJP.png/revision/latest?cb=20221101221604",
+        "ocg_pic_url": "https://cdn11.bigcommerce.com/s-89ffd/images/stencil/728x728/products/118967/430474/4988602175509_1c40cb87462899af601d99940c703181__17036.1669086369.jpg",
         "done": false,
         "set_code": "SLF1",
         "cards": {
@@ -2523,7 +2523,7 @@
         "set_name": "(OCG) Premium Pack 2023",
         "tcg_date": "OCG 2022-12-17",
         "url": "https://yugipedia.com/wiki/Premium_Pack_2023",
-        "ocg_pic_url": "https://static.wikia.nocookie.net/yugioh/images/2/2f/23PP-BoosterJP.png/revision/latest/scale-to-width-down/240?cb=20221121155204",
+        "ocg_pic_url": "https://static.wikia.nocookie.net/yugioh/images/2/2f/23PP-BoosterJP.png",
         "done": false,
         "set_code": "23PP",
         "cards": {
@@ -2693,7 +2693,7 @@
         "set_name": "(OCG) Promotion Pack 2023",
         "tcg_date": "OCG 2022-12-17",
         "url": "https://yugipedia.com/wiki/Promotion_Pack_2023",
-        "ocg_pic_url": "https://static.wikia.nocookie.net/yugioh/images/f/fc/23PR-BoosterJP.png/revision/latest?cb=20221218154149",
+        "ocg_pic_url": "https://static.wikia.nocookie.net/yugioh/images/f/fc/23PR-BoosterJP.png",
         "done": false,
         "set_code": "23PR",
         "cards": {
@@ -2743,7 +2743,7 @@
         "set_name": "(OCG) Secret Utility Box",
         "tcg_date": "OCG 2022-12-24",
         "url": "https://yugipedia.com/wiki/Secret_Utility_Box",
-        "ocg_pic_url": "https://static.wikia.nocookie.net/yugioh/images/b/bf/SUB1-DeckJP.png/revision/latest?cb=20221226023442",
+        "ocg_pic_url": "https://static.wikia.nocookie.net/yugioh/images/b/bf/SUB1-DeckJP.png",
         "done": false,
         "set_code": "SUB1",
         "cards": {
@@ -3228,7 +3228,7 @@
         "set_name": "(OCG) Cyberstorm Access",
         "tcg_date": "OCG 2023-01-14",
         "url": "https://yugipedia.com/wiki/Cyberstorm_Access",
-        "ocg_pic_url": "https://static.wikia.nocookie.net/yugioh/images/9/91/CYAC-BoosterEN.png/revision/latest/scale-to-width-down/281?cb=20221222221927",
+        "ocg_pic_url": "https://static.wikia.nocookie.net/yugioh/images/9/91/CYAC-BoosterEN.png",
         "done": false,
         "set_code": "CYAC",
         "cards": {
