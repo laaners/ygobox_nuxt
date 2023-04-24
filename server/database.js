@@ -112,16 +112,14 @@ function getFemaleCards() {
 function getDB(url) {
 	console.log(`Retrieving from ${url}`)
 	return new Promise((resolve, reject) => {
-		request(
-			{
-				//  url specificato con nome dal docker compose e non localhost
-				url,
-				method: "GET",
-			},
+		request.get(
+			//  url specificato con nome dal docker compose e non localhost
+			url,
+			{timeout: 15000},
 			function (error, resp, body) {
-				if (error || resp.statusCode !== 200) {
+				if (error) {
 					// eslint-disable-next-line prefer-promise-reject-errors
-					console.log(`ERROR in retrieving ${url}: ${resp.statusCode} ${error} `)
+					console.log(`ERROR in retrieving ${url}: ${resp} ${error} `)
 					resolve([])
 				} else {
 					console.log(`Got from ${url}`)
@@ -129,7 +127,11 @@ function getDB(url) {
 					resolve(data)
 				}
 			}
-		)
+		).on('timeout', () => {
+			console.log("timeout");
+			request.destroy();
+			resolve([])
+		});
 	})
 }
 

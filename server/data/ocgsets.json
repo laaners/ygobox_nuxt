@@ -3603,5 +3603,250 @@
                 "set_rarity_code": "Common"
             }
         }
+    },
+    {
+        "set_name": "(OCG) The Valuable Book EX 3 promotional cards",
+        "tcg_date": "OCG 2023-03-17",
+        "url": "https://yugipedia.com/wiki/The_Valuable_Book_EX_3_promotional_cards",
+        "ocg_pic_url": "https://ms.yugipedia.com//thumb/4/4a/VX03-PromoJP.png/257px-VX03-PromoJP.png",
+        "done": false,
+        "set_code": "VX03",
+        "cards": {
+            "30342076": {
+                "set_code": "VX03-JP002",
+                "set_rarity": "Ultra Rare",
+                "set_rarity_code": "Ultra Rare"
+            },
+            "93347961": {
+                "set_code": "VX03-JP001",
+                "set_rarity": "Ultra Rare",
+                "set_rarity_code": "Ultra Rare"
+            }
+        }
+    },
+    {
+        "set_name": "(OCG) V Jump May 2023 promotional card",
+        "tcg_date": "OCG 2023-03-20",
+        "url": "https://yugipedia.com/wiki/V_Jump_May_2023_promotional_card",
+        "ocg_pic_url": "https://ms.yugipedia.com//thumb/f/f9/VJMP-2023-5-Cover.png/257px-VJMP-2023-5-Cover.png",
+        "done": false,
+        "set_code": "VJMP-JP234",
+        "cards": {
+            "76823930": {
+                "set_code": "VJMP-JP234",
+                "set_rarity": "Ultra Rare",
+                "set_rarity_code": "Ultra Rare"
+            }
+        }
+    },
+    {
+        "set_name": "(OCG) Duelist Nexus",
+        "tcg_date": "OCG 2023-04-22",
+        "url": "https://yugipedia.com/wiki/Duelist_Nexus",
+        "ocg_pic_url": "https://ms.yugipedia.com//thumb/f/fc/DUNE-BoosterEN.png/257px-DUNE-BoosterEN.png",
+        "done": false,
+        "set_code": "DUNE",
+        "cards": {
+            "101201007": {
+                "set_code": "DUNE-JP007",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "101201008": {
+                "set_code": "DUNE-JP008",
+                "set_rarity": "Rare",
+                "set_rarity_code": "Rare"
+            },
+            "101201012": {
+                "set_code": "DUNE-JP012",
+                "set_rarity": "Rare",
+                "set_rarity_code": "Rare"
+            },
+            "101201013": {
+                "set_code": "DUNE-JP013",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "101201014": {
+                "set_code": "DUNE-JP014",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "101201017": {
+                "set_code": "DUNE-JP017",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "101201018": {
+                "set_code": "DUNE-JP018",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "101201019": {
+                "set_code": "DUNE-JP019",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "101201020": {
+                "set_code": "DUNE-JP020",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "101201021": {
+                "set_code": "DUNE-JP021",
+                "set_rarity": "Rare",
+                "set_rarity_code": "Rare"
+            },
+            "101201023": {
+                "set_code": "DUNE-JP023",
+                "set_rarity": "Super Rare",
+                "set_rarity_code": "Super Rare"
+            },
+            "101201024": {
+                "set_code": "DUNE-JP024",
+                "set_rarity": "Rare",
+                "set_rarity_code": "Rare"
+            },
+            "101201035": {
+                "set_code": "DUNE-JP035",
+                "set_rarity": "Super Rare",
+                "set_rarity_code": "Super Rare"
+            },
+            "101201036": {
+                "set_code": "DUNE-JP036",
+                "set_rarity": "Rare",
+                "set_rarity_code": "Rare"
+            },
+            "101201037": {
+                "set_code": "DUNE-JP037",
+                "set_rarity": "Ultra Rare",
+                "set_rarity_code": "Ultra Rare"
+            },
+            "101201038": {
+                "set_code": "DUNE-JP038",
+                "set_rarity": "Ultra Rare",
+                "set_rarity_code": "Ultra Rare"
+            },
+            "101201039": {
+                "set_code": "DUNE-JP039",
+                "set_rarity": "Ultra Rare",
+                "set_rarity_code": "Ultra Rare"
+            },
+            "101201040": {
+                "set_code": "DUNE-JP040",
+                "set_rarity": "Super Rare",
+                "set_rarity_code": "Super Rare"
+            },
+            "101201041": {
+                "set_code": "DUNE-JP041",
+                "set_rarity": "Rare",
+                "set_rarity_code": "Rare"
+            },
+            "101201043": {
+                "set_code": "DUNE-JP043",
+                "set_rarity": "Ultra Rare",
+                "set_rarity_code": "Ultra Rare"
+            },
+            "101201045": {
+                "set_code": "DUNE-JP045",
+                "set_rarity": "Rare",
+                "set_rarity_code": "Rare"
+            },
+            "101201046": {
+                "set_code": "DUNE-JP046",
+                "set_rarity": "Rare",
+                "set_rarity_code": "Rare"
+            },
+            "101201048": {
+                "set_code": "DUNE-JP048",
+                "set_rarity": "Ultra Rare",
+                "set_rarity_code": "Ultra Rare"
+            },
+            "101201049": {
+                "set_code": "DUNE-JP049",
+                "set_rarity": "Super Rare",
+                "set_rarity_code": "Super Rare"
+            },
+            "101201051": {
+                "set_code": "DUNE-JP051",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "101201053": {
+                "set_code": "DUNE-JP053",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "101201054": {
+                "set_code": "DUNE-JP054",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "101201055": {
+                "set_code": "DUNE-JP055",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "101201056": {
+                "set_code": "DUNE-JP056",
+                "set_rarity": "Super Rare",
+                "set_rarity_code": "Super Rare"
+            },
+            "101201057": {
+                "set_code": "DUNE-JP057",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "101201060": {
+                "set_code": "DUNE-JP060",
+                "set_rarity": "Rare",
+                "set_rarity_code": "Rare"
+            },
+            "101201063": {
+                "set_code": "DUNE-JP063",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "101201064": {
+                "set_code": "DUNE-JP064",
+                "set_rarity": "Super Rare",
+                "set_rarity_code": "Super Rare"
+            },
+            "101201065": {
+                "set_code": "DUNE-JP065",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "101201070": {
+                "set_code": "DUNE-JP070",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "101201071": {
+                "set_code": "DUNE-JP071",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "101201072": {
+                "set_code": "DUNE-JP072",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "101201074": {
+                "set_code": "DUNE-JP074",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "101201077": {
+                "set_code": "DUNE-JP077",
+                "set_rarity": "Rare",
+                "set_rarity_code": "Rare"
+            },
+            "101201079": {
+                "set_code": "DUNE-JP079",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            }
+        }
     }
 ]

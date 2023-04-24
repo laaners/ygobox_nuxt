@@ -937,7 +937,9 @@ export default {
 				""
 			)
 			this.$el.querySelector(".search-form-component").__vue__.form.pack =
-				pack
+				pack.includes("(OCG)")
+					? "(OCG)" + pack.split("(OCG)")[1]
+					: pack
 		},
 		enterIndex(e) {
 			if (e.which === 13) {

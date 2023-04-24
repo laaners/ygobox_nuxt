@@ -183,6 +183,7 @@ export default app
 					const obj = {
 						archetype: _.archetype,
 						members: _.members.length,
+						// members: _.members.map(_=>_.name),
 						true_name: _.true_name,
 						date: _.date,
 						imgs: _.imgs,
@@ -683,7 +684,7 @@ export default app
 		if(favouriteCards.length !== 0) {
 			filtered = filtered.filter(_=>favouriteCards.includes(_.id))
 		}
-		if (pack !== "") 
+		if (pack !== "")
 			filtered = filtered
 				.filter((_) => _.card_sets !== undefined)
 				.filter((_) =>
