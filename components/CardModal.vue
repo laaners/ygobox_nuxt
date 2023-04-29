@@ -168,7 +168,7 @@ export default {
 		},
 		async copyName() {
 			await this.$copyText(this.name)
-			await this.$copyText(`[${this.name}](https://yugipedia.com/wiki/${this.name.replaceAll(" ","_")})`)
+			// await this.$copyText(`[${this.name}](https://yugipedia.com/wiki/${this.name.replaceAll(" ","_")})`)
 		},
 		async toggleFullImage() {
 			this.fullImage = !this.fullImage

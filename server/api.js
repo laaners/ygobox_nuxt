@@ -27,19 +27,21 @@ export default app
 	// eslint-disable-next-line prefer-const
 	let { allsets, bannedCards, cardsCH, cardsIT, allcards, allcardsToT, femaleCards } =
 		await initData()
-
 	await updateWithOCG(allsets, allcards, allcardsToT);
-
 	let archetypes = retrieveArchetypes(allcardsToT, allsets, femaleCards)
-	const hashAllCards = hashGroupBy(allcardsToT, "name")
+	let hashAllCards = hashGroupBy(allcardsToT, "name")
 	console.log("The port is: "+process.env.PORT)
 	console.log("Got all the data now!")
 	console.log(`We are in ${process.env.NODE_ENV}`)
 
 	app.get("/", async (req, res) => {
+		({ allsets, bannedCards, cardsCH, cardsIT, allcards, allcardsToT, femaleCards } = await initData());
 		await updateWithOCG(allsets, allcards, allcardsToT);
 		archetypes = retrieveArchetypes(allcardsToT, allsets, femaleCards)
-		//	return res.send("Updated archetypes")
+		hashAllCards = hashGroupBy(allcardsToT, "name")
+		console.log("The port is: "+process.env.PORT)
+		console.log("Got all the data now!")
+		console.log(`We are in ${process.env.NODE_ENV}`)
 		return res.json(allcardsToT.map(_=>{ return {"name":_.name, "id": _.id} }))
 	})
 

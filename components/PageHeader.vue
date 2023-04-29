@@ -71,7 +71,8 @@ export default {
 			{ uri: "/card_info", name: "Cerca Carta" },
 			{ uri: "/archetypes", name: "Archetipi" },
 			{ uri: "/banlist", name: "Tutte le banlist" },
-			{ uri: "/guess_card", name: "Indovina la Carta" },
+			/* { uri: "/guess_card", name: "Indovina la Carta" }, */
+			// { uri: "/concept_arts", name: "Concept Arts" },
 			{ uri: "/trivia_graph", name: "Trivia" },
 		],
 	}),

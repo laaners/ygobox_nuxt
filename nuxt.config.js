@@ -87,7 +87,11 @@ export default {
 
 	axios: {
 		//	baseURL: `${process.env.HEROKU_HOSTNAME ?? "http://localhost:3000"}`,
-		baseURL: `${process.env.NODE_ENV === 'development' ? "http://localhost:3000" : "https://ygobox-nuxt.fly.dev"}`,
+		baseURL: `${
+			process.env.NODE_ENV === "development"
+				? "http://localhost:3000"
+				: "https://ygobox-nuxt.fly.dev"
+		}`,
 	},
 
 	render: {
