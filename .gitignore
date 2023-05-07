@@ -103,3 +103,4 @@ server/data/cardsCH.cdb
 server/cazzeggio/*
 static/crests/or/*
 pages/cazzeggio/*
+pages/cazzeggio/banned.vue
