@@ -148,6 +148,7 @@
 					<option label="Fata">Fairy</option>
 					<option label="Guerriero">Warrior</option>
 					<option label="Guerriero-Bestia">Beast-Warrior</option>
+					<option label="Illusione">Illusionist</option>
 					<option label="Incantatore">Spellcaster</option>
 					<option label="Insetto">Insect</option>
 					<option label="Macchina">Machine</option>

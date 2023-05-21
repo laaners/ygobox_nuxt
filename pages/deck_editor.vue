@@ -937,9 +937,7 @@ export default {
 				""
 			)
 			this.$el.querySelector(".search-form-component").__vue__.form.pack =
-				pack.includes("(OCG)")
-					? "(OCG)" + pack.split("(OCG)")[1]
-					: pack
+				pack.includes("(OCG)") ? "(OCG)" + pack.split("(OCG)")[1] : pack
 		},
 		enterIndex(e) {
 			if (e.which === 13) {
@@ -990,25 +988,31 @@ export default {
 			//	this.$refs.packImg.src = pack_img
 
 			if (cards.length === 0) {
-				const cardTmp = this.allcards.find(
-					(_) => _.name.toLowerCase() === set_name.toLowerCase()
-				)
-				if (cardTmp !== undefined) {
-					const singleCard = await this.$axios.$get(
-						`api/card/${cardTmp.id}`
+				if (set_name.toLowerCase().includes("card:")) {
+					const cardTmp = this.allcards.find(
+						(_) => _.name.toLowerCase() === set_name.toLowerCase().replace("card:","")
 					)
-					const card_set = singleCard.rarity
-					pack_img =
-						"/sets/" + card_set.set_code.split("-")[0] + ".jpg"
-					cards = [singleCard]
-					draftN = 1
-					packN = 1
-					setNameCorrect = `${card_set.tcg_date} ${card_set.set_name}`
-					this.openedSet = {
-						set_name: card_set.set_name,
-						set_code: card_set.set_code.split("-")[0],
-						num_of_cards: 1,
-						tcg_date: card_set.tcg_date,
+					if (cardTmp !== undefined) {
+						const singleCard = await this.$axios.$get(
+							`api/card/${cardTmp.id}`
+						)
+						const card_set = singleCard.rarity
+						pack_img =
+							"/sets/" + card_set.set_code.split("-")[0] + ".jpg"
+						cards = [singleCard, singleCard, singleCard]
+						draftN = 1
+						packN = 1
+						setNameCorrect = `${card_set.tcg_date} ${card_set.set_name}`
+						this.openedSet = {
+							set_name: card_set.set_name,
+							set_code: card_set.set_code.split("-")[0],
+							num_of_cards: 3,
+							tcg_date: card_set.tcg_date,
+						}
+					} else {
+						alert(pack_img)
+						this.packLoading = false
+						return
 					}
 				} else {
 					alert(pack_img)
