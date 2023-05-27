@@ -167,6 +167,19 @@ export default {
 			}
 		},
 		async copyName() {
+			await this.$copyText(`
+			{
+				"id": ${this.cardId},
+				"name": "${this.name}",
+				"date": "${this.cardSets[0].tcg_date} ${this.cardSets[0].set_name}",
+				"banlists": [
+					{
+						"banlist": "2023-5",
+						"status": 2
+					}
+				]
+			},
+			`)
 			await this.$copyText(this.name)
 			// await this.$copyText(`[${this.name}](https://yugipedia.com/wiki/${this.name.replaceAll(" ","_")})`)
 		},

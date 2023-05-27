@@ -104,3 +104,5 @@ server/cazzeggio/*
 static/crests/or/*
 pages/cazzeggio/*
 pages/cazzeggio/banned.vue
+server/data/print.js
+server/data/ok.json
