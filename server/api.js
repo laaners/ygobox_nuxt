@@ -346,6 +346,13 @@ export default app
 					.filter((set) => set.set_name !== undefined)
 					.map((set) => set.set_name.toLowerCase())
 					.includes(set_name.toLowerCase())
+				// quoted cards, odd positions
+				const quoted = _.desc.split("\"").filter((v,i) => i % 2 === 1)
+				return _.card_sets
+					.filter((set) => set.set_name !== undefined)
+					.map((set) => set.set_name.toLowerCase())
+					.includes(set_name.toLowerCase()) &&
+					quoted.find(q=>q !== _.name) === undefined
 			} else return false
 		})
 		if (cards.length === 0)
