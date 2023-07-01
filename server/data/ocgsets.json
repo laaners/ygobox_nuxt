@@ -4453,5 +4453,20 @@
                 "set_rarity_code": "Super Rare"
             }
         }
+    },
+    {
+        "set_name": "(OCG) Yu-Gi-Oh! OCG Stories Sky Striker Ace Arc Volume 2 promotional card",
+        "tcg_date": "OCG 2023-06-02",
+        "url": "https://yugipedia.com/wiki/Yu-Gi-Oh!_OCG_Stories_Sky_Striker_Ace_Arc_Volume_2_promotional_card",
+        "ocg_pic_url": "https://ms.yugipedia.com//thumb/3/3d/YOS1-PromoJP-Volume2.png/257px-YOS1-PromoJP-Volume2.png",
+        "done": false,
+        "set_code": "YOS1",
+        "cards": {
+            "63013339": {
+                "set_code": "YOS1-JP002",
+                "set_rarity": "Ultra Rare",
+                "set_rarity_code": "Ultra Rare"
+            }
+        }
     }
 ]
