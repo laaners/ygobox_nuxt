@@ -183,7 +183,9 @@ export default {
 	methods: {
 		async listCardsPack() {
 			const set_name = this.$el.querySelector("#pack").value
-			this.clickedSet = set_name
+			this.clickedSet = set_name.includes("_=_draft_mode")
+				? set_name.split("_=_")[0]
+				: set_name
 			if (!set_name) {
 				alert("Empty set name")
 				return
@@ -196,9 +198,14 @@ export default {
 				return
 			}
 			this.appendCards = cards
-			this.openedSet = this.allsets.find(
-				(_) => _.set_name.toLowerCase() === set_name.toLowerCase()
-			)
+			this.openedSet = this.allsets.find((_) => {
+				if (set_name.includes("_=_draft_mode"))
+					return (
+						_.set_name.toLowerCase() ===
+						set_name.split("_=_")[0].toLowerCase()
+					)
+				return _.set_name.toLowerCase() === set_name.toLowerCase()
+			})
 			this.$el.querySelector("#pack-img").src = pack_img
 			this.$refs.packInfo.innerHTML =
 				cards.length +

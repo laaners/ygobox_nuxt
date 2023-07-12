@@ -19,30 +19,49 @@ const pusher = new Pusher({
 	key: process.env.PUSHER_KEY,
 	secret: process.env.PUSHER_SECRET,
 	cluster: "eu",
-	useTLS: true
+	useTLS: true,
 })
 
 export default app
 ;(async () => {
 	// eslint-disable-next-line prefer-const
-	let { allsets, bannedCards, cardsCH, cardsIT, allcards, allcardsToT, femaleCards } =
-		await initData()
-	await updateWithOCG(allsets, allcards, allcardsToT);
+	let {
+		allsets,
+		bannedCards,
+		cardsCH,
+		cardsIT,
+		allcards,
+		allcardsToT,
+		femaleCards,
+	} = await initData()
+	await updateWithOCG(allsets, allcards, allcardsToT)
 	let archetypes = retrieveArchetypes(allcardsToT, allsets, femaleCards)
 	let hashAllCards = hashGroupBy(allcardsToT, "name")
-	console.log("The port is: "+process.env.PORT)
+	console.log("The port is: " + process.env.PORT)
 	console.log("Got all the data now!")
 	console.log(`We are in ${process.env.NODE_ENV}`)
 
 	app.get("/", async (req, res) => {
-		({ allsets, bannedCards, cardsCH, cardsIT, allcards, allcardsToT, femaleCards } = await initData());
-		await updateWithOCG(allsets, allcards, allcardsToT);
+		;({
+			allsets,
+			bannedCards,
+			cardsCH,
+			cardsIT,
+			allcards,
+			allcardsToT,
+			femaleCards,
+		} = await initData())
+		await updateWithOCG(allsets, allcards, allcardsToT)
 		archetypes = retrieveArchetypes(allcardsToT, allsets, femaleCards)
 		hashAllCards = hashGroupBy(allcardsToT, "name")
-		console.log("The port is: "+process.env.PORT)
+		console.log("The port is: " + process.env.PORT)
 		console.log("Got all the data now!")
 		console.log(`We are in ${process.env.NODE_ENV}`)
-		return res.json(allcardsToT.map(_=>{ return {"name":_.name, "id": _.id} }))
+		return res.json(
+			allcardsToT.map((_) => {
+				return { name: _.name, id: _.id }
+			})
+		)
 	})
 
 	app.get("/allcards", (req, res) => {
@@ -54,27 +73,34 @@ export default app
 	})
 
 	// Cazzeggio
-	app.get("/crests", (req,res) => {
-		return res.json(JSON.parse(fs.readFileSync("server/data/archetypes.json").toString()))
+	app.get("/crests", (req, res) => {
+		return res.json(
+			JSON.parse(
+				fs.readFileSync("server/data/archetypes.json").toString()
+			)
+		)
 	})
 
-	app.get("/rush", (req,res) => {
-		const rush1 = JSON.parse(fs.readFileSync("server/cazzeggio/rush1res.json").toString())
-		const rush2 = JSON.parse(fs.readFileSync("server/cazzeggio/rush2res.json").toString())
-		const rush3 = JSON.parse(fs.readFileSync("server/cazzeggio/rush3res.json").toString())
-		return res.json([...rush1, ...rush2, ...rush3])	
+	app.get("/rush", (req, res) => {
+		const rush1 = JSON.parse(
+			fs.readFileSync("server/cazzeggio/rush1res.json").toString()
+		)
+		const rush2 = JSON.parse(
+			fs.readFileSync("server/cazzeggio/rush2res.json").toString()
+		)
+		const rush3 = JSON.parse(
+			fs.readFileSync("server/cazzeggio/rush3res.json").toString()
+		)
+		return res.json([...rush1, ...rush2, ...rush3])
 	})
 
 	app.get("/rush_image/:name", async (req, res) => {
 		const card = req.params.name
-		const result = await  new Promise((resolve, reject) => {
+		const result = await new Promise((resolve, reject) => {
 			request(
 				{
 					url: encodeURI(
-						`https://yugipedia.com/wiki/${card.replace(
-							/ /g,
-							"_"
-						)}`
+						`https://yugipedia.com/wiki/${card.replace(/ /g, "_")}`
 					),
 					method: "GET",
 				},
@@ -94,9 +120,13 @@ export default app
 					} else {
 						const $ = load(body)
 						// document.body.querySelector(".cardtable-main_image-wrapper .image img").src
-						const img = $(".cardtable-main_image-wrapper .image img").attr("src")
-						const desc = $(".lore").text().substring(1, $(".lore").text().length-1);
-						resolve({img, desc})
+						const img = $(
+							".cardtable-main_image-wrapper .image img"
+						).attr("src")
+						const desc = $(".lore")
+							.text()
+							.substring(1, $(".lore").text().length - 1)
+						resolve({ img, desc })
 					}
 				}
 			)
@@ -106,14 +136,11 @@ export default app
 
 	app.get("/token_image/:name", async (req, res) => {
 		const card = req.params.name
-		const result = await  new Promise((resolve, reject) => {
+		const result = await new Promise((resolve, reject) => {
 			request(
 				{
 					url: encodeURI(
-						`https://yugipedia.com/wiki/${card.replace(
-							/ /g,
-							"_"
-						)}`
+						`https://yugipedia.com/wiki/${card.replace(/ /g, "_")}`
 					),
 					method: "GET",
 				},
@@ -133,20 +160,26 @@ export default app
 					} else {
 						const $ = load(body)
 						// document.body.querySelector(".cardtable-main_image-wrapper .image img").src
-						const desc = $(".lore").text().substring(1, $(".lore").text().length-1);
+						const desc = $(".lore")
+							.text()
+							.substring(1, $(".lore").text().length - 1)
 						const summoner = $(".hcomma ul li a").text()
-						const list = [];
-						$(".imagecolumn .hlist ul li span").each(function(idx, span) {
-							const $span = $(span);
-							const img_url = $span.attr("data-filepath");
+						const list = []
+						$(".imagecolumn .hlist ul li span").each(function (
+							idx,
+							span
+						) {
+							const $span = $(span)
+							const img_url = $span.attr("data-filepath")
 							list.push(img_url)
-						});
-						if(list.length !== 0) {
-							resolve({list, desc, summoner})
-						}
-						else {
-							const img = $(".cardtable-main_image-wrapper .image img").attr("src")
-							resolve({list: [img], desc, summoner})
+						})
+						if (list.length !== 0) {
+							resolve({ list, desc, summoner })
+						} else {
+							const img = $(
+								".cardtable-main_image-wrapper .image img"
+							).attr("src")
+							resolve({ list: [img], desc, summoner })
 						}
 					}
 				}
@@ -155,26 +188,35 @@ export default app
 		return res.json(result)
 	})
 
-	app.get("/banlist_history", (req,res) => {
+	app.get("/banlist_history", (req, res) => {
 		return res.json(allbanlist)
 	})
 
-	app.get("/banlist_latest", (req,res) => {
-		const latestBanlist = allbanlist.banlists[allbanlist.banlists.length-1]
-		const latest = allbanlist.cards.map(card => {
+	app.get("/banlist_latest", (req, res) => {
+		const latestBanlist =
+			allbanlist.banlists[allbanlist.banlists.length - 1]
+		const latest = allbanlist.cards.map((card) => {
 			const obj = JSON.parse(JSON.stringify(hashAllCards[card.name][0]))
-			obj.status = card.banlists.find(banlist=>banlist.banlist === latestBanlist).status
+			obj.status = card.banlists.find(
+				(banlist) => banlist.banlist === latestBanlist
+			).status
 			return obj
 		})
-		const prevBanlist = allbanlist.banlists[allbanlist.banlists.length-2]
+		const prevBanlist = allbanlist.banlists[allbanlist.banlists.length - 2]
 		const prev = []
-		allbanlist.cards.forEach(card => {
-			if(card.banlists.find(_=>_.banlist === prevBanlist) === undefined) return
+		allbanlist.cards.forEach((card) => {
+			if (
+				card.banlists.find((_) => _.banlist === prevBanlist) ===
+				undefined
+			)
+				return
 			const obj = JSON.parse(JSON.stringify(hashAllCards[card.name][0]))
-			obj.status = card.banlists.find(banlist=>banlist.banlist === prevBanlist).status
+			obj.status = card.banlists.find(
+				(banlist) => banlist.banlist === prevBanlist
+			).status
 			prev.push(obj)
 		})
-		return res.json({latest, prev})
+		return res.json({ latest, prev })
 	})
 
 	app.get("/archetypes", (req, res) => {
@@ -194,7 +236,31 @@ export default app
 						crest: _?.crest,
 						focus: _.focus,
 						monsters: _.monsters,
-						waifu: _.waifu
+						waifu: _.waifu,
+					}
+					return obj
+				})
+		)
+	})
+
+	app.get("/archetypes_wdata", (req, res) => {
+		return res.json(
+			archetypes
+				.filter((_) => !archetypesBlacklist.includes(_.archetype))
+				.map((_) => {
+					const obj = {
+						archetype: _.archetype,
+						// members: _.members.length,
+						members: _.members,
+						true_name: _.true_name,
+						date: _.date,
+						imgs: _.imgs,
+						attributes: _.attributes,
+						types: _.types,
+						crest: _?.crest,
+						focus: _.focus,
+						monsters: _.monsters,
+						waifu: _.waifu,
 					}
 					return obj
 				})
@@ -206,7 +272,7 @@ export default app
 	})
 
 	app.get("/female_cards", (req, res) => {
-		return res.json({ data: femaleCards})
+		return res.json({ data: femaleCards })
 	})
 
 	app.get("/card/:id", (req, res) => {
@@ -242,7 +308,9 @@ export default app
 			})
 			const draftN =
 				Math.ceil(cards.length * 1.5) > 120
-					? (cards.length > 120 && set_name.includes("deck")? cards.length : 120)
+					? cards.length > 120 && set_name.includes("deck")
+						? cards.length
+						: 120
 					: Math.ceil(cards.length * 1.5)
 			const differentRarities = rarityAssignAndOccurrence(
 				cards,
@@ -257,34 +325,38 @@ export default app
 				(_) => _.set_rarity_code === set.set_rarity_code
 			)
 			if (tmp === undefined) set.percentage = 0
-			else if(!set_name.includes("deck")) {
-					set.percentage = (
-						(1 - ((totNumber - +tmp.times) / totNumber) ** draftN) *
+			else if (!set_name.includes("deck")) {
+				set.percentage = (
+					(1 - ((totNumber - +tmp.times) / totNumber) ** draftN) *
+					100
+				).toFixed(2)
+			} else {
+				set.percentage =
+					100 +
+					" - " +
+					(
+						(1 -
+							((totNumber - +tmp.times) / totNumber) **
+								(draftN - cards.length)) *
 						100
 					).toFixed(2)
 			}
-			else {
-				set.percentage = 100+" - "+(
-					(1 - ((totNumber - +tmp.times) / totNumber) ** (draftN-cards.length)) *
-					100
-				).toFixed(2)
-			}
 		})
 
-		card.iteff = foreign(cardsIT,id)
-		card.cheff = foreign(cardsCH,id)
+		card.iteff = foreign(cardsIT, id)
+		card.cheff = foreign(cardsCH, id)
 
 		return res.json(card)
 	})
 
 	app.get("/cheff/:id", (req, res) => {
 		const id = +req.params.id
-		return res.json(foreign(cardsCH,id))
+		return res.json(foreign(cardsCH, id))
 	})
 
 	app.get("/iteff/:id", (req, res) => {
 		const id = +req.params.id
-		return res.json(foreign(cardsIT,id))
+		return res.json(foreign(cardsIT, id))
 	})
 
 	function foreign(arr, id) {
@@ -305,40 +377,48 @@ export default app
 
 	app.get("/banned_cards_reset", async (req, res) => {
 		const bannedCardsGit = await new Promise((resolve, reject) => {
-			request({
-				url: `https://raw.githubusercontent.com/laaners/ygobox_nuxt/master/server/data/bannedCards.json`,
-				method: 'GET',
-			}, function(error, resp, body){
-				if(error || resp.statusCode !== 200) {
-					console.log("ERROR bannedCards: "+error);
-					resolve([]);
+			request(
+				{
+					url: `https://raw.githubusercontent.com/laaners/ygobox_nuxt/master/server/data/bannedCards.json`,
+					method: "GET",
+				},
+				function (error, resp, body) {
+					if (error || resp.statusCode !== 200) {
+						console.log("ERROR bannedCards: " + error)
+						resolve([])
+					} else {
+						console.log("Got bannedCards")
+						const ris = JSON.parse(body)
+						ris.forEach((card) => {
+							card.info = allcardsToT.find(
+								(_) => _.id === card.id
+							)
+						})
+						resolve(ris)
+					}
 				}
-				else{
-					console.log("Got bannedCards");
-					const ris = JSON.parse(body)
-					ris.forEach(card => {
-						card.info = allcardsToT.find(_=>_.id === card.id)
-					})
-					resolve(ris);
-				}
-			});
-		});
-		bannedCards = bannedCardsGit;
+			)
+		})
+		bannedCards = bannedCardsGit
 		return res.send("Reset")
 	})
 
 	app.get("/banned_cards_short", (req, res) => {
 		return res.send(
 			JSON.stringify(
-				bannedCards.map(_=>{
+				bannedCards.map((_) => {
 					return { id: _.id, name: _.name, banner: _.banner }
-				}),null,4
+				}),
+				null,
+				4
 			)
 		)
 	})
 
 	app.get("/set/:id", (req, res) => {
-		const set_name = req.params.id.toLowerCase()
+		const set_name = req.params.id.includes("_=_draft_mode")
+			? req.params.id.split("_=_")[0].toLowerCase()
+			: req.params.id.toLowerCase()
 		const cards = allcardsToT.filter((_) => {
 			if (_.card_sets === undefined) return false
 			if (_.card_sets.length !== 0) {
@@ -347,12 +427,14 @@ export default app
 					.map((set) => set.set_name.toLowerCase())
 					.includes(set_name.toLowerCase())
 				// quoted cards, odd positions
-				const quoted = _.desc.split("\"").filter((v,i) => i % 2 === 1)
-				return _.card_sets
-					.filter((set) => set.set_name !== undefined)
-					.map((set) => set.set_name.toLowerCase())
-					.includes(set_name.toLowerCase()) &&
-					quoted.find(q=>q !== _.name) === undefined
+				const quoted = _.desc.split('"').filter((v, i) => i % 2 === 1)
+				return (
+					_.card_sets
+						.filter((set) => set.set_name !== undefined)
+						.map((set) => set.set_name.toLowerCase())
+						.includes(set_name.toLowerCase()) &&
+					quoted.find((q) => q !== _.name) === undefined
+				)
 			} else return false
 		})
 		if (cards.length === 0)
@@ -361,10 +443,13 @@ export default app
 				cards: [],
 				draftN: 0,
 			})
+		const multiplier = req.params.id.includes("_=_draft_mode") ? 0.75 : 1.5
 		const draftN =
-			Math.ceil(cards.length * 1.5) > 120
-				? (cards.length > 120 && set_name.includes("deck") ? cards.length : 120)
-				: Math.ceil(cards.length * 1.5)
+			Math.ceil(cards.length * multiplier) > 120
+				? cards.length > 120 && set_name.includes("deck")
+					? cards.length
+					: 120
+				: Math.ceil(cards.length * multiplier)	
 		const differentRarities = rarityAssignAndOccurrence(
 			cards,
 			set_name,
@@ -378,17 +463,21 @@ export default app
 			const tmp = differentRarities.find(
 				(_) => _.set_rarity_code === elem.rarity.set_rarity_code
 			)
-			if(!set_name.includes("deck")) {
+			if (!set_name.includes("deck")) {
 				elem.rarity.percentage = (
 					(1 - ((totNumber - +tmp.times) / totNumber) ** draftN) *
 					100
 				).toFixed(2)
-			}
-			else {
-				elem.rarity.percentage = 100+" - "+(
-					(1 - ((totNumber - +tmp.times) / totNumber) ** (draftN-cards.length)) *
-					100
-				).toFixed(2)
+			} else {
+				elem.rarity.percentage =
+					100 +
+					" - " +
+					(
+						(1 -
+							((totNumber - +tmp.times) / totNumber) **
+								(draftN - cards.length)) *
+						100
+					).toFixed(2)
 			}
 		})
 		cards.sort((a, b) => {
@@ -399,22 +488,26 @@ export default app
 			return 0
 		})
 		return res.json({
-			pack_img: set_name.includes("ocg") ? "https://ms.yugipedia.com//2/2f/SLF1-BoosterJP.png" : packImage(set_name),
+			pack_img: set_name.includes("ocg")
+				? "https://ms.yugipedia.com//2/2f/SLF1-BoosterJP.png"
+				: packImage(set_name),
 			cards,
 			draftN,
 		})
 	})
 
 	app.get("/drafting/:id", (req, res) => {
-		const set_name = req.params.id.toLowerCase()
-		const set = allsets.find(_=>_.set_name.toLowerCase() === set_name)
-		if(set === undefined)
+		const set_name = req.params.id.includes("_=_draft_mode")
+			? req.params.id.split("_=_")[0].toLowerCase()
+			: req.params.id.toLowerCase()
+		const set = allsets.find((_) => _.set_name.toLowerCase() === set_name)
+		if (set === undefined)
 			return res.json({
 				pack_img: "Pack not found, name error",
 				cards: [],
 				draftN: 0,
 				packN: 0,
-				setNameCorrect: "Not found"
+				setNameCorrect: "Not found",
 			})
 		let cards = allcardsToT.filter((_) => {
 			if (_.card_sets === undefined) return false
@@ -431,13 +524,17 @@ export default app
 				cards: [],
 				draftN: 0,
 				packN: 0,
-				setNameCorrect: "Not found"
+				setNameCorrect: "Not found",
 			})
 		const packN = cards.length
+
+		const multiplier = req.params.id.includes("_=_draft_mode") ? 0.75 : 1.5
 		const draftN =
-			Math.ceil(cards.length * 1.5) > 120
-				? (cards.length > 120 && set.set_name.includes("Deck") ? cards.length : 120)
-				: Math.ceil(cards.length * 1.5)
+			Math.ceil(cards.length * multiplier) > 120
+				? cards.length > 120 && set.set_name.includes("Deck")
+					? cards.length
+					: 120
+				: Math.ceil(cards.length * multiplier)
 		const differentRarities = rarityAssignAndOccurrence(
 			cards,
 			set_name,
@@ -447,11 +544,11 @@ export default app
 
 		cards = listCardsPrecedence(cards, differentRarities)
 		const totNumber = cards.length
-		const setNameCorrect = set.tcg_date+" "+set.set_name
-		const filtered = [];
-		if(!setNameCorrect.includes("Deck")) {
-			for(let i = 0; i < draftN; i++) {
-				filtered.push(cards[Math.floor(Math.random()*cards.length)]);
+		const setNameCorrect = set.tcg_date + " " + set.set_name
+		const filtered = []
+		if (!setNameCorrect.includes("Deck")) {
+			for (let i = 0; i < draftN; i++) {
+				filtered.push(cards[Math.floor(Math.random() * cards.length)])
 			}
 			cards = filtered
 			//	cards = cards.sort(() => Math.random() - 0.5).slice(0,draftN)
@@ -464,26 +561,30 @@ export default app
 					100
 				).toFixed(2)
 			})
-		}
-		else {
-			[...new Set(cards)].forEach(elem => {
-				const toPush = {...elem}
+		} else {
+			;[...new Set(cards)].forEach((elem) => {
+				const toPush = { ...elem }
 				toPush.rarity.percentage = 100
 				filtered.push(toPush)
 			})
-			const difference = draftN-filtered.length
+			const difference = draftN - filtered.length
 			console.log(filtered.length)
 			console.log(draftN)
-			for(let i = 0; i < difference; i++) {
-				const elem = cards[Math.floor(Math.random()*cards.length)]
+			for (let i = 0; i < difference; i++) {
+				const elem = cards[Math.floor(Math.random() * cards.length)]
 				const tmp = differentRarities.find(
 					(_) => _.set_rarity_code === elem.rarity.set_rarity_code
 				)
-				elem.rarity.percentage = 100+" - "+(
-					(1 - ((totNumber - +tmp.times) / totNumber) ** (draftN-packN)) *
-					100
-				).toFixed(2)
-				filtered.push(elem);
+				elem.rarity.percentage =
+					100 +
+					" - " +
+					(
+						(1 -
+							((totNumber - +tmp.times) / totNumber) **
+								(draftN - packN)) *
+						100
+					).toFixed(2)
+				filtered.push(elem)
 			}
 			cards = filtered
 		}
@@ -492,45 +593,66 @@ export default app
 			cards,
 			draftN,
 			packN,
-			setNameCorrect
+			setNameCorrect,
 		})
 	})
 
 	app.get("/trivia/:id", (req, res) => {
 		const card = req.params.id
-		request({
-			url: encodeURI(`https://yugipedia.com/wiki/Card_Trivia:${card.replace(/ /g,"_")}`),
-			method: 'GET'
-		}, function(error, resp, body){
-			if(error || resp.statusCode !== 200) {
-				const msg = "ERRORE: "+`https://yugipedia.com/wiki/Card_Trivia:${card.replace(/ /g,"_")}`+" "+error
-				console.log(msg)
-				return res.json([])
+		request(
+			{
+				url: encodeURI(
+					`https://yugipedia.com/wiki/Card_Trivia:${card.replace(
+						/ /g,
+						"_"
+					)}`
+				),
+				method: "GET",
+			},
+			function (error, resp, body) {
+				if (error || resp.statusCode !== 200) {
+					const msg =
+						"ERRORE: " +
+						`https://yugipedia.com/wiki/Card_Trivia:${card.replace(
+							/ /g,
+							"_"
+						)}` +
+						" " +
+						error
+					console.log(msg)
+					return res.json([])
+				} else {
+					const $ = load(body)
+					//	const lines = $(".mw-parser-output").html().split("\n").filter(_=>_.includes("<li>") && _.includes("href="));
+					let ris = []
+					$(".mw-parser-output li").each(function (idx, li) {
+						const $li = $(li)
+						const desc = $li.text().replace(/\n/g, "\n\t\t")
+						const relatedCardsList = []
+						load($li.html())("a").each(function (idx, a) {
+							const $a = $(a)
+							const att = $a.attr("title")
+							if (att !== undefined)
+								relatedCardsList.push({ card: att, desc })
+						})
+						ris = ris.concat(
+							relatedCardsList.filter(
+								(_) => hashAllCards[_.card] !== undefined
+							)
+						)
+					})
+					return res.json(
+						ris.map((_) => {
+							return {
+								id: hashAllCards[_.card][0].id,
+								name: _.card,
+								desc: _.desc,
+							}
+						})
+					)
+				}
 			}
-			else {
-				const $ = load(body);
-				//	const lines = $(".mw-parser-output").html().split("\n").filter(_=>_.includes("<li>") && _.includes("href="));
-				let ris = []
-				$(".mw-parser-output li").each(function(idx, li) {
-					const $li = $(li);
-					const desc = $li.text().replace(/\n/g,"\n\t\t");
-					const relatedCardsList = []
-					load($li.html())("a").each(function(idx, a) {
-						const $a = $(a);
-						const att = $a.attr('title');
-						if(att !== undefined) relatedCardsList.push({ card: att, desc})
-					});
-					ris = ris.concat(relatedCardsList.filter(_=>hashAllCards[_.card] !== undefined))
-				});
-				return res.json(ris.map(_ => {
-					return {
-						id: hashAllCards[_.card][0].id,
-						name: _.card,
-						desc: _.desc
-					}
-				}))
-			}
-		});
+		)
 	})
 
 	function packImage(set_name) {
@@ -612,62 +734,62 @@ export default app
 	}
 
 	async function updateWithOCG(allsets, allcards, allcardsToT) {
-		const Local = false;
-		const ocgsets = Local 
+		const Local = false
+		const ocgsets = Local
 			? JSON.parse(fs.readFileSync("server/data/ocgsets.json").toString())
 			: await new Promise((resolve, reject) => {
-				request({
-					url: `https://raw.githubusercontent.com/laaners/ygobox_nuxt/master/server/data/ocgsets.json`,
-					method: 'GET',
-				}, function(error, resp, body){
-					if(error || resp.statusCode !== 200) {
-						console.log("ERROR OCG sets: "+error);
-						resolve([]);
-					}
-					else{
-						console.log("Got OCG sets");
-						resolve(JSON.parse(body));
-					}
-				});
-			});
+					request(
+						{
+							url: `https://raw.githubusercontent.com/laaners/ygobox_nuxt/master/server/data/ocgsets.json`,
+							method: "GET",
+						},
+						function (error, resp, body) {
+							if (error || resp.statusCode !== 200) {
+								console.log("ERROR OCG sets: " + error)
+								resolve([])
+							} else {
+								console.log("Got OCG sets")
+								resolve(JSON.parse(body))
+							}
+						}
+					)
+			  })
 		ocgsets.forEach((ocgset) => {
 			allsets.push({
-				"set_name": ocgset.set_name,
-				"set_code": ocgset.set_code,
-				"num_of_cards": ocgset.cards.length,
-				"tcg_date": ocgset.tcg_date,
-				"ocg_pic_url": ocgset.ocg_pic_url
-			});
+				set_name: ocgset.set_name,
+				set_code: ocgset.set_code,
+				num_of_cards: ocgset.cards.length,
+				tcg_date: ocgset.tcg_date,
+				ocg_pic_url: ocgset.ocg_pic_url,
+			})
 			allcards.forEach((segment) => {
 				segment.forEach((card) => {
-					const ocgcard = ocgset.cards[card.id];
-					if(ocgcard !== undefined) {
-						if(card.card_sets === undefined)
-							card.card_sets = []
+					const ocgcard = ocgset.cards[card.id]
+					if (ocgcard !== undefined) {
+						if (card.card_sets === undefined) card.card_sets = []
 						card.card_sets.push({
-							"set_name": ocgset.set_name,
-							"set_code": ocgcard.set_code,
-							"set_rarity": ocgcard.set_rarity,
-							"set_rarity_code": ocgcard.set_rarity_code,
-							"ocg_pic_url": ocgset.ocg_pic_url
+							set_name: ocgset.set_name,
+							set_code: ocgcard.set_code,
+							set_rarity: ocgcard.set_rarity,
+							set_rarity_code: ocgcard.set_rarity_code,
+							ocg_pic_url: ocgset.ocg_pic_url,
 						})
 					}
-				});
-			});
+				})
+			})
 			allcardsToT.forEach((card) => {
-				const ocgcard = ocgset.cards[card.id];
-				if(ocgcard !== undefined) {
-					if(card.card_sets === undefined)
-					card.card_sets = []
+				const ocgcard = ocgset.cards[card.id]
+				if (ocgcard !== undefined) {
+					if (card.card_sets === undefined) card.card_sets = []
 					card.card_sets.push({
-						"set_name": ocgset.set_name,
-						"set_code": ocgcard.set_code,
-						"set_rarity": ocgcard.set_rarity,
-						"set_rarity_code": ocgcard.set_rarity_code,
-						"ocg_pic_url": ocgset.ocg_pic_url
+						set_name: ocgset.set_name,
+						set_code: ocgcard.set_code,
+						set_rarity: ocgcard.set_rarity,
+						set_rarity_code: ocgcard.set_rarity_code,
+						ocg_pic_url: ocgset.ocg_pic_url,
 					})
 				}
-			});
+			})
 		})
 	}
 
@@ -687,11 +809,11 @@ export default app
 			cardName,
 			cardEffect,
 			linkmarkers,
-			favouriteCards
+			favouriteCards,
 		} = req.body
 		let filtered = [...allcardsToT]
-		if(favouriteCards.length !== 0) {
-			filtered = filtered.filter(_=>favouriteCards.includes(_.id))
+		if (favouriteCards.length !== 0) {
+			filtered = filtered.filter((_) => favouriteCards.includes(_.id))
 		}
 		if (pack !== "")
 			filtered = filtered
@@ -737,8 +859,7 @@ export default app
 			)
 		if (raceMonster === "Warrior")
 			filtered = filtered.filter(
-				(_) =>
-					!_.race.toLowerCase().includes("beast-warrior")
+				(_) => !_.race.toLowerCase().includes("beast-warrior")
 			)
 		if (attribute !== "")
 			filtered = filtered
@@ -798,30 +919,38 @@ export default app
 		return res.json(filtered)
 	})
 
-	app.get("/update_banlist", (req,res) => {
-		if(req.query.id === undefined || req.query.id === null) return res.send("Undefined id")
-		if(req.query.banner === undefined || req.query.banner === null) return res.send("Undefined banner")
+	app.get("/update_banlist", (req, res) => {
+		if (req.query.id === undefined || req.query.id === null)
+			return res.send("Undefined id")
+		if (req.query.banner === undefined || req.query.banner === null)
+			return res.send("Undefined banner")
 
-		if(!["Ale","Leo","Sandro","Siwei"].includes(req.query.banner)) return res.send("Non existent banner")
-		if(bannedCards.find(_=>_.id === +req.query.id) !== undefined) return res.send("Already existent card")
-		const card = allcardsToT.find(_=>_.id === +req.query.id)
-		if(card === undefined) return res.send("Non existent id")
+		if (!["Ale", "Leo", "Sandro", "Siwei"].includes(req.query.banner))
+			return res.send("Non existent banner")
+		if (bannedCards.find((_) => _.id === +req.query.id) !== undefined)
+			return res.send("Already existent card")
+		const card = allcardsToT.find((_) => _.id === +req.query.id)
+		if (card === undefined) return res.send("Non existent id")
 		bannedCards.push({
 			id: card.id,
 			name: card.name,
 			banner: req.query.banner,
-			info: card
+			info: card,
 		})
 		pusher.trigger("my-channel", "my-event", {
-			message: "hello world"
+			message: "hello world",
 		})
-		return res.send("Banned: "+card.name)
+		return res.send("Banned: " + card.name)
 	})
 
-	app.get("/guess_card", (req,res) => {
-		if(req.query.cardsFilter === undefined || req.query.cardsFilter === null) return res.send("Undefined filter")
+	app.get("/guess_card", (req, res) => {
+		if (
+			req.query.cardsFilter === undefined ||
+			req.query.cardsFilter === null
+		)
+			return res.send("Undefined filter")
 		pusher.trigger("my-channel", "my-event", {
-			message: req.query.cardsFilter
+			message: req.query.cardsFilter,
 		})
 		return res.send(req.query.cardsFilter)
 	})

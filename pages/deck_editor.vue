@@ -31,40 +31,31 @@
 				value="CARICA LE TUE CARTE!"
 				@change="handleFile"
 			/>
+			<button-secondary
+				style="
+					left: auto;
+					right: auto;
+					margin-top: var(--space-1) !important;
+					font-size: var(--font-size-h1);
+				"
+				:title="'PREMIERE'"
+				@click.native="
+					savedCards = [
+						{
+							id: 300104005,
+							copies: 3,
+							checked: 0,
+							favourite: true,
+							sets: [
+								'2002-03-08 Legend of Blue Eyes White Dragon',
+							],
+						},
+					]
+					recentlySaved = true
+					draftMode = true
+				"
+			/>
 		</div>
-		<!--
-		<button-secondary
-			v-if="savedCards.length === 0 && allcards.length > 0"
-			style="
-				left: auto;
-				right: auto;
-				margin-top: var(--space-1) !important;
-			"
-			:title="'TESTING MODE'"
-			@click.native="
-				savedCards = [
-					{
-						id: 24094653,
-						copies: 20,
-						checked: 20,
-						favourite: true,
-						sets: ['2002-03-08 Legend of Blue Eyes White Dragon'],
-					},
-				]
-				savedCards = allcards.map((_) => {
-					return {
-						id: _.id,
-						copies: 3,
-						checked:
-							_.desc.includes('Dark Magician') === true ? 1 : 0,
-						favourite: false,
-						sets: allsets.map((_) => _.set_name).slice(0, 4),
-					}
-				})
-				recentlySaved = true
-			"
-		/>
-		-->
 		<div v-if="savedCards.length > 0" class="flex-col">
 			<h1>
 				HAI {{ savedCards.length }} CARTE DIVERSE NELLA TUA COLLEZIONE!
@@ -74,6 +65,12 @@
 					class="flex-col deck-container"
 					oncontextmenu="return false;"
 				>
+					<div v-if="draftMode" style="margin-bottom: var(--space-1)">
+						Il Deck dovrà essere composto con le carte trovate nelle
+						bustine e contenere almeno 20 carte. Il limite di 3
+						sulle altre carte nel mazzo non viene considerato, puoi
+						giocare anche con 5 carte uguali!
+					</div>
 					<grid-view
 						:columns="3"
 						:row-gap="0"
@@ -448,7 +445,15 @@
 							/>
 							<div class="flex-row pack-card-checkbox-star">
 								<input
+									v-if="!draftMode"
 									type="checkbox"
+									:value="card.id"
+									@change="addToDeck"
+								/>
+								<input
+									v-else
+									type="checkbox"
+									checked
 									:value="card.id"
 									@change="addToDeck"
 								/>
@@ -530,6 +535,7 @@ export default {
 		multiPage: true,
 
 		recentlySaved: false,
+		draftMode: false,
 		packAppendCards: [],
 		packLoading: false,
 		openedSet: {},
@@ -797,27 +803,31 @@ export default {
 		/* BUTTONS FOR YDK AND EXPORTING */
 		saveDeck() {
 			const mainDeck = this.getMainDeck()
-			if (mainDeck.length < 40 || mainDeck.length > 60)
+			if (this.draftMode) {
+				if (mainDeck.length < 20)
+					return alert("Scegli almeno 20 carte!")
+			} else if (mainDeck.length < 40 || mainDeck.length > 60)
 				return alert("Scegli tra 40 e 60 carte!")
 			const extraDeck = this.getExtraDeck()
 			if (extraDeck.length >= 16)
 				return alert("Troppe carte in extra deck!")
 
 			const copies = this.hashGroupBy(mainDeck.concat(extraDeck), "name")
-			for (const name in copies) {
-				if (copies[name].length > 3)
-					return alert(`"${name}" presente in 4+ copie!`)
-				const banlistCard = this.currentBanlist.find(
-					(_) => _.name === name
-				)
-				if (
-					banlistCard !== undefined &&
-					copies[name].length > banlistCard.status
-				)
-					return alert(
-						`Deck non valido, "${name}" è a ${banlistCard.status}!`
+			if (!this.draftMode)
+				for (const name in copies) {
+					if (copies[name].length > 3)
+						return alert(`"${name}" presente in 4+ copie!`)
+					const banlistCard = this.currentBanlist.find(
+						(_) => _.name === name
 					)
-			}
+					if (
+						banlistCard !== undefined &&
+						copies[name].length > banlistCard.status
+					)
+						return alert(
+							`Deck non valido, "${name}" è a ${banlistCard.status}!`
+						)
+				}
 			/*
 			for (const banned of this.bannedCards) {
 				if (copies[banned.name] !== undefined)
@@ -839,7 +849,11 @@ export default {
 			})
 
 			this.download("0Deck.ydk", text)
-			this.download("00SavedCards.json", JSON.stringify(this.savedCards))
+			if (!this.draftMode)
+				this.download(
+					"00SavedCards.json",
+					JSON.stringify(this.savedCards)
+				)
 			this.reloadDeck(this.savedCards)
 			this.recentlySaved = true
 			this.packAppendCards = []
@@ -982,15 +996,21 @@ export default {
 				this.packLoading = false
 				return
 			}
-			let { pack_img, cards, draftN, packN, setNameCorrect } =
-				await this.$axios.$get(`api/drafting/${set_name}`)
+			let { pack_img, cards, draftN, packN, setNameCorrect } = this
+				.draftMode
+				? await this.$axios.$get(
+						`api/drafting/${set_name}_=_draft_mode`
+				  )
+				: await this.$axios.$get(`api/drafting/${set_name}`)
 
 			//	this.$refs.packImg.src = pack_img
 
 			if (cards.length === 0) {
 				if (set_name.toLowerCase().includes("card:")) {
 					const cardTmp = this.allcards.find(
-						(_) => _.name.toLowerCase() === set_name.toLowerCase().replace("card:","")
+						(_) =>
+							_.name.toLowerCase() ===
+							set_name.toLowerCase().replace("card:", "")
 					)
 					if (cardTmp !== undefined) {
 						const singleCard = await this.$axios.$get(
@@ -1039,14 +1059,21 @@ export default {
 					elem.copies += 1
 					if (!elem.sets.includes(setNameCorrect))
 						elem.sets.push(setNameCorrect)
+					if (this.draftMode) {
+						elem.checked += 1 // elem.checked >= 3 ? 0 : 1
+						this.updateSearchedCard(card.id, elem.checked)
+						this.updatePackCard(card.id, true)
+					}
 				} else {
 					this.savedCards.push({
 						id: card.id,
 						copies: 1,
-						checked: 0,
+						checked: this.draftMode ? 1 : 0,
 						favourite: false,
 						sets: [setNameCorrect],
 					})
+					this.updateSearchedCard(card.id, 1)
+					this.updatePackCard(card.id, true)
 				}
 			})
 
