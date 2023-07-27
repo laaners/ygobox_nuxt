@@ -734,7 +734,7 @@ export default app
 	}
 
 	async function updateWithOCG(allsets, allcards, allcardsToT) {
-		const Local = false
+		const Local = true
 		const ocgsets = Local
 			? JSON.parse(fs.readFileSync("server/data/ocgsets.json").toString())
 			: await new Promise((resolve, reject) => {
