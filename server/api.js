@@ -529,12 +529,35 @@ export default app
 		const packN = cards.length
 
 		const multiplier = req.params.id.includes("_=_draft_mode") ? 0.75 : 1.5
+		// const multiplier = req.params.id.includes("_=_draft_mode") ? 1.5 : 1.5
 		const draftN =
 			Math.ceil(cards.length * multiplier) > 120
 				? cards.length > 120 && set.set_name.includes("Deck")
 					? cards.length
 					: 120
 				: Math.ceil(cards.length * multiplier)
+
+		if(req.params.id.includes("_=_draft_mode")) {
+			rarityAssignAndOccurrence(
+				cards,
+				set_name,
+				draftN
+			)
+			const filtered = []
+			for (let i = 0; i < draftN; i++) {
+				filtered.push(cards[Math.floor(Math.random() * cards.length)])
+			}
+			cards = filtered
+			return res.json({
+				pack_img: `/sets/${set.set_code}.jpg`,
+				cards,
+				draftN,
+				packN,
+				setNameCorrect: set.tcg_date + " " + set.set_name
+			})
+		}
+
+
 		const differentRarities = rarityAssignAndOccurrence(
 			cards,
 			set_name,
@@ -562,7 +585,7 @@ export default app
 				).toFixed(2)
 			})
 		} else {
-			;[...new Set(cards)].forEach((elem) => {
+			[...new Set(cards)].forEach((elem) => {
 				const toPush = { ...elem }
 				toPush.rarity.percentage = 100
 				filtered.push(toPush)

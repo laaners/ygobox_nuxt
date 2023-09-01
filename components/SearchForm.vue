@@ -9,6 +9,8 @@
                             Inverti ricerca&ensp;<input name="inverted" type="checkbox">
                             <br>
                             -->
+		<!--
+		-->
 		<div class="flex-row">
 			<p>Categoria:&ensp;</p>
 			<select v-model="form.type1" name="type-1">
@@ -71,7 +73,7 @@
 		<div
 			v-if="form.type2 === 'Link' || !hidingMode"
 			class="flex-col"
-			style="width: 100%;"
+			style="width: 100%"
 		>
 			<p><b>Se Link, il mostro ha ESATTAMENTE queste frecce:</b></p>
 			<grid-view
@@ -190,9 +192,6 @@
 			<p>Livello/Rango/Classificazione Link:&ensp;</p>
 			<select v-model="form.levelRankRating" name="level-rank-rating">
 				<option label="Qualunque" selected="selected">_</option>
-				<option label="1-4">_&gt;=1 &amp;&amp; _&lt;=4</option>
-				<option label="5-6">_&gt;=5 &amp;&amp; _&lt;=6</option>
-				<option label="7+">_&gt;=7</option>
 				<option label="1">_==1</option>
 				<option label="2">_==2</option>
 				<option label="3">_==3</option>
@@ -241,10 +240,12 @@
 				size="30"
 			/>
 		</div>
+		<!--
 		<p>
 			(In inglese, aggiungere .* se si vuole cercare per pi&ugrave;
 			parole: poly.*ation)
 		</p>
+		-->
 		<div></div>
 		<div class="flex-row">
 			<p>L'effetto contiene:&ensp;</p>
@@ -255,10 +256,12 @@
 				size="30"
 			/>
 		</div>
+		<!--
 		<p>
 			(In inglese, aggiungere .* se si vuole cercare per pi&ugrave;
 			parole: destroy.*all)
 		</p>
+		-->
 		<div>
 			<button-secondary type="submit" :title="'CERCA'" />
 			<button-secondary
@@ -307,10 +310,97 @@ export default {
 		async onSubmit() {
 			console.log(this.form)
 			this.loading = true
+			/*
 			const results = await this.$axios.$post(
 				"api/search_cards",
 				this.form
 			)
+			*/
+			let type = null
+			if (this.form.type2 !== "") type = this.form.type2 + " Monster"
+			if (this.form.type1 === "Spell" || this.form.type1 === "Trap")
+				type = this.form.type1 + " Card"
+
+			let race = null
+			if (this.form.raceMonster !== "") race = this.form.raceMonster
+			if (this.form.raceSpellTrap !== "") race = this.form.raceSpellTrap
+
+			const ygoproForm = {
+				fname: this.form.cardName === "" ? null : this.form.cardName,
+				type,
+				race,
+				linkmarker:
+					this.form.linkmarkers.length > 0
+						? this.form.linkmarkers.reduce((a, b) => a + "," + b)
+						: null,
+				attribute:
+					this.form.attribute === "" ? null : this.form.attribute,
+				desc: this.form.cardEffect === "" ? null : this.form.cardEffect,
+				level:
+					this.form.levelRankRating === "_" || this.form.type2 === "Link"
+						? null
+						: this.form.levelRankRating.replace("_==", ""),
+			}
+			let results = []
+			try {
+				const { data } = await this.$axios.$post(
+					"https://db.ygoprodeck.com/api/v7/cardinfo.php",
+					null,
+					{ params: ygoproForm }
+				)
+				let filtered = data
+
+				if (this.form.levelRankRating !== "_") {
+					ygoproForm.level = null
+					ygoproForm.link = this.form.levelRankRating.replace(
+						"_==",
+						""
+					)
+					const { data } = await this.$axios.$post(
+						"https://db.ygoprodeck.com/api/v7/cardinfo.php",
+						null,
+						{ params: ygoproForm }
+					)
+					filtered = [...new Set([...filtered, ...data])]
+				}
+
+				if (this.form.type1 === "Monster")
+					filtered = filtered.filter((_) =>
+						_.type.includes("Monster")
+					)
+
+				if (this.form.pack !== "")
+					filtered = filtered
+						.filter((_) => _.card_sets !== undefined)
+						.filter((_) =>
+							_.card_sets
+								.map((set) => set.set_name.toLowerCase())
+								.includes(this.form.pack.toLowerCase())
+						)
+
+				if (this.form.pendulumScale !== "_")
+					filtered = filtered
+						.filter((_) => _.scale !== undefined)
+						.filter((_) =>
+							// eslint-disable-next-line no-eval
+							eval(`_.scale ${this.form.pendulumScale}`)
+						)
+
+				if (this.form.atk !== "> -1") {
+					filtered = filtered
+						.filter((_) => _.atk !== undefined)
+						// eslint-disable-next-line no-eval
+						.filter((_) => eval(`_.atk  ${this.form.atk}`))
+				}
+				if (this.form.def !== "> -1") {
+					filtered = filtered
+						.filter((_) => _.atk !== undefined)
+						// eslint-disable-next-line no-eval
+						.filter((_) => eval(`_.def ${this.form.def}`))
+				}
+
+				results = filtered
+			} catch (e) {}
 			this.$emit("update:searchedCards", results)
 			this.loading = false
 		},

@@ -66,10 +66,20 @@
 					oncontextmenu="return false;"
 				>
 					<div v-if="draftMode" style="margin-bottom: var(--space-1)">
-						Il Deck dovrà essere composto con le carte trovate nelle
-						bustine e contenere almeno 20 carte. Il limite di 3
-						sulle altre carte nel mazzo non viene considerato, puoi
-						giocare anche con 5 carte uguali!
+						<ul>
+							<li>
+							Almeno 20 carte, non c'è un limite massimo, puoi anche giocare con 100 carte
+							</li>
+							<li>
+							Extra deck illimitato
+							</li>
+							<li>
+							Il limite di 3 sulle altre carte nel mazzo non viene considerato, puoi giocare anche con 100 carte uguali
+							</li>
+							<li>
+							Carte bandite o limitate possono essere usate in qualsiasi numero
+							</li>
+						</ul>
 					</div>
 					<grid-view
 						:columns="3"
@@ -354,7 +364,7 @@
 								/>
 							</grid-view>
 							<grid-view
-								style="overflow-y: scroll; height: 60vh"
+								style="overflow-y: scroll; height: 80vh"
 								class="search-results"
 								:columns="
 									searchedAppendCards.length > 1 ? 2 : 1
@@ -527,7 +537,7 @@ export default {
 		searchedCards: [],
 		searchedAppendCards: [],
 		index: -1,
-		cardsPerPage: 6,
+		cardsPerPage: 8,
 		thereIsNext: false,
 		thereIsPrev: false,
 		formCheckedChange: {},
@@ -809,7 +819,7 @@ export default {
 			} else if (mainDeck.length < 40 || mainDeck.length > 60)
 				return alert("Scegli tra 40 e 60 carte!")
 			const extraDeck = this.getExtraDeck()
-			if (extraDeck.length >= 16)
+			if (extraDeck.length >= 16 && !this.draftMode)
 				return alert("Troppe carte in extra deck!")
 
 			const copies = this.hashGroupBy(mainDeck.concat(extraDeck), "name")

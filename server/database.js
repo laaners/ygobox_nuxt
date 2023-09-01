@@ -112,26 +112,30 @@ function getFemaleCards() {
 function getDB(url) {
 	console.log(`Retrieving from ${url}`)
 	return new Promise((resolve, reject) => {
-		request.get(
-			//  url specificato con nome dal docker compose e non localhost
-			url,
-			{timeout: 15000},
-			function (error, resp, body) {
-				if (error) {
-					// eslint-disable-next-line prefer-promise-reject-errors
-					console.log(`ERROR in retrieving ${url}: ${resp} ${error} `)
-					resolve([])
-				} else {
-					console.log(`Got from ${url}`)
-					const data = JSON.parse(body)
-					resolve(data)
+		try {
+			request.get(
+				//  url specificato con nome dal docker compose e non localhost
+				url,
+				{timeout: 15000},
+				function (error, resp, body) {
+					if (error) {
+						// eslint-disable-next-line prefer-promise-reject-errors
+						console.log(`ERROR in retrieving ${url}: ${resp} ${error} `)
+						resolve([])
+					} else {
+						console.log(`Got from ${url}`)
+						const data = JSON.parse(body)
+						resolve(data)
+					}
 				}
-			}
-		).on('timeout', () => {
-			console.log("timeout");
-			request.destroy();
+			).on('timeout', () => {
+				console.log("timeout");
+				request.destroy();
+				resolve([])
+			});
+		} catch(e) {
 			resolve([])
-		});
+		}
 	})
 }
 
