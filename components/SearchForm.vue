@@ -192,6 +192,7 @@
 			<p>Livello/Rango/Classificazione Link:&ensp;</p>
 			<select v-model="form.levelRankRating" name="level-rank-rating">
 				<option label="Qualunque" selected="selected">_</option>
+				<option label="0">_==0</option>
 				<option label="1">_==1</option>
 				<option label="2">_==2</option>
 				<option label="3">_==3</option>
@@ -204,6 +205,7 @@
 				<option label="10">_==10</option>
 				<option label="11">_==11</option>
 				<option label="12">_==12</option>
+				<option label="13">_==13</option>
 			</select>
 		</div>
 		<div class="flex-row">
@@ -316,54 +318,9 @@ export default {
 				this.form
 			)
 			*/
-			let type = null
-			if (this.form.type2 !== "") type = this.form.type2 + " Monster"
-			if (this.form.type1 === "Spell" || this.form.type1 === "Trap")
-				type = this.form.type1 + " Card"
 
-			let race = null
-			if (this.form.raceMonster !== "") race = this.form.raceMonster
-			if (this.form.raceSpellTrap !== "") race = this.form.raceSpellTrap
-
-			const ygoproForm = {
-				fname: this.form.cardName === "" ? null : this.form.cardName,
-				type,
-				race,
-				linkmarker:
-					this.form.linkmarkers.length > 0
-						? this.form.linkmarkers.reduce((a, b) => a + "," + b)
-						: null,
-				attribute:
-					this.form.attribute === "" ? null : this.form.attribute,
-				desc: this.form.cardEffect === "" ? null : this.form.cardEffect,
-				level:
-					this.form.levelRankRating === "_" || this.form.type2 === "Link"
-						? null
-						: this.form.levelRankRating.replace("_==", ""),
-			}
-			let results = []
-			try {
-				const { data } = await this.$axios.$post(
-					"https://db.ygoprodeck.com/api/v7/cardinfo.php",
-					null,
-					{ params: ygoproForm }
-				)
-				let filtered = data
-
-				if (this.form.levelRankRating !== "_") {
-					ygoproForm.level = null
-					ygoproForm.link = this.form.levelRankRating.replace(
-						"_==",
-						""
-					)
-					const { data } = await this.$axios.$post(
-						"https://db.ygoprodeck.com/api/v7/cardinfo.php",
-						null,
-						{ params: ygoproForm }
-					)
-					filtered = [...new Set([...filtered, ...data])]
-				}
-
+			const localFilter = (cards_param) => {
+				let filtered = cards_param
 				if (this.form.type1 === "Monster")
 					filtered = filtered.filter((_) =>
 						_.type.includes("Monster")
@@ -399,8 +356,103 @@ export default {
 						.filter((_) => eval(`_.def ${this.form.def}`))
 				}
 
-				results = filtered
+				if (this.form.cardEffect !== "") {
+					const regex = new RegExp(
+						this.form.cardEffect.toLowerCase(),
+						"g"
+					)
+					filtered = filtered.filter(
+						(_) => _.desc.toLowerCase().search(regex) >= 0
+					)
+				}
+
+				return filtered
+			}
+
+			let type = null
+			if (this.form.type2 !== "") type = this.form.type2 + " Monster"
+			if (this.form.type1 === "Spell" || this.form.type1 === "Trap")
+				type = this.form.type1 + " Card"
+
+			let race = null
+			if (this.form.raceMonster !== "") race = this.form.raceMonster
+			if (this.form.raceSpellTrap !== "") race = this.form.raceSpellTrap
+
+			const ygoproForm = {
+				fname: this.form.cardName === "" ? null : this.form.cardName,
+				type,
+				race,
+				linkmarker:
+					this.form.linkmarkers.length > 0
+						? this.form.linkmarkers.reduce((a, b) => a + "," + b)
+						: null,
+				attribute:
+					this.form.attribute === "" ? null : this.form.attribute,
+			}
+
+			let results = []
+
+			if (this.form.levelRankRating !== "_") {
+				// search by level
+				ygoproForm.link = null
+				ygoproForm.level =
+					this.form.levelRankRating === "_"
+						? null
+						: this.form.levelRankRating.replace("_==", "")
+
+				try {
+					const { data } = await this.$axios.$post(
+						"https://db.ygoprodeck.com/api/v7/cardinfo.php",
+						null,
+						{ params: ygoproForm }
+					)
+					const toPush = await localFilter(data)
+					results = [...new Set([...results, ...toPush])]
+					console.log(results.length)
+				} catch (e) {}
+
+				// search by link val
+				ygoproForm.level = null
+				ygoproForm.link =
+					this.form.levelRankRating === "_"
+						? null
+						: this.form.levelRankRating.replace("_==", "")
+
+				try {
+					const { data } = await this.$axios.$post(
+						"https://db.ygoprodeck.com/api/v7/cardinfo.php",
+						null,
+						{ params: ygoproForm }
+					)
+					const toPush = await localFilter(data)
+					results = [...new Set([...results, ...toPush])]
+					console.log(results.length)
+				} catch (e) {}
+			} else {
+				ygoproForm.link = null
+				ygoproForm.level = null
+				try {
+					const { data } = await this.$axios.$post(
+						"https://db.ygoprodeck.com/api/v7/cardinfo.php",
+						null,
+						{ params: ygoproForm }
+					)
+					results = [...new Set([...results, ...localFilter(data)])]
+				} catch (e) {}
+			}
+
+			try {
+				results.find((_) => _.id === 1011091).id = 72309040
 			} catch (e) {}
+			try {
+				results.find((_) => _.id === 10034401).id = 84544192
+			} catch (e) {}
+			try {
+				results.find((_) => _.id === 10028504).id = 62219643
+			} catch (e) {}
+
+			results = this.categorySort(results)
+
 			this.$emit("update:searchedCards", results)
 			this.loading = false
 		},
