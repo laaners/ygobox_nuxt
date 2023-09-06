@@ -605,7 +605,7 @@ export default {
 			// pack filtering
 			const pack = this.$refs.searchForm.form.pack
 			const filteredSavedCards = this.savedCards
-				.filter((_) => _.sets.includes(pack))
+				.filter((_) => pack === "" ? true : _.sets.includes(pack))
 				.map((_) => _.id)
 			this.searchedAppendCards = this.categorySort(
 				newSearchedCard.filter((_) => {
@@ -735,15 +735,7 @@ export default {
 				`https://raw.githubusercontent.com/laaners/ygobox_nuxt/master/server/data/noArcPool.json`
 			)
 			console.log(noArcPool)
-			this.savedCards = [
-				{
-					id: 300104005,
-					copies: 3,
-					checked: 0,
-					favourite: true,
-					sets: ["2014"],
-				},
-			]
+			this.savedCards = noArcPool
 			this.recentlySaved = true
 		},
 		/* DECK CONTAINER */
