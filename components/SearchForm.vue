@@ -326,6 +326,7 @@ export default {
 						_.type.includes("Monster")
 					)
 
+				/*
 				if (this.form.pack !== "")
 					filtered = filtered
 						.filter((_) => _.card_sets !== undefined)
@@ -334,6 +335,7 @@ export default {
 								.map((set) => set.set_name.toLowerCase())
 								.includes(this.form.pack.toLowerCase())
 						)
+				*/
 
 				if (this.form.pendulumScale !== "_")
 					filtered = filtered

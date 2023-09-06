@@ -55,6 +55,16 @@
 					draftMode = true
 				"
 			/>
+			<button-secondary
+				style="
+					left: auto;
+					right: auto;
+					margin-top: var(--space-1) !important;
+					font-size: var(--font-size-h1);
+				"
+				:title="'NO ARCHETIPI'"
+				@click.native="noArchetypes"
+			/>
 		</div>
 		<div v-if="savedCards.length > 0" class="flex-col">
 			<h1>
@@ -68,16 +78,18 @@
 					<div v-if="draftMode" style="margin-bottom: var(--space-1)">
 						<ul>
 							<li>
-							Almeno 20 carte, non c'è un limite massimo, puoi anche giocare con 100 carte
+								Almeno 20 carte, non c'è un limite massimo, puoi
+								anche giocare con 100 carte
+							</li>
+							<li>Extra deck illimitato</li>
+							<li>
+								Il limite di 3 sulle altre carte nel mazzo non
+								viene considerato, puoi giocare anche con 100
+								carte uguali
 							</li>
 							<li>
-							Extra deck illimitato
-							</li>
-							<li>
-							Il limite di 3 sulle altre carte nel mazzo non viene considerato, puoi giocare anche con 100 carte uguali
-							</li>
-							<li>
-							Carte bandite o limitate possono essere usate in qualsiasi numero
+								Carte bandite o limitate possono essere usate in
+								qualsiasi numero
 							</li>
 						</ul>
 					</div>
@@ -590,7 +602,11 @@ export default {
 				}
 			}
 			*/
-			const filteredSavedCards = this.savedCards.map((_) => _.id)
+			// pack filtering
+			const pack = this.$refs.searchForm.form.pack
+			const filteredSavedCards = this.savedCards
+				.filter((_) => _.sets.includes(pack))
+				.map((_) => _.id)
 			this.searchedAppendCards = this.categorySort(
 				newSearchedCard.filter((_) => {
 					return filteredSavedCards.includes(_.id)
@@ -711,6 +727,23 @@ export default {
 				_.id = +_.id
 			})
 			this.savedCards.sort((a, b) => a.id - b.id)
+			this.recentlySaved = true
+		},
+		// eslint-disable-next-line require-await
+		async noArchetypes(e) {
+			const noArcPool = await this.$axios.$get(
+				`https://raw.githubusercontent.com/laaners/ygobox_nuxt/master/server/data/noArcPool.json`
+			)
+			console.log(noArcPool)
+			this.savedCards = [
+				{
+					id: 300104005,
+					copies: 3,
+					checked: 0,
+					favourite: true,
+					sets: ["2014"],
+				},
+			]
 			this.recentlySaved = true
 		},
 		/* DECK CONTAINER */
@@ -956,6 +989,10 @@ export default {
 			}
 		},
 		bindSelectedSet(e) {
+			this.$el.querySelector(".search-form-component").__vue__.form.pack =
+				e.target.value
+			const x = true
+			if (x) return
 			const pack = e.target.value.replace(
 				e.target.value.split(" ")[0] + " ",
 				""
