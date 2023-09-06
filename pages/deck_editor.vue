@@ -403,7 +403,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="flex-col pack-section">
+			<div v-if="!noArcMode" class="flex-col pack-section">
 				<input
 					ref="openPack"
 					style="margin-top: var(--space-2)"
@@ -558,6 +558,7 @@ export default {
 
 		recentlySaved: false,
 		draftMode: false,
+		noArcMode: false,
 		packAppendCards: [],
 		packLoading: false,
 		openedSet: {},
@@ -737,6 +738,7 @@ export default {
 			console.log(noArcPool)
 			this.savedCards = noArcPool
 			this.recentlySaved = true
+			this.noArcMode = true
 		},
 		/* DECK CONTAINER */
 		removeFromDeck(e) {
@@ -883,12 +885,17 @@ export default {
 				text += _.id + "\n"
 			})
 
-			this.download("0Deck.ydk", text)
-			if (!this.draftMode)
-				this.download(
-					"00SavedCards.json",
-					JSON.stringify(this.savedCards)
-				)
+			if(!this.noArcMode) {
+				this.download("0Deck.ydk", text)
+				if (!this.draftMode)
+					this.download(
+						"00SavedCards.json",
+						JSON.stringify(this.savedCards)
+					)
+			}
+			else {
+				this.download("1Deck.ydk", text)				
+			}
 			this.reloadDeck(this.savedCards)
 			this.recentlySaved = true
 			this.packAppendCards = []
