@@ -830,6 +830,7 @@ export default {
 					this.currentBanlist.push(toPush)
 				}
 			})
+			this.currentBanlist = this.categorySort(this.currentBanlist)
 		},
 		/* DECK CONTAINER */
 		removeFromDeck(e) {
