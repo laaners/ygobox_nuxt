@@ -150,7 +150,7 @@
 					<option label="Fata">Fairy</option>
 					<option label="Guerriero">Warrior</option>
 					<option label="Guerriero-Bestia">Beast-Warrior</option>
-					<option label="Illusione">Illusionist</option>
+					<option label="Illusione">Illusion</option>
 					<option label="Incantatore">Spellcaster</option>
 					<option label="Insetto">Insect</option>
 					<option label="Macchina">Machine</option>
@@ -368,16 +368,40 @@ export default {
 					)
 				}
 
+				if (
+					this.form.type2 === "Pendulum" ||
+					this.form.type2 === "Flip"
+				)
+					filtered = filtered.filter((_) =>
+						_.type.includes(this.form.type2)
+					)
+
+				if (this.form.raceMonster === "Illusion")
+					filtered = filtered.filter((_) =>
+						_.race
+							.toLowerCase()
+							.includes(this.form.raceMonster.toLowerCase())
+					)
+
 				return filtered
 			}
 
 			let type = null
-			if (this.form.type2 !== "") type = this.form.type2 + " Monster"
+			if (
+				this.form.type2 !== "" &&
+				this.form.type2 !== "Pendulum" &&
+				this.form.type2 !== "Flip"
+			)
+				type = this.form.type2 + " Monster"
 			if (this.form.type1 === "Spell" || this.form.type1 === "Trap")
 				type = this.form.type1 + " Card"
 
 			let race = null
-			if (this.form.raceMonster !== "") race = this.form.raceMonster
+			if (
+				this.form.raceMonster !== "" &&
+				this.form.raceMonster !== "Illusion"
+			)
+				race = this.form.raceMonster
 			if (this.form.raceSpellTrap !== "") race = this.form.raceSpellTrap
 
 			const ygoproForm = {
