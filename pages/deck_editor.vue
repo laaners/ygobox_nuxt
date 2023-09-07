@@ -606,7 +606,7 @@ export default {
 			// pack filtering
 			const pack = this.$refs.searchForm.form.pack
 			const filteredSavedCards = this.savedCards
-				.filter((_) => pack === "" ? true : _.sets.includes(pack))
+				.filter((_) => (pack === "" ? true : _.sets.includes(pack)))
 				.map((_) => _.id)
 			this.searchedAppendCards = this.categorySort(
 				newSearchedCard.filter((_) => {
@@ -735,10 +735,19 @@ export default {
 			const noArcPool = await this.$axios.$get(
 				`https://raw.githubusercontent.com/laaners/ygobox_nuxt/master/server/data/noArcPool.json`
 			)
-			console.log(noArcPool)
 			this.savedCards = noArcPool
 			this.recentlySaved = true
 			this.noArcMode = true
+
+			// {"id":10598400,"copies":3,"checked":0,"favourite":false,"sets":["2023"]}
+
+			this.currentBanlist = []
+
+			this.savedCards.forEach((savedCard) => {
+				if (savedCard.copies !== 3) {
+					this.currentBanlist.push(this.hashAllcards[savedCard.id][0])
+				}
+			})
 		},
 		/* DECK CONTAINER */
 		removeFromDeck(e) {
@@ -885,16 +894,15 @@ export default {
 				text += _.id + "\n"
 			})
 
-			if(!this.noArcMode) {
+			if (!this.noArcMode) {
 				this.download("0Deck.ydk", text)
 				if (!this.draftMode)
 					this.download(
 						"00SavedCards.json",
 						JSON.stringify(this.savedCards)
 					)
-			}
-			else {
-				this.download("1Deck.ydk", text)				
+			} else {
+				this.download("1Deck.ydk", text)
 			}
 			this.reloadDeck(this.savedCards)
 			this.recentlySaved = true
