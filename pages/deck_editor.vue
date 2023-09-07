@@ -497,6 +497,84 @@
 					</grid-view>
 				</div>
 			</div>
+			<div v-else class="flex-col" style="width: 95%">
+				<h3 style="color: black; background-color: red; padding: 5px">
+					Bandite
+				</h3>
+				<grid-view
+					:columns="10"
+					:col-gap="0"
+					:row-gap="0"
+					style="width: 100%"
+				>
+					<div
+						v-for="card of currentBanlist.filter(
+							(_) => _.status === 0
+						)"
+						:key="card.id"
+						style="position: relative"
+					>
+						<card-modal
+							:card-id="card.id"
+							:rarity="'Common'"
+							:src="getPicUrl(card.id)"
+							limit-image="/00lim.png"
+						/>
+					</div>
+				</grid-view>
+				<h3
+					style="color: black; background-color: orange; padding: 5px"
+				>
+					Limitate
+				</h3>
+				<grid-view
+					:columns="10"
+					:col-gap="0"
+					:row-gap="0"
+					style="width: 100%"
+				>
+					<div
+						v-for="card of currentBanlist.filter(
+							(_) => _.status === 1
+						)"
+						:key="card.id"
+						style="position: relative"
+					>
+						<card-modal
+							:card-id="card.id"
+							:rarity="'Common'"
+							:src="getPicUrl(card.id)"
+							limit-image="/01lim.png"
+						/>
+					</div>
+				</grid-view>
+				<h3
+					style="color: black; background-color: yellow; padding: 5px"
+				>
+					Semi-limitate
+				</h3>
+				<grid-view
+					:columns="10"
+					:col-gap="0"
+					:row-gap="0"
+					style="width: 100%"
+				>
+					<div
+						v-for="card of currentBanlist.filter(
+							(_) => _.status === 2
+						)"
+						:key="card.id"
+						style="position: relative"
+					>
+						<card-modal
+							:card-id="card.id"
+							:rarity="'Common'"
+							:src="getPicUrl(card.id)"
+							limit-image="/02lim.png"
+						/>
+					</div>
+				</grid-view>
+			</div>
 		</div>
 	</div>
 </template>
@@ -745,7 +823,11 @@ export default {
 
 			this.savedCards.forEach((savedCard) => {
 				if (savedCard.copies !== 3) {
-					this.currentBanlist.push(this.hashAllcards[savedCard.id][0])
+					const toPush = JSON.parse(
+						JSON.stringify(this.hashAllcards[savedCard.id][0])
+					)
+					toPush.status = savedCard.copies
+					this.currentBanlist.push(toPush)
 				}
 			})
 		},
