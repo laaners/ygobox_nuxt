@@ -363,9 +363,13 @@ export default {
 						this.form.cardEffect.toLowerCase(),
 						"g"
 					)
-					filtered = filtered.filter(
-						(_) => _.desc.toLowerCase().search(regex) >= 0
-					)
+					filtered = filtered.filter((_) => {
+						return (
+							_.desc.toLowerCase().search(regex) >= 0 ||
+							(_.pend_desc !== undefined &&
+								_.pend_desc.toLowerCase().search(regex) >= 0)
+						)
+					})
 				}
 
 				if (

@@ -204,6 +204,12 @@ export default {
 				this.cheff = chCard.desc
 				this.iteff = itCard.desc
 				this.eneff = enCard.desc
+				if (enCard.pend_desc !== undefined)
+					this.eneff =
+						"[ Pendulum Effect ] " +
+						enCard.pend_desc +
+						"\n" +
+						this.eneff.replace("[ Pendulum Effect ] \n", "\n")
 				this.$refs.name.innerHTML =
 					enCard.name +
 					" | " +
@@ -235,7 +241,7 @@ export default {
 		},
 		formatIteff(desc) {
 			if (desc === undefined) return ""
-			return desc
+			return desc.replace("Effetto pendolo","\n\nEffetto pendolo")
 		},
 		formatCheff(desc) {
 			if (desc === undefined) return ""
@@ -247,6 +253,8 @@ export default {
 				.replaceAll("④：", "\n④：")
 				.replaceAll("⑤：", "\n⑤：")
 				.replaceAll("⑥：", "\n⑥：")
+				.replace("【怪兽效果】", "\n\n【怪兽效果】")
+				.replace("【怪兽描述】", "\n\n【怪兽描述】")
 			if (tmp[0] === "\n") return tmp.substring(1)
 			return tmp
 		},
