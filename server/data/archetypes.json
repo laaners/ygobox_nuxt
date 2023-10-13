@@ -401,10 +401,6 @@
             "Synchro": 89544521
         }
     },
-    {"arc":"Despia","url":"https://images.ygoprodeck.com/images/cards_cropped/18666161.jpg",
-        "crest": "/crests/Despia.png",
-        "credit": "https://yugipedia.com/wiki/White_Relic_of_Dogmatika"
-    },
     {"arc":"Destiny HERO",
         "imgs": {
             "Poster": 48032131,
@@ -496,7 +492,6 @@
     {"arc":"Dream Mirror","url":"https://images.ygoprodeck.com/images/cards_cropped/25964547.jpg",
     "crest": "/crests/Dream Mirror.png",
     "credit": "https://www.pixiv.net/en/artworks/95676500"},
-    {"arc":"Drytron","url":"https://images.ygoprodeck.com/images/cards_cropped/22398665.jpg"},
     {"arc":"Dual Avatar",
         "imgs": {
             "Poster": 13764602,
@@ -932,15 +927,6 @@
         "credit": "https://www.pixiv.net/en/artworks/74516791"
     },
     {"arc":"Impcantation","url":"https://images.ygoprodeck.com/images/cards_cropped/86758915.jpg"},
-    {"arc":"Infernity & Void",
-        "imgs": {
-            "Poster": 66957584,
-            "Effect": 99177923,
-            "Synchro": 72896720
-        },
-        "crest": "/crests/Infernity.png",
-        "credit": "https://www.reddit.com/r/yugioh/comments/10gftyh/comment/j5jwqbg/?utm_source=share&utm_medium=web2x&context=3"
-    },
     {"arc":"Infernoble Knight & Roland",
         "imgs": {
             "Poster": 56824871,
@@ -1279,7 +1265,9 @@
         }
     },
     {"arc":"Mystical Beast of the Forest","url":"https://images.ygoprodeck.com/images/cards_cropped/97317530.jpg"},
-    {"arc":"Myutant","url":"https://images.ygoprodeck.com/images/cards_cropped/6182103.jpg"},
+    {"arc":"Myutant","url":"https://images.ygoprodeck.com/images/cards_cropped/6182103.jpg",
+    "crest": "/crests/Myutant.png",
+    "credit": "https://www.pixiv.net/en/artworks/111184057"},
     {"arc":"Naturia",
         "imgs": {
             "Poster": 37322745,
@@ -1937,7 +1925,6 @@
         }
     },
     {"arc":"Unchained","url":"https://images.ygoprodeck.com/images/cards_cropped/27412542.jpg"},
-    {"arc":"Ursarctic","url":"https://images.ygoprodeck.com/images/cards_cropped/53865474.jpg"},
     {"arc":"Utopia",
         "imgs": {
             "Poster": 84013237,
@@ -2190,5 +2177,40 @@
         "credit": "https://twitter.com/YuGiOh_OCG_INFO/status/1613513753034723329",
         "waifu":"a"
     },
-    {"arc":"Rescue-ACE","url": "https://images.ygoprodeck.com/images/cards_cropped/37495766.jpg", "crest": "/crests/Rescue-ACE.png", "credit": "https://yugipedia.com/wiki/File:Crest-RescueACE.png" }
+    {"arc":"Rescue-ACE","url": "https://images.ygoprodeck.com/images/cards_cropped/37495766.jpg", "crest": "/crests/Rescue-ACE.png", "credit": "https://yugipedia.com/wiki/File:Crest-RescueACE.png" },
+    {"arc":"Nouvelles","url": "https://images.ygoprodeck.com/images/cards_cropped/88890658.jpg", "crest": "/crests/Nouvelles.png", "credit": "https://www.pixiv.net/en/artworks/111185806" },
+    {"arc":"Horus","url": "https://images.ygoprodeck.com/images/cards_cropped/16528181.jpg", "crest": "/crests/Horus.png", "credit": "https://www.pixiv.net/en/artworks/111185806" },
+    {"arc":"Despia","url":"https://images.ygoprodeck.com/images/cards_cropped/18666161.jpg",
+        "crest": "/crests/Despia.png",
+        "credit": "https://yugipedia.com/wiki/White_Relic_of_Dogmatika"
+    },
+    {"arc":"Infernity & Void",
+        "imgs": {
+            "Poster": 66957584,
+            "Effect": 99177923,
+            "Synchro": 72896720
+        },
+        "crest": "/crests/Infernity.png",
+        "credit": "https://www.reddit.com/r/yugioh/comments/10gftyh/comment/j5jwqbg/?utm_source=share&utm_medium=web2x&context=3"
+    },
+    {"arc":"Ursarctic","url":"https://images.ygoprodeck.com/images/cards_cropped/53865474.jpg",
+    "crest": "/crests/Ursarctic.png",
+    "credit": "https://www.pixiv.net/en/artworks/111184057"},
+    {"arc":"Centurion","url":"https://images.ygoprodeck.com/images/cards_cropped/41371602.jpg",
+    "crest": "/crests/Centurion.png",
+    "credit": "https://twitter.com/YuGiOh_OCG_INFO/status/1695043354306678946"},
+    {"arc":"Drytron","url":"https://images.ygoprodeck.com/images/cards_cropped/22398665.jpg",
+    "crest": "/crests/Drytron.png",
+    "credit": "https://www.pixiv.net/en/artworks/111184057"},
+    {"arc":"Ninja (Meizen's group)",
+        "imgs": {
+            "Poster": 50766506,
+            "Effect": 95027497,
+            "Synchro": 76471944,
+            "Xyz": 19333131,
+            "Link": 37354507
+        },
+        "crest": "/crests/NinjaM.png",
+        "credit": "https://www.pixiv.net/en/artworks/111184151"
+    }
 ]    

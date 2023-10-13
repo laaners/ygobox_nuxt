@@ -502,7 +502,7 @@
 					Bandite
 				</h3>
 				<grid-view
-					:columns="15"
+					:columns="20"
 					:col-gap="0"
 					:row-gap="0"
 					style="width: 100%"
@@ -528,7 +528,7 @@
 					Limitate
 				</h3>
 				<grid-view
-					:columns="15"
+					:columns="20"
 					:col-gap="0"
 					:row-gap="0"
 					style="width: 100%"
@@ -554,7 +554,7 @@
 					Semi-limitate
 				</h3>
 				<grid-view
-					:columns="15"
+					:columns="20"
 					:col-gap="0"
 					:row-gap="0"
 					style="width: 100%"
