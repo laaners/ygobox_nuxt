@@ -417,9 +417,9 @@ export default {
 			const { data } = await this.$axios.$get(
 				"https://db.ygoprodeck.com/api/v7/cardinfo.php"
 			)
-			data.find((_) => _.id === 1011091).id = 72309040
-			data.find((_) => _.id === 10034401).id = 84544192
-			data.find((_) => _.id === 10028504).id = 62219643
+			// data.find((_) => _.id === 1011091).id = 72309040
+			// data.find((_) => _.id === 10034401).id = 84544192
+			// data.find((_) => _.id === 10028504).id = 62219643
 			return data
 		},
 		async getAllCardsLocal() {

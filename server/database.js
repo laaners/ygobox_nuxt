@@ -66,9 +66,9 @@ function ocgAllCards() {
 						delete data[i].card_prices
 						//	delete ris[i].archetype
 					}
-					data.find(_=>_.id === 1011091).id = 72309040
-					data.find(_=>_.id === 10034401).id = 84544192
-					data.find(_=>_.id === 10028504).id = 62219643
+					// data.find(_=>_.id === 1011091).id = 72309040
+					// data.find(_=>_.id === 10034401).id = 84544192
+					// data.find(_=>_.id === 10028504).id = 62219643
 					resolve(data)
 				}
 			}

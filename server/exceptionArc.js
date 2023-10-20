@@ -380,10 +380,12 @@ export function exceptionArc(arc, allcards, grouped) {
 			excludeMembers(notMembers)
 			break
 		}
+		/*
 		case "Zexal": {
 			mergeWith("ZEXAL")
 			break
 		}
+		*/
 		case "Chaos Phantom": {
 			changeName("Phantasm")
 			break
