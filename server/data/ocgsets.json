@@ -1,5 +1,445 @@
 [
     {
+        "set_name": "(OCG) Legacy of Destruction",
+        "tcg_date": "OCG 2024-04-25",
+        "url": "https://yugipedia.com/wiki/Legacy_of_Destruction",
+        "ocg_pic_url": "https://ms.yugipedia.com//a/ac/LEDE-BoosterEN.png",
+        "done": false,
+        "set_code": "LEDE",
+        "cards": {
+            "1607603": {
+                "set_code": "LEDE-EN083",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "2333466": {
+                "set_code": "LEDE-EN001",
+                "set_rarity": "Secret Rare",
+                "set_rarity_code": "Secret Rare"
+            },
+            "4064925": {
+                "set_code": "LEDE-EN055",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "4841383": {
+                "set_code": "LEDE-EN058",
+                "set_rarity": "Secret Rare",
+                "set_rarity_code": "Secret Rare"
+            },
+            "5786513": {
+                "set_code": "LEDE-EN052",
+                "set_rarity": "Super Rare",
+                "set_rarity_code": "Super Rare"
+            },
+            "6908161": {
+                "set_code": "LEDE-EN049",
+                "set_rarity": "Super Rare",
+                "set_rarity_code": "Super Rare"
+            },
+            "7020743": {
+                "set_code": "LEDE-EN046",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "10804018": {
+                "set_code": "LEDE-EN034",
+                "set_rarity": "Ultra Rare",
+                "set_rarity_code": "Ultra Rare"
+            },
+            "15845914": {
+                "set_code": "LEDE-EN000",
+                "set_rarity": "Quarter Century Secret Rare",
+                "set_rarity_code": "Quarter Century Secret Rare"
+            },
+            "18843291": {
+                "set_code": "LEDE-EN043",
+                "set_rarity": "Ultra Rare",
+                "set_rarity_code": "Ultra Rare"
+            },
+            "18969888": {
+                "set_code": "LEDE-EN040",
+                "set_rarity": "Super Rare",
+                "set_rarity_code": "Super Rare"
+            },
+            "19181420": {
+                "set_code": "LEDE-EN037",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "21036656": {
+                "set_code": "LEDE-EN031",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "22970795": {
+                "set_code": "LEDE-EN025",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "23093373": {
+                "set_code": "LEDE-EN022",
+                "set_rarity": "Ultra Rare",
+                "set_rarity_code": "Ultra Rare"
+            },
+            "24215921": {
+                "set_code": "LEDE-EN019",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "25096909": {
+                "set_code": "LEDE-EN080",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "25218587": {
+                "set_code": "LEDE-EN077",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "26334139": {
+                "set_code": "LEDE-EN074",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "26548709": {
+                "set_code": "LEDE-EN014",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "27157727": {
+                "set_code": "LEDE-EN071",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "27260347": {
+                "set_code": "LEDE-EN011",
+                "set_rarity": "Ultra Rare",
+                "set_rarity_code": "Ultra Rare"
+            },
+            "27483935": {
+                "set_code": "LEDE-EN008",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "28279365": {
+                "set_code": "LEDE-EN068",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "30336082": {
+                "set_code": "LEDE-EN059",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "31458630": {
+                "set_code": "LEDE-EN056",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "32270212": {
+                "set_code": "LEDE-EN053",
+                "set_rarity": "Ultra Rare",
+                "set_rarity_code": "Ultra Rare"
+            },
+            "38491852": {
+                "set_code": "LEDE-EN065",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "38505587": {
+                "set_code": "LEDE-EN005",
+                "set_rarity": "Super Rare",
+                "set_rarity_code": "Super Rare"
+            },
+            "39114494": {
+                "set_code": "LEDE-EN062",
+                "set_rarity": "Super Rare",
+                "set_rarity_code": "Super Rare"
+            },
+            "39321065": {
+                "set_code": "LEDE-EN002",
+                "set_rarity": "Ultra Rare",
+                "set_rarity_code": "Ultra Rare"
+            },
+            "39931513": {
+                "set_code": "LEDE-EN016",
+                "set_rarity": "Super Rare",
+                "set_rarity_code": "Super Rare"
+            },
+            "42307760": {
+                "set_code": "LEDE-EN050",
+                "set_rarity": "Ultra Rare",
+                "set_rarity_code": "Ultra Rare"
+            },
+            "43129357": {
+                "set_code": "LEDE-EN047",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "43502497": {
+                "set_code": "LEDE-EN098",
+                "set_rarity": "Super Rare",
+                "set_rarity_code": "Super Rare"
+            },
+            "44241999": {
+                "set_code": "LEDE-EN044",
+                "set_rarity": "Super Rare",
+                "set_rarity_code": "Super Rare"
+            },
+            "45464587": {
+                "set_code": "LEDE-EN041",
+                "set_rarity": "Ultra Rare",
+                "set_rarity_code": "Ultra Rare"
+            },
+            "46186135": {
+                "set_code": "LEDE-EN038",
+                "set_rarity": "Super Rare",
+                "set_rarity_code": "Super Rare"
+            },
+            "48654267": {
+                "set_code": "LEDE-EN100",
+                "set_rarity": "Super Rare",
+                "set_rarity_code": "Super Rare"
+            },
+            "52543404": {
+                "set_code": "LEDE-EN015",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "52607696": {
+                "set_code": "LEDE-EN078",
+                "set_rarity": "Super Rare",
+                "set_rarity_code": "Super Rare"
+            },
+            "53329234": {
+                "set_code": "LEDE-EN075",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "53541822": {
+                "set_code": "LEDE-EN072",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "53765052": {
+                "set_code": "LEDE-EN012",
+                "set_rarity": "Secret Rare",
+                "set_rarity_code": "Secret Rare"
+            },
+            "56208713": {
+                "set_code": "LEDE-EN035",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "57420265": {
+                "set_code": "LEDE-EN032",
+                "set_rarity": "Super Rare",
+                "set_rarity_code": "Super Rare"
+            },
+            "58143852": {
+                "set_code": "LEDE-EN029",
+                "set_rarity": "Secret Rare",
+                "set_rarity_code": "Secret Rare"
+            },
+            "59369430": {
+                "set_code": "LEDE-EN026",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "59481082": {
+                "set_code": "LEDE-EN023",
+                "set_rarity": "Ultra Rare",
+                "set_rarity_code": "Ultra Rare"
+            },
+            "60203670": {
+                "set_code": "LEDE-EN020",
+                "set_rarity": "Super Rare",
+                "set_rarity_code": "Super Rare"
+            },
+            "64603182": {
+                "set_code": "LEDE-EN006",
+                "set_rarity": "Super Rare",
+                "set_rarity_code": "Super Rare"
+            },
+            "64664373": {
+                "set_code": "LEDE-EN069",
+                "set_rarity": "Super Rare",
+                "set_rarity_code": "Super Rare"
+            },
+            "64881644": {
+                "set_code": "LEDE-EN009",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "65326118": {
+                "set_code": "LEDE-EN017",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "65496951": {
+                "set_code": "LEDE-EN066",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "65726770": {
+                "set_code": "LEDE-EN003",
+                "set_rarity": "Secret Rare",
+                "set_rarity_code": "Secret Rare"
+            },
+            "66518509": {
+                "set_code": "LEDE-EN063",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "66730191": {
+                "set_code": "LEDE-EN060",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "67457739": {
+                "set_code": "LEDE-EN057",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "70514456": {
+                "set_code": "LEDE-EN048",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "70636044": {
+                "set_code": "LEDE-EN045",
+                "set_rarity": "Secret Rare",
+                "set_rarity_code": "Secret Rare"
+            },
+            "71858682": {
+                "set_code": "LEDE-EN042",
+                "set_rarity": "Secret Rare",
+                "set_rarity_code": "Secret Rare"
+            },
+            "74150658": {
+                "set_code": "LEDE-EN028",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "74213995": {
+                "set_code": "LEDE-EN082",
+                "set_rarity": "Super Rare",
+                "set_rarity_code": "Super Rare"
+            },
+            "74652966": {
+                "set_code": "LEDE-EN099",
+                "set_rarity": "Super Rare",
+                "set_rarity_code": "Super Rare"
+            },
+            "78679226": {
+                "set_code": "LEDE-EN054",
+                "set_rarity": "Secret Rare",
+                "set_rarity_code": "Secret Rare"
+            },
+            "79791878": {
+                "set_code": "LEDE-EN051",
+                "set_rarity": "Secret Rare",
+                "set_rarity_code": "Secret Rare"
+            },
+            "82570174": {
+                "set_code": "LEDE-EN039",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "83793721": {
+                "set_code": "LEDE-EN036",
+                "set_rarity": "Super Rare",
+                "set_rarity_code": "Super Rare"
+            },
+            "83819309": {
+                "set_code": "LEDE-EN033",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "84631951": {
+                "set_code": "LEDE-EN030",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "85753549": {
+                "set_code": "LEDE-EN027",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "88001391": {
+                "set_code": "LEDE-EN079",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "89824842": {
+                "set_code": "LEDE-EN076",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "90276649": {
+                "set_code": "LEDE-EN010",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "90946420": {
+                "set_code": "LEDE-EN073",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "91098230": {
+                "set_code": "LEDE-EN007",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "91668078": {
+                "set_code": "LEDE-EN070",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "91810826": {
+                "set_code": "LEDE-EN018",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "91880660": {
+                "set_code": "LEDE-EN067",
+                "set_rarity": "Super Rare",
+                "set_rarity_code": "Super Rare"
+            },
+            "92110878": {
+                "set_code": "LEDE-EN004",
+                "set_rarity": "Ultra Rare",
+                "set_rarity_code": "Ultra Rare"
+            },
+            "92907248": {
+                "set_code": "LEDE-EN064",
+                "set_rarity": "Ultra Rare",
+                "set_rarity_code": "Ultra Rare"
+            },
+            "93729896": {
+                "set_code": "LEDE-EN061",
+                "set_rarity": "Ultra Rare",
+                "set_rarity_code": "Ultra Rare"
+            },
+            "96576187": {
+                "set_code": "LEDE-EN024",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "97698279": {
+                "set_code": "LEDE-EN021",
+                "set_rarity": "Common",
+                "set_rarity_code": "Common"
+            },
+            "99153051": {
+                "set_code": "LEDE-EN013",
+                "set_rarity": "Secret Rare",
+                "set_rarity_code": "Secret Rare"
+            }
+        }
+    },
+    {
         "set_name": "Carte Mancanti (non OCG, garantiti come Deck)",
         "tcg_date": "2023-03-11",
         "url": "https://yugipedia.com/wiki/V_Jump_November_2022_promotional_card",

@@ -1265,9 +1265,6 @@
         }
     },
     {"arc":"Mystical Beast of the Forest","url":"https://images.ygoprodeck.com/images/cards_cropped/97317530.jpg"},
-    {"arc":"Myutant","url":"https://images.ygoprodeck.com/images/cards_cropped/6182103.jpg",
-    "crest": "/crests/Myutant.png",
-    "credit": "https://www.pixiv.net/en/artworks/111184057"},
     {"arc":"Naturia",
         "imgs": {
             "Poster": 37322745,
@@ -2178,6 +2175,15 @@
         "waifu":"a"
     },
     {"arc":"Rescue-ACE","url": "https://images.ygoprodeck.com/images/cards_cropped/37495766.jpg", "crest": "/crests/Rescue-ACE.png", "credit": "https://yugipedia.com/wiki/File:Crest-RescueACE.png" },
+
+
+
+
+
+
+    {"arc":"Myutant","url":"https://images.ygoprodeck.com/images/cards_cropped/6182103.jpg",
+    "crest": "/crests/Myutant.png",
+    "credit": "https://www.pixiv.net/en/artworks/111184057"},
     {"arc":"Nouvelles","url": "https://images.ygoprodeck.com/images/cards_cropped/88890658.jpg", "crest": "/crests/Nouvelles.png", "credit": "https://www.pixiv.net/en/artworks/111185806" },
     {"arc":"Horus","url": "https://images.ygoprodeck.com/images/cards_cropped/16528181.jpg", "crest": "/crests/Horus.png", "credit": "https://www.pixiv.net/en/artworks/111185806" },
     {"arc":"Despia","url":"https://images.ygoprodeck.com/images/cards_cropped/18666161.jpg",
@@ -2196,7 +2202,7 @@
     {"arc":"Ursarctic","url":"https://images.ygoprodeck.com/images/cards_cropped/53865474.jpg",
     "crest": "/crests/Ursarctic.png",
     "credit": "https://www.pixiv.net/en/artworks/111184057"},
-    {"arc":"Centurion","url":"https://images.ygoprodeck.com/images/cards_cropped/41371602.jpg",
+    {"arc":"Centur-Ion","url":"https://images.ygoprodeck.com/images/cards_cropped/41371602.jpg",
     "crest": "/crests/Centurion.png",
     "credit": "https://twitter.com/YuGiOh_OCG_INFO/status/1695043354306678946"},
     {"arc":"Drytron","url":"https://images.ygoprodeck.com/images/cards_cropped/22398665.jpg",

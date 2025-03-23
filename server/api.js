@@ -82,16 +82,16 @@ export default app
 	})
 
 	app.get("/rush", (req, res) => {
-		const rush1 = JSON.parse(
-			fs.readFileSync("server/cazzeggio/rush1res.json").toString()
-		)
+		// const rush1 = JSON.parse(
+		// 	fs.readFileSync("server/cazzeggio/rush1res.json").toString()
+		// )
 		const rush2 = JSON.parse(
 			fs.readFileSync("server/cazzeggio/rush2res.json").toString()
 		)
 		const rush3 = JSON.parse(
 			fs.readFileSync("server/cazzeggio/rush3res.json").toString()
 		)
-		return res.json([...rush1, ...rush2, ...rush3])
+		return res.json([ ...rush3])
 	})
 
 	app.get("/rush_image/:name", async (req, res) => {
@@ -757,7 +757,7 @@ export default app
 	}
 
 	async function updateWithOCG(allsets, allcards, allcardsToT) {
-		const Local = false
+		const Local = true
 		const ocgsets = Local
 			? JSON.parse(fs.readFileSync("server/data/ocgsets.json").toString())
 			: await new Promise((resolve, reject) => {

@@ -32,7 +32,8 @@ body {
 	background: var(--color-light);
 	color: var(--color-darker);
 	margin: 0;
-	/* width: 200% */
+	width: 100%;
+	padding-bottom: 500px;
 
 	/*
 	font-size: var(--font-size-body);

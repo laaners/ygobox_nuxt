@@ -810,9 +810,20 @@ export default {
 		},
 		// eslint-disable-next-line require-await
 		async noArchetypes(e) {
+			/*
 			const noArcPool = await this.$axios.$get(
 				`https://raw.githubusercontent.com/laaners/ygobox_nuxt/master/server/data/noArcPool.json`
 			)
+			*/
+			const noArcPool = this.allcards.map((_) => {
+				return {
+					id: _.id,
+					copies: 3,
+					checked: 0,
+					favourite: false,
+					sets: [_.tcg_date.split(" ")],
+				}
+			})
 			this.savedCards = noArcPool
 			this.recentlySaved = true
 			this.noArcMode = true
